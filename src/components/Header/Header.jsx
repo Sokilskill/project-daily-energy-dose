@@ -14,13 +14,13 @@ export const Header = () => {
           <IconWrapper>
             {/* <use href={`${sprite}#icon-logo`} /> */}
           </IconWrapper>
-          First
+          First Page
         </StyledLink>
         <StyledLink to="/second">
           <IconWrapper>
             {/* <use href={`${sprite}#icon-logo`} /> */}
           </IconWrapper>
-          Second
+          Second Page
         </StyledLink>
       </Navigation>
     </HeaderContainer>
