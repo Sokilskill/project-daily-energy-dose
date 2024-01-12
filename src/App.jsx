@@ -1,23 +1,32 @@
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from 'components/SharedLayout/SharedLayout';
-import FirstPage from 'pages/FirstPage/FirstPage';
-import SecondPage from 'pages/SecondPage/SecondPage';
-import HalfPage from 'pages/HalfPage/HalfPage';
+import ProductsPage from 'pages/ProductsPage/ProductsPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import MainLayout from './components/MainLayout/MainLayout';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import SignInPage from './pages/SignInPage/SignInPage';
+import DiaryPage from './pages/DiaryPage/DiaryPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import ExercisesPage from './pages/ExercisesPage/ExercisesPage.styled';
 
-const test = import.meta.env.VITE_API_TEST;
+// авторизований / залогінений
+const isAuth = true;
 
 function App() {
-  console.log(test);
   return (
     <AppWrapper>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="/first" element={<FirstPage />} />
-          <Route path="/second" element={<SecondPage />}>
-            <Route path=":half" element={<HalfPage />} />
-          </Route>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+
+          <Route path="/profile" element={isAuth && <ProfilePage />} />
+          <Route path="/diary" element={isAuth && <DiaryPage />} />
+          <Route path="/products" element={isAuth && <ProductsPage />} />
+          <Route path="/exercises" element={isAuth && <ExercisesPage />} />
+
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

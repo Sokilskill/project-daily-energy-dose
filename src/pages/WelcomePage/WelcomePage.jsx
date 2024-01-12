@@ -1,7 +1,7 @@
-import { Container, Title, StyledImage } from './FirstPage.styled';
+import { Container, Title, StyledImage } from './WelcomePage.styled';
 import example from '../../assets/block.jpg';
 
-const FirstPage = () => {
+const WelcomePage = () => {
   return (
     <Container>
       <Title>First Page</Title>
@@ -10,4 +10,4 @@ const FirstPage = () => {
   );
 };
 
-export default FirstPage;
+export default WelcomePage;
