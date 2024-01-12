@@ -59,11 +59,12 @@
 }
 
 :root {
-  --main-text-color: #efede8;
+  --white: #efede8;
   --secondary-text-color: rgba(239, 237, 232, 0.4);
-  --highlight-color: #e6533c;
-  --highlight-hover-color: #ef8964;
-  --bg-color: #040404;
+  --orange: #e6533c;
+  --orange-1: #ef8964;
+  --beige: #efa082;
+  --black: #040404;
   --dashboard-bg-color: rgba(239, 237, 232, 0.05);
   --error-color: #d80027;
   --success-color: #3cbf61;
