@@ -1,14 +1,18 @@
-import { Container, Block, Title, StyledLink } from './ProductsPage.styled';
+import { Container, TitlePage } from './ProductsPage.styled';
+import {Filters} from "../../components/ProductsFilters/ProductsFilters"
+import { ProductsList } from "../../components/ProductsList/ProductsList"
 
-const ProductsPage = () => {
+
+
+
+export default function ProductPage() {
+  
+
   return (
     <Container>
-      <Block>
-        <Title>Second Page</Title>
-        <StyledLink to="/second/5">Half</StyledLink>
-      </Block>
+      <TitlePage >Products</TitlePage>
+      <Filters />
+      <ProductsList/>
     </Container>
   );
-};
-
-export default ProductsPage;
+}
