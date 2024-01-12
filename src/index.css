@@ -58,6 +58,18 @@
       url('../public/fonts/roboto-v30-latin-700.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 
+:root {
+  --main-text-color: #efede8;
+  --secondary-text-color: rgba(239, 237, 232, 0.4);
+  --highlight-color: #e6533c;
+  --highlight-hover-color: #ef8964;
+  --bg-color: #040404;
+  --dashboard-bg-color: rgba(239, 237, 232, 0.05);
+  --error-color: #d80027;
+  --success-color: #3cbf61;
+  --dashboard-border-color: 1px solid rgba(239, 237, 232, 0.2);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -68,7 +80,7 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 150%;
-  color: #efede8;
+  color: var(--main-text-color, #efede8);
 }
 
 a {
