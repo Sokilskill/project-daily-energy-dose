@@ -16,14 +16,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index path="/welcome" element={<WelcomePage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/signin" element={<SignInPage />} />
+        <Route index element={<WelcomePage />} />
+        <Route path="signup" element={<SignUpPage />} />
+        <Route path="signin" element={<SignInPage />} />
 
-        <Route path="/profile" element={isAuth && <ProfilePage />} />
-        <Route path="/diary" element={isAuth && <DiaryPage />} />
-        <Route path="/products" element={isAuth && <ProductsPage />} />
-        <Route path="/exercises" element={isAuth && <ExercisesPage />} />
+        <Route path="profile" element={isAuth && <ProfilePage />} />
+        <Route path="diary" element={isAuth && <DiaryPage />} />
+        <Route path="products" element={isAuth && <ProductsPage />} />
+        <Route path="exercises" element={isAuth && <ExercisesPage />} />
 
         <Route path="*" element={<ErrorPage />} />
       </Route>
