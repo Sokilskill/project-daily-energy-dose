@@ -1,0 +1,316 @@
+.welcome_body {
+  background-color: var(--black, #040404);
+}
+.container {
+  max-width: 375px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 24px 20px 0 20px;
+}
+.logo {
+  display: flex;
+  gap: 8px;
+  max-width: 126px;
+}
+.icon_vector {
+  width: 36px;
+  height: 13px;
+}
+.icon_power {
+  width: 82px;
+  height: 12px;
+}
+.welcome_part {
+  position: absolute;
+  top: 127px;
+  left: 20px;
+}
+.text_box {
+  max-width: 335px;
+  height: 120px;
+  margin-bottom: 40px;
+}
+
+.title {
+  position: relative;
+  color: var(--white, #efede8);
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.38px;
+  z-index: 10;
+}
+
+.icon_line {
+  position: absolute;
+  top: 43px;
+  left: -9px;
+  width: 98px;
+  height: 35px;
+  z-index: -1;
+}
+.btns {
+  display: flex;
+  gap: 14px;
+}
+.sing_btn {
+  display: flex;
+  padding: 12px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--white, #efede8);
+  background-color: transparent;
+  border: 1px solid var(--border, #efede84d);
+  transition:
+    border-color 250ms linear,
+    background-color 250ms linear;
+}
+.up {
+  background-color: var(--orange, #e6533c);
+}
+.up:is(:hover, :focus) {
+  background-color: var(--orange-1, #ef8964);
+}
+.in:is(:hover, :focus) {
+  border-color: var(--orange, #e6533c);
+}
+.welcome_bgd {
+  max-width: 298px;
+  height: 100%;
+  margin-top: 241px;
+  margin-left: auto;
+  margin-right: -20px;
+  padding: 319px 20px 40px 44px;
+  background-image: url(../../assets/Welcome/images/people-training-gym-mob.webp),
+    linear-gradient(
+      170deg,
+      var(--black, #040404) 3.66%,
+      var(--semi-black, #04040400) 19.15%
+    ),
+    linear-gradient(
+      73deg,
+      var(--black, #040404) 6.11%,
+      var(--semi-black, #04040400) 66.68%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.video_box {
+  display: flex;
+  gap: 8px;
+  padding: 14px 18px;
+  align-items: center;
+  width: 146px;
+  height: 66px;
+  margin-bottom: 70px;
+  border-radius: 12px;
+  background-color: var(--grey, #303030);
+}
+.ellips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--orange-1, #ef8964);
+}
+.icon_play {
+  width: 12px;
+  height: 12px;
+}
+.views {
+  color: var(--white, #efede8);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 4px;
+}
+.views_text {
+  color: var(--vievs-text, #efede8a6);
+  font-size: 12px;
+  line-height: 1.33;
+}
+.cal_box {
+  width: 119px;
+  height: 76px;
+  padding: 14px 18px;
+  margin-left: auto;
+  border-radius: 12px;
+  background-color: var(--orange-1, #ef8964);
+}
+.cal_ellips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--beige, #efa082);
+  margin-bottom: 4px;
+}
+.icon_run {
+  width: 12px;
+  height: 12px;
+}
+
+.cal {
+  color: var(--white, #efede8);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+.cal_text {
+  color: var(--vievs-text, #efede8a6);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.33;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 744px;
+    padding: 32px 20px 0 20px;
+  }
+  .logo {
+    max-width: 152px;
+    margin-left: 12px;
+  }
+  .icon_vector {
+    width: 44px;
+    height: 17px;
+  }
+  .icon_power {
+    width: 100px;
+    height: 16px;
+  }
+  .welcome_part {
+    top: 189px;
+    left: 32px;
+  }
+  .text_box {
+    max-width: 598px;
+    height: 234px;
+    margin-bottom: 64px;
+  }
+  .title {
+    font-size: 70px;
+    line-height: 1.11;
+    letter-spacing: 0.7px;
+  }
+  .icon_line {
+    top: 84px;
+    left: -16px;
+    width: 185px;
+    height: 67px;
+  }
+  .btns {
+    gap: 20px;
+  }
+  .sing_btn {
+    padding: 16px 60px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .welcome_bgd {
+    max-width: 437px;
+    margin-top: 131px;
+    padding: 583px 32px 48px 0;
+    background: url(../../assets/Welcome/images/people-training-gym-tab.webp),
+      linear-gradient(
+        170deg,
+        var(--black, var(--black, #040404)) 3.66%,
+        var(--semi-black, #04040400) 19.15%
+      ),
+      linear-gradient(
+        73deg,
+        var(--black, var(--black, #040404)) 6.11%,
+        var(--semi-black, #04040400) 66.68%
+      );
+  }
+  .video_box {
+    width: 206px;
+    height: 96px;
+    gap: 12px;
+    padding: 20px 36px 20px 23px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+  .ellips {
+    width: 40px;
+    height: 40px;
+  }
+  .icon_play {
+    width: 20px;
+    height: 20px;
+  }
+  .views {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .views_text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .cal_box {
+    width: 180px;
+    height: 110px;
+    padding: 14px 38px 14px 28px;
+  }
+  .cal_ellips {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+  }
+  .icon_run {
+    width: 16px;
+    height: 16px;
+  }
+  .cal {
+    font-size: 48px;
+    line-height: 1.04;
+    margin-right: 11px;
+  }
+  .cal_text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+  .logo {
+    margin-left: 76px;
+  }
+  .welcome_part {
+    top: 200px;
+    left: 96px;
+  }
+  .welcome_bgd {
+    max-width: 670px;
+    margin-top: -32px;
+    padding: 384px 32px 172px 0;
+    background-image: url(../../assets/Welcome/images/people-training-gym-desk.webp),
+      linear-gradient(
+        80deg,
+        var(--black, #040404) -2.45%,
+        var(--semi-black, #04040400) 68.17%
+      );
+  }
+  .video_box {
+    gap: 12px;
+    padding: 20px 36px 20px 23px;
+    margin-bottom: 40px;
+    align-items: end;
+  }
+}
