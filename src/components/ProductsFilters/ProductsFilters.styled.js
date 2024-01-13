@@ -1,9 +1,13 @@
 import styled from '@emotion/styled';
 
-export const ProductsFilters = styled.div`
+export const ProductsFilters = styled.form`
   width: 100%;
   height: 108px;
 `;
+
+export const Form = styled.div`
+  position: relative;
+`
 
 export const Input = styled.input`
   width: 335px;
@@ -19,7 +23,28 @@ export const Input = styled.input`
   line-height: 1.28;
   outline: none;
 
-  :focus {
+  :focus,
+  :valid {
     border-color: #ef8964;
   }
+  
 `;
+
+export const Btn = styled.button`
+  position: absolute;
+  top: 14px;
+  right: ${(props) => props.right};
+
+  width: 18px;
+  height: 18px;
+  border:none;
+  background-color: rgba(0,0,0,0);
+  coursor: pointer;
+`;
+
+export const Icon = styled.svg`
+  width: 18px;
+  height: 18px;
+  stroke: ${props => props.color};
+`;
+
