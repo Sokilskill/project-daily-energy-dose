@@ -9,30 +9,30 @@ import {
 } from './ProductsFilters.styled';
 import sprite from '../../assets/sprite.svg';
 
-const categories = [
-    { value: 'alcoholic-drinks', name: 'alcoholic drinks' },
-    { value: 'berries', name: 'berries' },
-    { value: 'cereals', name: 'cereals' },
-    { value: 'dairy', name: 'dairy' },
-    { value: 'dried-fruits', name: 'dried fruits' },
-    { value: 'eggs', name: 'eggs' },
-    { value: 'fish', name: 'fish' },
-    { value: 'flour', name: 'flour' },
-    { value: 'fruits', name: 'fruits' },
-    { value: 'meat', name: 'meat' },
-    { value: 'mushrooms', name: 'mushrooms' },
-    { value: 'nuts', name: 'nuts' },
-    { value: 'oils-and-fats', name: 'oils and fats' },
-    { value: 'poppy', name: 'poppy' },
-    { value: 'sausage', name: 'sausage' },
-    { value: 'seeds', name: 'seeds' },
-    { value: 'sesame', name: 'sesame' },
-    { value: 'soft-drinks', name: 'soft drinks' },
-    { value: 'vegetables-and-herbs', name: 'vegetables and herbs' },
-];
 
-export function Filters() {
-  const [category, setCategory] = useState('');
+
+export function Filters({ optionsCategories, optionsRecommendation }) {
+  const [currentCategory, setCurrentCategory] = useState('');
+  const [recommended, setRecomended] = useState('');
+
+  const onChangeCategory = (newId) => {
+    setCurrentCategory(newId.id);
+  };
+
+  const onChangeRec = (newId) => {
+    setRecomended(newId.id);
+  };
+
+  const getCategoryId = () => {
+    return currentCategory
+      ? optionsCategories.find((category) => category.id === currentCategory)
+      : '';
+  };
+  const getRecommendId = () => {
+    return recommended
+      ? optionsRecommendation.find((rec) => rec.id === recommended)
+      : '';
+  };
 
   return (
     <ProductsFilters>
@@ -54,9 +54,18 @@ export function Filters() {
           </Icon>
         </Btn>
       </Form>
-      
-          
 
+      <Select
+        onChange={onChangeCategory}
+        value={getCategoryId()}
+        options={optionsCategories}
+      />
+
+      <Select
+        onChange={onChangeRec}
+        value={getRecommendId()}
+        options={optionsRecommendation}
+      />
     </ProductsFilters>
   );
 }
