@@ -68,5 +68,8 @@
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M16.5 10.75v10.5"></path>
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M11.25 16h10.5"></path>
 </symbol>
+<symbol id="icon-polygon1" viewBox="0 0 24 32">
+<path fill="#efede8" style="fill: var(--color1, #efede8)" d="M24 16l-24 13.857v-27.713l24 13.856z"></path>
+</symbol>
 </defs>
 </svg>

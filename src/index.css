@@ -73,6 +73,22 @@
   --vievs-text: #efede8a6;
   --semi-black: #04040400;
   --grey: #303030;
+  --secondary-text-color-1: #efede899;
+  --bg-gradient: linear-gradient(
+      170deg,
+      var(--black, #040404) 3.66%,
+      var(--semi-black, #04040400) 19.15%
+    ),
+    linear-gradient(
+      73deg,
+      var(--black, #040404) 6.11%,
+      var(--semi-black, #04040400) 66.68%
+    );
+  --bg-desk-gradient: linear-gradient(
+    80deg,
+    var(--black, #040404) -2.45%,
+    var(--semi-black, #04040400) 68.17%
+  );
 }
 
 body {

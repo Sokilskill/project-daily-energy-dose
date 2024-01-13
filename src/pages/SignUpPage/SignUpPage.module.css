@@ -2,64 +2,41 @@
   position: relative;
   padding-top: 180px;
 }
-.welcome_part {
+
+.signup_part {
   position: absolute;
   top: 66px;
   left: 20px;
 }
 .text_box {
   max-width: 335px;
-  height: 120px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
+}
+.signup_title {
+  color: var(--white, #efede8);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.17;
+  margin-bottom: 14px;
+}
+.signup_text {
+  color: var(--border, #efede84d);
+  font-size: 14px;
+  line-height: 1.28;
+}
+.signup_form {
+  display: flex;
+}
+.signin_option {
+  color: var(--secondary-text-color-1, #efede899);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.signin_link {
+  color: var(--white, #efede8);
+  text-decoration-line: underline;
 }
 
-.title {
-  position: relative;
-  color: var(--white, #efede8);
-  font-size: 38px;
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: 0.38px;
-  z-index: 10;
-}
-
-.icon_line {
-  position: absolute;
-  top: 43px;
-  left: -9px;
-  width: 98px;
-  height: 35px;
-  z-index: -1;
-  stroke: var(--orange-1, #ef8964);
-}
-.btns {
-  display: flex;
-  gap: 14px;
-}
-.sing_btn {
-  display: flex;
-  padding: 12px 40px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  font-weight: 500;
-  line-height: 1.12;
-  color: var(--white, #efede8);
-  background-color: transparent;
-  border: 1px solid var(--border, #efede84d);
-  transition:
-    border-color 250ms linear,
-    background-color 250ms linear;
-}
-.up {
-  background-color: var(--orange, #e6533c);
-}
-.up:is(:hover, :focus) {
-  background-color: var(--orange-1, #ef8964);
-}
-.in:is(:hover, :focus) {
-  border-color: var(--orange, #e6533c);
-}
 .welcome_bgd {
   max-width: 298px;
   height: 100%;
@@ -79,6 +56,7 @@
       var(--bg-gradient);
   }
 }
+
 .video_box {
   display: flex;
   gap: 8px;
@@ -158,34 +136,21 @@
   .welcome_section {
     padding-top: 48px;
   }
-  .welcome_part {
+  .signup_part {
     top: 105px;
     left: 32px;
   }
   .text_box {
-    max-width: 598px;
-    height: 234px;
-    margin-bottom: 64px;
   }
-  .title {
-    font-size: 70px;
-    line-height: 1.11;
-    letter-spacing: 0.7px;
+  .signup_title {
   }
-  .icon_line {
-    top: 84px;
-    left: -16px;
-    width: 185px;
-    height: 67px;
+  .signup_text {
   }
-  .btns {
-    gap: 20px;
+  .signup_form {
   }
-  .sing_btn {
-    padding: 16px 60px;
-    font-size: 20px;
-    line-height: 1.2;
+  .signin_option {
   }
+
   .welcome_bgd {
     max-width: 437px;
     padding: 583px 32px 48px 0;
@@ -256,7 +221,7 @@
   .welcome_section {
     padding-top: 0;
   }
-  .welcome_part {
+  .signup_part {
     top: 200px;
     left: 96px;
   }
