@@ -1,11 +1,12 @@
-import { Container, Title, StyledImage } from './WelcomePage.styled';
-import example from '../../assets/block.jpg';
+import { Container, Title } from './WelcomePage.styled';
 
 const WelcomePage = () => {
   return (
     <Container>
-      <Title>First Page</Title>
-      <StyledImage src={example} alt="Example" />
+      <div style={{ width: '500px' }}>
+        <Title>Transforming your body shape with Power Pulse</Title>
+        <button> Sign in</button>
+      </div>
     </Container>
   );
 };
