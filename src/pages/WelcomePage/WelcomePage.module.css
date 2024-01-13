@@ -1,0 +1,283 @@
+.welcome_section {
+  position: relative;
+  padding-top: 180px;
+}
+.welcome_part {
+  position: absolute;
+  top: 66px;
+  left: 20px;
+}
+.text_box {
+  max-width: 335px;
+  height: 120px;
+  margin-bottom: 40px;
+}
+
+.title {
+  position: relative;
+  color: var(--white, #efede8);
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.38px;
+  z-index: 10;
+}
+
+.icon_line {
+  position: absolute;
+  top: 43px;
+  left: -9px;
+  width: 98px;
+  height: 35px;
+  z-index: -1;
+  stroke: var(--orange-1, #ef8964);
+}
+.btns {
+  display: flex;
+  gap: 14px;
+}
+.sing_btn {
+  display: flex;
+  padding: 12px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--white, #efede8);
+  background-color: transparent;
+  border: 1px solid var(--border, #efede84d);
+  transition:
+    border-color 250ms linear,
+    background-color 250ms linear;
+}
+.up {
+  background-color: var(--orange, #e6533c);
+}
+.up:is(:hover, :focus) {
+  background-color: var(--orange-1, #ef8964);
+}
+.in:is(:hover, :focus) {
+  border-color: var(--orange, #e6533c);
+}
+.welcome_bgd {
+  max-width: 298px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: 0px;
+  padding: 319px 20px 40px 44px;
+  background-image: url(../../assets/Welcome/images/people-training-gym-mob.webp),
+    var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .welcome_bgd {
+    background-image: url(../../assets/Welcome/images/people-training-gym-mob-2x.webp),
+      var(--bg-gradient);
+  }
+}
+.video_box {
+  display: flex;
+  gap: 8px;
+  padding: 14px 18px;
+  align-items: center;
+  width: 146px;
+  height: 66px;
+  margin-bottom: 70px;
+  border-radius: 12px;
+  background-color: var(--grey, #303030);
+}
+.ellips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--orange-1, #ef8964);
+}
+.icon_play {
+  width: 12px;
+  height: 12px;
+}
+.views {
+  color: var(--white, #efede8);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 4px;
+}
+.views_text {
+  color: var(--vievs-text, #efede8a6);
+  font-size: 12px;
+  line-height: 1.33;
+}
+.cal_box {
+  width: 119px;
+  height: 76px;
+  padding: 14px 18px;
+  margin-left: auto;
+  border-radius: 12px;
+  background-color: var(--orange-1, #ef8964);
+}
+.cal_ellips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--beige, #efa082);
+  margin-bottom: 4px;
+}
+.icon_run {
+  width: 12px;
+  height: 12px;
+  fill: var(--white, #efede8);
+}
+
+.cal {
+  color: var(--white, #efede8);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+.cal_text {
+  color: var(--vievs-text, #efede8a6);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.33;
+}
+@media (min-width: 768px) {
+  .welcome_section {
+    padding-top: 48px;
+  }
+  .welcome_part {
+    top: 105px;
+    left: 32px;
+  }
+  .text_box {
+    max-width: 598px;
+    height: 234px;
+    margin-bottom: 64px;
+  }
+  .title {
+    font-size: 70px;
+    line-height: 1.11;
+    letter-spacing: 0.7px;
+  }
+  .icon_line {
+    top: 84px;
+    left: -16px;
+    width: 185px;
+    height: 67px;
+  }
+  .btns {
+    gap: 20px;
+  }
+  .sing_btn {
+    padding: 16px 60px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .welcome_bgd {
+    max-width: 437px;
+    padding: 583px 32px 48px 0;
+    margin-right: 0;
+    background: url(../../assets/Welcome/images/people-training-gym-tab.webp),
+      var(--bg-gradient);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .welcome_bgd {
+      background-image: url(../../assets/Welcome/images/people-training-gym-tab-2x.webp),
+        var(--bg-gradient);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .video_box {
+    width: 206px;
+    height: 96px;
+    gap: 12px;
+    padding: 20px 36px 20px 23px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+  .ellips {
+    width: 40px;
+    height: 40px;
+  }
+  .icon_play {
+    width: 20px;
+    height: 20px;
+  }
+  .views {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .views_text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .cal_box {
+    width: 180px;
+    height: 110px;
+    padding: 14px 38px 14px 28px;
+  }
+  .cal_ellips {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+  }
+  .icon_run {
+    width: 16px;
+    height: 16px;
+  }
+  .cal {
+    font-size: 48px;
+    line-height: 1.04;
+    margin-right: 11px;
+  }
+  .cal_text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+@media (min-width: 1440px) {
+  .welcome_section {
+    padding-top: 0;
+  }
+  .welcome_part {
+    top: 200px;
+    left: 96px;
+  }
+  .welcome_bgd {
+    max-width: 670px;
+    margin-top: -84px;
+    padding: 384px 32px 172px 0;
+    background-image: url(../../assets/Welcome/images/people-training-gym-desk.webp),
+      var(--bg-desk-gradient);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .welcome_bgd {
+      background-image: url(../../assets/Welcome/images/people-training-gym-desk-2x.webp),
+        var(--bg-desk-gradient);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .video_box {
+    margin-bottom: 40px;
+  }
+}
