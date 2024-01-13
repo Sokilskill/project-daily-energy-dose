@@ -9,6 +9,15 @@ import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ExercisesPage from './pages/ExercisesPage/ExercisesPage.styled';
 
+//неавторизованого користувача переадресовує на Welcome page, авторизованого
+//- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
+
+// та редірект на diary === коли користувач вже залогіненний заходить наприклад з
+// нової вкладки його не відправляє на сторінку Welcome
+
+// ліниве завантаження,
+// const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
+
 // авторизований / залогінений
 const isAuth = true;
 
@@ -19,12 +28,10 @@ function App() {
         <Route index element={<WelcomePage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="signin" element={<SignInPage />} />
-
         <Route path="profile" element={isAuth && <ProfilePage />} />
         <Route path="diary" element={isAuth && <DiaryPage />} />
         <Route path="products" element={isAuth && <ProductsPage />} />
         <Route path="exercises" element={isAuth && <ExercisesPage />} />
-
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

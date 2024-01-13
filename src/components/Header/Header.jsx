@@ -1,28 +1,31 @@
-import {
-  HeaderContainer,
-  Navigation,
-  StyledLink,
-  IconWrapper,
-} from './Header.styled';
-// import sprite from '../../assets/block2.jpg';
+import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
+import { Logo } from '../../helperComponents/Logo/Logo';
+import { UserBar } from '../../helperComponents/UserBar/UserBar';
+import { UserNav } from '../../helperComponents/UserNav/UserNav';
+import { HeaderContainer, HeaderWrap, UseMenu } from './Header.styled';
+
+// по ТЗ хедер на всих сторінках
+// коли еррор === еррор передаєзначення в стор і лого змінюється
+
+// якщо не авторизований прибрати нижній бордер
+const isAuth = !true;
 
 export const Header = () => {
   return (
     <HeaderContainer>
-      <Navigation>
-        <StyledLink to="/first">
-          <IconWrapper>
-            {/* <use href={`${sprite}#icon-logo`} /> */}
-          </IconWrapper>
-          First Page
-        </StyledLink>
-        <StyledLink to="/second">
-          <IconWrapper>
-            {/* <use href={`${sprite}#icon-logo`} /> */}
-          </IconWrapper>
-          Second Page
-        </StyledLink>
-      </Navigation>
+      <HeaderWrap className="container">
+        <Logo />
+
+        {isAuth && (
+          <UseMenu>
+            <UserNav />
+            <UserBar />
+            <LogOutBtn />
+
+            <button>burger</button>
+          </UseMenu>
+        )}
+      </HeaderWrap>
     </HeaderContainer>
   );
 };

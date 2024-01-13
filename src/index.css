@@ -131,11 +131,12 @@ button {
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
+  /* outline: 10px solid red; */
 }
 
 @media screen and (min-width: 375px) {
   .container {
-    max-width: 375px;
+    width: 375px;
   }
 }
 

@@ -12,5 +12,5 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/project-daily-energy-dose/',
+  base: '/project-daily-energy-dose',
 });

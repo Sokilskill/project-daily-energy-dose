@@ -3,10 +3,12 @@ import style from "../../index.css"
 import { useNavigate } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg'
 
+
 const WelcomePage = () => {
    const navigate = useNavigate()
    
   return (
+
     <div className={css.welcome_section}>
       <div className={style.container}>
        
