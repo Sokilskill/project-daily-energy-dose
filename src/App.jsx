@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import ProductsPage from 'pages/ProductsPage/ProductsPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
-import { AppWrapper } from './App.styled';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import MainLayout from './components/MainLayout/MainLayout';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
@@ -15,22 +14,20 @@ const isAuth = true;
 
 function App() {
   return (
-    <AppWrapper>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route path="/welcome" element={<WelcomePage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/signin" element={<SignInPage />} />
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<WelcomePage />} />
+        <Route path="signup" element={<SignUpPage />} />
+        <Route path="signin" element={<SignInPage />} />
 
-          <Route path="/profile" element={isAuth && <ProfilePage />} />
-          <Route path="/diary" element={isAuth && <DiaryPage />} />
-          <Route path="/products" element={isAuth && <ProductsPage />} />
-          <Route path="/exercises" element={isAuth && <ExercisesPage />} />
+        <Route path="profile" element={isAuth && <ProfilePage />} />
+        <Route path="diary" element={isAuth && <DiaryPage />} />
+        <Route path="products" element={isAuth && <ProductsPage />} />
+        <Route path="exercises" element={isAuth && <ExercisesPage />} />
 
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
-    </AppWrapper>
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
   );
 }
 export default App;
