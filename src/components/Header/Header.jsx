@@ -4,6 +4,7 @@ import { MobileMenu } from '../../helperComponents/MobileMenu/MobileMenu';
 import { UserBar } from '../../helperComponents/UserBar/UserBar';
 import { UserNav } from '../../helperComponents/UserNav/UserNav';
 import {
+  BurgerButton,
   HeaderContainer,
   HeaderWrap,
   Nav,

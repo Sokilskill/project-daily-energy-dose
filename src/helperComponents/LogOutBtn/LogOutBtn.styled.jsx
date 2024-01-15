@@ -11,6 +11,10 @@ padding:0;
   color: #EFEDE8;
 font-size: 16px;
 background-color: unset;
+
+@media screen and (max-width:1439px){
+  display:none
+}
 `;
 
 export const IconWrapper = styled.svg`
