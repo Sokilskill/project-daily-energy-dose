@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import css from './SignUpForm.module.css';
 
 export const SignUpForm = ({ onSubmit }) => {

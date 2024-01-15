@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api-docs/';
 const setToken = (token) => {
@@ -14,9 +13,10 @@ export const registerThunk = createAsyncThunk(
   'auth/register',
   async (body, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signup', body);
+      const { data } = await axios.post('/users/register', body);
       setToken(data.token);
-      //   toast.success('Registration is successful!', { position: 'top-right' });
+      // toast.success('Registration is successful!', { position: 'top-right' });
+      console.log(data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
