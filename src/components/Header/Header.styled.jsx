@@ -22,17 +22,21 @@ export const UserMenuBox = styled.div`
 export const Nav = styled.nav`
   margin-right: 32px;
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1439px) {
     display: none;
   }
 `;
 
 export const UserBarWrapper = styled.div`
   display: flex;
-
   gap: 16px;
 `;
 
+export const BurgerButton = styled.button`
+  @media screen and (max-width: 1439px) {
+    display: none;
+  }
+`;
 // export const StyledLink = styled(Link)`;
 //   padding: 8px 16px;
 //   color: #ffffff; /* White text color */

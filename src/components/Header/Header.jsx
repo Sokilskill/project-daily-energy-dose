@@ -34,7 +34,7 @@ export const Header = () => {
             <UserBarWrapper>
               <UserBar />
               <LogOutBtn />
-              <button>burger</button>
+              <BurgerButton>burger</BurgerButton>
             </UserBarWrapper>
 
             <MobileMenu />
