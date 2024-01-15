@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import ProductsPage from 'pages/ProductsPage/ProductsPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
@@ -8,6 +9,8 @@ import SignInPage from './pages/SignInPage/SignInPage';
 import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ExercisesPage from './pages/ExercisesPage/ExercisesPage.styled';
+import {store} from './redux/store'
+import { Provider } from 'react-redux';
 
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
 //- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
@@ -20,9 +23,11 @@ import ExercisesPage from './pages/ExercisesPage/ExercisesPage.styled';
 
 // авторизований / залогінений
 const isAuth = true;
+const Diary = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 
 function App() {
   return (
+    <Provider store={store}> {}
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<WelcomePage />} />
@@ -35,6 +40,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
+    </Provider>
   );
 }
 export default App;
