@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react(), svgr()],
   resolve: {
     alias: {
-      src: './src',
-      components: './src/components',
-      pages: './src/pages',
-      assets: './src/assets',
+      src: '/src',
+      components: '/src/components',
+      pages: '/src/pages',
+      assets: '/src/assets',
     },
   },
   base: '/project-daily-energy-dose',
