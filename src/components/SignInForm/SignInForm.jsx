@@ -36,7 +36,6 @@ export const SignInForm = ({ onSubmit }) => {
             />
           </label>
         </div>
-
         <button type="submit" className={css.form_btn}>
           Sign In
         </button>
