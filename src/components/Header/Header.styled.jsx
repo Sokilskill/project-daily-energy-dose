@@ -13,14 +13,27 @@ export const HeaderWrap = styled.div`
   align-items: center;
 `;
 
-export const UseMenu = styled.div`
+export const UserMenuBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px;
 `;
 
-// export const StyledLink = styled(Link)`
+export const Nav = styled.nav`
+  margin-right: 32px;
+
+  @media screen and (max-width: 1440px) {
+    display: none;
+  }
+`;
+
+export const UserBarWrapper = styled.div`
+  display: flex;
+
+  gap: 16px;
+`;
+
+// export const StyledLink = styled(Link)`;
 //   padding: 8px 16px;
 //   color: #ffffff; /* White text color */
 //   text-shadow:
@@ -57,13 +70,4 @@ export const UseMenu = styled.div`
 //     0 0 20px #00baff,
 //     0 0 40px #00baff,
 //     0 0 80px #00baff;
-// `;
-
-// export const IconWrapper = styled.svg`
-//   width: ${(props) => props.size || '36px'};
-//   height: ${(props) => props.size || '13px'};
-//   fill: ${(props) => props.color || '#ffffff'};
-//   display: inline-block;
-//   margin-right: ${(props) => props.mg_r || '8px'};
-//   fill: ${(props) => props.fill || '#E6533C'};
 // `;
