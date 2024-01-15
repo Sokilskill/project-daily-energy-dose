@@ -8,34 +8,37 @@
   position: absolute;
   top: 66px;
   background: linear-gradient(
-    130deg,
-    var(--black, #040404) 45%,
-    var(--semi-black, #04040400) 88.17%
+    140deg,
+    var(--black, #040404) 65%,
+    var(--semi-black, #04040400) 88%
   );
 }
 .text_box {
   max-width: 335px;
   margin-bottom: 28px;
 }
-.signup_title {
+.signin_title {
   color: var(--white, #efede8);
   font-size: 24px;
   font-weight: 700;
   line-height: 1.17;
   margin-bottom: 14px;
 }
-.signup_text {
+.signin_text {
   color: var(--border, #efede84d);
   font-size: 14px;
   line-height: 1.28;
 }
-.signin_option {
+.signin_form {
+  display: flex;
+}
+.signup_option {
   margin-top: 12px;
   color: var(--secondary-text-color-1, #efede899);
   font-size: 12px;
   line-height: 1.5;
 }
-.signin_link {
+.signup_link {
   color: var(--white, #efede8);
   text-decoration-line: underline;
 }
@@ -147,12 +150,12 @@
     min-width: 496px;
     margin-bottom: 32px;
   }
-  .signup_title {
+  .signin_title {
     font-size: 32px;
     line-height: 1.37;
     margin-bottom: 16px;
   }
-  .signup_text {
+  .signin_text {
     font-size: 16px;
     line-height: 1.5;
   }

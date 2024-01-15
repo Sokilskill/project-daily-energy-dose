@@ -1,11 +1,12 @@
-.welcome_section {
+@import '../../index.css';
+
+.page_part {
   position: relative;
   padding-top: 180px;
 }
-.welcome_part {
+.insert_part {
   position: absolute;
   top: 66px;
-  left: 20px;
 }
 .text_box {
   max-width: 335px;
@@ -64,7 +65,7 @@
   max-width: 298px;
   height: 100%;
   margin-left: auto;
-  margin-right: 0px;
+  margin-right: -20px;
   padding: 319px 20px 40px 44px;
   background-image: url(../../assets/Welcome/images/people-training-gym-mob.webp),
     var(--bg-gradient);
@@ -155,12 +156,11 @@
   line-height: 1.33;
 }
 @media (min-width: 768px) {
-  .welcome_section {
+  .page_part {
     padding-top: 48px;
   }
-  .welcome_part {
+  .insert_part {
     top: 105px;
-    left: 32px;
   }
   .text_box {
     max-width: 598px;
@@ -189,7 +189,7 @@
   .welcome_bgd {
     max-width: 437px;
     padding: 583px 32px 48px 0;
-    margin-right: 0;
+    margin-right: -32px;
     background: url(../../assets/Welcome/images/people-training-gym-tab.webp),
       var(--bg-gradient);
   }
@@ -253,12 +253,11 @@
   }
 }
 @media (min-width: 1440px) {
-  .welcome_section {
+  .page_part {
     padding-top: 0;
   }
-  .welcome_part {
+  .insert_part {
     top: 200px;
-    left: 96px;
   }
   .welcome_bgd {
     max-width: 670px;
