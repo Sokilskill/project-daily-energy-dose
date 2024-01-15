@@ -1,9 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updatedUserAvatar } from '../../redux/profileSettings/operations';
-import { setAvatarURL } from '../../redux/profileSettings/slice';
 import sprite from '../../assets/sprite.svg';
 import { selectUserProfile } from '../../redux/profileSettings/selectors';
+
+import {
+  ActivityShower,
+  AvatarContainer,
+  AvatarInput,
+  AvatarPickerSvg,
+  CalorieShower,
+  DefaultAvatarSvg,
+  Desc,
+  DescWrapper,
+  ExcellMarkIcon,
+  FoodSvg,
+  Label,
+  LogoutLink,
+  LogoutText,
+  NameUserWrapper,
+  NewAvatar,
+  ParamsSvg,
+  ProfileContainer,
+  Span,
+  SpanIntake,
+  Text,
+  TextCalorie,
+  UserNameDescription,
+  UserParamsWrapper,
+  WrapperAvatar,
+  WrapperIntake,
+  WrapperIntakeFood,
+} from './UserCard.styled';
 
 export const UserCard = ({ bmr, time }) => {
   const dispatch = useDispatch();
@@ -15,6 +43,7 @@ export const UserCard = ({ bmr, time }) => {
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   // const user = useSelector(selectCurrentUser)
+  //don't forget to write logout logic
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -46,93 +75,67 @@ export const UserCard = ({ bmr, time }) => {
       setAvatarStyle({ width: '90px', height: '90px' });
     }
   }, [showPreview]);
-
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
-      <form
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          overflow: 'hidden',
-          borderRadius: '50%',
-        }}
-      >
-        <input
-          type="file"
-          id="file-input"
-          accept="image/*"
-          onChange={handleAvatarChange}
-          style={{ display: 'none' }}
-        />
-        <label
-          htmlFor="file-input"
-          style={{
-            cursor: 'pointer',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <svg style={{ width: '24px', height: '24px' }}>
-            <use href={sprite + '#icon-check-mark-1'} />
-          </svg>
-        </label>
-      </form>
-      <div>
-        {avatarPreviewURL ? (
-          <img
-            src={avatarPreviewURL}
-            alt="Preview"
-            style={{ ...previewStyle, ...avatarStyle }}
+    <ProfileContainer>
+      <WrapperAvatar>
+        <AvatarContainer>
+          <AvatarInput
+            type="file"
+            id="file-input"
+            accept="image/*"
+            onChange={handleAvatarChange}
           />
-        ) : (
-          <div>
-            {!userProfile.avatarURL && (
-              <svg>
-                <use
-                  href={sprite + '#icon-gridicons_user-1'}
-                  style={{ fill: 'rgba(239, 237, 232, 0.1)' }}
-                />
-              </svg>
-            )}
-          </div>
-        )}
-      </div>
-      {/* <p>{user.name}</p> */}
-      <p>User</p>
-      <div>
+        </AvatarContainer>
+        <Label htmlFor="file-input">
+          <AvatarPickerSvg>
+            <use href={sprite + '#icon-check-mark-1'} />
+          </AvatarPickerSvg>
+        </Label>
         <div>
-          <svg style={{ width: '20px', height: '20px' }}>
-            <use
-              href={sprite + '#con-fluenit_food-24-filled'}
-              style={{ fill: 'rgba(239, 137, 100, 1)' }}
-            />
-          </svg>
-          <p style={{ color: '#ffffff' }}>Daily calorie intake</p>
-          {/* <span>{Math.round(bmr)}</span> */}
-          <span>0</span>
+          {avatarPreviewURL ? (
+            <NewAvatar src={avatarPreviewURL} alt="Preview" />
+          ) : (
+            <div>
+              {!userProfile.avatarURL && (
+                <DefaultAvatarSvg>
+                  <use href={sprite + '#icon-gridicons_user-1'} />
+                </DefaultAvatarSvg>
+              )}
+            </div>
+          )}
         </div>
-        <div>
-          <svg style={{ width: '20px', height: '20px' }}>
+      </WrapperAvatar>
+      <NameUserWrapper>
+        {/* <UserName>{user.name}</UserName> */}
+        <UserNameDescription>User</UserNameDescription>
+      </NameUserWrapper>
+
+      <UserParamsWrapper>
+        <CalorieShower>
+          <WrapperIntakeFood>
+            <FoodSvg>
+            <use href={sprite + '#icon-fluenit_food-24-filled'} />
+          </FoodSvg>
+          <TextCalorie>Daily calorie intake</TextCalorie>
+          </WrapperIntakeFood>
+          {/* <Span>{Math.round(bmr)}</Span> */}
+          <SpanIntake>0</SpanIntake>
+        </CalorieShower>
+        <ActivityShower>
+          <WrapperIntake>
+             <ParamsSvg>
             <use
               href={sprite + '#icon-dumbbell'}
-              style={{ fill: 'rgba(239, 137, 100, 1)' }}
             />
-          </svg>
-          <p style={{ color: '#ffffff' }}>Daily physical activity</p>
-          <span>{time} min</span>
-        </div>
-      </div>
-      <div>
-        <svg style={{ width: '24px', height: '24px' }}>
+          </ParamsSvg>
+          <Text>Daily physical activity</Text> 
+          </WrapperIntake>
+          <Span>{time}0 min</Span>
+          </ActivityShower>
+      </UserParamsWrapper>
+      <DescWrapper>
+        <div>
+           <ExcellMarkIcon>
           <use
             href={sprite + '#icon-Ellipse-1'}
             style={{
@@ -153,11 +156,30 @@ export const UserCard = ({ bmr, time }) => {
               height: '100%',
             }}
           />
+        </ExcellMarkIcon>
+        </div>
+        <Desc>
+          We understand that each individual is unique, so the entire approach
+          to diet is relative and tailored to your unique body and goals.
+        </Desc>
+      </DescWrapper>
+       
+         <LogoutLink to="/welcome"> 
+            <LogoutText>Logout</LogoutText>
+        <svg style={{ width: '20px', height: '20px' }}>
+          <use
+            href={sprite + '#icon-log-out-01-2'}
+            style={{
+              fill: 'rgba(230, 83, 60, 1)',
+              width: '100%',
+              height: '100%',
+            }}
+          />
         </svg>
-        <p>
-        We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals.
-        </p>
-      </div>
-    </div>
+      </LogoutLink>
+        
+        
+     
+    </ProfileContainer>
   );
 };

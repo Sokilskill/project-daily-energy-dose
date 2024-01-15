@@ -1,13 +1,14 @@
 import React from "react";
 import { TitlePage } from "../../components/TitlePage/TitlePage";
 import { UserCard } from "../../components/UserCard/UserCard";
+import { ProfileContainer } from "./ProfilePage.styled";
 
 const ProfilePage = () => {
     return (
-        <div>
+        <ProfileContainer>
             <TitlePage text="Profile Settings" />
             <UserCard/>
-        </div>
+        </ProfileContainer>
     )
 };
 
