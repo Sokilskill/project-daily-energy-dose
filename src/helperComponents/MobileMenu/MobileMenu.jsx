@@ -1,13 +1,15 @@
 import { LogOutBtn } from '../LogOutBtn/LogOutBtn';
 import { UserNav } from '../UserNav/UserNav';
+import { Modal, Nav } from './MobileMenu.styled';
 
 export const MobileMenu = () => {
   return (
-    <div>
+    <Modal show="false">
       <button>close X</button>
-
-      <UserNav />
+      <Nav>
+        <UserNav />
+      </Nav>
       <LogOutBtn />
-    </div>
+    </Modal>
   );
 };

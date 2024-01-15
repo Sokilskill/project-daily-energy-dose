@@ -1,15 +1,17 @@
+import { NavList, Link } from './UserNav.styled';
+
 export const UserNav = () => {
   return (
-    <ul>
+    <NavList>
       <li>
-        <a href="">Diary</a>
+        <Link to="/diary">Diary</Link>
       </li>
       <li>
-        <a href="">Products</a>
+        <Link to="/products">Products</Link>
       </li>
       <li>
-        <a href="">Exercises</a>
+        <Link to="/exercises">Exercises</Link>
       </li>
-    </ul>
+    </NavList>
   );
 };
