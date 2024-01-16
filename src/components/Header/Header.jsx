@@ -1,10 +1,9 @@
+import { BurgerButton } from '../../helperComponents/BurgerButton/BurgerButton';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
 import { Logo } from '../../helperComponents/Logo/Logo';
-import { MobileMenu } from '../../helperComponents/MobileMenu/MobileMenu';
 import { UserBar } from '../../helperComponents/UserBar/UserBar';
 import { UserNav } from '../../helperComponents/UserNav/UserNav';
 import {
-  BurgerButton,
   HeaderContainer,
   HeaderWrap,
   Nav,
@@ -34,11 +33,9 @@ export const Header = () => {
 
             <UserBarWrapper>
               <UserBar />
-              <LogOutBtn />
-              <BurgerButton>burger</BurgerButton>
+              <LogOutBtn className="desktop" />
+              <BurgerButton />
             </UserBarWrapper>
-
-            <MobileMenu />
           </UserMenuBox>
         )}
       </HeaderWrap>

@@ -2,9 +2,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  border-bottom: 1px solid rgba(239, 237, 232, 0.2);
-
-  padding: 20px;
+  padding: 20px 0;
 `;
 
 export const HeaderWrap = styled.div`
@@ -22,7 +20,7 @@ export const UserMenuBox = styled.div`
 export const Nav = styled.nav`
   margin-right: 32px;
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1400px) {
     display: none;
   }
 `;
@@ -30,13 +28,9 @@ export const Nav = styled.nav`
 export const UserBarWrapper = styled.div`
   display: flex;
   gap: 16px;
+  align-items: center;
 `;
 
-export const BurgerButton = styled.button`
-  @media screen and (max-width: 1439px) {
-    display: none;
-  }
-`;
 // export const StyledLink = styled(Link)`;
 //   padding: 8px 16px;
 //   color: #ffffff; /* White text color */
