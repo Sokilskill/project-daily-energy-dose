@@ -1,4 +1,4 @@
-import{j as e,L as v,a as j,b,c as n,s as t,d as y}from"./index-f6cd80b0.js";import{n as i}from"./emotion-styled.browser.esm-1ac32b46.js";const k=i.h2`
+import{j as e,L as v,a as j,b,c as n,s as t,d as y}from"./index-c0d599a6.js";import{n as i}from"./emotion-styled.browser.esm-e41663c8.js";const k=i.h2`
 margin: 0;
 color: var(--white, #efede8);
 font-size: 24px;
