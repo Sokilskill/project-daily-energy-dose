@@ -7,10 +7,27 @@ import {
 } from './auth-operations';
 
 const initialState = {
-  user: { name: null, email: null },
-  token: null,
-  isLogedIn: false,
-  isRefreshing: false,
+  user: {
+    name: null,
+    email: null,
+    avatarUrl: null,
+    bodyParams: {
+      dailyIntakeCalories:null,
+      dailyNormOfSport:null,
+      height: null,
+      currentWeight: null,
+      desiredWeight: null,
+      birthday: null,
+      blood: null,
+      sex: null,
+      levelActivity: null,
+    },
+  },
+  isLoggedIn: false,
+  isLoading: false,
+  isFetchingCurrentUser: false,
+  error: '',
+  token: "",
 };
 
 const authSlise = createSlice({

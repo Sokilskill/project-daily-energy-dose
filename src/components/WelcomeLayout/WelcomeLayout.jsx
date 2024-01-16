@@ -1,6 +1,7 @@
 import StatisticsInfo from '../StatisticsInfo/StatisticsInfo';
 import css from './WelcomeLayout.module.css';
 
+
 const WelcomeLayout = ({ children }) => {
   return (
     <>
@@ -9,7 +10,9 @@ const WelcomeLayout = ({ children }) => {
           <div className={css.page_part}>
             <div className={css.insert_part}>{children}</div>
             <div className={css.welcome_bgd}>
+
               <StatisticsInfo />
+
             </div>
           </div>
         </div>

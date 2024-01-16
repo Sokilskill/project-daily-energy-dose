@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
-import { IconWrapper } from './UserBar.styled';
+import { IconWrapper, ProfileLink } from './UserBar.styled';
 
 export const UserBar = () => {
   return (
     <>
       <Link to="/profile">
-        <IconWrapper stroke="rgba(239, 237, 232, 0.3)">
+        <IconWrapper>
           <use href={`${sprite}#icon-settings-01`}></use>
         </IconWrapper>
       </Link>
-      <Link to="/profile">
-        <IconWrapper fill="blue">
-          <use href={`${sprite}#icon-settings-01`}></use>
+      <ProfileLink to="/profile">
+        <IconWrapper size="24px">
+          <use href={`${sprite}#icon-gridicons_user`}></use>
         </IconWrapper>
-      </Link>
+      </ProfileLink>
     </>
   );
 };
