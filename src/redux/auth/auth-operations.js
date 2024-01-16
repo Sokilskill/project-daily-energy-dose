@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api-docs';
+axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com';
 const setToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
