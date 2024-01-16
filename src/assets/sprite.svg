@@ -85,6 +85,7 @@
 </symbol>
 <symbol id="icon-Ellipse-1" viewBox="0 0 32 32">
 <path d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
+</symbol>
 <symbol id="icon-x" viewBox="0 0 32 32">
 <path fill="none"  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M24 8l-16 16M8 8l16 16"></path>
 </symbol>

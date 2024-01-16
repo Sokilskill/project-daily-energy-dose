@@ -1,4 +1,4 @@
-import css from './Videobox.module.css';
+import css from './VideoBox.module.css';
 import sprite from '../../assets/sprite.svg';
 
 const VideoBox = () => {
@@ -6,7 +6,7 @@ const VideoBox = () => {
     <div className={css.video_box}>
       <div className={css.ellips}>
         <svg className={css.icon_play}>
-          <use className={css.icon_play} href={`${sprite}#icon-polygon1`} />
+          <use href={`${sprite}#icon-polygon1`} />
         </svg>
       </div>
       <div>
