@@ -1,13 +1,20 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import exercisesOperations from './exercisesOperations';
-import { handleFulfilled, handleFulfilledFilterExercisesBody, handleFulfilledFilterExercisesEquipment, handleFulfilledFilterExercisesMuscles, handlePending, handleRejected } from '../../components/services/services';
+import {
+  handleFulfilled,
+  handleFulfilledFilterExercisesBody,
+  handleFulfilledFilterExercisesEquipment,
+  handleFulfilledFilterExercisesMuscles,
+  handlePending,
+  handleRejected,
+} from '../../components/services/services';
 
 const initialState = {
   data: [],
   filter: {
     body: [],
     equipment: [],
-    muscles:[],
+    muscles: [],
   },
   isLoading: false,
   error: '',
@@ -26,37 +33,37 @@ export const exercisesSlice = createSlice({
     builder
       .addCase(
         exercisesOperations.getExercises[STATUS.FULFILLED],
-        handleFulfilled,
+        handleFulfilled
       )
       .addCase(
         exercisesOperations.getExercisesByBodyParts[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesBody,
+        handleFulfilledFilterExercisesBody
       )
       .addCase(
         exercisesOperations.getExercisesByEquipment[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesEquipment,
+        handleFulfilledFilterExercisesEquipment
       )
       .addCase(
         exercisesOperations.getExercisesByMuscles[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesMuscles,
+        handleFulfilledFilterExercisesMuscles
       )
       .addMatcher(
         isAnyOf(
           exercisesOperations.getExercises[STATUS.PENDING],
           exercisesOperations.getExercisesByBodyParts[STATUS.PENDING],
           exercisesOperations.getExercisesByEquipment[STATUS.PENDING],
-          exercisesOperations.getExercisesByMuscles[STATUS.PENDING],
+          exercisesOperations.getExercisesByMuscles[STATUS.PENDING]
         ),
-        handlePending,
+        handlePending
       )
       .addMatcher(
         isAnyOf(
           exercisesOperations.getExercises[STATUS.REJECTED],
           exercisesOperations.getExercisesByBodyParts[STATUS.REJECTED],
           exercisesOperations.getExercisesByEquipment[STATUS.REJECTED],
-          exercisesOperations.getExercisesByMuscles[STATUS.REJECTED],
+          exercisesOperations.getExercisesByMuscles[STATUS.REJECTED]
         ),
-        handleRejected,
+        handleRejected
       );
   },
 });
