@@ -1,6 +1,5 @@
+import StatisticsInfo from '../StatisticsInfo/StatisticsInfo';
 import css from './WelcomeLayout.module.css';
-import { CalBox } from '../CalBox/CalBox';
-import { VideoBox } from '../Videobox/Videobox';
 
 const WelcomeLayout = ({ children }) => {
   return (
@@ -10,8 +9,7 @@ const WelcomeLayout = ({ children }) => {
           <div className={css.page_part}>
             <div className={css.insert_part}>{children}</div>
             <div className={css.welcome_bgd}>
-              <VideoBox />
-              <CalBox />
+              <StatisticsInfo />
             </div>
           </div>
         </div>
