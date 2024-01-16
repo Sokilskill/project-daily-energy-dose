@@ -12,8 +12,8 @@ const initialState = {
     email: null,
     avatarUrl: null,
     bodyParams: {
-      dailyIntakeCalories:null,
-      dailyNormOfSport:null,
+      dailyIntakeCalories: null,
+      dailyNormOfSport: null,
       height: null,
       currentWeight: null,
       desiredWeight: null,
@@ -27,7 +27,7 @@ const initialState = {
   isLoading: false,
   isFetchingCurrentUser: false,
   error: '',
-  token: "",
+  token: '',
 };
 
 const authSlise = createSlice({
@@ -38,24 +38,24 @@ const authSlise = createSlice({
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.user = action.payload.user;
-        state.isLogedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(logInThunk.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.user = action.payload.user;
-        state.isLogedIn = true;
+        state.isLoggedIn = true;
       })
       .addCase(logOutThunk.fulfilled, (state) => {
         state.user = { name: null, email: null };
         state.token = null;
-        state.isLogedIn = false;
+        state.isLoggedIn = false;
       })
       .addCase(refreshThunk.pending, (state) => {
         state.isRefreshing = true;
       })
       .addCase(refreshThunk.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLogedIn = true;
+        state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshThunk.rejected, (state) => {
