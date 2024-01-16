@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com';
+// axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com';
 
 export const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -20,7 +20,7 @@ export const getCurrentUser = createAsyncThunk(
         return thunkAPI.rejectWithValue('Token not available');
       }
       setAuthToken(persistedToken);
-      const res = await axios.get('/auth/current'); 
+      const res = await axios.get('/auth/current');
       return res.data;
     } catch (error) {
       toast.error(error.message);
@@ -33,7 +33,7 @@ export const updateUserName = createAsyncThunk(
   'users/updateUserInfo',
   async (userData, thunkAPI) => {
     try {
-      const res = await axios.patch('/users', userData); 
+      const res = await axios.patch('/users', userData);
       toast.success('Name updated');
       return res.data;
     } catch (error) {
@@ -79,7 +79,7 @@ export const getTarget = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const addUserData = createAsyncThunk(
