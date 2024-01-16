@@ -89,6 +89,11 @@
     var(--black, #040404) -2.45%,
     var(--semi-black, #04040400) 68.17%
   );
+  --default-avatar-fill: rgba(239, 237, 232, 0.1);
+  --background-color-avatar: rgba(48, 48, 48, 0.3);
+  --secondary-color-text: rgba(239, 237, 232, 0.5);
+  --icon-color: rgba(239, 137, 100, 1);
+  --text-calorie-intake: rgba(239, 237, 232, 0.8);
 }
 
 body {
