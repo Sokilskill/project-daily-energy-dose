@@ -1,7 +1,7 @@
 import css from './Videobox.module.css';
 import sprite from '../../assets/sprite.svg';
 
-export const VideoBox = () => {
+const VideoBox = () => {
   return (
     <div className={css.video_box}>
       <div className={css.ellips}>
@@ -16,3 +16,4 @@ export const VideoBox = () => {
     </div>
   );
 };
+export default VideoBox;

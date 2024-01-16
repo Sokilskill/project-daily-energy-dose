@@ -1,7 +1,7 @@
 import sprite from '../../assets/sprite.svg';
 import css from './CalBox.module.css';
 
-export const CalBox = () => {
+const CalBox = () => {
   return (
     <div className={css.cal_box}>
       <div className={css.cal_ellips}>
@@ -17,3 +17,4 @@ export const CalBox = () => {
     </div>
   );
 };
+export default CalBox;
