@@ -1,4 +1,4 @@
-import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
+import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
 import css from './SignUpPage.module.css';
 import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
@@ -8,10 +8,11 @@ import { registerThunk } from '../../redux/auth/auth-operations';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
-  const isLogedIn = useSelector(selectIsLogedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const handleFormData = (data) => {
-    console.log(isLogedIn);
-    dispatch(registerThunk({ data }));
+    console.log(isLoggedIn);
+    console.log(data);
+    dispatch(registerThunk(data));
   };
 
   return (
