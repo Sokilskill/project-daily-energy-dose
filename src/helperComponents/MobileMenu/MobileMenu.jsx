@@ -1,15 +1,21 @@
 import { LogOutBtn } from '../LogOutBtn/LogOutBtn';
 import { UserNav } from '../UserNav/UserNav';
-import { Modal, Nav } from './MobileMenu.styled';
+import { CloseButton, Modal, IconWrapper } from './MobileMenu.styled';
+import sprite from '../../assets/sprite.svg';
 
 export const MobileMenu = () => {
   return (
-    <Modal show="false">
-      <button>close X</button>
-      <Nav>
-        <UserNav />
-      </Nav>
-      <LogOutBtn />
+    <Modal show="true">
+      <CloseButton>
+        <IconWrapper>
+          <use href={`${sprite}#icon-x`}></use>
+        </IconWrapper>
+      </CloseButton>
+      <nav>
+        <UserNav className="mobile" />
+      </nav>
+
+      <LogOutBtn className="mobile" />
     </Modal>
   );
 };

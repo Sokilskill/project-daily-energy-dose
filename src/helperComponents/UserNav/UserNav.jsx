@@ -1,8 +1,8 @@
 import { NavList, Link } from './UserNav.styled';
 
-export const UserNav = () => {
+export const UserNav = ({ className }) => {
   return (
-    <NavList>
+    <NavList className={className}>
       <li>
         <Link to="/diary">Diary</Link>
       </li>
