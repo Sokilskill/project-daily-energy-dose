@@ -10,17 +10,17 @@ export const setAuthToken = (token) => {
 };
 
 export const getCurrentUser = createAsyncThunk(
-  'auth/getCurrentUser',
+  'users/getCurrentUser',
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
-      if (persistedToken === null) {
+      if (!persistedToken) {
         toast.info('Unable to get user');
         return thunkAPI.rejectWithValue('Token not available');
       }
       setAuthToken(persistedToken);
-      const res = await axios.get('/*****'); //'/user/current';
+      const res = await axios.get('/auth/current'); 
       return res.data;
     } catch (error) {
       toast.error(error.message);
@@ -29,12 +29,12 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
-export const updateUserInfo = createAsyncThunk(
-  'auth/updateUserInfo',
+export const updateUserName = createAsyncThunk(
+  'users/updateUserInfo',
   async (userData, thunkAPI) => {
     try {
-      const res = await axios.put('/*****', userData); //'/user/update'
-      toast.success('User information updated');
+      const res = await axios.patch('/users', userData); 
+      toast.success('Name updated');
       return res.data;
     } catch (error) {
       toast.error(error.message);
@@ -44,12 +44,12 @@ export const updateUserInfo = createAsyncThunk(
 );
 
 export const updatedUserAvatar = createAsyncThunk(
-  'auth/avatar',
+  'user/avatar',
   async (file, thunkAPI) => {
     try {
       const formData = new FormData();
       formData.append('avatar', file);
-      const res = await axios.patch('/*****', formData, {
+      const res = await axios.patch('/users/avatars', formData, {
         headers: {
           'content-type': 'multipart/form-data',
         },
@@ -63,11 +63,30 @@ export const updatedUserAvatar = createAsyncThunk(
   }
 );
 
+export const getTarget = createAsyncThunk(
+  'profile/getTarget',
+  async (_, thunkApi) => {
+    try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      if (!persistedToken) {
+        toast.info('Unable to get user');
+        return thunkAPI.rejectWithValue('Token not available');
+      }
+      setAuthToken(persistedToken);
+      const res = await axios.get('profiles/targets');
+      return res.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  },
+);
+
 export const addUserData = createAsyncThunk(
-  'auth/addUserData',
+  'profile/addUserData',
   async (data, thunkAPI) => {
     try {
-      const res = await axios.patch('/****', data);
+      const res = await axios.put('/profiles', data);
       toast.success('Your profile updated');
       return res.data;
     } catch (error) {

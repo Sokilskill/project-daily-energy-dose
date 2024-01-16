@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getCurrentUser,
   addUserData,
-  updateUserInfo,
+  updateUserName,
+  getTarget,
   updatedUserAvatar,
 } from './operations';
 
@@ -50,8 +51,8 @@ const handleAddUserDataFulfilled = (state, action) => {
   state.error = null;
 };
 
-const handleUpdateUserInfoFulfilled = (state, action) => {
-  state.profile = { ...action.payload };
+const handleUpdateUserNameFulfilled = (state, action) => {
+  state.profile.name = { ...action.payload };
   state.isLoading = false;
   state.error = null;
 };
@@ -59,6 +60,12 @@ const handleUpdateUserInfoFulfilled = (state, action) => {
 const handleUpdateAvatarFulfilled = (state, action) => {
   state.profile.avatarURL = action.payload.avatarURL;
   state.isLoading = false;
+  state.error = null;
+};
+
+const handleGetTargetFulfilled =(state, action) => {
+  state.isLoading = false;
+  state.target = action.payload;
   state.error = null;
 };
 
@@ -78,12 +85,15 @@ export const profileSlice = createSlice({
       .addCase(addUserData.pending, handlePending)
       .addCase(addUserData.rejected, handleRejected)
       .addCase(addUserData.fulfilled, handleAddUserDataFulfilled)
-      .addCase(updateUserInfo.pending, handlePending)
-      .addCase(updateUserInfo.rejected, handleRejected)
-      .addCase(updateUserInfo.fulfilled, handleUpdateUserInfoFulfilled)
+      .addCase(updateUserName.pending, handlePending)
+      .addCase(updateUserName.rejected, handleRejected)
+      .addCase(updateUserName.fulfilled, handleUpdateUserNameFulfilled)
       .addCase(updatedUserAvatar.pending, handlePending)
       .addCase(updatedUserAvatar.rejected, handleRejected)
       .addCase(updatedUserAvatar.fulfilled, handleUpdateAvatarFulfilled)
+      .addCase(getTarget.pending, handlePending)
+      .addCase(getTarget.rejected, handleRejected)
+      .addCase(getTarget.fulfilled, handleGetTargetFulfilled)
   },
 });
 
