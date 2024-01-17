@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import '../../index.css';
 
 export const ContainerEx = styled.div`
   /* 320-375 */
@@ -324,7 +325,7 @@ export const NotFoundEx = styled.div`
   height: 335px;
   width: 100%;
   padding-top: 125px;
-
+  color: var(--white);
   font-size: 14;
   font-weight: normal; 
   line-height: 18px; 

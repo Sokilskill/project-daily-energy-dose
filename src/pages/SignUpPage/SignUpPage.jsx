@@ -1,5 +1,4 @@
-import { selectIsLogedIn } from '../../redux/auth/auth-selectors';
-import ProfilePage from '../ProfilePage/ProfilePage';
+import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
 import css from './SignUpPage.module.css';
 import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
@@ -9,40 +8,35 @@ import { registerThunk } from '../../redux/auth/auth-operations';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
-  const isLogedIn = useSelector(selectIsLogedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const handleFormData = (data) => {
+    console.log(isLoggedIn);
     console.log(data);
-    dispatch(registerThunk({ data }));
+    dispatch(registerThunk(data));
   };
 
   return (
-    <>
-      {isLogedIn ? (
-        <ProfilePage />
-      ) : (
-        <WelcomeLayout>
-          <div className={css.signup_part}>
-            <div className={css.text_box}>
-              <h2 className={css.signup_title}>Sign Up</h2>
-              <p className={css.signup_text}>
-                Thank you for your interest in our platform. To complete the
-                registration process, please provide us with the following
-                information.
-              </p>
-            </div>
-            <SignUpForm onSubmit={handleFormData} />
-            <p className={css.signin_option}>
-              Already have an account?
-              <span>
-                <Link className={css.signin_link} to="/signin">
-                  Sign In
-                </Link>
-              </span>
-            </p>
-          </div>
-        </WelcomeLayout>
-      )}
-    </>
+    <WelcomeLayout>
+      <div className={css.signup_part}>
+        <div className={css.text_box}>
+          <h2 className={css.signup_title}>Sign Up</h2>
+          <p className={css.signup_text}>
+            Thank you for your interest in our platform. To complete the
+            registration process, please provide us with the following
+            information.
+          </p>
+        </div>
+        <SignUpForm onSubmit={handleFormData} />
+        <p className={css.signin_option}>
+          Already have an account?
+          <span>
+            <Link className={css.signin_link} to="/signin">
+              Sign In
+            </Link>
+          </span>
+        </p>
+      </div>
+    </WelcomeLayout>
   );
 };
 

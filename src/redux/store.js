@@ -1,4 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { authReducer } from './auth/authSlice';
+import { profileReducer } from './profileSettings/slice';
 import {
   persistStore,
   persistReducer,
@@ -17,9 +19,6 @@ import { exercisesSliceReducer } from './exercises/exercisesSlice';
 import { productsReducer } from './products/sliceProducts';
 import { statisticsSliceReducer } from './statistics/statisticsSlice';
 import { diarySliceReducer } from './diary/diarySlice';
-
-import { authReducer } from './auth/authSlice';
-import { profileReducer } from './profileSettings/slice';
 
 const authPersistConfig = {
   key: 'auth',

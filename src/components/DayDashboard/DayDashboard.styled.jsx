@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import '../../index.css';
 
 export const Container = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ export const Container = styled.div`
 export const ContentContainerCard = styled.div`
   height: 96px;
   padding: 14px;
-
+  border: 1px solid var(--white);
   border-radius: 12px;
 
   display: flex;
@@ -72,11 +73,11 @@ export const ContentContainerCard = styled.div`
     switch (true) {
       case props.title === 'The rest of the calories' && props.value < 0:
         return `
-                   
+          border-color: var(--red);          
         `;
       case props.title === 'The rest of sports' && props.value < 0:
         return `
-                    
+          border-color: var(--green);          
         `;
     }
 
@@ -84,7 +85,7 @@ export const ContentContainerCard = styled.div`
       case props.title === 'Daily calorie intake' ||
         props.title === 'Daily norm of sports':
         return `
-                   
+          background-color: var(--orange);          
         `;
       default:
         return `            
@@ -127,7 +128,7 @@ export const TitleTextCard = styled.p`
       case props.children === 'Daily calorie intake' ||
         props.children === 'Daily norm of sports':
         return `
-          
+          color: var(--white)
         `;
       default:
         return `color: rgb(239, 237, 232, 0.4)`;
