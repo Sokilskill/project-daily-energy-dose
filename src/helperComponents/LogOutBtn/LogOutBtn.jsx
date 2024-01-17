@@ -1,12 +1,16 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
 import { Button, IconWrapper } from './LogOutBtn.styled';
 import { logOutThunk } from '../../redux/auth/auth-operations';
 
 export const LogOutBtn = ({ className }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handlerLogOut = () => {
     dispatch(logOutThunk());
+    navigate('/');
     console.log('LOGOut');
   };
 
