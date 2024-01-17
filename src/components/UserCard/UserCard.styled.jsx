@@ -207,7 +207,7 @@ export const ActivityShower = styled.div`
   padding: 14px;
   align-items: flex-start;
   border-radius: 12px;
-  gap: 32px;
+  gap: 16px;
 
   @media (min-width: 768px) {
     width: 214px;
