@@ -1,21 +1,21 @@
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { ExercisesCategories } from '../../components/ExercisesCategories/ExercisesCategories';
-import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
-import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+// import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+// import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
 import {
   ExercisesPageContainer,
   ExercisesPageHeader,
   ExercisesPageHeaderWrapper,
 } from '../ExercisesPage/ExercisesPage.styled';
-import { useEffect } from 'react';
-import { getExercises } from '../../redux/exercises/exercisesOperations';
+// import { getExercisesByMuscles } from '../../redux/exercises/exercisesOperations';
+import { Outlet } from 'react-router-dom';
 
 const ExercisesPage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getExercises());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getExercisesByMuscles());
+  // }, [dispatch]);
 
   return (
     <ExercisesPageContainer className="container">
@@ -23,8 +23,9 @@ const ExercisesPage = () => {
         <ExercisesPageHeader>Exercises</ExercisesPageHeader>
         <ExercisesCategories />
       </ExercisesPageHeaderWrapper>
+      <Outlet />
       {/* <ExercisesSubcategoriesList /> */}
-      <ExercisesList />
+      {/* <ExercisesList /> */}
     </ExercisesPageContainer>
   );
 };

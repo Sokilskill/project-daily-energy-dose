@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
+import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+import { ExercisesList } from './components/ExercisesList/ExercisesList';
 
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
 //- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
@@ -32,7 +34,12 @@ function App() {
         <Route path="profile" element={isAuth && <ProfilePage />} />
         <Route path="diary" element={isAuth && <DiaryPage />} />
         <Route path="products" element={isAuth && <ProductsPage />} />
-        <Route path="exercises" element={isAuth && <ExercisesPage />} />
+        <Route path="exercises" element={isAuth && <ExercisesPage />}>
+          <Route path="bodyParts" element={<ExercisesSubcategoriesList />} />
+          <Route path="muscles" element={<ExercisesSubcategoriesList />} />
+          <Route path="equipment" element={<ExercisesSubcategoriesList />} />
+          <Route path="list" element={<ExercisesList />} />
+        </Route>
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

@@ -9,7 +9,6 @@ export const getExercises = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get('/exercises');
-      console.log(data);
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -19,10 +18,12 @@ export const getExercises = createAsyncThunk(
 );
 
 export const getExercisesByBodyParts = createAsyncThunk(
-  '/exercises/bodyParts',
+  '/exercises/categories/Body_parts',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/exercises/bodyparts');
+      const { data } = await axios.get(
+        '/exercises/categories?category=Body_parts'
+      );
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -30,12 +31,27 @@ export const getExercisesByBodyParts = createAsyncThunk(
     }
   }
 );
+
+// export const getExercisesByBodyParts = createAsyncThunk(
+//   '/exercises/bodyParts',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/exercises/bodyparts');
+//       return data;
+//     } catch (error) {
+//       messageNotification(error.response.status);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const getExercisesByEquipment = createAsyncThunk(
-  '/exercises/equipment',
+  '/exercises/categories/Equipment',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/exercises/equipment');
+      const { data } = await axios.get(
+        '/exercises/categories?category=Equipment'
+      );
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -44,11 +60,26 @@ export const getExercisesByEquipment = createAsyncThunk(
   }
 );
 
+// export const getExercisesByEquipment = createAsyncThunk(
+//   '/exercises/equipment',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/exercises/equipment');
+//       return data;
+//     } catch (error) {
+//       messageNotification(error.response.status);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const getExercisesByMuscles = createAsyncThunk(
-  '/exercises/muscles',
+  '/exercises/categories/Muscles',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/exercises/muscles');
+      const { data } = await axios.get(
+        '/exercises/categories?category=Muscles'
+      );
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -56,6 +87,19 @@ export const getExercisesByMuscles = createAsyncThunk(
     }
   }
 );
+
+// export const getExercisesByMuscles = createAsyncThunk(
+//   '/exercises/muscles',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/exercises/muscles');
+//       return data;
+//     } catch (error) {
+//       messageNotification(error.response.status);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 const exercisesOperations = {
   getExercises,

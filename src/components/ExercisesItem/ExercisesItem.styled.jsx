@@ -1,12 +1,16 @@
 import styled from '@emotion/styled';
 
 export const ExerciseItem = styled.div`
-  width: 405px;
+  width: 335px;
   height: 141px;
   padding: 16px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   background-color: rgba(239, 237, 232, 0.05);
+
+  @media screen and (min-width: 1440px) {
+    width: 405px;
+  }
 `;
 
 export const ItemTopBloc = styled.div`
@@ -30,8 +34,13 @@ export const StartBtnWrapper = styled.div`
 `;
 
 export const StartBtn = styled.p`
+  font-size: 14px;
   color: #e6533c;
   background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const ArrowIcon = styled.svg`
@@ -45,8 +54,15 @@ export const ExerciseTitleWrapper = styled.div`
   align-items: center;
   gap: 16px;
 
-  margin-top: 27px;
+  margin-top: 33px;
   margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 23px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 27px;
+  }
 `;
 
 export const FigureIcon = styled.svg`
@@ -61,6 +77,11 @@ export const FigureIcon = styled.svg`
 
 export const ExerciseTitle = styled.p`
   font-size: #efede8;
+  font-size: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const TargetsList = styled.ul`
