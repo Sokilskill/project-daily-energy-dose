@@ -1,5 +1,5 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
-
+@import './components/ProductsFilters/style.filters.css';
 /* roboto-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -69,12 +69,13 @@
   --error-color: #d80027;
   --success-color: #3cbf61;
   --dashboard-border-color: 1px solid rgba(239, 237, 232, 0.2);
+  --bgColor-secondary: #1C1C1C;
 }
 
 * {
   padding: 0;
   margin: 0;
-  outline: 1px solid teal;
+  /* outline: 1px solid teal; */
 }
 
 body {
@@ -138,3 +139,4 @@ button {
     width: 1440px;
   }
 }
+

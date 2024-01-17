@@ -1,0 +1,93 @@
+.custom-select-container{
+width: 146px !important;
+}
+.custom-select-second-container{
+  width: 173px !important;
+}
+.custom-select__control, .custom-select-second__control{
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-radius: 12px !important;
+    padding: 13px !important;
+    
+    border: var(--dashboard-border-color) !important;
+    box-shadow: none !important;
+}
+
+.custom-select__control--menu-is-open,.custom-select-second__control--menu-is-open{
+    border: var(--dashboard-border-color) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.custom-select__input-container,.custom-select-second__input-container{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.custom-select__value-container,.custom-select-second__value-container{
+    padding: 0 !important;
+    font-family: Roboto !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1.28 !important;
+}
+
+.custom-select__indicator-separator,.custom-select-second__indicator-separator{
+    display: none;
+}
+
+.custom-select__indicators,.custom-select-second__indicators{
+    width: 18px !important;
+    height: 18px !important;
+    padding: 0 !important;
+}
+
+.custom-select__single-value,.custom-select-second__single-value{
+    color: var(--white) !important;
+    font-family: Roboto !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1.28 !important;
+}
+
+.custom-select__menu,.custom-select-second__menu{
+    background-color: var(--bgColor-secondary) !important;
+    width: 146px !important;
+    color: var(--white) !important;
+    font-family: Roboto !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1.28 !important; 
+    border-radius: 12px !important;
+    padding: 6px 6px 6px 0 !important;
+}
+
+.custom-select__option,.custom-select-second__option{
+    cursor: pointer !important;
+}
+
+.custom-select__option--is-focused,.custom-select-second__option--is-focused{
+    background-color: #181818 !important;
+}
+
+.custom-select__option--is-selected,.custom-select-second__option--is-selected{
+    background-color: var(--orange) !important;
+    border-radius: 12px !important;
+}
+
+.custom-select__menu-list::-webkit-scrollbar,.custom-select-second__menu-list::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0);
+  width: 8px;
+}
+.custom-select__menu-list::-webkit-scrollbar-track,.custom-select-second__menu-list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.custom-select__menu-list::-webkit-scrollbar-thumb,.custom-select-second__menu-list::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: rgba(239, 237, 232, 0.10);
+}

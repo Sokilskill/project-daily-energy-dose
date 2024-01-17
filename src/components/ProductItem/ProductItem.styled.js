@@ -12,6 +12,7 @@ export const Item = styled.li`
   border: 1px solid rgba(239, 237, 232, 0.2);
   background-color: rgba(239, 237, 232, 0.05);
   padding: 16px;
+  margin-bottom: 20px;
 `;
 
 export const UpperWrapper = styled.div`
@@ -82,17 +83,18 @@ export const IconAdd = styled.svg`
 export const LowerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 8px;
 `;
 
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
   stroke: #e6533c;
-  margin-right: 16px;
 `;
 
 export const ProductName = styled.h2`
-  max-width: 258px;
+  width: 258px;
   color: #efede8;
   font-family: Roboto;
   font-size: 20px;
@@ -109,10 +111,9 @@ export const InfoText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  margin:8px 16px 0 0;
-
 `;
 
 export const Accent = styled.span`
+  color: #efede8;
   color: #efede8;
 `;

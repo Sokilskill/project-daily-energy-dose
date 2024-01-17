@@ -4,10 +4,12 @@ import ProductItem from "../ProductItem/ProductItem"
 
 
 
-export function ProductsList() {
+export function ProductsList({products}) {
     return (
-        <List>
-        <ProductItem/>
-        </List>
-    )
+      <List>
+        {products.map((product) => (
+          <ProductItem productItem={product} />
+        ))}
+      </List>
+    );
 }

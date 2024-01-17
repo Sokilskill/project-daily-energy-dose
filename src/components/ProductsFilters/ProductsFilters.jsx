@@ -20,17 +20,19 @@ export function Filters({ optionsCategories, optionsRecommendation }) {
   };
 
   const onChangeRec = (newId) => {
-    setRecomended(newId.id);
+    setRecomended(newId.value);
   };
 
   const getCategoryId = () => {
-    return currentCategory
+    const gg = currentCategory
       ? optionsCategories.find((category) => category.id === currentCategory)
       : '';
+    console.log(gg);
+    return gg;
   };
   const getRecommendId = () => {
     return recommended
-      ? optionsRecommendation.find((rec) => rec.id === recommended)
+      ? optionsRecommendation.find((rec) => rec.value === recommended)
       : '';
   };
 
@@ -41,6 +43,7 @@ export function Filters({ optionsCategories, optionsRecommendation }) {
           type="text"
           name="request"
           pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          placeholder="Search"
           required
         />
         <Btn right={'40px'}>
@@ -59,13 +62,21 @@ export function Filters({ optionsCategories, optionsRecommendation }) {
         onChange={onChangeCategory}
         value={getCategoryId()}
         options={optionsCategories}
+        classNamePrefix="custom-select"
+        className="custom-select-container"
+        placeholder="Categories"
       />
 
       <Select
         onChange={onChangeRec}
         value={getRecommendId()}
         options={optionsRecommendation}
+        classNamePrefix="custom-select-second"
+        className="custom-select-second-container"
+        placeholder="All"
       />
     </ProductsFilters>
   );
 }
+
+

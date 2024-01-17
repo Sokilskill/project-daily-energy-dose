@@ -1,13 +1,18 @@
 import styled from '@emotion/styled';
 
 export const ProductsFilters = styled.form`
-  width: 100%;
+  width: 335px;
   height: 108px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
 `;
 
 export const Form = styled.div`
   position: relative;
-`
+`;
 
 export const Input = styled.input`
   width: 335px;
@@ -39,7 +44,7 @@ export const Btn = styled.button`
   height: 18px;
   border:none;
   background-color: rgba(0,0,0,0);
-  coursor: pointer;
+  cursor: pointer;
 `;
 
 export const Icon = styled.svg`
