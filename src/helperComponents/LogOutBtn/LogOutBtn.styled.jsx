@@ -19,7 +19,7 @@ export const Button = styled.button`
     bottom: 20px;
   }
   &.desktop {
-    @media screen and (max-width: 1400px) {
+    @media screen and (max-width: 1440px) {
       display: none;
     }
   }
