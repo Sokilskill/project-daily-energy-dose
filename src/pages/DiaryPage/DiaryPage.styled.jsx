@@ -1,15 +1,23 @@
 import styled from '@emotion/styled';
+import '../../index.css';
 
 export const Container = styled.div`
+  margin: 0 auto;
   padding-top: 106px;
   padding-bottom: 80px;
 
   @media screen and (min-width: 375px) {
+    width: 375px; /* Добавлено из media query 375px в index.css */
   }
+
   @media screen and (min-width: 768px) {
     padding-top: 136px;
+    padding: 0 32px; /* Добавлено из media query 768px в index.css */
+    width: 768px;
   }
+
   @media screen and (min-width: 1440px) {
+    width: 1440px; /* Добавлено из media query 1440px в index.css */
   }
 `;
 
@@ -17,7 +25,7 @@ export const PageTitleText = styled.h2`
   font-size: 24px;
   font-weight: bold;
   line-height: 28px;
-  
+  color: var(--white);
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
@@ -67,7 +75,7 @@ export const InfoText = styled.p`
   font-style: normal;
   line-height: 18px;
   letter-spacing: 0;
-  
+  color: var(--white);
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 24px;

@@ -66,7 +66,7 @@ const DaySwitch = ({
           style={{
             cursor: 'pointer',
             fontSize: sizeArrow ? `${sizeArrow}px` : `16px`,
-            // color: glodalColor.bgCards,
+            color: `var(--white)`,
             userSelect: 'none',
           }}
         />
@@ -77,7 +77,7 @@ const DaySwitch = ({
           style={{
             cursor: 'pointer',
             fontSize: sizeArrow ? `${sizeArrow}px` : `16px`,
-            // color: glodalColor.withe,
+            color: `var(--white)`,
             userSelect: 'none',
           }}
         />

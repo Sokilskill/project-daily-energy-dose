@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import '../../index.css'
 
 export const DaySwitchContainer = styled.div`
   display: flex;
@@ -10,11 +11,11 @@ export const CustomDatePickerInput = styled.input`
   align-items: center;
   background: transparent;
   width: 100%;
-
+  border: 1px solid var(--white);
   border-radius: 12px;
   padding: 14px;
   background-color: inherit;
-
+  color: var(--white);
   font-size: 16px;
   line-height: 1.5;
   outline: none;
