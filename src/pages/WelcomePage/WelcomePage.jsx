@@ -1,12 +1,11 @@
-import { Container, Title, StyledImage } from './WelcomePage.styled';
-import example from '../../assets/block.jpg';
+import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
+import { WelcomePart } from '../../components/WelcomePart/WelcomePart';
 
 const WelcomePage = () => {
   return (
-    <Container>
-      <Title>First Page</Title>
-      <StyledImage src={example} alt="Example" />
-    </Container>
+    <WelcomeLayout>
+      <WelcomePart />
+    </WelcomeLayout>
   );
 };
 

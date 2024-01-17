@@ -60,22 +60,42 @@
 
 :root {
   --white: #efede8;
-  --secondary-text-color: rgba(239, 237, 232, 0.4);
+  --red: #E9101D;
+  --green: #419B09;
+  --secondary-text-color: #efede866;
   --orange: #e6533c;
   --orange-1: #ef8964;
   --beige: #efa082;
   --black: #040404;
-  --dashboard-bg-color: rgba(239, 237, 232, 0.05);
+  --dashboard-bg-color: #efede80d;
   --error-color: #d80027;
   --success-color: #3cbf61;
-  --dashboard-border-color: 1px solid rgba(239, 237, 232, 0.2);
-  --bgColor-secondary: #1C1C1C;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  /* outline: 1px solid teal; */
+  --dashboard-border-color: 1px solid #efede833;
+  --border: #efede84d;
+  --vievs-text: #efede8a6;
+  --semi-black: #04040400;
+  --grey: #303030;
+  --secondary-text-color-1: #efede899;
+  --bg-gradient: linear-gradient(
+      170deg,
+      var(--black, #040404) 3.66%,
+      var(--semi-black, #04040400) 19.15%
+    ),
+    linear-gradient(
+      73deg,
+      var(--black, #040404) 6.11%,
+      var(--semi-black, #04040400) 66.68%
+    );
+  --bg-desk-gradient: linear-gradient(
+    80deg,
+    var(--black, #040404) -2.45%,
+    var(--semi-black, #04040400) 68.17%
+  );
+  --default-avatar-fill: rgba(239, 237, 232, 0.1);
+  --background-color-avatar: rgba(48, 48, 48, 0.3);
+  --secondary-color-text: rgba(239, 237, 232, 0.5);
+  --icon-color: rgba(239, 137, 100, 1);
+  --text-calorie-intake: rgba(239, 237, 232, 0.8);
 }
 
 body {
@@ -118,11 +138,12 @@ button {
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
+  /* outline: 10px solid red; */
 }
 
 @media screen and (min-width: 375px) {
   .container {
-    max-width: 375px;
+    width: 375px;
   }
 }
 
@@ -137,6 +158,7 @@ button {
 @media screen and (min-width: 1440px) {
   .container {
     width: 1440px;
+    padding: 0 96px;
   }
 }
 
