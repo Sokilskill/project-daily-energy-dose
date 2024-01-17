@@ -29,8 +29,27 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
+export const getUserProfile = createAsyncThunk(
+  'profile/getUserProfile',
+  async (_, thunkApi) => {
+    try {
+      const state = thunkApi.getState();
+      const userToken = state.auth.token;
+      if (userToken) {
+        token.set(userToken);
+        const res = await axios.get('/profiles');
+        return res.data;
+      }
+      return;
+    } catch (error) {
+      toast.error(error.message);
+      return thunkApi.rejectWithValue(error.message);
+    }
+  },
+);
+
 export const updateUserName = createAsyncThunk(
-  'users/updateUserInfo',
+  'users/updateUserName',
   async (userData, thunkAPI) => {
     try {
       const res = await axios.patch('/users', userData);
@@ -79,7 +98,7 @@ export const getTarget = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const addUserData = createAsyncThunk(

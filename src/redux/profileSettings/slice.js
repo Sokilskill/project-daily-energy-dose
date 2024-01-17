@@ -3,18 +3,16 @@ import {
   getCurrentUser,
   addUserData,
   updateUserName,
-  getTarget,
   updatedUserAvatar,
+  getUserProfile,
 } from './operations';
 
 const initialState = {
   profile: {
-    name: '',
-    email: '',
     avatarURL: '',
     height: null,
     currentWeight: null,
-    desireWeight: null,
+    desiredWeight: null,
     birthday: null,
     blood: null,
     sex: 'male',
@@ -26,6 +24,8 @@ const initialState = {
   error: null,
   isAuth: false,
 };
+
+
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -63,9 +63,10 @@ const handleUpdateAvatarFulfilled = (state, action) => {
   state.error = null;
 };
 
-const handleGetTargetFulfilled =(state, action) => {
+const handleGetUserProfileFulfilled = (state, action) => {
+  state.profile = { ...action.payload };
+  state.token = action.payload.token;
   state.isLoading = false;
-  state.target = action.payload;
   state.error = null;
 };
 
@@ -75,6 +76,9 @@ export const profileSlice = createSlice({
   reducers: {
     setAvatarURL: (state, action) => {
       state.profile.avatarURL = action.payload;
+    },
+    setBirthday: (state, action) => {
+      state.profile.birthday = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -91,11 +95,11 @@ export const profileSlice = createSlice({
       .addCase(updatedUserAvatar.pending, handlePending)
       .addCase(updatedUserAvatar.rejected, handleRejected)
       .addCase(updatedUserAvatar.fulfilled, handleUpdateAvatarFulfilled)
-      .addCase(getTarget.pending, handlePending)
-      .addCase(getTarget.rejected, handleRejected)
-      .addCase(getTarget.fulfilled, handleGetTargetFulfilled)
+      .addCase(getUserProfile.pending, handlePending)
+      .addCase(getUserProfile.rejected, handleRejected)
+      .addCase(getUserProfile.fulfilled, handleGetUserProfileFulfilled)
   },
 });
 
-export const { setAvatarURL } = profileSlice.actions;
+export const { setAvatarURL, setBirthday } = profileSlice.actions;
 export const profileReducer = profileSlice.reducer;
