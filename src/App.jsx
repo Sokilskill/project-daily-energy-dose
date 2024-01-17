@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
 //- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
 
@@ -24,18 +25,21 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<WelcomePage />} />
-        <Route path="signup" element={<SignUpPage />} />
-        <Route path="signin" element={<SignInPage />} />
-        <Route path="profile" element={isAuth && <ProfilePage />} />
-        <Route path="diary" element={isAuth && <DiaryPage />} />
-        <Route path="products" element={isAuth && <ProductsPage />} />
-        <Route path="exercises" element={isAuth && <ExercisesPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<WelcomePage />} />
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="signin" element={<SignInPage />} />
+          <Route path="profile" element={isAuth && <ProfilePage />} />
+          <Route path="diary" element={isAuth && <DiaryPage />} />
+          <Route path="products" element={isAuth && <ProductsPage />} />
+          <Route path="exercises" element={isAuth && <ExercisesPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </>
   );
 }
 export default App;
