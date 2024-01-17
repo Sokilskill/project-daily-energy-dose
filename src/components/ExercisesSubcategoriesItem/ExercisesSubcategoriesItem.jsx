@@ -4,22 +4,23 @@ import {
   SubcategoriesTextWrapper,
   SubcategoriesTitle,
   SubcategoriesText,
-  Link,
 } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem.styled';
 import Shoulders from '../../assets/Exercises/Shoulders.png';
+import { useNavigate } from 'react-router-dom';
 
 export const ExercisesSubcategoriesItem = () => {
+  const navigate = useNavigate();
   return (
-    <SubcategoriesListItem>
-      <Link
-      // to="list"
-      >
-        <SubcategoriesImg src={Shoulders}></SubcategoriesImg>
-        <SubcategoriesTextWrapper>
-          <SubcategoriesTitle>Shoulders</SubcategoriesTitle>
-          <SubcategoriesText>Body parts</SubcategoriesText>
-        </SubcategoriesTextWrapper>
-      </Link>
+    <SubcategoriesListItem
+      onClick={() => {
+        navigate('/exercises/list');
+      }}
+    >
+      <SubcategoriesImg src={Shoulders}></SubcategoriesImg>
+      <SubcategoriesTextWrapper>
+        <SubcategoriesTitle>Shoulders</SubcategoriesTitle>
+        <SubcategoriesText>Body parts</SubcategoriesText>
+      </SubcategoriesTextWrapper>
     </SubcategoriesListItem>
   );
 };

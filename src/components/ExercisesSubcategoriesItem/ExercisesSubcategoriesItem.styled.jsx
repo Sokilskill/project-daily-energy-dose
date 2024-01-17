@@ -47,7 +47,3 @@ export const SubcategoriesText = styled.p`
   color: rgba(239, 237, 232, 0.4);
   white-space: nowrap;
 `;
-
-export const Link = styled(NavLink)`
-  color: #efede8;
-`;
