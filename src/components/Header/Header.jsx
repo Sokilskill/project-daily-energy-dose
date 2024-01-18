@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { BurgerButton } from '../../helperComponents/BurgerButton/BurgerButton';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
 import { Logo } from '../../helperComponents/Logo/Logo';
@@ -10,22 +11,24 @@ import {
   UserBarWrapper,
   UserMenuBox,
 } from './Header.styled';
+import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 
 // по ТЗ хедер на всих сторінках
 // коли еррор === еррор передаєзначення в стор і лого змінюється
-const borderBottomStyle = '1px solid rgba(239, 237, 232, 0.2)';
 // якщо не авторизований прибрати нижній бордер
-const isAuth = true;
+const borderBottomStyle = '1px solid rgba(239, 237, 232, 0.2)';
 
 export const Header = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <HeaderContainer
-      style={{ borderBottom: isAuth ? borderBottomStyle : 'none' }}
+      style={{ borderBottom: isLoggedIn ? borderBottomStyle : 'none' }}
     >
       <HeaderWrap className="container">
         <Logo />
 
-        {isAuth && (
+        {isLoggedIn && (
           <UserMenuBox>
             <Nav>
               <UserNav />
