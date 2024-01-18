@@ -26,7 +26,6 @@ export const Header = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const handlerBurgerButton = () => {
-    console.log('clickBurgrr');
     setIsOpenMenu({ isOpen: !isOpenMenu });
   };
 
