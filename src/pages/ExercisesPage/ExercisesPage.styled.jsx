@@ -30,3 +30,21 @@ export const ExercisesPageHeaderWrapper = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const BackWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: rgb(239, 237, 232, 0.4);
+  cursor: pointer;
+`;
+
+export const ArrowIcon = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: rgb(239, 237, 232, 0.4);
+  transform: scaleX(-1);
+`;
+
+export const BackText = styled.p``;
