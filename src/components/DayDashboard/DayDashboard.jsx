@@ -78,7 +78,7 @@ const Card = ({ value, children }) => {
     case 'Calories consumed':
       icon = (
         <Icon width={20} height={20} className="orange">
-          <use href={`${sprite}#icon-fluent_food-apple`}></use>
+          <use href={`${sprite}#icon-apple`}></use>
         </Icon>
       );
       break;
