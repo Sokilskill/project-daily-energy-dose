@@ -15,33 +15,27 @@ const SignUpPage = () => {
   };
 
   return (
-    <>
-      {isLoggedIn ? (
-        <Navigate to="/profile" replace />
-      ) : (
-        <WelcomeLayout>
-          <div className={css.signup_part}>
-            <div className={css.text_box}>
-              <h2 className={css.signup_title}>Sign Up</h2>
-              <p className={css.signup_text}>
-                Thank you for your interest in our platform. To complete the
-                registration process, please provide us with the following
-                information.
-              </p>
-            </div>
-            <SignUpForm onSubmit={handleFormData} />
-            <p className={css.signin_option}>
-              Already have an account?
-              <span>
-                <Link className={css.signin_link} to="/signin">
-                  Sign In
-                </Link>
-              </span>
-            </p>
-          </div>
-        </WelcomeLayout>
-      )}
-    </>
+    <WelcomeLayout>
+      <div className={css.signup_part}>
+        <div className={css.text_box}>
+          <h2 className={css.signup_title}>Sign Up</h2>
+          <p className={css.signup_text}>
+            Thank you for your interest in our platform. To complete the
+            registration process, please provide us with the following
+            information.
+          </p>
+        </div>
+        <SignUpForm onSubmit={handleFormData} />
+        <p className={css.signin_option}>
+          Already have an account?
+          <span>
+            <Link className={css.signin_link} to="/signin">
+              Sign In
+            </Link>
+          </span>
+        </p>
+      </div>
+    </WelcomeLayout>
   );
 };
 

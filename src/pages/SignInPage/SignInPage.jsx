@@ -19,35 +19,27 @@ const SignInPage = () => {
     dispatch(logInThunk(data));
   };
 
-  if (!isLoggedIn) {
-    return (
-      <WelcomeLayout>
-        <div className={css.signin_part}>
-          <div className={css.text_box}>
-            <h2 className={css.signin_title}>Sign In</h2>
-            <p className={css.signin_text}>
-              Welcome! Please enter your credentials to login to the platform:
-            </p>
-          </div>
-          <SignInForm onSubmit={handleFormData} />
-          <p className={css.signup_option}>
-            Don’t have an account?
-            <span>
-              <Link className={css.signup_link} to="/signup">
-                Sign Up
-              </Link>
-            </span>
+  return (
+    <WelcomeLayout>
+      <div className={css.signin_part}>
+        <div className={css.text_box}>
+          <h2 className={css.signin_title}>Sign In</h2>
+          <p className={css.signin_text}>
+            Welcome! Please enter your credentials to login to the platform:
           </p>
         </div>
-      </WelcomeLayout>
-    );
-  } else {
-    if (isParamsData) {
-      return <Navigate to="/diary" replace />;
-    } else {
-      return <Navigate to="/profile" replace />;
-    }
-  }
+        <SignInForm onSubmit={handleFormData} />
+        <p className={css.signup_option}>
+          Don’t have an account?
+          <span>
+            <Link className={css.signup_link} to="/signup">
+              Sign Up
+            </Link>
+          </span>
+        </p>
+      </div>
+    </WelcomeLayout>
+  );
 };
 
 export default SignInPage;
