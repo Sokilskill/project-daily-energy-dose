@@ -1,3 +1,4 @@
+import React from 'react';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
@@ -29,22 +30,37 @@ import {
   UserContainer,
   UserInput,
 } from './UserForm.styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { RadioInput } from './RadioInput';
 // import { DaySwitch } from '../DaySwitch/DaySwitch';
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
+import { selectUser } from '../../redux/auth/auth-selectors';
+
 
 export const UserForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectCurrentUser);
+  const user = useSelector(selectUser);
   const userProfile = useSelector(selectUserProfile);
-
+  //   const [pickDate, setPickDate]
+  //  = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   useEffect(() => {
     dispatch(getCurrentUser(user));
   }, [dispatch, user]);
 
-  const handleSubmit = (values) => {
-    dispatch(addUserData(values));
+  const handleSubmit = async (values) => {
+    try {
+      setIsSubmitted(true);
+      await dispatch(addUserData(values)).then(() => {
+        console.log('Profile updated successfully');
+      });
+      toast.success('Profile updated successfully');
+    } catch (error) {
+      toast.error('An error occurred while updating the profile');
+      console.error('Error updating profile:', error);
+    } finally {
+      setIsSubmitted(false);
+    }
   };
 
   const initialValues = {
@@ -80,7 +96,6 @@ export const UserForm = () => {
                   aria-label="Name Input"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                 
                 />
                 <ErrorMessage name="name" component={ErrorMessageStyled} />
               </div>
@@ -95,7 +110,6 @@ export const UserForm = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                 
                 />
                 <ErrorMessage name="email" component={ErrorMessageStyled} />
               </div>
@@ -103,42 +117,40 @@ export const UserForm = () => {
             <ProfileContainer>
               <ProfileWrapper>
                 <div>
-                <Label>Height</Label>
-                <HeightInput
-                  type="number"
-                  id="height"
-                  name="height"
-                  placeholder="0"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.height}
-                  required
-                />
-                <ErrorMessage name="height" component={ErrorMessageStyled} />
+                  <Label>Height</Label>
+                  <HeightInput
+                    type="number"
+                    id="height"
+                    name="height"
+                    placeholder="0"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.height}
+                    required
+                  />
+                  <ErrorMessage name="height" component={ErrorMessageStyled} />
                 </div>
-               <div>
-                <Label>Current Weight</Label>
-                <CurrentWeightInput
-                  type="number"
-                  id="currentWeight"
-                  name="currentWeight"
-                  placeholder="0"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.currentWeight}
-                  required
-                />
-                <ErrorMessage
-                  name="currentWeigh"
-                  component={ErrorMessageStyled}
-                />
-               </div>
-                
+                <div>
+                  <Label>Current Weight</Label>
+                  <CurrentWeightInput
+                    type="number"
+                    id="currentWeight"
+                    name="currentWeight"
+                    placeholder="0"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.currentWeight}
+                    required
+                  />
+                  <ErrorMessage
+                    name="currentWeigh"
+                    component={ErrorMessageStyled}
+                  />
+                </div>
               </ProfileWrapper>
               <ProfileCalendarWrapper>
                 <div>
-                  <Label>
-                  Desired Weight</Label>
+                  <Label>Desired Weight</Label>
                   <DesiredWeightInput
                     type="number"
                     id="desiredWeight"
@@ -154,22 +166,22 @@ export const UserForm = () => {
                     component={ErrorMessageStyled}
                   />
                 </div>
-                
+
                 <div>
-                  <Label>
-                  Date of birth </Label>
-               
+                  <Label>Date of birth </Label>
 
                   <CalendarField name="birthday">
-  {({ field }) => (
-    <div>
-      <BirthdayPicker {...field} />
-      <ErrorMessage name="birthday" component={ErrorMessageStyled} />
-    </div>
-  )}
-</CalendarField>
+                    {({ field }) => (
+                      <div>
+                        <BirthdayPicker {...field} />
+                        <ErrorMessage
+                          name="birthday"
+                          component={ErrorMessageStyled}
+                        />
+                      </div>
+                    )}
+                  </CalendarField>
                 </div>
-                
               </ProfileCalendarWrapper>
             </ProfileContainer>
 
@@ -181,7 +193,7 @@ export const UserForm = () => {
               />
             </div>
 
-            <SaveButton type="submit" onSubmit={handleSubmit}>Save</SaveButton>
+            <SaveButton type="submit">Save</SaveButton>
           </MainFormContainer>
         )}
       </Formik>
