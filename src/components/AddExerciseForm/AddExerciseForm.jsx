@@ -1,14 +1,14 @@
 import { useEffect, useState, useCallback } from 'react';
 import { MdClose } from "react-icons/md";
-import { Backdrop, ModalContainer, Close, Image, Div,TimerContainer, TimerButton, Text, Button} from "./AddExerciseForm.styled";
+import { Backdrop, ModalContainer, Close, Image, Div,TimerContainer, TimerButton, Text, StyledList, StyledListItem, Button} from "./AddExerciseForm.styled";
 import BlockIcon from "../../assets/images/block.png";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const AddExerciseForm = ({onClose, open}) => {
 
   const StartIcon = () => (
-    <svg width="24" height="24" xmlns="../../assets/images/play.svg">
-      
+    <svg width="24" height="24">
+      <use href='../../assets/images/play.svg'></use>
     </svg>
   );
   
@@ -67,6 +67,12 @@ const AddExerciseForm = ({onClose, open}) => {
                 {isTimerRunning ? <PauseIcon /> : <StartIcon />}
               </TimerButton>
               <Text>Burned calories:</Text>
+              <StyledList>
+                <StyledListItem>Элемент 1</StyledListItem>
+                <StyledListItem>Элемент 2</StyledListItem>
+                <StyledListItem>Элемент 3</StyledListItem>
+                <StyledListItem>Элемент 4</StyledListItem>
+              </StyledList>
               <Button>Next product</Button>
           
           </ModalContainer>

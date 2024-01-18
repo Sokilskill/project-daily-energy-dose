@@ -56,8 +56,7 @@ export const TimerContainer = styled.div`
 `;
 
 export const TimerButton = styled.button`
-  background-color: #3498db;
-  color: #fff;
+  
   padding: 10px;
   cursor: pointer;
   border: none;
@@ -80,7 +79,18 @@ text-align: left;
 color: #EFEDE84D;
 text-align: center;
 `;
+export const StyledList = styled.ul`
+list-style: none;
+padding: 0;
+margin: 0;
+`;
 
+export const StyledListItem = styled.li`
+margin-bottom: 10px;
+padding: 10px;
+background-color: #3498db;
+color: #fff;
+`;
 export const Button = styled.button`
 width: 157px;
 height: 42px;
