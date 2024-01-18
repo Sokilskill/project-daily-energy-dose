@@ -15,7 +15,7 @@ export const UserBar = () => {
       </ProfileLink>
 
       <AvatarLink to="/profile">
-        {user ? (
+        {user.avatarURL ? (
           <img src={user.avatarURL} alt="avatar" width="24" height="24" />
         ) : (
           <IconWrapper size="24px">
