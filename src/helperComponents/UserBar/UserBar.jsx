@@ -1,20 +1,28 @@
-import { Link } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
-import { IconWrapper } from './UserBar.styled';
+import { AvatarLink, IconWrapper, ProfileLink } from './UserBar.styled';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/auth-selectors';
 
 export const UserBar = () => {
+  const user = useSelector(selectUser);
+
   return (
     <>
-      <Link to="/profile">
-        <IconWrapper stroke="rgba(239, 237, 232, 0.3)">
+      <ProfileLink to="/profile">
+        <IconWrapper>
           <use href={`${sprite}#icon-settings-01`}></use>
         </IconWrapper>
-      </Link>
-      <Link to="/profile">
-        <IconWrapper fill="blue">
-          <use href={`${sprite}#icon-settings-01`}></use>
-        </IconWrapper>
-      </Link>
+      </ProfileLink>
+
+      <AvatarLink to="/profile">
+        {user.avatarURL ? (
+          <img src={user.avatarURL} alt="avatar" width="24" height="24" />
+        ) : (
+          <IconWrapper size="24px">
+            <use href={`${sprite}#icon-gridicons_user`}></use>
+          </IconWrapper>
+        )}
+      </AvatarLink>
     </>
   );
 };

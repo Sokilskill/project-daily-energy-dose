@@ -1,0 +1,83 @@
+@import '../../index.css';
+
+.page_part {
+  position: relative;
+  padding-top: 180px;
+}
+.insert_part {
+  position: absolute;
+  top: 66px;
+}
+
+.welcome_bgd {
+  max-width: 298px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: -20px;
+  padding: 319px 20px 40px 44px;
+  background-image: url(../../assets/Welcome/images/people-training-gym-mob.webp),
+    var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .welcome_bgd {
+    background-image: url(../../assets/Welcome/images/people-training-gym-mob-2x.webp),
+      var(--bg-gradient);
+  }
+}
+
+@media (min-width: 768px) {
+  .page_part {
+    padding-top: 48px;
+  }
+  .insert_part {
+    top: 105px;
+  }
+
+  .welcome_bgd {
+    max-width: 437px;
+    padding: 583px 32px 48px 0;
+    margin-right: -32px;
+    background: url(../../assets/Welcome/images/people-training-gym-tab.webp),
+      var(--bg-gradient);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .welcome_bgd {
+      background-image: url(../../assets/Welcome/images/people-training-gym-tab-2x.webp),
+        var(--bg-gradient);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .page_part {
+    padding-top: 0;
+    /* z-index: -1; */
+  }
+  .insert_part {
+    top: 200px;
+  }
+  .welcome_bgd {
+    max-width: 670px;
+    margin-top: -84px;
+    padding: 384px 32px 172px 0;
+    background-image: url(../../assets/Welcome/images/people-training-gym-desk.webp),
+      var(--bg-desk-gradient);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .welcome_bgd {
+      background-image: url(../../assets/Welcome/images/people-training-gym-desk-2x.webp),
+        var(--bg-desk-gradient);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
