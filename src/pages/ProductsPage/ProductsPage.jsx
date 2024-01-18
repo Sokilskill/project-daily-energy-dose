@@ -28,10 +28,11 @@ export default function ProductPage() {
   useEffect(() => {
     const list = document.querySelector('.custom-list');
     list.addEventListener('scroll', handlerScroll);
+
     return function () {
       list.removeEventListener('scroll', handlerScroll);
     }
-  }, []);
+  }, [currentTotal]);
 
   
   
@@ -40,10 +41,11 @@ export default function ProductPage() {
       params: { page, category, groupBloodNotAllowed, search },
     };
     if (fetching) {
+      console.log('fatching');
       getProducts(options).then(({data}) => {
         setProducts([...products, ...data.data]);
-        setPage((prev) => prev + 1);
         setCurrentTotal(data.total);
+        setPage(p => p+1)
       }).finally(() => setFetching(false));
     }
 
