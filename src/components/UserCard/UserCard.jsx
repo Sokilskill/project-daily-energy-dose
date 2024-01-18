@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatedUserAvatar } from '../../redux/profileSettings/operations';
-import sprite from '../../assets/sprite.svg';
-import { selectUserProfile } from '../../redux/profileSettings/selectors';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+import { updatedUserAvatar } from '../../redux/profileSettings/operations';
+import { logOutThunk } from '../../redux/auth/auth-operations';
+import sprite from '../../assets/sprite.svg';
+import { selectCurrentUser, selectUserProfile } from '../../redux/profileSettings/selectors';
 import {
   ActivityShower,
   AvatarContainer,
@@ -16,8 +19,6 @@ import {
   ExcellMarkIcon,
   FoodSvg,
   Label,
-  LogoutLink,
-  LogoutText,
   NameUserWrapper,
   NewAvatar,
   ParamsSvg,
@@ -26,14 +27,18 @@ import {
   SpanIntake,
   Text,
   TextCalorie,
+  UserName,
   UserNameDescription,
   UserParamsWrapper,
   WrapperAvatar,
   WrapperIntake,
   WrapperIntakeFood,
+  WrapperLogOut,
 } from './UserCard.styled';
+import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
 
-export const UserCard = ({ bmr, time }) => {
+
+export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUserProfile);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
@@ -42,8 +47,9 @@ export const UserCard = ({ bmr, time }) => {
   const [showPreview, setShowPreview] = useState(true);
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
-  // const user = useSelector(selectCurrentUser)
-  //don't forget to write logout logic
+  const [loading, setLoading] = useState(false);
+  const user  = useSelector(selectCurrentUser);
+  
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -56,9 +62,12 @@ export const UserCard = ({ bmr, time }) => {
 
         const data = await dispatch(updatedUserAvatar(newAvatarFile));
         console.log(newAvatarFile);
-        e.target.form.reset();
       } catch (error) {
         console.error('Failed to create object URL:', error);
+        toast.error('Failed to update avatar');
+      } finally {
+        setLoading(false); 
+        e.target.form.reset();
       }
     }
   };
@@ -75,6 +84,9 @@ export const UserCard = ({ bmr, time }) => {
       setAvatarStyle({ width: '90px', height: '90px' });
     }
   }, [showPreview]);
+
+  
+
   return (
     <ProfileContainer>
       <WrapperAvatar>
@@ -98,7 +110,7 @@ export const UserCard = ({ bmr, time }) => {
             <div>
               {!userProfile.avatarURL && (
                 <DefaultAvatarSvg>
-                  <use href={sprite + '#icon-gridicons_user-1'} />
+                  <use href={sprite + '#icon-gridicons_user'} />
                 </DefaultAvatarSvg>
               )}
             </div>
@@ -106,7 +118,7 @@ export const UserCard = ({ bmr, time }) => {
         </div>
       </WrapperAvatar>
       <NameUserWrapper>
-        {/* <UserName>{user.name}</UserName> */}
+        <UserName>{user.name}</UserName>
         <UserNameDescription>User</UserNameDescription>
       </NameUserWrapper>
 
@@ -114,71 +126,57 @@ export const UserCard = ({ bmr, time }) => {
         <CalorieShower>
           <WrapperIntakeFood>
             <FoodSvg>
-            <use href={sprite + '#icon-fluenit_food-24-filled'} />
-          </FoodSvg>
-          <TextCalorie>Daily calorie intake</TextCalorie>
+              <use href={sprite + '#icon-fluenit_food-24-filled'} />
+            </FoodSvg>
+            <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
-          {/* <Span>{Math.round(bmr)}</Span> */}
-          <SpanIntake>0</SpanIntake>
+          <Span>{Math.round(userProfile.bmr)}</Span>
+          {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>
-             <ParamsSvg>
-            <use
-              href={sprite + '#icon-dumbbell'}
-            />
-          </ParamsSvg>
-          <Text>Daily physical activity</Text> 
+            <ParamsSvg>
+              <use href={sprite + '#icon-dumbbell'} />
+            </ParamsSvg>
+            <Text>Daily physical activity</Text>
           </WrapperIntake>
           <Span>{time}0 min</Span>
-          </ActivityShower>
+        </ActivityShower>
       </UserParamsWrapper>
       <DescWrapper>
         <div>
-           <ExcellMarkIcon>
-          <use
-            href={sprite + '#icon-Ellipse-1'}
-            style={{
-              fill: 'rgba(239, 160, 130, 1)',
-              width: '100%',
-              height: '100%',
-              position: 'relative',
-            }}
-          />
-          <use
-            href={sprite + '#icon-tabler_exclamation-mark'}
-            style={{
-              fill: 'rgba(239, 237, 232, 1)',
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </ExcellMarkIcon>
+          <ExcellMarkIcon>
+            <use
+              href={sprite + '#icon-Ellipse-1'}
+              style={{
+                fill: 'rgba(239, 160, 130, 1)',
+                width: '100%',
+                height: '100%',
+                position: 'relative',
+              }}
+            />
+            <use
+              href={sprite + '#icon-tabler_exclamation-mark'}
+              style={{
+                fill: 'rgba(239, 237, 232, 1)',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </ExcellMarkIcon>
         </div>
         <Desc>
           We understand that each individual is unique, so the entire approach
           to diet is relative and tailored to your unique body and goals.
         </Desc>
       </DescWrapper>
-       
-         <LogoutLink to="/welcome"> 
-            <LogoutText>Logout</LogoutText>
-        <svg style={{ width: '20px', height: '20px' }}>
-          <use
-            href={sprite + '#icon-log-out-01-2'}
-            style={{
-              fill: 'rgba(230, 83, 60, 1)',
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </svg>
-      </LogoutLink>
-        
-        
+      <WrapperLogOut>
+<LogOutBtn/>        
+      </WrapperLogOut>
+
      
     </ProfileContainer>
   );

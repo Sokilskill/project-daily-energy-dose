@@ -1,5 +1,6 @@
 
 import { RotatingLines } from 'react-loader-spinner';
+import '../../index.css'
 
 const MyLoader = ({ display }) => (
   <div
@@ -10,6 +11,7 @@ const MyLoader = ({ display }) => (
     }}
   >
     <RotatingLines
+      strokeColor= {`var(--white)`}
       strokeWidth="5"
       animationDuration="0.75"
       width="20%"

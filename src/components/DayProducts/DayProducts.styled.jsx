@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import '../../index.css';
 
 export const Container = styled.div`
   /* 320-375 */
@@ -170,13 +171,6 @@ export const IconWrapper = styled.svg`
   margin-left: 9px;
 `;
 
-// export const DeleteIconWrapper = styled(IconWrapper)`
-//   margin-top: 10px;
-//   @media screen and (min-width: 768px) {
-//     margin-top: 0;
-//   }
-// `;
-
 export const DeleteIconWrapper = styled.div`
   margin-top: 10px;
   margin-left: 9px;
@@ -267,6 +261,7 @@ export const NotFound = styled.div`
   height: 335px;
   width: 100%;
   padding-top: 125px;
+  color: var(--white);
   font-size: 14;
   font-weight: normal; 
   line-height: 18px; 

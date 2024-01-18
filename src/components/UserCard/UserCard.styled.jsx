@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+
+
+
 
 export const ProfileContainer = styled.div`
   width: 100%;
@@ -10,6 +12,7 @@ export const ProfileContainer = styled.div`
   @media (min-width: 768px) {
     width: 439px;
     margin: 0 auto;
+
     
   }
 
@@ -207,7 +210,7 @@ export const ActivityShower = styled.div`
   padding: 14px;
   align-items: flex-start;
   border-radius: 12px;
-  gap: 32px;
+  gap: 16px;
 
   @media (min-width: 768px) {
     width: 214px;
@@ -280,25 +283,18 @@ export const Desc = styled.p`
   }
 `;
 
-export const LogoutLink = styled(Link)`
-  display: flex;
-  justify-content: flex-end;
-  margin: 40px 0 0 auto;
-  gap: 8px;
+export const WrapperLogOut = styled.div`
+width: 100%;
+display: inline-flex;
+justify-content: flex-end;
+margin: 41px 40px 0 0;
 
-  @media (min-width: 768px) {
-    margin: 32px 0 0 auto;
-  }
+@media (min-width: 768px) {
+  margin: 32px 0 0 0;
+}
+
+@media (min-width: 1440px) {
+  margin: 32px 0 0 0;
+}
 `;
 
-export const LogoutText = styled.p`
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.3;
-  color: var(--white, #efede8);
-
-  @media (min-width: 768px) {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-`;

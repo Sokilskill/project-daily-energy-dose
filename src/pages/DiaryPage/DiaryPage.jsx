@@ -24,6 +24,7 @@ import sprite from '../../assets/sprite.svg';
 import { useEffect, useState } from 'react';
 import diarySelectors from '../../redux/diary/diarySelectors';
 import authSelectors from '../../redux/auth/auth-selectors';
+import '../../index.css'
 
 const Icon = styled.svg`
   &.orange {
@@ -83,6 +84,7 @@ const dispatch = useDispatch();
               textWeight={'bold'}
               textHeight={20}
               sizeArrow={18}
+              iconColor={`var(--orange-1)`}
             />
           </MobileDaySwitch>
           <NotMobileDaySwitch>
@@ -93,6 +95,7 @@ const dispatch = useDispatch();
               textWeight={'bold'}
               textHeight={32}
               sizeArrow={18}
+              iconColor={`var(--orange-1)`}
             />
           </NotMobileDaySwitch>
         </WrapDaySwitcher>

@@ -1,9 +1,32 @@
+// import { useDispatch } from 'react-redux';
+import { ExercisesCategories } from '../../components/ExercisesCategories/ExercisesCategories';
+// import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+// import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
+import {
+  ExercisesPageContainer,
+  ExercisesPageHeader,
+  ExercisesPageHeaderWrapper,
+} from '../ExercisesPage/ExercisesPage.styled';
+// import { getExercisesByMuscles } from '../../redux/exercises/exercisesOperations';
+import { Outlet } from 'react-router-dom';
+
 const ExercisesPage = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getExercisesByMuscles());
+  // }, [dispatch]);
+
   return (
-    <div className="container">
-      <h3>ExercisesPage</h3>
-      <p>Lorem ipsum</p>
-    </div>
+    <ExercisesPageContainer className="container">
+      <ExercisesPageHeaderWrapper>
+        <ExercisesPageHeader>Exercises</ExercisesPageHeader>
+        <ExercisesCategories />
+      </ExercisesPageHeaderWrapper>
+      <Outlet />
+      {/* <ExercisesSubcategoriesList /> */}
+      {/* <ExercisesList /> */}
+    </ExercisesPageContainer>
   );
 };
 

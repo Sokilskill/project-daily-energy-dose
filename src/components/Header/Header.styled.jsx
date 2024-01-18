@@ -1,9 +1,7 @@
 // import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.header`
-  padding: 20px 0;
-`;
+export const HeaderContainer = styled.header``;
 
 export const HeaderWrap = styled.div`
   display: flex;
@@ -20,7 +18,7 @@ export const UserMenuBox = styled.div`
 export const Nav = styled.nav`
   margin-right: 32px;
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1440px) {
     display: none;
   }
 `;
