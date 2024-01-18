@@ -3,15 +3,22 @@ import { useSelector } from 'react-redux';
 import { Container, TitlePage } from './ProductsPage.styled';
 import { Filters } from '../../components/ProductsFilters/ProductsFilters';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
-import {
-  getAllCategories,
-  getProducts,
-  setToken,
-} from './product-Api';
+import { getProducts, setToken, getAllCategories } from './product-Api';
 
 
-
-
+const initialRecommended = [
+  { id: 'fdg12sdgdfdffsfd', value: 'all', label: 'all' },
+  {
+    id: 'fdg12234sdfsdgsfd',
+    value: 'recommended',
+    label: 'Recommended',
+  },
+  {
+    id: 'fdg12asdf123gdfsdgsfd',
+    value: 'not-recommended',
+    label: 'Not recommended',
+  },
+];
 
 export default function ProductPage() {
   const token = useSelector(state => state.auth.token);
@@ -19,33 +26,50 @@ export default function ProductPage() {
   const [groupBloodNotAllowed, setGroupBloodNotAllowed] = useState('');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const [fetching, setFetching] = useState(true);
+  const [fetching, setFetching] = useState(false);
   const [currentTotal, setCurrentTotal] = useState(0);
   const [products, setProducts] = useState([]);
-  
-  setToken(token);
+  const [allCategories, setAllCategories] = useState([]);
 
+  setToken(token);
+  
+
+  
   useEffect(() => {
     const list = document.querySelector('.custom-list');
     list.addEventListener('scroll', handlerScroll);
-
     return function () {
       list.removeEventListener('scroll', handlerScroll);
-    }
-  }, [currentTotal]);
+    };
+  }, [currentTotal, products]);
 
-  
+  useEffect(() => {
+    getAllCategories().then((r) => {
+      setAllCategories(r.data);
+    });
+
+    const options = {
+      params: { page, category, groupBloodNotAllowed, search },
+    };
+
+    getProducts(options)
+      .then(({ data }) => {
+        setProducts(data.data);
+        setCurrentTotal(data.total);
+        setPage(2);
+      })
+  }, []);
   
   useEffect(() => {
     const options = {
       params: { page, category, groupBloodNotAllowed, search },
     };
+    
     if (fetching) {
-      console.log('fatching');
-      getProducts(options).then(({data}) => {
+      getProducts(options).then(({ data }) => {
         setProducts([...products, ...data.data]);
         setCurrentTotal(data.total);
-        setPage(p => p+1)
+        setPage((p) => p + 1);
       }).finally(() => setFetching(false));
     }
 
@@ -53,10 +77,8 @@ export default function ProductPage() {
   
   
   const handlerScroll = (e) => {
-    if (
-      e.target.scrollHeight - (e.target.scrollTop + window.innerHeight) < 600 &&
-      products.length < currentTotal
-    ) {
+    if (e.target.scrollHeight - (e.target.scrollTop + window.innerHeight) < 600 && products.length < currentTotal) {
+      console.log(products.length);
       setFetching(true);
     }
   }
@@ -74,11 +96,15 @@ export default function ProductPage() {
 
   return (
     <Container>
-      <TitlePage>Products</TitlePage>
-      <Filters
-        setParams={setParams}
-      />
-      <ProductsList products={products} />
+      <div className='container'>
+        <TitlePage>Products</TitlePage>
+        <Filters
+          setParams={setParams}
+          initialCategory={allCategories}
+          initialRecommended={initialRecommended}
+        />
+        <ProductsList products={products} isFetching={fetching} />
+      </div>
     </Container>
   );
 }

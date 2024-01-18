@@ -1,8 +1,15 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-  width: 335px;
-  height: 108px;
+  
+`;
+
+export const WrapInput = styled.div`
+  position: relative;
+`;
+
+export const ProductsFilters = styled.div`
+  position: relative;
 
   display: flex;
   flex-wrap: wrap;
@@ -10,16 +17,12 @@ export const Form = styled.form`
   margin-bottom: 40px;
 `;
 
-export const ProductsFilters = styled.div`
-  position: relative;
-`;
-
 export const Input = styled.input`
   width: 335px;
   padding: 14px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
-  color: #efede8;
+  color: var(--white, #efede8);
   background-color: rgba(239, 237, 232, 0);
   font-family: Roboto;
   font-size: 14px;
@@ -32,19 +35,28 @@ export const Input = styled.input`
   :valid {
     border-color: #ef8964;
   }
-  
+
+  @media screen and (min-width: 768px) {
+    width: 236px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
 `;
 
 export const Btn = styled.button`
   position: absolute;
   top: 14px;
   right: ${(props) => props.right};
-
+  padding: 0;
   width: 18px;
   height: 18px;
-  border:none;
-  background-color: rgba(0,0,0,0);
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    top: 17px;
+  }
 `;
 
 export const Icon = styled.svg`

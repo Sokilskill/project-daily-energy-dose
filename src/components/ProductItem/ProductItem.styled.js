@@ -13,6 +13,10 @@ export const Item = styled.li`
   background-color: rgba(239, 237, 232, 0.05);
   padding: 16px;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const UpperWrapper = styled.div`

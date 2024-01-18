@@ -1,6 +1,9 @@
 .custom-select-container{
 width: 146px !important;
 }
+
+ 
+
 .custom-select-second-container{
   width: 173px !important;
 }
@@ -42,7 +45,9 @@ width: 146px !important;
     height: 18px !important;
     padding: 0 !important;
 }
-
+.custom-select__indicator,.custom-select-second__indicator{
+    padding: 0 !important;
+}
 .custom-select__single-value,.custom-select-second__single-value{
     color: var(--white) !important;
     font-family: Roboto !important;
@@ -54,7 +59,7 @@ width: 146px !important;
 
 .custom-select__menu,.custom-select-second__menu{
     background-color: #1C1C1C !important;
-    width: 146px !important;
+    width: inherit !important;
     color: var(--white) !important;
     font-family: Roboto !important;
     font-size: 14px !important;
@@ -91,3 +96,30 @@ width: 146px !important;
   border-radius: 12px;
   background-color: rgba(239, 237, 232, 0.10);
 }
+
+
+
+@media screen and (min-width: 768px) {
+    .custom-select-container{
+width: 192px !important;
+}
+.custom-select-second-container{
+  width: 204px !important;
+}
+
+.custom-select__value-container,.custom-select-second__value-container{
+font-size: 16px !important;
+line-height: 1.5 !important;
+}
+.custom-select__single-value,.custom-select-second__single-value{
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+}
+.custom-select__indicator,.custom-select-second__indicator{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 0 !important;
+}
+
+  }
