@@ -77,7 +77,11 @@ export const SignInForm = ({ onSubmit }) => {
                       id="password"
                       autoComplete="off"
                       placeholder="Password"
-                      className={css.form_input}
+                      className={
+                        errors.password
+                          ? `${css.form_input} ${css.error_imput}`
+                          : `${css.form_input}`
+                      }
                     />
                     <svg
                       className={css.icon_eye}

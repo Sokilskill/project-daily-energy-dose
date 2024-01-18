@@ -49,7 +49,11 @@ export const SignUpForm = ({ onSubmit }) => {
                     id="name"
                     autoComplete="off"
                     placeholder="Name"
-                    className={css.form_input}
+                    className={
+                      errors.name
+                        ? `${css.form_input} ${css.error_imput}`
+                        : `${css.form_input}`
+                    }
                   />
                   {errors.name && touched.name ? (
                     <div className={css.error_row}>
@@ -110,7 +114,11 @@ export const SignUpForm = ({ onSubmit }) => {
                       id="password"
                       autoComplete="off"
                       placeholder="Password"
-                      className={css.form_input}
+                      className={
+                        errors.password
+                          ? `${css.form_input} ${css.error_imput}`
+                          : `${css.form_input}`
+                      }
                     />
                     <svg
                       className={css.icon_eye}

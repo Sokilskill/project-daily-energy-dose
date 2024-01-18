@@ -1,4 +1,4 @@
-import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
+// import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
 import css from './SignUpPage.module.css';
 import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
