@@ -21,14 +21,14 @@ const Icon = styled.svg`
 
 const DayDashboard = () => {
   const caloriesIntake = useSelector(
-    authSelectors.getUserMetricData,
+    authSelectors.getUserMetricData
   ).dailyIntakeCalories;
   const normOfSports = useSelector(
-    authSelectors.getUserMetricData,
+    authSelectors.getUserMetricData
   ).dailyNormOfSport;
 
   const caloriesConsumed = useSelector(
-    diarySelectors.getDiary,
+    diarySelectors.getDiary
   ).consumedCalories;
 
   const caloriesBurned = useSelector(diarySelectors.getDiary).burnedCalories;
@@ -60,7 +60,7 @@ const Card = ({ value, children }) => {
     case 'Daily calorie intake':
       icon = (
         <Icon width={20} height={20} className="orange">
-          <use href={`${sprite}#icon-fluent_food`}></use>
+          <use href={`${sprite}#icon-fluent_food-24-filled`}></use>
         </Icon>
       );
       break;
@@ -70,7 +70,10 @@ const Card = ({ value, children }) => {
           <use href={`${sprite}#icon-dumbbell`}></use>
         </Icon>
       );
-      displayValue = displayValue !== null && displayValue !== undefined ? displayValue.toString() + ' min' : 'N/A';
+      displayValue =
+        displayValue !== null && displayValue !== undefined
+          ? displayValue.toString() + ' min'
+          : 'N/A';
       break;
     case 'Calories consumed':
       icon = (
@@ -82,7 +85,7 @@ const Card = ({ value, children }) => {
     case 'Calories burned':
       icon = (
         <Icon width={20} height={20} className="orange">
-          <use href={`${sprite}#icon-calories`}></use>
+          <use href={`${sprite}#icon-calories-1`}></use>
         </Icon>
       );
       break;

@@ -24,7 +24,7 @@ export const Container = styled.div`
 export const ContentContainerCard = styled.div`
   height: 96px;
   padding: 14px;
-  border: 1px solid var(--white);
+  border: 1px solid var(--secondary-text-color);
   border-radius: 12px;
 
   display: flex;
