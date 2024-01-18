@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { updatedUserAvatar } from '../../redux/profileSettings/operations';
-import { logOutThunk } from '../../redux/auth/auth-operations';
+
 import sprite from '../../assets/sprite.svg';
 import { selectCurrentUser, selectUserProfile } from '../../redux/profileSettings/selectors';
 import {
