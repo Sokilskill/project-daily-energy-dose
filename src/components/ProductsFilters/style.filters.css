@@ -53,7 +53,7 @@ width: 146px !important;
 }
 
 .custom-select__menu,.custom-select-second__menu{
-    background-color: var(--bgColor-secondary) !important;
+    background-color: #1C1C1C !important;
     width: 146px !important;
     color: var(--white) !important;
     font-family: Roboto !important;

@@ -1,9 +1,8 @@
+import { useSelector } from 'react-redux';
 import {
   Item,
   Chip,
   UpperWrapper,
-  Rectangle,
-  RecText,
   WrapBtn,
   AddBtn,
   IconAdd,
@@ -13,34 +12,50 @@ import {
   InfoText,
   Accent,
 } from './ProductItem.styled.js';
+import {RectangleAndText} from '../RectangleInCard/Rectangle.jsx'
 import sprite from '../../assets/sprite.svg';
 
-const test = {
-      "_id": "5d5169111111173622ff5773",
-      "weight": 100,
-      "calories": 340,
-      "category": "dairy",
-      "title": "Danbo cheese",
-      "groupBloodNotAllowed": {
-        "1": true,
-        "2": true,
-        "3": false,
-        "4": false
+
+
+export default function ProductItem({ productItem  }) {
+  const { weight, calories, category, title, groupBloodNotAllowed, _id } =
+    productItem;
+  // const groupBlood = useSelector((state) => state.auth.user.bodyParams.blood);
+  const groupBlood = 2;
+  
+  const normalizedTitle = () => {
+    if (title) {
+      const upperLetter = title[0].toUpperCase();
+      const newTitle = `${upperLetter + title.slice(1, 24)}`;
+
+      if (title.length > 24) {
+        return `${newTitle}...`;
       }
+      return newTitle;
     }
-
-export default function ProductItem({
-  weight,
-  calories,
-  category,
-  title,
-  groupBloodNotAllowed,
-}) {
-
-
-
-  // const titleText = title.slice(0, 17);
-  // const categoryText = category.slice(0, 9);
+    return '';
+  };
+  const normalizedCategory = () => {
+    if (category) {
+      const upperLetter = category[0].toUpperCase();
+      const newTitle = `${upperLetter + category.slice(1, 10)}`;
+      if (category.length > 10) {
+        return `${newTitle}...`;
+      }
+      return newTitle;
+    }
+    return '';
+  };
+  const getRecomended = () => {
+    if (groupBlood) {
+      return groupBloodNotAllowed[groupBlood] ? (
+        <RectangleAndText color={'#419B09'} text={'Recommended'} />
+      ) : (
+        <RectangleAndText color={'#E9101D'} text={'Not recommended'} />
+      );
+    }
+    return 'Recom.. or not';
+  };
   
   return (
     <Item>
@@ -48,9 +63,7 @@ export default function ProductItem({
         <Chip>DIET</Chip>
 
         <WrapBtn>
-          <Rectangle color={'#419B09'} />
-          <RecText>Recommended</RecText>
-
+          {getRecomended()}
           <AddBtn>
             Add
             <IconAdd>
@@ -64,15 +77,15 @@ export default function ProductItem({
         <Icon>
           <use href={sprite + '#icon-icon'} />
         </Icon>
-        <ProductName>{title}... </ProductName>
+        <ProductName>{normalizedTitle()}</ProductName>
         <InfoText>
-          Calories: <Accent> {calories}666</Accent>
+          Calories: <Accent> {calories}</Accent>
         </InfoText>
         <InfoText>
-          Category: <Accent>{category}...</Accent>
+          Category: <Accent>{normalizedCategory()}</Accent>
         </InfoText>
         <InfoText>
-          Weight: <Accent>{weight}100</Accent>
+          Weight: <Accent>{weight}</Accent>
         </InfoText>
       </LowerWrapper>
     </Item>

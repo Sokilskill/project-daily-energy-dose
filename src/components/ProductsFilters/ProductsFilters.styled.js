@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ProductsFilters = styled.form`
+export const Form = styled.form`
   width: 335px;
   height: 108px;
 
@@ -10,7 +10,7 @@ export const ProductsFilters = styled.form`
   margin-bottom: 40px;
 `;
 
-export const Form = styled.div`
+export const ProductsFilters = styled.div`
   position: relative;
 `;
 
