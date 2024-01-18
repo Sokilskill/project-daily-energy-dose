@@ -20,12 +20,10 @@ const Icon = styled.svg`
 `;
 
 const DayDashboard = () => {
-  const caloriesIntake = useSelector(
-    authSelectors.getUserMetricData
-  ).dailyIntakeCalories;
-  const normOfSports = useSelector(
-    authSelectors.getUserMetricData
-  ).dailyNormOfSport;
+  const userMetricData = useSelector(authSelectors.getUserMetricData);
+
+  const caloriesIntake = userMetricData ? userMetricData.dailyIntakeCalories : null;
+  const normOfSports = userMetricData ? userMetricData.dailyNormOfSport : null;
 
   const caloriesConsumed = useSelector(
     diarySelectors.getDiary
