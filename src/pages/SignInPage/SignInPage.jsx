@@ -1,21 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import css from './SignInPage.module.css';
 import { SignInForm } from '../../components/SignInForm/SignInForm';
-import {
-  selectIsLoggedIn,
-  selectIsParamsData,
-} from '../../redux/auth/auth-selectors';
 import { logInThunk } from '../../redux/auth/auth-operations';
 
 const SignInPage = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isParamsData = useSelector(selectIsParamsData);
   const dispatch = useDispatch();
   const handleFormData = (data) => {
-    console.log(isLoggedIn);
-    console.log(isParamsData);
     dispatch(logInThunk(data));
   };
 
