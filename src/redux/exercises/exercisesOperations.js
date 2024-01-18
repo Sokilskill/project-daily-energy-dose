@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { messageNotification } from '../../components/alertMessages/alertMessages';
 
-axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api';
+// axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api';
 
 export const getExercises = createAsyncThunk(
   '/exercises',
