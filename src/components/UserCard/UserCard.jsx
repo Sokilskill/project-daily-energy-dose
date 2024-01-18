@@ -19,8 +19,6 @@ import {
   ExcellMarkIcon,
   FoodSvg,
   Label,
-  LogoutLink,
-  LogoutText,
   NameUserWrapper,
   NewAvatar,
   ParamsSvg,
@@ -35,7 +33,9 @@ import {
   WrapperAvatar,
   WrapperIntake,
   WrapperIntakeFood,
+  WrapperLogOut,
 } from './UserCard.styled';
+import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
 
 
 export const UserCard = ({ time }) => {
@@ -85,9 +85,7 @@ export const UserCard = ({ time }) => {
     }
   }, [showPreview]);
 
-  const logout = () => {
-    dispatch(logOutThunk());
-  };
+  
 
   return (
     <ProfileContainer>
@@ -175,20 +173,11 @@ export const UserCard = ({ time }) => {
           to diet is relative and tailored to your unique body and goals.
         </Desc>
       </DescWrapper>
+      <WrapperLogOut>
+<LogOutBtn/>        
+      </WrapperLogOut>
 
-      <LogoutLink to="/welcome" onClick={logout}>
-        <LogoutText>Logout</LogoutText>
-        <svg style={{ width: '20px', height: '20px' }}>
-          <use
-            href={sprite + '#icon-log-out-01-2'}
-            style={{
-              fill: 'rgba(230, 83, 60, 1)',
-              width: '100%',
-              height: '100%',
-            }}
-          />
-        </svg>
-      </LogoutLink>
+     
     </ProfileContainer>
   );
 };

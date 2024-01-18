@@ -4,15 +4,35 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
-  addUserData, getCurrentUser,
+  addUserData,
+  getCurrentUser,
 } from '../../redux/profileSettings/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser, selectUserProfile } from '../../redux/profileSettings/selectors';
+import {
+  selectCurrentUser,
+  selectUserProfile,
+} from '../../redux/profileSettings/selectors';
 
-import { ErrorMessageStyled } from './UserForm.styled';
+import {
+  CalendarField,
+  CurrentWeightInput,
+  DesiredWeightInput,
+  ErrorMessageStyled,
+  HeightInput,
+  Label,
+  MainContainer,
+  MainFormContainer,
+  ProfileCalendarWrapper,
+  ProfileContainer,
+  ProfileWrapper,
+  SaveButton,
+  UserContainer,
+  UserInput,
+} from './UserForm.styled';
 import { useEffect } from 'react';
-import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
 import { RadioInput } from './RadioInput';
+// import { DaySwitch } from '../DaySwitch/DaySwitch';
+import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
 
 export const UserForm = () => {
   const dispatch = useDispatch();
@@ -20,9 +40,8 @@ export const UserForm = () => {
   const userProfile = useSelector(selectUserProfile);
 
   useEffect(() => {
-    dispatch(getCurrentUser(user))
+    dispatch(getCurrentUser(user));
   }, [dispatch, user]);
-
 
   const handleSubmit = (values) => {
     dispatch(addUserData(values));
@@ -39,115 +58,133 @@ export const UserForm = () => {
     sex: userProfile.sex || '',
     levelActivity: String(userProfile.levelActivity) || '1',
   };
-  
-
-
-
 
   return (
-    <div>
+    <MainContainer>
       <Formik
-  initialValues={initialValues}
-  validationSchema={ProfileSchema}
-  onSubmit={handleSubmit}
->
-  {({ values,  handleChange, handleBlur}) => (
-    <Form onSubmit={handleSubmit}>
-      <div >
-        <label>
-          Name
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={values.name}
-            placeholder="Name"
-            aria-label="Name Input"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <ErrorMessage name="name" component={ErrorMessageStyled} />
-        </label>
-        <label>
-          Email
-          <input
-             type="email"
-             id="email"
-             name="email"
-             placeholder="E-mail"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.email}
-          />
-          <ErrorMessage name="email" component={ErrorMessageStyled} />
-          </label>
-       
-      </div>
-      <div>
-      <label>
-        Height
-          <input
-             type="number"
-             id="height"
-             name="height"
-             placeholder="0"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.email}
-          />
-          <ErrorMessage name="height" component={ErrorMessageStyled} />
-          </label>
-          <label>
-        Current Weight
-          <input
-             type="number"
-             id="currentWeight"
-             name="currentWeight"
-             placeholder="0"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.currentWeight}
-          />
-          <ErrorMessage name="currentWeigh" component={ErrorMessageStyled} />
-          </label>
-          <label>
-        Desired Weight
-          <input
-             type="number"
-             id="desiredWeight"
-             name="desiredWeight"
-             placeholder="0"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.desiredWeight}
-          />
-          <ErrorMessage name="desiredWeight" component={ErrorMessageStyled} />
-          </label>
-          <label>
-        Date of birth
-          
-         <Field name="birthday">
-         {({ field }) => (
-    <BirthdayPicker {...field} />
-  )}
-             
-           
-        </Field>
-          <ErrorMessage name="height" component={ErrorMessageStyled} />
-          </label>
-      </div>
-<div>
-  <RadioInput
-  dataBlood={values.blood}
-  dataSex={values.sex}
-  dataLevelActivity={values.levelActivity}
-  />
-</div>
-    
-      <button type="submit">Save</button>
-    </Form>
-  )}
-</Formik>
+        initialValues={initialValues}
+        validationSchema={ProfileSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ values, handleChange, handleBlur }) => (
+          <MainFormContainer autoComplete="off" onSubmit={handleSubmit}>
+            <UserContainer>
+              <div>
+                <Label>Name </Label>
+                <UserInput
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={values.name}
+                  placeholder="Name"
+                  aria-label="Name Input"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                 
+                />
+                <ErrorMessage name="name" component={ErrorMessageStyled} />
+              </div>
+
+              <div>
+                <Label>Email</Label>
+                <UserInput
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="E-mail"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                 
+                />
+                <ErrorMessage name="email" component={ErrorMessageStyled} />
+              </div>
+            </UserContainer>
+            <ProfileContainer>
+              <ProfileWrapper>
+                <div>
+                <Label>Height</Label>
+                <HeightInput
+                  type="number"
+                  id="height"
+                  name="height"
+                  placeholder="0"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.height}
+                  required
+                />
+                <ErrorMessage name="height" component={ErrorMessageStyled} />
+                </div>
+               <div>
+                <Label>Current Weight</Label>
+                <CurrentWeightInput
+                  type="number"
+                  id="currentWeight"
+                  name="currentWeight"
+                  placeholder="0"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.currentWeight}
+                  required
+                />
+                <ErrorMessage
+                  name="currentWeigh"
+                  component={ErrorMessageStyled}
+                />
+               </div>
+                
+              </ProfileWrapper>
+              <ProfileCalendarWrapper>
+                <div>
+                  <Label>
+                  Desired Weight</Label>
+                  <DesiredWeightInput
+                    type="number"
+                    id="desiredWeight"
+                    name="desiredWeight"
+                    placeholder="0"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.desiredWeight}
+                    required
+                  />
+                  <ErrorMessage
+                    name="desiredWeight"
+                    component={ErrorMessageStyled}
+                  />
+                </div>
+                
+                <div>
+                  <Label>
+                  Date of birth </Label>
+               
+
+                  <CalendarField name="birthday">
+  {({ field }) => (
+    <div>
+      <BirthdayPicker {...field} />
+      <ErrorMessage name="birthday" component={ErrorMessageStyled} />
     </div>
+  )}
+</CalendarField>
+                </div>
+                
+              </ProfileCalendarWrapper>
+            </ProfileContainer>
+
+            <div>
+              <RadioInput
+                dataBlood={values.blood}
+                dataSex={values.sex}
+                dataLevelActivity={values.levelActivity}
+              />
+            </div>
+
+            <SaveButton type="submit" onSubmit={handleSubmit}>Save</SaveButton>
+          </MainFormContainer>
+        )}
+      </Formik>
+    </MainContainer>
   );
 };
