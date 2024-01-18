@@ -1,4 +1,4 @@
-import{j as t}from"./index-ea60a51c.js";import{n as f}from"./emotion-styled.browser.esm-607947ae.js";const e=f.div`
+import{n as f,j as t}from"./index-59c17565.js";const e=f.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,4 +11,4 @@ import{j as t}from"./index-ea60a51c.js";import{n as f}from"./emotion-styled.brow
     0 0 20px #00baff,
     0 0 40px #00baff,
     0 0 80px #00baff;
-`,a=()=>t.jsx(e,{children:t.jsx(n,{children:"404"})});export{a as default};
+`,r=()=>t.jsx(e,{children:t.jsx(n,{children:"404"})});export{r as default};
