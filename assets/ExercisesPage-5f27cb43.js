@@ -1,4 +1,4 @@
-import{n as s,N as a,a as r,u as c,r as d,j as e,v as p,w as x,x as l,O as m}from"./index-0a3aa927.js";const g=s.ul`
+import{n as s,N as a,a as r,u as c,r as d,j as e,v as p,w as x,x as l,O as m}from"./index-87fab226.js";const g=s.ul`
   display: flex;
   gap: 28px;
 
