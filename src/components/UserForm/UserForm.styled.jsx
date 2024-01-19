@@ -11,7 +11,7 @@ export const ErrorMessageStyled = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  // width: 100%;
 `;
 
 export const UserContainer = styled.div`
@@ -104,10 +104,10 @@ export const ProfileCalendarWrapper = styled.div`
 `;
 
 export const DesiredWeight = styled.div`
-width: 160px;
-@media (min-width: 768px){
-  width: 140px;
-}
+  width: 160px;
+  @media (min-width: 768px) {
+    width: 140px;
+  }
 `;
 export const HeightInput = styled.input`
   width: 160px;
@@ -158,27 +158,27 @@ export const CurrentWeightInput = styled.input`
 `;
 
 export const DesiredWeightInput = styled.input`
-width: 160px;
-height: 52px;
-border-radius: 12px;
-margin: 4px 0 0 0 ;
-padding: 14px;
-display: inline-flex;
-background: transparent;
-outline: none;
-border: 1px solid var( --input-border, rgba(239, 237, 232, 0.30));
-font-family: Roboto;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.3;
-color: var( --white, #efede8);
+  width: 160px;
+  height: 52px;
+  border-radius: 12px;
+  margin: 4px 0 0 0;
+  padding: 14px;
+  display: inline-flex;
+  background: transparent;
+  outline: none;
+  border: 1px solid var(--input-border, rgba(239, 237, 232, 0.3));
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--white, #efede8);
 
-@media (min-width: 768px){
-  width: 140px;
+  @media (min-width: 768px) {
+    width: 140px;
 
-  margin: 8px 0 0 0;
-}
+    margin: 8px 0 0 0;
+  }
 `;
 
 export const CalendarField = styled(Field)`
