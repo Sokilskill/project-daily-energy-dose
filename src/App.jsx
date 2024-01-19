@@ -6,10 +6,7 @@ import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
-import {
-  selectIsLoggedIn,
-  selectIsParamsData,
-} from './redux/auth/auth-selectors';
+import { selectIsLoggedIn } from './redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
 
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
@@ -32,9 +29,8 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isParams = useSelector(selectIsParamsData);
   // const isLoggedIn = true;
-  // const isParams = false;
+  const isParams = false;
   // const dispatch = useDispatch();
   // const isRefreshing = useSelector(selectIsRefreshing);
   // useEffect(() => {
@@ -54,13 +50,7 @@ function App() {
           <Route
             path="signup"
             element={
-              isLoggedIn ?(
-                isParams ? (
-                  <Navigate to="/diary" replace />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
-              ) : <SignUpPage />
+              isLoggedIn ? <Navigate to="/diary" replace /> : <SignUpPage />
             }
           />
           <Route
