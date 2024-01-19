@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,13 +61,15 @@ export const UserCard = ({ time }) => {
         setAvatarPreviewURL(objectURL);
 
         const data = await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log(newAvatarFile);
+        console.log('newAvatar ProfilePage', newAvatarFile);
+        console.log('data', data);
       } catch (error) {
         console.error('Failed to create object URL:', error);
         toast.error('Failed to update avatar');
       } finally {
         setLoading(false);
-        e.target.form.reset();
+        // e.target.form.reset();
+        // ===================== Переглянути чи є тут метод reset =============================
       }
     }
   };
@@ -98,7 +100,7 @@ export const UserCard = ({ time }) => {
         </AvatarContainer>
         <Label htmlFor="file-input">
           <AvatarPickerSvg>
-            <use href={sprite + '#icon-check-mark-1'} />
+            <use href={`${sprite}#icon-check-mark-1`} />
           </AvatarPickerSvg>
         </Label>
         <div>
