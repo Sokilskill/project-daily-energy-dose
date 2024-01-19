@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api/';
 const setToken = (token) => {
@@ -16,6 +14,7 @@ export const registerThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await axios.post('/auth/register', body);
+      console.log(body);
       setToken(data.token);
       toast.success('Registration is successful!', {
         position: 'top-center',
@@ -29,6 +28,7 @@ export const registerThunk = createAsyncThunk(
         position: 'top-center',
         theme: 'dark',
       });
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -51,6 +51,7 @@ export const logInThunk = createAsyncThunk(
         position: 'top-center',
         theme: 'dark',
       });
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -89,6 +90,7 @@ export const logOutThunk = createAsyncThunk(
         position: 'top-center',
         theme: 'dark',
       });
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

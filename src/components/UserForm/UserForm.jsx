@@ -1,3 +1,4 @@
+import React from 'react';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
@@ -29,23 +30,38 @@ import {
   UserContainer,
   UserInput,
 } from './UserForm.styled';
+
 // import { useEffect } from 'react';
 import { RadioInput } from './RadioInput';
 // import { DaySwitch } from '../DaySwitch/DaySwitch';
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
 // import { refreshThunk } from '../../redux/auth/auth-operations';
 
+
 export const UserForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectCurrentUser);
+  const user = useSelector(selectUser);
   const userProfile = useSelector(selectUserProfile);
+
 
   // useEffect(() => {
   //   dispatch(refreshThunk(user));
   // }, [dispatch, user]);
 
-  const handleSubmit = (values) => {
-    dispatch(addUserData(values));
+
+  const handleSubmit = async (values) => {
+    try {
+      setIsSubmitted(true);
+      await dispatch(addUserData(values)).then(() => {
+        console.log('Profile updated successfully');
+      });
+      toast.success('Profile updated successfully');
+    } catch (error) {
+      toast.error('An error occurred while updating the profile');
+      console.error('Error updating profile:', error);
+    } finally {
+      setIsSubmitted(false);
+    }
   };
 
   const initialValues = {
@@ -181,6 +197,7 @@ export const UserForm = () => {
             <SaveButton type="submit" onSubmit={handleSubmit}>
               Save
             </SaveButton>
+
           </MainFormContainer>
         )}
       </Formik>

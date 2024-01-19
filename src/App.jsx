@@ -38,6 +38,7 @@ function App() {
   const isParamsData = useSelector(selectIsParamsData);
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
