@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import {
   addUserData,
-  getCurrentUser,
+  // getCurrentUser,
 } from '../../redux/profileSettings/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -30,23 +30,24 @@ import {
   UserContainer,
   UserInput,
 } from './UserForm.styled';
-import { useEffect, useState } from 'react';
+
+// import { useEffect } from 'react';
 import { RadioInput } from './RadioInput';
 // import { DaySwitch } from '../DaySwitch/DaySwitch';
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
-import { selectUser } from '../../redux/auth/auth-selectors';
+// import { refreshThunk } from '../../redux/auth/auth-operations';
 
 
 export const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const userProfile = useSelector(selectUserProfile);
-  //   const [pickDate, setPickDate]
-  //  = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  useEffect(() => {
-    dispatch(getCurrentUser(user));
-  }, [dispatch, user]);
+
+
+  // useEffect(() => {
+  //   dispatch(refreshThunk(user));
+  // }, [dispatch, user]);
+
 
   const handleSubmit = async (values) => {
     try {
@@ -193,7 +194,10 @@ export const UserForm = () => {
               />
             </div>
 
-            <SaveButton type="submit">Save</SaveButton>
+            <SaveButton type="submit" onSubmit={handleSubmit}>
+              Save
+            </SaveButton>
+
           </MainFormContainer>
         )}
       </Formik>

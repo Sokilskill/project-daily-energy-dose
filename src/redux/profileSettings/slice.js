@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getCurrentUser,
+  // getCurrentUser,
   addUserData,
   updateUserName,
   updatedUserAvatar,
   getUserProfile,
 } from './operations';
+import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
@@ -24,8 +25,6 @@ const initialState = {
   error: null,
   isAuth: false,
 };
-
-
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -83,9 +82,9 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getCurrentUser.pending, handlePending)
-      .addCase(getCurrentUser.rejected, handleRejected)
-      .addCase(getCurrentUser.fulfilled, handleCurrentUserFulfilled)
+      .addCase(refreshThunk.pending, handlePending)
+      .addCase(refreshThunk.rejected, handleRejected)
+      .addCase(refreshThunk.fulfilled, handleCurrentUserFulfilled)
       .addCase(addUserData.pending, handlePending)
       .addCase(addUserData.rejected, handleRejected)
       .addCase(addUserData.fulfilled, handleAddUserDataFulfilled)
@@ -97,7 +96,7 @@ export const profileSlice = createSlice({
       .addCase(updatedUserAvatar.fulfilled, handleUpdateAvatarFulfilled)
       .addCase(getUserProfile.pending, handlePending)
       .addCase(getUserProfile.rejected, handleRejected)
-      .addCase(getUserProfile.fulfilled, handleGetUserProfileFulfilled)
+      .addCase(getUserProfile.fulfilled, handleGetUserProfileFulfilled);
   },
 });
 
