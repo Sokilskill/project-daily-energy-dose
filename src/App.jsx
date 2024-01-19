@@ -32,9 +32,9 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isParamsData = useSelector(selectIsParamsData);
+  const isParams = useSelector(selectIsParamsData);
   // const isLoggedIn = true;
-  const isParams = false;
+  // const isParams = false;
   // const dispatch = useDispatch();
   // const isRefreshing = useSelector(selectIsRefreshing);
   // useEffect(() => {
@@ -54,7 +54,13 @@ function App() {
           <Route
             path="signup"
             element={
-              isLoggedIn ? <Navigate to="/diary" replace /> : <SignUpPage />
+              isLoggedIn ?(
+                isParams ? (
+                  <Navigate to="/diary" replace />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
+              ) : <SignUpPage />
             }
           />
           <Route
