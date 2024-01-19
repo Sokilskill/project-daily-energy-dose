@@ -29,7 +29,7 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const isLoggedIn = true;
+
   const isParams = false;
   // const dispatch = useDispatch();
   // const isRefreshing = useSelector(selectIsRefreshing);
