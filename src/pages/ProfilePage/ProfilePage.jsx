@@ -4,8 +4,8 @@ import {
   ProfileContainer,
   ReversDiv,
   TitleContainer,
-  UserCardContainer,
-  UserFormContainer,
+  // UserCardContainer,
+  // UserFormContainer,
 } from './ProfilePage.styled';
 import { UserForm } from '../../components/UserForm/UserForm';
 
@@ -15,14 +15,15 @@ const ProfilePage = () => {
       <TitleContainer>
         <TitlePage text="Profile Settings" />
       </TitleContainer>
-      <ReversDiv>
-        <UserCardContainer>
-          <UserCard />
-        </UserCardContainer>
 
-        <UserFormContainer>
+      <ReversDiv>
+//         <UserCardContainer>
+          <UserCard />
+//         </UserCardContainer>
+
+//         <UserFormContainer>
           <UserForm />
-        </UserFormContainer>
+//         </UserFormContainer>
       </ReversDiv>
     </ProfileContainer>
   );

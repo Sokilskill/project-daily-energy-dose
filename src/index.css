@@ -97,6 +97,8 @@
   --icon-color: rgba(239, 137, 100, 1);
   --text-calorie-intake: rgba(239, 237, 232, 0.8);
   --input-border: rgba(239, 237, 232, 0.30);
+  --calendar-arrows: rgba(239, 237, 232, 0.40);
+  --calendar-button-border: rgba(239, 237, 232, 0.20);
 }
 
 body {
