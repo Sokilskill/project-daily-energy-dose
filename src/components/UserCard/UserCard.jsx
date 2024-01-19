@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,7 +6,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { updatedUserAvatar } from '../../redux/profileSettings/operations';
 
 import sprite from '../../assets/sprite.svg';
-import { selectCurrentUser, selectUserProfile } from '../../redux/profileSettings/selectors';
+import {
+  selectCurrentUser,
+  selectUserProfile,
+} from '../../redux/profileSettings/selectors';
 import {
   ActivityShower,
   AvatarContainer,
@@ -24,7 +27,6 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
-  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -37,7 +39,6 @@ import {
 } from './UserCard.styled';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
 
-
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUserProfile);
@@ -48,8 +49,7 @@ export const UserCard = ({ time }) => {
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const user  = useSelector(selectCurrentUser);
-  
+  const user = useSelector(selectCurrentUser);
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -61,13 +61,15 @@ export const UserCard = ({ time }) => {
         setAvatarPreviewURL(objectURL);
 
         const data = await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log(newAvatarFile);
+        console.log('newAvatar ProfilePage', newAvatarFile);
+        console.log('data', data);
       } catch (error) {
         console.error('Failed to create object URL:', error);
         toast.error('Failed to update avatar');
       } finally {
-        setLoading(false); 
-        e.target.form.reset();
+        setLoading(false);
+        // e.target.form.reset();
+        // ===================== Переглянути чи є тут метод reset =============================
       }
     }
   };
@@ -85,8 +87,6 @@ export const UserCard = ({ time }) => {
     }
   }, [showPreview]);
 
-  
-
   return (
     <ProfileContainer>
       <WrapperAvatar>
@@ -100,7 +100,7 @@ export const UserCard = ({ time }) => {
         </AvatarContainer>
         <Label htmlFor="file-input">
           <AvatarPickerSvg>
-            <use href={sprite + '#icon-check-mark-1'} />
+            <use href={`${sprite}#icon-check-mark-1`} />
           </AvatarPickerSvg>
         </Label>
         <div>
@@ -174,10 +174,8 @@ export const UserCard = ({ time }) => {
         </Desc>
       </DescWrapper>
       <WrapperLogOut>
-<LogOutBtn/>        
+        <LogOutBtn />
       </WrapperLogOut>
-
-     
     </ProfileContainer>
   );
 };

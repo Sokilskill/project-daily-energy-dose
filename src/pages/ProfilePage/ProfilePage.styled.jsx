@@ -24,8 +24,6 @@ export const TitleContainer = styled.div`
 `;
 
 export const ReversDiv = styled.div`
-
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,8 +53,16 @@ export const ReversDiv = styled.div`
     }
   }
 
+
+  @media (max-width: 1439px) {
+    flex-direction: column;
+  }
 `;
 
-
+export const UserCardContainer = styled.div`
+  @media (min-width: 1440px) {
+    // width: 704px;
+  }
+`;
 
 

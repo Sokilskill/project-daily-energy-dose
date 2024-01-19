@@ -1,8 +1,5 @@
 import styled from '@emotion/styled';
 
-
-
-
 export const ProfileContainer = styled.div`
   width: 100%;
   display: flex;
@@ -12,14 +9,12 @@ export const ProfileContainer = styled.div`
   @media (min-width: 768px) {
     width: 439px;
     margin: 0 auto;
-
-    
   }
 
   @media (min-width: 1440px) {
     width: 439px;
-  
-    
+    margin: 0;
+
   }
 `;
 
@@ -288,17 +283,16 @@ export const Desc = styled.p`
 `;
 
 export const WrapperLogOut = styled.div`
-width: 100%;
-display: inline-flex;
-justify-content: flex-end;
-margin: 41px 40px 0 0;
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-end;
+  margin: 41px 40px 0 0;
 
-@media (min-width: 768px) {
-  margin: 32px 0 0 0;
-}
+  @media (min-width: 768px) {
+    margin: 32px 0 0 0;
+  }
 
-@media (min-width: 1440px) {
-  margin: 32px 0 0 0;
-}
+  @media (min-width: 1440px) {
+    margin: 32px 0 0 0;
+  }
 `;
-
