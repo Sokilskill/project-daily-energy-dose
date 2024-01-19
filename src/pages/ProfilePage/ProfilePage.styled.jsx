@@ -28,11 +28,11 @@ export const ReversDiv = styled.div`
   //   display: flex;
   // justify-content: center;
   // width: 100%;
- 
+
   //   flex-direction: row-reverse;
   //   justify-content: space-between;
   //   max-width: 100%;
-    
+
   // }
 
   display: flex;
@@ -63,11 +63,9 @@ export const ReversDiv = styled.div`
   }
 
   @media (max-width: 1439px) {
-    flex-direction: column-reverse;
-
+    flex-direction: column;
   }
 `;
-
 
 export const UserCardContainer = styled.div`
   @media (min-width: 1440px) {
