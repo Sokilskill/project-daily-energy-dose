@@ -32,7 +32,6 @@ export default function ProductPage() {
   const [products, setProducts] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
 
-  setToken(token);
   
 
   

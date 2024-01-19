@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
-import {getAllCategories} from '../../pages/ProductsPage/product-Api'
 import {
   ProductsFilters,
   Form,
