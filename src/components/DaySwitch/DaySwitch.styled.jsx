@@ -99,22 +99,26 @@ export const StyledCalendarContainer = styled.div`
 export const StyledIcon = styled.svg`
   width: 20px;
   height: 20px;
-  stroke: ${(props) => props.stroke || 'white'};
+  fill: var(--white);
   cursor: pointer;
   position: absolute;
   top: 16px;
   right: 10px;
-  &:hover {
-    use {
+
+  &:hover,
+  &:focus {
+    & > path {
       fill: #ef8964;
     }
   }
+
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
     top: 14px;
   }
 `;
+
 
 export const StyledArrow = styled.div`
   display: flex;

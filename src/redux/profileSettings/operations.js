@@ -9,43 +9,62 @@ export const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const getCurrentUser = createAsyncThunk(
-  'users/getCurrentUser',
-  async (_, thunkAPI) => {
+// export const getCurrentUser = createAsyncThunk(
+//   'users/getCurrentUser',
+//   async (_, thunkApi) => {
+//     try {
+//       const state = thunkApi.getState();
+//       const persistedToken = state.auth.token;
+//       if (!persistedToken) {
+//         toast.info('Unable to get user');
+//         return thunkApi.rejectWithValue('Token not available');
+//       }
+//       setAuthToken(persistedToken);
+//       const res = await axios.get('/auth/current');
+//       return res.data;
+//     } catch (error) {
+//       toast.error(error.message);
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
+export const getUserProfile = createAsyncThunk(
+  'profile/getUserProfile',
+  async (_, thunkApi) => {
     try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      if (!persistedToken) {
-        toast.info('Unable to get user');
-        return thunkAPI.rejectWithValue('Token not available');
+      const state = thunkApi.getState();
+      const userToken = state.auth.token;
+      if (userToken) {
+        // token.set(userToken);
+        const res = await axios.get('/profiles');
+        return res.data;
       }
-      setAuthToken(persistedToken);
-      const res = await axios.get('/auth/current');
-      return res.data;
+      return;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
 export const updateUserName = createAsyncThunk(
-  'users/updateUserInfo',
-  async (userData, thunkAPI) => {
+  'users/updateUserName',
+  async (userData, thunkApi) => {
     try {
       const res = await axios.patch('/users', userData);
       toast.success('Name updated');
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
 export const updatedUserAvatar = createAsyncThunk(
   'user/avatar',
-  async (file, thunkAPI) => {
+  async (file, thunkApi) => {
     try {
       const formData = new FormData();
       formData.append('avatar', file);
@@ -58,7 +77,7 @@ export const updatedUserAvatar = createAsyncThunk(
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -67,11 +86,11 @@ export const getTarget = createAsyncThunk(
   'profile/getTarget',
   async (_, thunkApi) => {
     try {
-      const state = thunkAPI.getState();
+      const state = thunkApi.getState();
       const persistedToken = state.auth.token;
       if (!persistedToken) {
         toast.info('Unable to get user');
-        return thunkAPI.rejectWithValue('Token not available');
+        return thunkApi.rejectWithValue('Token not available');
       }
       setAuthToken(persistedToken);
       const res = await axios.get('profiles/targets');
@@ -84,14 +103,14 @@ export const getTarget = createAsyncThunk(
 
 export const addUserData = createAsyncThunk(
   'profile/addUserData',
-  async (data, thunkAPI) => {
+  async (data, thunkApi) => {
     try {
       const res = await axios.put('/profiles', data);
       toast.success('Your profile updated');
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

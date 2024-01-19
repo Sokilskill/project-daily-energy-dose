@@ -12,6 +12,7 @@
 .form_input {
   width: 100%;
   padding: 14px;
+  margin-bottom: 4px;
   color: var(--secondary-text-color-1, #efede899);
   font-size: 14px;
   line-height: 1.28;
@@ -23,6 +24,18 @@
 }
 .form_input:is(:hover, :focus) {
   border: 1px solid var(--orange, #e6533c);
+}
+.error_imput {
+  border: 1px solid #d80027;
+}
+.input_pass_field {
+  display: flex;
+  align-items: center;
+}
+.icon_eye {
+  width: 20px;
+  height: 20px;
+  margin-left: -34px;
 }
 .form_btn {
   display: flex;
@@ -41,6 +54,35 @@
 .form_btn:is(:hover, :focus) {
   background-color: var(--orange-1, #ef8964);
 }
+.icon_checkbox_error {
+  fill: #d80027;
+  width: 16px;
+  height: 16px;
+}
+.icon_checkbox_succsess {
+  fill: #3cbf61;
+  width: 16px;
+  height: 16px;
+}
+.error_row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #d80027;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+}
+.success_row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #3cbf61;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+}
+
 @media (min-width: 768px) {
   .form {
     width: 364px;

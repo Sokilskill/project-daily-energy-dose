@@ -1,20 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getCurrentUser,
+  // getCurrentUser,
   addUserData,
   updateUserName,
-  getTarget,
   updatedUserAvatar,
+  getUserProfile,
 } from './operations';
+import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
-    name: '',
-    email: '',
     avatarURL: '',
     height: null,
     currentWeight: null,
-    desireWeight: null,
+    desiredWeight: null,
     birthday: null,
     blood: null,
     sex: 'male',
@@ -63,9 +62,10 @@ const handleUpdateAvatarFulfilled = (state, action) => {
   state.error = null;
 };
 
-const handleGetTargetFulfilled =(state, action) => {
+const handleGetUserProfileFulfilled = (state, action) => {
+  state.profile = { ...action.payload };
+  state.token = action.payload.token;
   state.isLoading = false;
-  state.target = action.payload;
   state.error = null;
 };
 
@@ -76,12 +76,15 @@ export const profileSlice = createSlice({
     setAvatarURL: (state, action) => {
       state.profile.avatarURL = action.payload;
     },
+    setBirthday: (state, action) => {
+      state.profile.birthday = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getCurrentUser.pending, handlePending)
-      .addCase(getCurrentUser.rejected, handleRejected)
-      .addCase(getCurrentUser.fulfilled, handleCurrentUserFulfilled)
+      .addCase(refreshThunk.pending, handlePending)
+      .addCase(refreshThunk.rejected, handleRejected)
+      .addCase(refreshThunk.fulfilled, handleCurrentUserFulfilled)
       .addCase(addUserData.pending, handlePending)
       .addCase(addUserData.rejected, handleRejected)
       .addCase(addUserData.fulfilled, handleAddUserDataFulfilled)
@@ -91,11 +94,11 @@ export const profileSlice = createSlice({
       .addCase(updatedUserAvatar.pending, handlePending)
       .addCase(updatedUserAvatar.rejected, handleRejected)
       .addCase(updatedUserAvatar.fulfilled, handleUpdateAvatarFulfilled)
-      .addCase(getTarget.pending, handlePending)
-      .addCase(getTarget.rejected, handleRejected)
-      .addCase(getTarget.fulfilled, handleGetTargetFulfilled)
+      .addCase(getUserProfile.pending, handlePending)
+      .addCase(getUserProfile.rejected, handleRejected)
+      .addCase(getUserProfile.fulfilled, handleGetUserProfileFulfilled);
   },
 });
 
-export const { setAvatarURL } = profileSlice.actions;
+export const { setAvatarURL, setBirthday } = profileSlice.actions;
 export const profileReducer = profileSlice.reducer;
