@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Container, TitlePage, Wrap } from './ProductsPage.styled';
 import { Filters } from '../../components/ProductsFilters/ProductsFilters';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { getProducts, setToken, getAllCategories } from './product-Api';
+import { getProducts, getAllCategories } from '../../redux/auth/auth-operations';
 import bg_min from '../../assets/productPage/side-view-people-training-gym.jpg';
 import bg_max from '../../assets/productPage/side-view-people-training-gym@max.jpg';
 
