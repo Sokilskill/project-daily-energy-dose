@@ -17,6 +17,10 @@ export const Item = styled.li`
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
   }
+
+  @media screen and (min-width: 1440px) {
+    width: 405px;
+  }
 `;
 
 export const UpperWrapper = styled.div`
@@ -83,13 +87,17 @@ export const Icon = styled.svg`
 `;
 
 export const ProductName = styled.h2`
-  width: 258px;
   color: #efede8;
   font-family: Roboto;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.2;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  line-height: 1.33;
+  }
 `;
 
 export const InfoText = styled.p`
@@ -105,4 +113,30 @@ export const InfoText = styled.p`
 export const Accent = styled.span`
   color: #efede8;
   color: #efede8;
+`;
+
+export const RecText = styled.p`
+  color: #efede8;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-right: 16px;
+`;
+
+export const Rectangle = styled.span`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+  margin-right: 8px;
+`;
+
+export const WrapDescription = styled.div`
+  
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
 `;

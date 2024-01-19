@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import {
   Item,
   Chip,
@@ -11,13 +12,26 @@ import {
   Icon,
   InfoText,
   Accent,
+  Rectangle,
+  RecText,
+  WrapDescription,
 } from './ProductItem.styled.js';
-import {RectangleAndText} from '../RectangleInCard/Rectangle.jsx'
 import sprite from '../../assets/sprite.svg';
 
+let recipeWindow;
 
+const initialRecipeWindow = () => {
+  if (window.screen.width < 1440) {
+    recipeWindow = true;
+  } else  {
+    recipeWindow = false;
+  }
+}
 
-export default function ProductItem({ productItem  }) {
+initialRecipeWindow();
+
+export default function ProductItem({ productItem }) {
+
   const { weight, calories, category, title, groupBloodNotAllowed, _id } =
     productItem;
   // const groupBlood = useSelector((state) => state.auth.user.bodyParams.blood);
@@ -26,12 +40,23 @@ export default function ProductItem({ productItem  }) {
   const normalizedTitle = () => {
     if (title) {
       const upperLetter = title[0].toUpperCase();
-      const newTitle = `${upperLetter + title.slice(1, 24)}`;
+      let newTitle;
+      if (recipeWindow) {
+        newTitle = `${upperLetter + title.slice(1, 19)}`;
+
+      if (title.length > 19) {
+        return `${newTitle}...`;
+      }
+      return newTitle;
+      } else {
+        newTitle = `${upperLetter + title.slice(1, 24)}`;
 
       if (title.length > 24) {
         return `${newTitle}...`;
       }
-      return newTitle;
+        return newTitle;
+      }
+      
     }
     return '';
   };
@@ -46,16 +71,6 @@ export default function ProductItem({ productItem  }) {
     }
     return '';
   };
-  const getRecomended = () => {
-    if (groupBlood) {
-      return groupBloodNotAllowed[groupBlood] ? (
-        <RectangleAndText color={'#419B09'} text={'Recommended'} />
-      ) : (
-        <RectangleAndText color={'#E9101D'} text={'Not recommended'} />
-      );
-    }
-    return 'Recom.. or not';
-  };
   
   return (
     <Item>
@@ -63,7 +78,13 @@ export default function ProductItem({ productItem  }) {
         <Chip>DIET</Chip>
 
         <WrapBtn>
-          {getRecomended()}
+          {groupBloodNotAllowed[groupBlood] ? (
+        <><Rectangle color={'#419B09'} />
+        <RecText>{'Recommended'}</RecText></>
+      ) : (
+          <><Rectangle color={'#E9101D'} />
+        <RecText>{'Not recommended'}</RecText></>
+      )}
           <AddBtn>
             Add
             <IconAdd>
@@ -78,6 +99,7 @@ export default function ProductItem({ productItem  }) {
           <use href={sprite + '#icon-icon'} />
         </Icon>
         <ProductName>{normalizedTitle()}</ProductName>
+        <WrapDescription>
         <InfoText>
           Calories: <Accent> {calories}</Accent>
         </InfoText>
@@ -87,6 +109,8 @@ export default function ProductItem({ productItem  }) {
         <InfoText>
           Weight: <Accent>{weight}</Accent>
         </InfoText>
+        </WrapDescription>
+        
       </LowerWrapper>
     </Item>
   );

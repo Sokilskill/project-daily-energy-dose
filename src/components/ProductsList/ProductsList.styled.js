@@ -27,7 +27,33 @@ export const List = styled.ul`
       background-color: var(--orange-1);
     }
   }
+
+  @media screen and (min-width: 1440px) {
+    width: 850px;
+    height: 487px;
+  }
 `;
 
-export const NotFoundElement = styled.div``;
-export const NotFoundText = styled.p``;
+export const NotFoundElement = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+export const NotFoundText = styled.p`
+  color: rgba(239, 237, 232, 0.30);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
+
+  @media screen and (min-width: 768px) {
+  width: 580px;  
+  font-size: 16px;
+  line-height: 1.5;
+  }
+`;
+
+export const AccentText = styled.span`
+  color: var(--orange);
+`;

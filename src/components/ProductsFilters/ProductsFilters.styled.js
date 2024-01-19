@@ -15,6 +15,14 @@ export const ProductsFilters = styled.div`
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+
+  @media screen and (min-width: 1440px){
+    margin-bottom: 0;
+  }
 `;
 
 export const Input = styled.input`

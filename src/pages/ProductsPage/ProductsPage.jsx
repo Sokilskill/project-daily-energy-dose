@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, TitlePage } from './ProductsPage.styled';
+import { Container, TitlePage, Wrap } from './ProductsPage.styled';
 import { Filters } from '../../components/ProductsFilters/ProductsFilters';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { getProducts, setToken, getAllCategories } from './product-Api';
-
+import bg_min from '../../assets/productPage/side-view-people-training-gym.jpg';
+import bg_max from '../../assets/productPage/side-view-people-training-gym@max.jpg';
 
 const initialRecommended = [
   { id: 'fdg12sdgdfdffsfd', value: 'all', label: 'all' },
@@ -78,7 +79,6 @@ export default function ProductPage() {
   
   const handlerScroll = (e) => {
     if (e.target.scrollHeight - (e.target.scrollTop + window.innerHeight) < 600 && products.length < currentTotal) {
-      console.log(products.length);
       setFetching(true);
     }
   }
@@ -95,14 +95,17 @@ export default function ProductPage() {
   };
 
   return (
-    <Container>
+    <Container bgi={[bg_min, bg_max]}>
       <div className='container'>
-        <TitlePage>Products</TitlePage>
-        <Filters
-          setParams={setParams}
-          initialCategory={allCategories}
-          initialRecommended={initialRecommended}
-        />
+        <Wrap>
+          <TitlePage>Products</TitlePage>
+          <Filters
+            setParams={setParams}
+            initialCategory={allCategories}
+            initialRecommended={initialRecommended}
+            />
+        </Wrap>
+        
         <ProductsList products={products} isFetching={fetching} />
       </div>
     </Container>
