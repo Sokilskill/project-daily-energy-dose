@@ -46,16 +46,17 @@ const notify = () => {
 };
 
 const Diary = () => {
-const storDate = localStorage.getItem('PowerPulsDate');
-const newDate = storDate ? new Date(storDate) : new Date();
-const [date, setDate] = useState(newDate);
-const dispatch = useDispatch();
+  const storDate = localStorage.getItem('PowerPulsDate');
+  const newDate = storDate ? new Date(storDate) : new Date();
+  const [date, setDate] = useState(newDate);
+  const dispatch = useDispatch();
 
   const diary = useSelector(diarySelectors.getDiary);
   const { eatenProducts, doneExercises } = diary;
-  const dayOfBirthday = new Date(
-    useSelector(authSelectors.getUserMetricData).birthday,
-  );
+
+  const userMetricData = useSelector(authSelectors.getUserMetricData);
+
+  const dayOfBirthday = userMetricData ? new Date(userMetricData.birthday) : null;
 
   const handlerDate = (date) => {
     if (date < dayOfBirthday) {
