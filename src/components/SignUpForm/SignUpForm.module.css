@@ -28,6 +28,9 @@
 .error_imput {
   border: 1px solid #d80027;
 }
+.success_imput {
+  border: 1px solid #3cbf61;
+}
 .input_pass_field {
   display: flex;
   align-items: center;

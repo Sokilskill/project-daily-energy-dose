@@ -45,9 +45,11 @@ export const SignInForm = ({ onSubmit }) => {
                     autoComplete="off"
                     placeholder="Email"
                     className={
-                      errors.email
-                        ? `${css.form_input} ${css.error_imput}`
-                        : `${css.form_input}`
+                      !errors.email
+                        ? !touched.email
+                          ? `${css.form_input}`
+                          : `${css.form_input} ${css.success_imput}`
+                        : `${css.form_input} ${css.error_imput}`
                     }
                   />
                   {errors.email && touched.email ? (
@@ -78,9 +80,11 @@ export const SignInForm = ({ onSubmit }) => {
                       autoComplete="off"
                       placeholder="Password"
                       className={
-                        errors.password
-                          ? `${css.form_input} ${css.error_imput}`
-                          : `${css.form_input}`
+                        !errors.password
+                          ? !touched.password
+                            ? `${css.form_input}`
+                            : `${css.form_input} ${css.success_imput}`
+                          : `${css.form_input} ${css.error_imput}`
                       }
                     />
                     <svg
