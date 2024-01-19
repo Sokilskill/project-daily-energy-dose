@@ -1,5 +1,5 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
-
+@import './components/ProductsFilters/style.filters.css';
 /* roboto-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -162,3 +162,4 @@ button {
     padding: 0 96px;
   }
 }
+

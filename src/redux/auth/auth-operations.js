@@ -75,3 +75,15 @@ export const logOutThunk = createAsyncThunk(
     }
   }
 );
+
+
+
+export async function getProducts(options) {
+  const data = await axios.get(`/food`, options);
+  return data;
+}
+
+export async function getAllCategories() {
+  const data = await axios.get('/food/categories');
+  return data;
+}
