@@ -1,31 +1,40 @@
-import{t as Yt,r as p,E as qt,v as Kt,w as Xt,n as j,_ as O,p as Zt,j as F,s as de,i as H,c as Jt,x as Qt,y as Ue}from"./index-d2686c80.js";import{e as ie,a as vt,h as en,_ as tn,b as nn,c as rn,d as on,g as an}from"./defineProperty-179e1ab7.js";import"./hoist-non-react-statics.cjs-cd9e79d6.js";var x=function(t,i){var r=arguments;if(i==null||!Yt.call(i,"css"))return p.createElement.apply(void 0,r);var e=r.length,a=new Array(e);a[0]=qt,a[1]=Kt(t,i);for(var u=2;u<e;u++)a[u]=r[u];return p.createElement.apply(null,a)};function Pe(){for(var n=arguments.length,t=new Array(n),i=0;i<n;i++)t[i]=arguments[i];return Xt(t)}var un=function(){var t=Pe.apply(void 0,arguments),i="animation-"+t.name;return{name:i,styles:"@keyframes "+i+"{"+t.styles+"}",anim:1,toString:function(){return"_EMO_"+this.name+"_"+this.styles+"_EMO_"}}};const sn=j.section`
+import{t as Yt,r as p,E as qt,v as Kt,w as Xt,n as j,_ as O,p as Zt,j as F,s as de,i as H,c as Jt,x as Qt,y as Ue}from"./index-ab0843ae.js";import{e as ie,a as vt,h as en,_ as tn,b as nn,c as rn,d as on,g as an}from"./defineProperty-179e1ab7.js";import"./hoist-non-react-statics.cjs-1faab45b.js";var x=function(t,i){var r=arguments;if(i==null||!Yt.call(i,"css"))return p.createElement.apply(void 0,r);var e=r.length,a=new Array(e);a[0]=qt,a[1]=Kt(t,i);for(var u=2;u<e;u++)a[u]=r[u];return p.createElement.apply(null,a)};function Pe(){for(var n=arguments.length,t=new Array(n),i=0;i<n;i++)t[i]=arguments[i];return Xt(t)}var un=function(){var t=Pe.apply(void 0,arguments),i="animation-"+t.name;return{name:i,styles:"@keyframes "+i+"{"+t.styles+"}",anim:1,toString:function(){return"_EMO_"+this.name+"_"+this.styles+"_EMO_"}}};const sn=j.section`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   padding-top: 40px;
 
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding-top: 72px;
   }
 
-  @media screen and (min-width: 1440px){
-    background-image: linear-gradient(to left, transparent -100px, rgba(4, 4, 4, 0.5) 150px, black 380px),
-    url(${n=>n.bgi[0]});
-      
+  @media screen and (min-width: 1440px) {
+    background-image: linear-gradient(
+        to left,
+        transparent -100px,
+        rgba(4, 4, 4, 0.5) 150px,
+        black 470px
+      ),
+      url(${n=>n.bgi[0]});
+
     background-repeat: no-repeat;
     background-position: right;
+    background-size: contain;
 
     @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-        background-image: linear-gradient(to left, transparent -100px, rgba(4, 4, 4, 0.5) 150px, black 380px),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to left,
+          transparent -100px,
+          rgba(4, 4, 4, 0.5) 150px,
+          black 470px
+        ),
         url(${n=>n.bgi[1]});
-            
-        background-size: contain;
-}
-  }
 
-  
+      background-size: contain;
+    }
+  }
 `,ln=j.h1`
   color: #efede8;
   font-family: Roboto;
