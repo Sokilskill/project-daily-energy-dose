@@ -122,7 +122,7 @@ export const SignUpForm = ({ onSubmit }) => {
                     />
                     <svg
                       className={css.icon_eye}
-                      onClick={() => setVisible(visible)}
+                      onClick={() => setVisible(!visible)}
                     >
                       {visible ? (
                         <use href={`${sprite}#eye`} />
