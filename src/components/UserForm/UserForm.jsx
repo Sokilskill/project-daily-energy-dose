@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import {
   addUserData,
-  getCurrentUser,
+  // getCurrentUser,
 } from '../../redux/profileSettings/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -29,19 +29,20 @@ import {
   UserContainer,
   UserInput,
 } from './UserForm.styled';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { RadioInput } from './RadioInput';
 // import { DaySwitch } from '../DaySwitch/DaySwitch';
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
+// import { refreshThunk } from '../../redux/auth/auth-operations';
 
 export const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectCurrentUser);
   const userProfile = useSelector(selectUserProfile);
 
-  useEffect(() => {
-    dispatch(getCurrentUser(user));
-  }, [dispatch, user]);
+  // useEffect(() => {
+  //   dispatch(refreshThunk(user));
+  // }, [dispatch, user]);
 
   const handleSubmit = (values) => {
     dispatch(addUserData(values));
@@ -80,7 +81,6 @@ export const UserForm = () => {
                   aria-label="Name Input"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                 
                 />
                 <ErrorMessage name="name" component={ErrorMessageStyled} />
               </div>
@@ -95,7 +95,6 @@ export const UserForm = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                 
                 />
                 <ErrorMessage name="email" component={ErrorMessageStyled} />
               </div>
@@ -103,42 +102,40 @@ export const UserForm = () => {
             <ProfileContainer>
               <ProfileWrapper>
                 <div>
-                <Label>Height</Label>
-                <HeightInput
-                  type="number"
-                  id="height"
-                  name="height"
-                  placeholder="0"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.height}
-                  required
-                />
-                <ErrorMessage name="height" component={ErrorMessageStyled} />
+                  <Label>Height</Label>
+                  <HeightInput
+                    type="number"
+                    id="height"
+                    name="height"
+                    placeholder="0"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.height}
+                    required
+                  />
+                  <ErrorMessage name="height" component={ErrorMessageStyled} />
                 </div>
-               <div>
-                <Label>Current Weight</Label>
-                <CurrentWeightInput
-                  type="number"
-                  id="currentWeight"
-                  name="currentWeight"
-                  placeholder="0"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.currentWeight}
-                  required
-                />
-                <ErrorMessage
-                  name="currentWeigh"
-                  component={ErrorMessageStyled}
-                />
-               </div>
-                
+                <div>
+                  <Label>Current Weight</Label>
+                  <CurrentWeightInput
+                    type="number"
+                    id="currentWeight"
+                    name="currentWeight"
+                    placeholder="0"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.currentWeight}
+                    required
+                  />
+                  <ErrorMessage
+                    name="currentWeigh"
+                    component={ErrorMessageStyled}
+                  />
+                </div>
               </ProfileWrapper>
               <ProfileCalendarWrapper>
                 <div>
-                  <Label>
-                  Desired Weight</Label>
+                  <Label>Desired Weight</Label>
                   <DesiredWeightInput
                     type="number"
                     id="desiredWeight"
@@ -154,22 +151,22 @@ export const UserForm = () => {
                     component={ErrorMessageStyled}
                   />
                 </div>
-                
+
                 <div>
-                  <Label>
-                  Date of birth </Label>
-               
+                  <Label>Date of birth </Label>
 
                   <CalendarField name="birthday">
-  {({ field }) => (
-    <div>
-      <BirthdayPicker {...field} />
-      <ErrorMessage name="birthday" component={ErrorMessageStyled} />
-    </div>
-  )}
-</CalendarField>
+                    {({ field }) => (
+                      <div>
+                        <BirthdayPicker {...field} />
+                        <ErrorMessage
+                          name="birthday"
+                          component={ErrorMessageStyled}
+                        />
+                      </div>
+                    )}
+                  </CalendarField>
                 </div>
-                
               </ProfileCalendarWrapper>
             </ProfileContainer>
 
@@ -181,7 +178,9 @@ export const UserForm = () => {
               />
             </div>
 
-            <SaveButton type="submit" onSubmit={handleSubmit}>Save</SaveButton>
+            <SaveButton type="submit" onSubmit={handleSubmit}>
+              Save
+            </SaveButton>
           </MainFormContainer>
         )}
       </Formik>

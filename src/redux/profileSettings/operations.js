@@ -9,25 +9,25 @@ export const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const getCurrentUser = createAsyncThunk(
-  'users/getCurrentUser',
-  async (_, thunkAPI) => {
-    try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      if (!persistedToken) {
-        toast.info('Unable to get user');
-        return thunkAPI.rejectWithValue('Token not available');
-      }
-      setAuthToken(persistedToken);
-      const res = await axios.get('/auth/current');
-      return res.data;
-    } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const getCurrentUser = createAsyncThunk(
+//   'users/getCurrentUser',
+//   async (_, thunkAPI) => {
+//     try {
+//       const state = thunkAPI.getState();
+//       const persistedToken = state.auth.token;
+//       if (!persistedToken) {
+//         toast.info('Unable to get user');
+//         return thunkAPI.rejectWithValue('Token not available');
+//       }
+//       setAuthToken(persistedToken);
+//       const res = await axios.get('/auth/current');
+//       return res.data;
+//     } catch (error) {
+//       toast.error(error.message);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
@@ -45,7 +45,7 @@ export const getUserProfile = createAsyncThunk(
       toast.error(error.message);
       return thunkApi.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const updateUserName = createAsyncThunk(
@@ -98,7 +98,7 @@ export const getTarget = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const addUserData = createAsyncThunk(
