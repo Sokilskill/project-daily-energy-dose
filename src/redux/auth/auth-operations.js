@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-axios.defaults.baseURL = 'https://power-pulse-6-backend.onren.com/api/';
+axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api/';
 const setToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
