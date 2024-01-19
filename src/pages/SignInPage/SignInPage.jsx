@@ -1,14 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { logInThunk } from '../../redux/auth/auth-operations';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
 import { Link } from 'react-router-dom';
 import css from './SignInPage.module.css';
 import { SignInForm } from '../../components/SignInForm/SignInForm';
+import { logInThunk } from '../../redux/auth/auth-operations';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
   const handleFormData = (data) => {
-    console.log(data);
     dispatch(logInThunk(data));
   };
 

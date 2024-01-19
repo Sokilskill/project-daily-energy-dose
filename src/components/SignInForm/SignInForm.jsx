@@ -19,7 +19,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 export const SignInForm = ({ onSubmit }) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   return (
     <Formik
@@ -42,15 +42,28 @@ export const SignInForm = ({ onSubmit }) => {
                     type="email"
                     name="email"
                     id="email"
+                    autoComplete="off"
                     placeholder="Email"
-                    className={css.form_input}
+                    className={
+                      errors.email
+                        ? `${css.form_input} ${css.error_imput}`
+                        : `${css.form_input}`
+                    }
                   />
                   {errors.email && touched.email ? (
                     <div className={css.error_row}>
-                      <svg className={css.icon_checkbox_circle}>
+                      <svg className={css.icon_checkbox_error}>
                         <use href={`${sprite}#checkbox-circle`} />
                       </svg>
                       <ErrorMessage name="email" />
+                    </div>
+                  ) : null}
+                  {!errors.email && touched.email ? (
+                    <div className={css.success_row}>
+                      <svg className={css.icon_checkbox_succsess}>
+                        <use href={`${sprite}#checkbox-circle`} />
+                      </svg>
+                      <p>Success email</p>
                     </div>
                   ) : null}
                 </div>
@@ -62,12 +75,17 @@ export const SignInForm = ({ onSubmit }) => {
                       type={visible ? 'text' : 'password'}
                       name="password"
                       id="password"
+                      autoComplete="off"
                       placeholder="Password"
-                      className={css.form_input}
+                      className={
+                        errors.password
+                          ? `${css.form_input} ${css.error_imput}`
+                          : `${css.form_input}`
+                      }
                     />
                     <svg
                       className={css.icon_eye}
-                      onClick={() => setVisible(!visible)}
+                      onClick={() => setVisible(visible)}
                     >
                       {visible ? (
                         <use href={`${sprite}#eye`} />
@@ -78,10 +96,18 @@ export const SignInForm = ({ onSubmit }) => {
                   </div>
                   {errors.password && touched.password ? (
                     <div className={css.error_row}>
-                      <svg className={css.icon_checkbox_circle}>
+                      <svg className={css.icon_checkbox_error}>
                         <use href={`${sprite}#checkbox-circle`} />
                       </svg>
                       <ErrorMessage name="password" />
+                    </div>
+                  ) : null}
+                  {!errors.password && touched.password ? (
+                    <div className={css.success_row}>
+                      <svg className={css.icon_checkbox_succsess}>
+                        <use href={`${sprite}#checkbox-circle`} />
+                      </svg>
+                      <p>Success password</p>
                     </div>
                   ) : null}
                 </div>
