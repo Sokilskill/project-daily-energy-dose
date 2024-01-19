@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserProfile } from '../../redux/profileSettings/selectors';
 
 import {
-  CalendarField,
   CurrentWeightInput,
   DesiredWeightInput,
   ErrorMessageStyled,
@@ -23,23 +22,20 @@ import {
   UserContainer,
   UserInput,
   DesiredWeight,
+  EmailWrapper,
+  ProfileCalendarInput,
 } from './UserForm.styled';
 
-// import { useEffect } from 'react';
+import sprite from '../../assets/sprite.svg';
 import { RadioInput } from './RadioInput';
-// import { DaySwitch } from '../DaySwitch/DaySwitch';
+
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
 import { selectUser } from '../../redux/auth/auth-selectors';
-// import { refreshThunk } from '../../redux/auth/auth-operations';
 
 export const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const userProfile = useSelector(selectUserProfile);
-
-  // useEffect(() => {
-  //   dispatch(refreshThunk(user));
-  // }, [dispatch, user]);
 
   const handleSubmit = async (values) => {
     try {
@@ -68,6 +64,13 @@ export const UserForm = () => {
     levelActivity: String(userProfile.levelActivity) || '1',
   };
 
+  const calculateMaxDateFor18Years = () => {
+    const today = new Date();
+    today.setFullYear(today.getFullYear() - 18);
+
+    return today;
+  };
+
   return (
     <MainContainer>
       <Formik
@@ -75,25 +78,69 @@ export const UserForm = () => {
         validationSchema={ProfileSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, handleChange, handleBlur }) => (
+        {({ values, handleChange, handleBlur, errors, touched }) => (
           <MainFormContainer autoComplete="off" onSubmit={handleSubmit}>
             <UserContainer>
-              <div>
-                <Label>Name </Label>
-                <UserInput
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={values.name}
-                  placeholder="Name"
-                  aria-label="Name Input"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                <ErrorMessage name="name" component={ErrorMessageStyled} />
+              <div
+                style={{
+                  borderColor: touched.name
+                    ? errors.name
+                      ? 'var(--error-color, #d80027)'
+                      : ''
+                    : '',
+                }}
+              >
+                <Label>Name</Label>
+                <div style={{ position: 'relative' }}>
+                  <UserInput
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={values.name}
+                    placeholder="Name"
+                    aria-label="Name Input"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    style={{
+                      borderColor: touched.name
+                        ? errors.name
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
+                  />
+                </div>
+                <div style={{ position: 'relative' }}>
+                  {errors.name && touched.name && (
+                    <svg
+                      style={{
+                        width: '16px',
+                        height: '16px',
+                        position: 'absolute',
+                        left: 0,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                      }}
+                    >
+                      <use
+                        href={`${sprite}#checkbox-circle`}
+                        style={{ fill: 'var(--error-color, #d80027)' }}
+                      />
+                    </svg>
+                  )}
+                  <ErrorMessage name="name" component={ErrorMessageStyled} />
+                </div>
               </div>
 
-              <div>
+              <EmailWrapper
+                style={{
+                  borderColor: touched.name
+                    ? errors.name
+                      ? 'var(--error-color, #d80027)'
+                      : ''
+                    : '',
+                }}
+              >
                 <Label>Email</Label>
                 <UserInput
                   type="email"
@@ -103,46 +150,148 @@ export const UserForm = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
+                  style={{
+                    borderColor: touched.name
+                      ? errors.name
+                        ? 'var(--error-color, #d80027)'
+                        : ''
+                      : '',
+                  }}
                 />
-                <ErrorMessage name="email" component={ErrorMessageStyled} />
-              </div>
+
+                <div style={{ position: 'relative' }}>
+                  {errors.email && touched.email && (
+                    <svg
+                      style={{
+                        width: '16px',
+                        height: '16px',
+                        position: 'absolute',
+                        left: 0,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                      }}
+                    >
+                      <use
+                        href={`${sprite}#checkbox-circle`}
+                        style={{ fill: 'var(--error-color, #d80027)' }}
+                      />
+                    </svg>
+                  )}
+                  <ErrorMessage name="email" component={ErrorMessageStyled} />
+                </div>
+              </EmailWrapper>
             </UserContainer>
             <ProfileContainer>
-              <ProfileWrapper>
-                <div>
-                  <Label>Height</Label>
-                  <HeightInput
-                    type="number"
-                    id="height"
-                    name="height"
-                    placeholder="0"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.height}
-                    required
-                  />
-                  <ErrorMessage name="height" component={ErrorMessageStyled} />
-                </div>
-                <div>
-                  <Label>Current Weight</Label>
-                  <CurrentWeightInput
-                    type="number"
-                    id="currentWeight"
-                    name="currentWeight"
-                    placeholder="0"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.currentWeight}
-                    required
-                  />
-                  <ErrorMessage
-                    name="currentWeigh"
-                    component={ErrorMessageStyled}
-                  />
+          <ProfileWrapper>
+            <div
+              style={{
+                borderColor: touched.height
+                  ? errors.height
+                    ? 'var(--error-color, #d80027)'
+                    : ''
+                  : '',
+              }}
+            >
+              <Label>Height</Label>
+              <HeightInput
+                type="number"
+                id="height"
+                name="height"
+                placeholder="0"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.height}
+                required
+                style={{
+                  borderColor: touched.height
+                    ? errors.height
+                      ? 'var(--error-color, #d80027)'
+                      : ''
+                    : '',
+                }}
+              />
+              <div style={{ position: 'relative' }}>
+                {errors.height && touched.height && (
+                  <svg
+                    style={{
+                      width: '16px',
+                      height: '16px',
+                      position: 'absolute',
+                      left: 0,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                    }}
+                  >
+                    <use
+                      href={`${sprite}#checkbox-circle`}
+                      style={{ fill: 'var(--error-color, #d80027)' }}
+                    />
+                  </svg>
+                )}
+                <ErrorMessage name="height" component={ErrorMessageStyled} />
+              </div>
+            </div>
+
+            <div
+              style={{
+                borderColor: touched.currentWeight
+                  ? errors.currentWeight
+                    ? 'var(--error-color, #d80027)'
+                    : ''
+                  : '',
+              }}
+            >
+              <Label>Current Weight</Label>
+              <CurrentWeightInput
+                type="number"
+                id="currentWeight"
+                name="currentWeight"
+                placeholder="0"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.currentWeight}
+                required
+                style={{
+                  borderColor: touched.currentWeight
+                    ? errors.currentWeight
+                      ? 'var(--error-color, #d80027)'
+                      : ''
+                    : '',
+                }}
+              />
+              <div style={{ position: 'relative' }}>
+                {errors.currentWeight && touched.currentWeight && (
+                  <svg
+                    style={{
+                      width: '16px',
+                      height: '16px',
+                      position: 'absolute',
+                      left: 0,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                    }}
+                  >
+                    <use
+                      href={`${sprite}#checkbox-circle`}
+                      style={{ fill: 'var(--error-color, #d80027)' }}
+                    />
+                  </svg>
+                )}
+                <ErrorMessage
+                  name="currentWeight"
+                  component={ErrorMessageStyled}
+                />
+                  </div>
                 </div>
               </ProfileWrapper>
               <ProfileCalendarWrapper>
-                <DesiredWeight>
+                <DesiredWeight style={{
+                borderColor: touched.desiredWeight
+                  ? errors.desiredWeight
+                    ? 'var(--error-color, #d80027)'
+                    : ''
+                  : '',
+              }}>
                   <Label>Desired Weight</Label>
                   <DesiredWeightInput
                     type="number"
@@ -153,28 +302,53 @@ export const UserForm = () => {
                     onBlur={handleBlur}
                     value={values.desiredWeight}
                     required
+                    style={{
+                      borderColor: touched.desiredWeight
+                        ? errors.desiredWeight
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
                   />
-                  <ErrorMessage
+                 <div style={{ position: 'relative' }}>
+                {errors.desiredWeight && touched.desiredWeight && (
+                  <svg
+                    style={{
+                      width: '16px',
+                      height: '16px',
+                      position: 'absolute',
+                      left: 0,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                    }}
+                  >
+                    <use
+                      href={`${sprite}#checkbox-circle`}
+                      style={{ fill: 'var(--error-color, #d80027)' }}
+                    />
+                  </svg>
+                )}
+                    <ErrorMessage
                     name="desiredWeight"
                     component={ErrorMessageStyled}
                   />
+                  </div>
+                  
                 </DesiredWeight>
 
                 <div>
-                  <Label>Date of birth </Label>
-
-                  <CalendarField name="birthday">
-                    {({ field }) => (
-                      <div>
-                        <BirthdayPicker {...field} />
-                        <ErrorMessage
-                          name="birthday"
-                          component={ErrorMessageStyled}
-                        />
-                      </div>
-                    )}
-                  </CalendarField>
-                </div>
+      <Label>Date of birth </Label>
+      <ProfileCalendarInput>
+        <Field name="birthday">
+          {({ field }) => (
+            <div>
+              <BirthdayPicker {...field} maxDate={calculateMaxDateFor18Years()} />
+              <ErrorMessage name="birthday" component={ErrorMessageStyled} />
+            </div>
+          )}
+        </Field>
+      </ProfileCalendarInput>
+    </div>
               </ProfileCalendarWrapper>
             </ProfileContainer>
 

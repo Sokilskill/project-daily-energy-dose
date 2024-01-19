@@ -24,19 +24,10 @@ export const TitleContainer = styled.div`
 `;
 
 export const ReversDiv = styled.div`
-  // @media (min-width: 1440px) {
-  //   display: flex;
-  // justify-content: center;
-  // width: 100%;
- 
-  //   flex-direction: row-reverse;
-  //   justify-content: space-between;
-  //   max-width: 100%;
-    
-  // }
+
 
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
   max-width: 1440px;
@@ -53,38 +44,19 @@ export const ReversDiv = styled.div`
     transform: translateX(-50%);
     width: 1px;
     background-color: rgba(239, 237, 232, 0.2);
-    display: none; /* Початково приховуємо лінію */
+    display: none; 
   }
 
   @media (min-width: 1440px) {
+    padding-top: 20px;
     &:before {
-      display: block; /* Показуємо лінію на десктопі */
+      display: block; 
+      flex-direction: row-reverse;
     }
   }
 
-  @media (max-width: 1439px) {
-    flex-direction: column-reverse;
-
-  }
 `;
 
 
-export const UserCardContainer = styled.div`
-  @media (min-width: 1440px) {
-    // width: 704px;
-  }
-`;
 
-export const UserFormContainer = styled.div`
-@media (min-width: 1440px) {
-//  width: 445px;
- &::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -8px;
-  height: 100%;
-  width: 1px;
-  background-color: var(--border, #efede84d);
-}
-`;
+

@@ -18,7 +18,7 @@ export const ProfileContainer = styled.div`
 
   @media (min-width: 1440px) {
     width: 439px;
-    // margin: 0 auto;
+  
     
   }
 `;
@@ -114,6 +114,9 @@ export const NameUserWrapper = styled.div`
   @media (min-width: 768px) {
     margin-top: 18px;
   }
+  @media (min-width: 1440px) {
+    margin-top: 32px;
+  }
 `;
 
 export const UserName = styled.p`
@@ -126,6 +129,7 @@ export const UserName = styled.p`
     font-size: 24px;
     line-height: 1.2;
   }
+ 
 `;
 
 export const UserNameDescription = styled.p`
