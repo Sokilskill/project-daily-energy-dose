@@ -1,18 +1,11 @@
-import React from 'react';
-import { Formik, Field, ErrorMessage, Form } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import {
-  addUserData,
-  // getCurrentUser,
-} from '../../redux/profileSettings/operations';
+import { addUserData } from '../../redux/profileSettings/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectCurrentUser,
-  selectUserProfile,
-} from '../../redux/profileSettings/selectors';
+import { selectUserProfile } from '../../redux/profileSettings/selectors';
 
 import {
   CalendarField,
@@ -35,23 +28,21 @@ import {
 import { RadioInput } from './RadioInput';
 // import { DaySwitch } from '../DaySwitch/DaySwitch';
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
+import { selectUser } from '../../redux/auth/auth-selectors';
 // import { refreshThunk } from '../../redux/auth/auth-operations';
-
 
 export const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const userProfile = useSelector(selectUserProfile);
 
-
   // useEffect(() => {
   //   dispatch(refreshThunk(user));
   // }, [dispatch, user]);
 
-
   const handleSubmit = async (values) => {
     try {
-      setIsSubmitted(true);
+      // setIsSubmitted(true);
       await dispatch(addUserData(values)).then(() => {
         console.log('Profile updated successfully');
       });
@@ -60,7 +51,7 @@ export const UserForm = () => {
       toast.error('An error occurred while updating the profile');
       console.error('Error updating profile:', error);
     } finally {
-      setIsSubmitted(false);
+      // setIsSubmitted(false);
     }
   };
 
@@ -197,7 +188,6 @@ export const UserForm = () => {
             <SaveButton type="submit" onSubmit={handleSubmit}>
               Save
             </SaveButton>
-
           </MainFormContainer>
         )}
       </Formik>

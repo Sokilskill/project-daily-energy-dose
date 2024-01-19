@@ -26,6 +26,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   isFetchingCurrentUser: false,
+  isRefreshing: false,
   error: '',
   token: '',
 };
@@ -39,13 +40,13 @@ const authSlise = createSlice({
         state.isLoading = true;
       })
       .addCase(registerThunk.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+        // state.token = action.payload.token;
         state.user = action.payload.user;
-        state.isLoggedIn = true;
+        // state.isLoggedIn = true;
         state.isLoading = false;
       })
       .addCase(registerThunk.rejected, (state) => {
-        state.isLoggedIn = false;
+        // state.isLoggedIn = false;
         state.isLoading = false;
       })
       .addCase(logInThunk.pending, (state) => {
@@ -56,6 +57,7 @@ const authSlise = createSlice({
         state.token = action.payload.token;
         state.user = action.payload.user;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
       .addCase(logInThunk.rejected, (state) => {
         state.isLoggedIn = false;
@@ -69,6 +71,7 @@ const authSlise = createSlice({
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
+        state.isLoading = false;
       })
       .addCase(logOutThunk.rejected, (state) => {
         state.isLoggedIn = false;
