@@ -37,13 +37,13 @@ margin: 0 0 0 20px;
 
 @media (min-width: 768px){
   width: 696px;
-  margin: o auto;
+  margin: 0 auto;
   
 }
 
-@media (min-width: 768px){
+@media (min-width: 1440px){
 
-  margin: 0 0 0 96px;
+  margin: 0 64px 0 0;
   
 }
 `;
@@ -102,7 +102,7 @@ margin: 14px 0 0 0;
 export const ProfileCalendarWrapper = styled.div`
 width: 335px;
 display: flex;
-// gap: 14px;
+gap: 14px;
 margin: 14px 0 0 0;
 
 @media (min-width: 768px){
@@ -110,6 +110,12 @@ margin: 14px 0 0 0;
 }
 `;
 
+export const DesiredWeight = styled.div`
+width: 160px;
+@media (min-width: 768px){
+  width: 140px;
+}
+`;
 export const HeightInput = styled.input`
 width: 160px;
 height: 46px;
@@ -178,9 +184,10 @@ color: var( --white, #efede8);
 
 @media (min-width: 768px){
   width: 140px;
-  height: 52px;
+
   margin: 8px 0 0 0;
 }
+
 `;
 
 export const CalendarField = styled(Field)`

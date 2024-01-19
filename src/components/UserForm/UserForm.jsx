@@ -22,6 +22,7 @@ import {
   SaveButton,
   UserContainer,
   UserInput,
+  DesiredWeight,
 } from './UserForm.styled';
 
 // import { useEffect } from 'react';
@@ -141,7 +142,7 @@ export const UserForm = () => {
                 </div>
               </ProfileWrapper>
               <ProfileCalendarWrapper>
-                <div>
+                <DesiredWeight>
                   <Label>Desired Weight</Label>
                   <DesiredWeightInput
                     type="number"
@@ -157,7 +158,7 @@ export const UserForm = () => {
                     name="desiredWeight"
                     component={ErrorMessageStyled}
                   />
-                </div>
+                </DesiredWeight>
 
                 <div>
                   <Label>Date of birth </Label>
