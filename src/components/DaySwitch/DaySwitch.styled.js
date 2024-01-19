@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import '../../index.css'
 
 export const DaySwitchContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
 `;
@@ -20,15 +21,17 @@ export const CustomDatePickerInput = styled.input`
   line-height: 1.5;
   outline: none;
   cursor: pointer;
+
   @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 24px;
   }
+
   &:hover,
   &:focus {
     border-color: rgba(230, 83, 60, 1);
   }
-  &.diary{
+
+  &.diary {
     width: 135px;
     border: none;
   }
@@ -99,17 +102,16 @@ export const StyledCalendarContainer = styled.div`
 export const StyledIcon = styled.svg`
   width: 20px;
   height: 20px;
-  fill: var(--white);
+  stroke: var(--white);
   cursor: pointer;
   position: absolute;
   top: 16px;
   right: 10px;
+  transition: stroke 0.3s ease;
 
   &:hover,
   &:focus {
-    & > path {
-      fill: #ef8964;
-    }
+    stroke: #EF8964;
   }
 
   @media screen and (min-width: 768px) {
