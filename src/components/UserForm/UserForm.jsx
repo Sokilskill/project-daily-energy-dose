@@ -8,12 +8,13 @@ import {
   getUserProfile,
   updateUserName,
 } from '../../redux/profileSettings/operations';
-import { useEffect } from 'react';
+
 import {
-  selectProfileEmail,
   selectProfileName,
   selectUserProfile,
 } from '../../redux/profileSettings/selectors';
+import { selectUser } from '../../redux/auth/auth-selectors';
+import { useEffect } from 'react';
 
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -299,33 +300,21 @@ export const UserForm = () => {
     levelActivity,
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
-  const userEmail = useSelector(selectProfileEmail);
+  // const userEmail = useSelector(selectProfileEmail);
+  const userCurrent = useSelector(selectUser);
 
   useEffect(() => {
-    // const fetchData = () => {
-    //   dispatch(getUserProfile());
-    // };
-    // fetchData();
-    dispatch(getUserProfile());
+    if (userName) {
+      dispatch(getUserProfile());
+    }
+  }, [dispatch, userName]);
 
-    // console.log('userData', userData);
-  }, [dispatch]);
-
-  // const validationSchema = Yup.object().shape({
-  //   name: Yup.string().required('Name is required'),
-  //   email: Yup.string().required('email is required'),
-  //   height: Yup.number().required('height is required'),
-  //   currentWeight: Yup.number().required('currentWeight is required'),
-  //   desiredWeight: Yup.number().required('desiredWeight is required'),
-  //   birthday: Yup.number().required('birthday is required'),
-  //   blood: Yup.number().required('blood is required'),
-  //   sex: Yup.string().required('gender is required'),
-  //   levelActivity: Yup.number().required('levelActivity is required'),
-  // });
+  const currentName = userName ? userName : userCurrent.name;
+  console.log('currentName', currentName);
 
   const initialValues = {
-    name: userName || '',
-    email: userEmail || '',
+    name: currentName || '',
+    email: userCurrent.email || '',
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
@@ -342,9 +331,9 @@ export const UserForm = () => {
       console.log('DATA', data);
       const { name, email, ...profileData } = data;
       const updateNameResult = await dispatch(updateUserName({ name }));
-      console.log('PROFILEDATA]', profileData);
-      const updateProfileDataResult = await dispatch(addUserData(profileData));
 
+      // console.log('PROFILEDATA]', profileData);
+      const updateProfileDataResult = await dispatch(addUserData(profileData));
       // console.log('updateNameResult', updateNameResult);
       // console.log('updateProfileDataResult', updateProfileDataResult);
 
@@ -352,6 +341,8 @@ export const UserForm = () => {
         updateNameResult.meta.requestStatus === 'fulfilled' &&
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
+        await dispatch(getUserProfile());
+
         toast.success('Дані оброблюються, створюється план тренувань');
       } else {
         console.log('Помилка оновлення даних');
@@ -363,8 +354,7 @@ export const UserForm = () => {
   };
 
   return (
-    userName &&
-    userEmail && (
+    currentName && (
       <Formik
         initialValues={initialValues}
         validationSchema={ProfileSchema}
