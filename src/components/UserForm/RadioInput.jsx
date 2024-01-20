@@ -57,6 +57,7 @@ export const RadioInput = ({ dataBlood, dataSex, dataLevelActivity }) => {
               <Label>
                 <ActivField
                   type="radio"
+                  id="blood-2"
                   name="blood"
                   value="2"
                   checked={values.blood === '2'}
@@ -136,7 +137,7 @@ export const RadioInput = ({ dataBlood, dataSex, dataLevelActivity }) => {
               />
               Light activity (light exercises/sports 1-3 days per week)
             </Label>
-            <Label>
+            <Label> 
               <ActivField
                 type="radio"
                 name="levelActivity"
@@ -150,6 +151,7 @@ export const RadioInput = ({ dataBlood, dataSex, dataLevelActivity }) => {
             <Label>
               <ActivField
                 type="radio"
+                id="levelActivity-4"
                 name="levelActivity"
                 value="4"
                 checked={values.levelActivity === '4'}

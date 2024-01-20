@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  // getCurrentUser,
   addUserData,
   updateUserName,
   updatedUserAvatar,
   getUserProfile,
 } from './operations';
-import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
@@ -35,15 +33,8 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleCurrentUserFulfilled = (state, action) => {
-  state.profile = { ...action.payload };
-  state.token = action.payload.token;
-  state.isLoading = false;
-  state.error = null;
-  state.isAuth = true;
-};
-
 const handleAddUserDataFulfilled = (state, action) => {
+  console.log('Data sent to backend (Update User Name):', action.payload);
   state.profile = { ...action.payload };
   state.token = action.payload.token;
   state.isLoading = false;
@@ -82,9 +73,6 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(refreshThunk.pending, handlePending)
-      .addCase(refreshThunk.rejected, handleRejected)
-      .addCase(refreshThunk.fulfilled, handleCurrentUserFulfilled)
       .addCase(addUserData.pending, handlePending)
       .addCase(addUserData.rejected, handleRejected)
       .addCase(addUserData.fulfilled, handleAddUserDataFulfilled)

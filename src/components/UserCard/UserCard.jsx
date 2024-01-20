@@ -7,7 +7,6 @@ import { updatedUserAvatar } from '../../redux/profileSettings/operations';
 
 import sprite from '../../assets/sprite.svg';
 import {
-  selectCurrentUser,
   selectUserProfile,
 } from '../../redux/profileSettings/selectors';
 import {
@@ -27,6 +26,7 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
+  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -38,6 +38,7 @@ import {
   WrapperLogOut,
 } from './UserCard.styled';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
+import { selectUser } from '../../redux/auth/auth-selectors';
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ export const UserCard = ({ time }) => {
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const user = useSelector(selectCurrentUser);
+  const user = useSelector(selectUser);
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -69,7 +70,7 @@ export const UserCard = ({ time }) => {
       } finally {
         setLoading(false);
         // e.target.form.reset();
-        // ===================== Переглянути чи є тут метод reset =============================
+        
       }
     }
   };

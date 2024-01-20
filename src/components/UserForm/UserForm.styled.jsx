@@ -238,20 +238,5 @@ export const ProfileCalendarInput = styled.div`
       border-color: var(--orange, #e6533c);
     }
   }
-
-  .error-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-  }
-
-  .error-message {
-    color: var(--error-color, #d80027);
-    font-size: 12px;
-    margin-top: 4px;
-  }
 `;
 
