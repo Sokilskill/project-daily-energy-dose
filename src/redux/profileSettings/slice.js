@@ -38,14 +38,14 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleAddUserDataFulfilled = (state, action) => {
+const handleAddUserDataFulfilled = (state) => {
   // console.log('actionUPDATE++++++++', action.payload);
   // state = { ...state, ...action.payload.profile };
   state.isLoading = false;
   state.error = null;
 };
 
-const handleUpdateUserNameFulfilled = (state, action) => {
+const handleUpdateUserNameFulfilled = (state) => {
   // console.log('actionUPDATE NAMEEE++++++++', action);
   // state.profile.owner.name = action.payload.name;
   state.isLoading = false;
@@ -60,7 +60,7 @@ const handleUpdateAvatarFulfilled = (state, action) => {
 
 const handleGetUserProfileFulfilled = (state, action) => {
   // console.log('action.payload.result', action.payload.result);
-  state.profile = { ...state, ...action.payload.result };
+  state.profile = { ...action.payload.result };
   state.isLoading = false;
   state.error = null;
 };
