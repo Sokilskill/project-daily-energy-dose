@@ -56,15 +56,21 @@ export const TimerContainer = styled.div`
 `;
 
 export const TimerButton = styled.button`
-  
-  padding: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.75rem;
+  padding: 0.5rem;
   cursor: pointer;
   border: none;
   outline: none;
   transition: background-color 0.3s ease;
+  color: #fff;
+  border-radius: 1px;
 
+  background-color: #E6533C;
   &:hover {
-    background-color: #2980b9;
+    background-color: #D6432C;
   }
 `;
 
