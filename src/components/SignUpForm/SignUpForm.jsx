@@ -53,8 +53,8 @@ export const SignUpForm = ({ onSubmit }) => {
                       !errors.name
                         ? !touched.name
                           ? `${css.form_input}`
-                          : `${css.form_input} ${css.success_imput}`
-                        : `${css.form_input} ${css.error_imput}`
+                          : `${css.form_input} ${css.success_input}`
+                        : `${css.form_input} ${css.error_input}`
                     }
                   />
                   {errors.name && touched.name ? (
@@ -87,8 +87,8 @@ export const SignUpForm = ({ onSubmit }) => {
                       !errors.email
                         ? !touched.email
                           ? `${css.form_input}`
-                          : `${css.form_input} ${css.success_imput}`
-                        : `${css.form_input} ${css.error_imput}`
+                          : `${css.form_input} ${css.success_input}`
+                        : `${css.form_input} ${css.error_input}`
                     }
                   />
                   {errors.email && touched.email ? (
@@ -122,8 +122,8 @@ export const SignUpForm = ({ onSubmit }) => {
                         !errors.password
                           ? !touched.password
                             ? `${css.form_input}`
-                            : `${css.form_input} ${css.success_imput}`
-                          : `${css.form_input} ${css.error_imput}`
+                            : `${css.form_input} ${css.success_input}`
+                          : `${css.form_input} ${css.error_input}`
                       }
                     />
                     <svg

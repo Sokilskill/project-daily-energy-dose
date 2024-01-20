@@ -56,8 +56,8 @@ export const SignInForm = ({ onSubmit }) => {
                       !errors.email
                         ? !touched.email
                           ? `${css.form_input}`
-                          : `${css.form_input} ${css.success_imput}`
-                        : `${css.form_input} ${css.error_imput}`
+                          : `${css.form_input} ${css.success_input}`
+                        : `${css.form_input} ${css.error_input}`
                     }
                   />
                   {errors.email && touched.email ? (
@@ -91,8 +91,8 @@ export const SignInForm = ({ onSubmit }) => {
                         !errors.password
                           ? !touched.password
                             ? `${css.form_input}`
-                            : `${css.form_input} ${css.success_imput}`
-                          : `${css.form_input} ${css.error_imput}`
+                            : `${css.form_input} ${css.success_input}`
+                          : `${css.form_input} ${css.error_input}`
                       }
                     />
                     <svg
