@@ -60,8 +60,8 @@
 
 :root {
   --white: #efede8;
-  --red: #E9101D;
-  --green: #419B09;
+  --red: #e9101d;
+  --green: #419b09;
   --secondary-text-color: #efede866;
   --orange: #e6533c;
   --orange-1: #ef8964;
@@ -96,7 +96,7 @@
   --secondary-color-text: rgba(239, 237, 232, 0.5);
   --icon-color: rgba(239, 137, 100, 1);
   --text-calorie-intake: rgba(239, 237, 232, 0.8);
-  --input-border: rgba(239, 237, 232, 0.30);
+  --input-border: rgba(239, 237, 232, 0.3);
 }
 
 body {
