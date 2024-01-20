@@ -17,12 +17,9 @@ const ProfilePage = () => {
 
       <ReversDiv>
 
-          <UserCard />
+        <UserCard />
 
-
-
-          <UserForm />
-
+        <UserForm />
       </ReversDiv>
     </ProfileContainer>
   );

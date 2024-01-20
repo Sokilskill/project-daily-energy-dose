@@ -13,7 +13,7 @@ export const ErrorMessageStyled = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  // width: 100%;
 `;
 
 export const UserContainer = styled.div`
@@ -110,10 +110,10 @@ export const ProfileCalendarWrapper = styled.div`
 `;
 
 export const DesiredWeight = styled.div`
-width: 160px;
-@media (min-width: 768px){
-  width: 140px;
-}
+  width: 160px;
+  @media (min-width: 768px) {
+    width: 140px;
+  }
 `;
 export const HeightInput = styled.input`
   width: 160px;
