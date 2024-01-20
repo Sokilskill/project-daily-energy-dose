@@ -7,10 +7,6 @@ import { updatedUserAvatar } from '../../redux/profileSettings/operations';
 
 import sprite from '../../assets/sprite.svg';
 import {
-  selectCurrentUser,
-  selectUserProfile,
-} from '../../redux/profileSettings/selectors';
-import {
   ActivityShower,
   AvatarContainer,
   AvatarInput,
@@ -38,10 +34,12 @@ import {
   WrapperLogOut,
 } from './UserCard.styled';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
+import { selectUser } from '../../redux/auth/auth-selectors';
+import { selectProfileName } from '../../redux/profileSettings/selectors';
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
-  const userProfile = useSelector(selectUserProfile);
+  const userProfile = useSelector(selectUser);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
     userProfile.avatarURL
   );
@@ -49,7 +47,7 @@ export const UserCard = ({ time }) => {
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const user = useSelector(selectCurrentUser);
+  const userName = useSelector(selectProfileName);
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -118,7 +116,7 @@ export const UserCard = ({ time }) => {
         </div>
       </WrapperAvatar>
       <NameUserWrapper>
-        <UserName>{user.name}</UserName>
+        {/* <UserName>{userName}</UserName> */}
         <UserNameDescription>User</UserNameDescription>
       </NameUserWrapper>
 
@@ -130,7 +128,7 @@ export const UserCard = ({ time }) => {
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
-          <Span>{Math.round(userProfile.bmr)}</Span>
+          {/* <Span>{Math.round(userProfile.bmr)}</Span> */}
           {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
