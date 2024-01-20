@@ -18,11 +18,6 @@ export const registerThunk = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/register', body);
       setToken(data.token);
-      toast.success('Registration is successful!', {
-        position: 'top-center',
-        autoClose: 3000,
-        theme: 'dark',
-      });
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -37,11 +32,6 @@ export const logInThunk = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/login', body);
       setToken(data.token);
-      toast.success('Login is successful!', {
-        position: 'top-center',
-        autoClose: 3000,
-        theme: 'dark',
-      });
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -74,11 +64,6 @@ export const logOutThunk = createAsyncThunk(
     try {
       await axios.post('/auth/logout');
       unsetToken();
-      toast.success('Logout is successful!', {
-        position: 'top-center',
-        autoClose: 3000,
-        theme: 'dark',
-      });
     } catch (error) {
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
