@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 
 export const ProfileContainer = styled.div`
   padding-top: 40px;
+  padding-bottom: 40px;
 
   @media (min-width: 768px) {
     padding-top: 72px;
+    padding-bottom: 72px;
   }
 `;
 
