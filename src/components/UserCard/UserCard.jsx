@@ -130,8 +130,8 @@ export const UserCard = ({ time }) => {
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
-          <Span>{Math.round(userProfile.bmr)}</Span>
-          {/* <SpanIntake>0</SpanIntake> */}
+          {/* <Span>{Math.round(userProfile.bmr)}</Span> */}
+          <SpanIntake>0</SpanIntake>
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>

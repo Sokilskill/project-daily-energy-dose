@@ -15,17 +15,31 @@ const BirthdayPicker = ({
   textWeight,
   iconColor,
   textHeight,
-  currentDate,
-  birthdayDate,
+  // showError,
+  // currentDate,
+  // birthdayDate,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
   const [selectedDate, setSelectedDate] = useState(null);
+  // const [isUnderage, setIsUnderage] = useState(false);
+
+  // const calculateMinDateFor18Years = () => {
+  //   const today = new Date();
+  //   today.setFullYear(today.getFullYear() - 18);
+
+  //   return today;
+  // };
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    // const minDateFor18Years = calculateMinDateFor18Years();
+    // const isUnderage = date > minDateFor18Years;
+    // setIsUnderage(isUnderage);
   };
+
 
   return (
     <DaySwitchContainer>
@@ -34,12 +48,12 @@ const BirthdayPicker = ({
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          minDate={birthdayDate}
+          // minDate={calculateMinDateFor18Years}
           showYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput
-              className="profile"
+            className={`profile `}
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}

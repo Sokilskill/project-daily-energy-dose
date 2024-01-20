@@ -39,16 +39,18 @@ export const UserForm = () => {
 
   const handleSubmit = async (values) => {
     try {
-      // setIsSubmitted(true);
-      await dispatch(addUserData(values)).then(() => {
-        console.log('Profile updated successfully');
-      });
+      // Dispatch the action
+      await dispatch(addUserData(values));
+  
+      // Log success message
+      console.log('Profile updated successfully');
+  
+      // Notify user about successful update
       toast.success('Profile updated successfully');
     } catch (error) {
-      toast.error('An error occurred while updating the profile');
+      // Log and notify about the error
       console.error('Error updating profile:', error);
-    } finally {
-      // setIsSubmitted(false);
+      toast.error('An error occurred while updating the profile');
     }
   };
 
@@ -64,12 +66,7 @@ export const UserForm = () => {
     levelActivity: String(userProfile.levelActivity) || '1',
   };
 
-  const calculateMaxDateFor18Years = () => {
-    const today = new Date();
-    today.setFullYear(today.getFullYear() - 18);
-
-    return today;
-  };
+  
 
   return (
     <MainContainer>
@@ -342,8 +339,8 @@ export const UserForm = () => {
         <Field name="birthday">
           {({ field }) => (
             <div>
-              <BirthdayPicker {...field} maxDate={calculateMaxDateFor18Years()} />
-              <ErrorMessage name="birthday" component={ErrorMessageStyled} />
+              <BirthdayPicker {...field} />
+              {/* <ErrorMessage name="birthday" component={ErrorMessageStyled} /> */}
             </div>
           )}
         </Field>
@@ -360,7 +357,7 @@ export const UserForm = () => {
               />
             </div>
 
-            <SaveButton type="submit" onSubmit={handleSubmit}>
+            <SaveButton type="submit">
               Save
             </SaveButton>
           </MainFormContainer>
