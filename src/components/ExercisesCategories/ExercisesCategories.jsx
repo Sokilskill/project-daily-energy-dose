@@ -10,8 +10,13 @@ import {
 } from '../../redux/exercises/exercisesOperations';
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+import {
+  selectExercisesByBodyParts,
+  selectExercisesByEquipment,
+  selectExercisesByMuscles,
+} from '../../redux/exercises/exercisesSelectors';
 
 const categories = [
   {
@@ -37,11 +42,11 @@ const categories = [
 export const ExercisesCategories = () => {
   const dispatch = useDispatch();
   const [activeSubcategory, setActiveSubcategory] = useState('body');
+  const [exercises, setExercises] = useState([]);
 
-  //функція, яка записує активну категорію по кліку
-  const handleSubcategoryClick = (subcategory) => {
-    setActiveSubcategory(subcategory);
-  };
+  // const handleSubcategoryClick = (subcategory) => {
+  //   setActiveSubcategory(subcategory);
+  // };
 
   useEffect(() => {
     if (activeSubcategory === 'body') {
@@ -53,21 +58,49 @@ export const ExercisesCategories = () => {
     }
   }, [dispatch, activeSubcategory]);
 
-  //встановлена активна категорія в даному компоненті відображається коректно
-  console.log(activeSubcategory);
+  const bodyList = useSelector(selectExercisesByBodyParts);
+  const musclesList = useSelector(selectExercisesByMuscles);
+  const equipmentList = useSelector(selectExercisesByEquipment);
 
+  useEffect(() => {
+    setExercises(bodyList);
+  }, []);
+
+  const setActiveExByBody = (subcategory) => {
+    setActiveSubcategory(subcategory);
+    setExercises(bodyList);
+  };
+
+  const setActiveExByMuscles = (subcategory) => {
+    setActiveSubcategory(subcategory);
+    setExercises(musclesList);
+  };
+  const setActiveExByEquipmen = (subcategory) => {
+    setActiveSubcategory(subcategory);
+    setExercises(equipmentList);
+  };
   return (
     <div>
-      <CategoriesList>
+      {/* <CategoriesList>
         {categories.map(({ text, id, name }) => (
           <CategoriesListItem key={id}>
             <Link onClick={() => handleSubcategoryClick(name)}>{text}</Link>
           </CategoriesListItem>
         ))}
-      </CategoriesList>
+      </CategoriesList> */}
+      <div>
+        <button onClick={() => setActiveExByBody('body')}>Body Parts</button>
+
+        <button onClick={() => setActiveExByMuscles('muscles')}>Muscles</button>
+
+        <button onClick={() => setActiveExByEquipmen('equipment')}>
+          Equipments
+        </button>
+      </div>
       {activeSubcategory && (
         <ExercisesSubcategoriesList
-          subcategory={activeSubcategory}
+          // subcategory={activeSubcategory}
+          exercises={exercises}
           // onSelectExercise={(exercise) => console.log(exercise)}
         />
       )}
