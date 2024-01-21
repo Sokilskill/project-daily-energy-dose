@@ -2,25 +2,22 @@ import styled from '@emotion/styled';
 
 export const ProfileContainer = styled.div`
   padding-top: 40px;
+  padding-bottom: 40px;
 
   @media (min-width: 768px) {
     padding-top: 72px;
+    padding-bottom: 72px;
   }
+  @media (min-width: 1440px) {
+  
+  }
+  
 `;
 
 export const TitleContainer = styled.div`
-  // display: flex;
-  // padding: 0 20px;
-  // width: 100%;
-  @media (min-width: 768px) {
-    // margin: 72px 0 0 0;
-    // padding: 0 32px;
-  }
 
-  @media (min-width: 1440px) {
-    // width: 1248px;
-    // padding: 0 96px;
-  }
+
+  
 `;
 
 export const ReversDiv = styled.div`
@@ -46,17 +43,15 @@ export const ReversDiv = styled.div`
   }
 
   @media (min-width: 1440px) {
+     flex-direction: row-reverse;
     padding-top: 20px;
     &:before {
       display: block; 
-      flex-direction: row-reverse;
     }
   }
 
 
-  @media (max-width: 1439px) {
-    flex-direction: column;
-  }
+  
 `;
 
 export const UserCardContainer = styled.div`

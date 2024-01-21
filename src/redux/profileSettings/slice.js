@@ -5,6 +5,7 @@ import {
   updatedUserAvatar,
   getUserProfile,
 } from './operations';
+import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
@@ -14,14 +15,18 @@ const initialState = {
     desiredWeight: null,
     birthday: null,
     blood: null,
-    sex: 'male',
+    sex: null,
     levelActivity: null,
     bmr: 0,
+    owner: {
+      id: '',
+      name: '',
+      email: '',
+      avatarURL: '',
+    },
   },
-  token: null,
   isLoading: false,
   error: null,
-  isAuth: false,
 };
 
 const handlePending = (state) => {
@@ -33,16 +38,12 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleAddUserDataFulfilled = (state, action) => {
-  console.log('Data sent to backend (Update User Name):', action.payload);
-  state.profile = { ...action.payload };
-  state.token = action.payload.token;
+const handleAddUserDataFulfilled = (state) => {
   state.isLoading = false;
   state.error = null;
 };
 
-const handleUpdateUserNameFulfilled = (state, action) => {
-  state.profile.name = { ...action.payload };
+const handleUpdateUserNameFulfilled = (state) => {
   state.isLoading = false;
   state.error = null;
 };
@@ -54,8 +55,7 @@ const handleUpdateAvatarFulfilled = (state, action) => {
 };
 
 const handleGetUserProfileFulfilled = (state, action) => {
-  state.profile = { ...action.payload };
-  state.token = action.payload.token;
+  state.profile = { ...action.payload.result };
   state.isLoading = false;
   state.error = null;
 };
@@ -73,6 +73,8 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(refreshThunk.pending, handlePending)
+      .addCase(refreshThunk.rejected, handleRejected)
       .addCase(addUserData.pending, handlePending)
       .addCase(addUserData.rejected, handleRejected)
       .addCase(addUserData.fulfilled, handleAddUserDataFulfilled)

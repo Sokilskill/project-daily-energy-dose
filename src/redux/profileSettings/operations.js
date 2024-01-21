@@ -3,12 +3,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 export const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
@@ -17,7 +14,6 @@ export const getUserProfile = createAsyncThunk(
       const state = thunkApi.getState();
       const userToken = state.auth.token;
       if (userToken) {
-       
         const res = await axios.get('/profiles');
         return res.data;
       }
@@ -58,25 +54,6 @@ export const updatedUserAvatar = createAsyncThunk(
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getTarget = createAsyncThunk(
-  'profile/getTarget',
-  async (_, thunkApi) => {
-    try {
-      const state = thunkApi.getState();
-      const persistedToken = state.auth.token;
-      if (!persistedToken) {
-        toast.info('Unable to get user');
-        return thunkApi.rejectWithValue('Token not available');
-      }
-      setAuthToken(persistedToken);
-      const res = await axios.get('profiles/targets');
-      return res.data;
-    } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }

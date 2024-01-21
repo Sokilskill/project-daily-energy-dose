@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
-import {  Form } from 'formik';
+import {  Field, Form } from 'formik';
 
 export const ErrorMessageStyled = styled.div`
-
-
   font-size: 12px;
   font-weight: 400;
   color: var(--error-color, #d80027);
@@ -13,24 +11,12 @@ export const ErrorMessageStyled = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  // width: 100%;
+
 `;
 
-export const UserContainer = styled.div`
-  width: 335px;
-  display: flex;
-  flex-direction: column;
-  margin: 19px 0 0 0;
-  @media (min-width: 768px) {
-    width: 696px;
 
-    margin: 38px 0 0 0;
-    flex-direction: row;
-    gap: 14px;
-  }
-`;
 
-export const MainFormContainer = styled(Form)`
+export const FormContainer = styled(Form)`
  
   
 
@@ -44,15 +30,38 @@ export const MainFormContainer = styled(Form)`
   }
 `;
 
+export const UserContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 19px 0 0 0;
+  gap: 14px;
+  @media (min-width: 768px) {
+    width: 696px;
+    margin: 38px 0 0 0;
+    flex-direction: row;
+    gap: 14px;
+  }
+`;
+export const NameEmailWrapper = styled.div`
+display: flex;
+flex-direction: column;
+width: 100%;
+
+@media (min-width: 768px) {
+ 
+}
+`;
+
 export const Label = styled.label`
   font-size: 14px;
   line-height: 1.3;
   color: var(--secondary-color-text, rgba(239, 237, 232, 0.5));
 `;
-export const EmailWrapper = styled.div`
-margin: 14px 0 0 0;
-`;
-export const UserInput = styled.input`
+
+
+
+export const UserField = styled(Field)`
   width: 335px;
   height: 46px;
   border-radius: 12px;
@@ -76,12 +85,13 @@ export const UserInput = styled.input`
   @media (min-width: 768px) {
     width: 341px;
     height: 52px;
-    margin: 8px 0 0 0;
+    // margin: 8px 0 0 0;
   }
 `;
 
 export const ProfileContainer = styled.div`
-  display: flex;
+  width: 100%;
+display: flex;
   flex-direction: column;
   gap: 14px;
   @media (min-width: 768px) {
@@ -92,7 +102,7 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileWrapper = styled.div`
-  width: 335px;
+
   display: flex;
   gap: 14px;
   margin: 14px 0 0 0;
@@ -115,7 +125,7 @@ export const DesiredWeight = styled.div`
     width: 140px;
   }
 `;
-export const HeightInput = styled.input`
+export const HeightField = styled(Field)`
   width: 160px;
   height: 46px;
   border-radius: 12px;
@@ -137,11 +147,11 @@ export const HeightInput = styled.input`
   @media (min-width: 768px) {
     width: 168px;
     height: 52px;
-    margin: 8px 0 14px 0;
+    // margin: 8px 0 14px 0;
   }
 `;
 
-export const CurrentWeightInput = styled.input`
+export const CurrentWeightField = styled(Field)`
   width: 161px;
   height: 46px;
   border-radius: 12px;
@@ -163,11 +173,11 @@ export const CurrentWeightInput = styled.input`
   @media (min-width: 768px) {
     width: 159px;
     height: 52px;
-    margin: 8px 0 14px 0;
+    // margin: 8px 0 14px 0;
   }
 `;
 
-export const DesiredWeightInput = styled.input`
+export const DesiredWeightField = styled(Field)`
 width: 160px;
 height: 52px;
 border-radius: 12px;
@@ -189,7 +199,7 @@ color: var( --white, #efede8);
 @media (min-width: 768px){
   width: 140px;
 
-  margin: 8px 0 0 0;
+
 }
 `;
 
@@ -213,6 +223,12 @@ export const SaveButton = styled.button`
     background-color: var(--orange-1, #ef8964);
   
   }
+  @media (min-width: 1440px){
+   margin: 48px 0 0 0;
+  
+  
+  }
+
 `;
 
 
@@ -224,7 +240,7 @@ export const ProfileCalendarInput = styled.div`
   label {
     display: block;
     font-size: 16px;
-    margin-bottom: 8px;
+    // margin-bottom: 8px;
   }
 
   input {
@@ -240,3 +256,99 @@ export const ProfileCalendarInput = styled.div`
   }
 `;
 
+export const BirthdayPickerField = styled(Field)`
+
+`;
+
+export const RadioContainer = styled.div`
+  width: 100%;
+  margin: 20px 0 0 0;
+  `;
+
+  export const WrapperRadio = styled.div`
+width: 100%;
+display: flex;
+margin: 5px 0 0 0;
+gap: 21px;
+@media (min-width: 768px) {
+  gap: 20px;
+}
+
+`;
+
+export const Wrapper = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+margin: 5px 0 0 0;
+gap: 9px;
+@media (min-width: 768px) {
+  gap: 8px;
+}
+
+`;
+
+export const BloodWrapper = styled.div`
+  width: 100%;
+  display: flex;
+gap: 8px;
+  @media (min-width: 768px) {
+    gap: 32px;
+    width: 379px;
+  }
+ 
+`;
+
+export const RadioLabel = styled.label`
+display: flex;
+align-items: center;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+gap: 8px;
+color: var(--white, #efede8);
+@media (min-width: 768px) {
+  font-size: 16px;
+}
+`;
+
+export const ActivField = styled(Field)`
+  appearance: none;
+
+  min-width: 20px;
+  min-height: 20px;
+
+  font: inherit;
+  color: var( --white, #efede8) ;
+  background-color: black;
+
+  border: 2px solid var(--border, #efede84d);
+  border-radius: 50%;
+
+  &:checked {
+    background: radial-gradient(
+      circle,
+      var(--orange-1, #ef8964) 40%,
+      transparent 50%
+    );
+    border: 2px solid var(--orange-1, #ef8964);
+  }
+  @media (min-width: 768px) {
+    min-width: 18px;
+    min-height: 18px;
+  }
+
+`;
+
+export const LevelWrapper = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+margin: 42px 0 0 0;
+gap: 9px;
+@media (min-width: 768px) {
+  gap: 8px;
+  margin: 32px 0 0 0;
+}
+`;

@@ -36,7 +36,7 @@ export const CustomDatePickerInput = styled.input`
     border: 1px solid var( --border, #efede84d);
     @media screen and (min-width: 768px) {
       width: 187px;
-      margin: 8px 0 0 0;
+     
     }
 
     &::placeholder{

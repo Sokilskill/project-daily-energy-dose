@@ -63,7 +63,7 @@ const BirthdayPicker = ({
           shouldCloseOnSelect={true}
         />
         <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} stroke={iconColor}>
-          <use href={`${sprite}#icon-calendar`} />
+          <use href={sprite + '#icon-calendar'} />
         </StyledIcon>
       </StyledCalendarContainer>
     </DaySwitchContainer>

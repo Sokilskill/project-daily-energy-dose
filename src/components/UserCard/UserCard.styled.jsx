@@ -104,14 +104,12 @@ export const NameUserWrapper = styled.div`
   width: 100%;
   margin-top: 20px;
   text-align: center;
-  gap: 8px;
+
 
   @media (min-width: 768px) {
     margin-top: 18px;
   }
-  @media (min-width: 1440px) {
-    margin-top: 32px;
-  }
+ 
 `;
 
 export const UserName = styled.p`
@@ -131,6 +129,7 @@ export const UserNameDescription = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
+  margin: 8px 0 0 0;
   color: var(--secondary-color-text, rgba(239, 237, 232, 0.5));
 `;
 

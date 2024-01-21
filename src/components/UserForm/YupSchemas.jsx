@@ -2,13 +2,14 @@ import * as Yup from 'yup';
 
 export const ProfileSchema = Yup.object().shape({
   name: Yup.string()
-  .matches(
-    /^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/,
-    'Invalid name format')
+    .matches(
+      /^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/,
+      'Invalid name format'
+    )
     .required('Name is required'),
   email: Yup.string()
-  .email('Invalid email address')
-  .required('Email is required'),
+    .email('Changing is not allowed')
+    .required('Email is required'),
   sex: Yup.string().required('Choose one of these fields'),
   height: Yup.number()
   .label('Height')
