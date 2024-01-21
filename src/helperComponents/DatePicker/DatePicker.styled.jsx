@@ -199,7 +199,7 @@ export const StyledIcon = styled.svg`
   &:hover,
   &:focus {
     & > path {
-      fill: #ef8964;
+      fill: var(--orange-1, #ef8964);
     }
   }
 

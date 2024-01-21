@@ -193,6 +193,7 @@ export const UserForm = () => {
                   type="text"
                   id="name"
                   name="name"
+                  placeholder="Name"
                   value={values.name}
                   onChange={handleChange}
                   style={{
@@ -291,6 +292,7 @@ export const UserForm = () => {
                       type="number"
                       id="height"
                       name="height"
+                      placeholder="0"
                       style={{
                         borderColor: touched.height
                           ? errors.height
@@ -338,6 +340,7 @@ export const UserForm = () => {
                       type="number"
                       id="currentWeight"
                       name="currentWeight"
+                      placeholder="0"
                       style={{
                         borderColor: touched.currentWeight
                           ? errors.currentWeight
@@ -389,6 +392,7 @@ export const UserForm = () => {
                       type="number"
                       id="desiredWeight"
                       name="desiredWeight"
+                      placeholder="0"
                       style={{
                         borderColor: touched.desiredWeight
                           ? errors.desiredWeight
