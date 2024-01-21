@@ -11,15 +11,8 @@ import { useEffect, useState } from 'react';
 import { getExercises } from '../../redux/exercises/exercisesOperations';
 
 export const ExercisesSubcategoriesList = (exercises) => {
-  console.log(exercises.exercises);
-
   const dispatch = useDispatch();
-  // const [exercises, setExercises] = useState([]);
   const [selectedExercises, setSelectedExercises] = useState(null);
-
-  // const bodyList = useSelector(selectExercisesByBodyParts);
-  // const musclesList = useSelector(selectExercisesByMuscles);
-  // const equipmentList = useSelector(selectExercisesByEquipment);
 
   let selectedExercisesData = useSelector(selectAllExercises);
 
@@ -30,26 +23,36 @@ export const ExercisesSubcategoriesList = (exercises) => {
   //   // } else if (screenWidth <= 480) {
   //   //   itemsPerPage.current = 10;
   //   // }
-  //   setExercises(bodyList);
-
-  //   // if (subcategory === 'body') {
-  //   //   setExercises(bodyList);
-  //   // } else if (subcategory === 'muscles') {
-  //   //   setExercises(musclesList);
-  //   // } else if (subcategory === 'equipment') {
-  //   //   setExercises(equipmentList);
-  //   // }
   // }, []);
 
-  // console.log(exercises);
+  // const handleExerciseSelect = async (subcategory, exercise) => {
+  //   const { name } = exercise;
+  //   const newName = transformString(name);
 
-  const handleExerciseSelect = async (exercise) => {
+  //   if (subcategory === 'Body parts') {
+  //     dispatch(fetchleBodyPartExercise(newName));
+  //   }
+  //   if (subcategory === 'Muscles') {
+  //     dispatch(fetchleMusculesExercise(newName));
+  //   }
+  //   if (subcategory === 'Equipment') {
+  //     dispatch(fetchleEquipmentExercise(newName));
+  //   }
+
+  //   dispatch(setExerciseTitle(name));
+  //   setSelectedExercises(selectedExercisesData);
+  // };
+
+  useEffect(() => {
+    dispatch(getExercises());
+  }, []);
+
+  const handleExerciseSelect = async () => {
     dispatch(getExercises());
 
     setSelectedExercises(selectedExercisesData);
   };
-
-  exercises.exercises.map((exercise) => console.log(exercise));
+  // console.log(selectedExercisesData);
 
   return (
     <SubcategoriesList>
@@ -57,7 +60,7 @@ export const ExercisesSubcategoriesList = (exercises) => {
         <ExercisesSubcategoriesItem
           key={exercise.id}
           data={exercise}
-          onClick={() => handleExerciseSelect(subcategory, exercise)}
+          onClick={() => handleExerciseSelect()}
         ></ExercisesSubcategoriesItem>
       ))}
       {/* <ExercisesSubcategoriesItem />

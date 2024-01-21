@@ -7,6 +7,9 @@ import {
 } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem.styled';
 import Shoulders from '../../assets/Exercises/Shoulders.png';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getExercises } from '../../redux/exercises/exercisesOperations';
 
 // export const ExercisesSubcategoriesItem = () => {
 //   const navigate = useNavigate();
@@ -26,8 +29,15 @@ import { useNavigate } from 'react-router-dom';
 // };
 
 export const ExercisesSubcategoriesItem = ({ data, onClick }) => {
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getExercises());
+  // }, []);
+
   const handleImageClick = () => {
-    onClick(data);
+    // onClick(data);
+    dispatch(getExercises());
   };
   return (
     <SubcategoriesListItem onClick={handleImageClick}>
