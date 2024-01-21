@@ -82,7 +82,7 @@ font-weight: 400;
 line-height: 18px;
 letter-spacing: 0px;
 text-align: left;
-color: #EFEDE84D;
+color: var(--white);
 text-align: center;
 `;
 export const StyledList = styled.ul`

@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { RiCloseLine, RiPlayLine, RiPauseLine } from "react-icons/ri";
-import { Backdrop, ModalContainer, Close, Image, Div, TimerContainer, TimerButton, Text, StyledList, StyledListItem, Button} from "./AddExerciseForm.styled";
+import { Backdrop, ModalContainer, Close, Image, Div, TimerContainer, TimerButton, Text, Button} from "./AddExerciseForm.styled";
 import BlockIcon from "../../assets/images/block.png";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
@@ -71,7 +71,7 @@ const AddExerciseForm = ({onClose, calories, time, open}) => {
                 <StyledListItem>Элемент 3</StyledListItem>
                 <StyledListItem>Элемент 4</StyledListItem>
               </StyledList> */}
-              <Button>Next product</Button>
+              <Button>Add to diary</Button>
           
           </ModalContainer>
         </Backdrop>
