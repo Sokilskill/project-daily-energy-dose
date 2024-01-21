@@ -1,12 +1,28 @@
-import React from "react";
-import { TitlePage } from "../../components/TitlePage/TitlePage";
+import { TitlePage } from '../../components/TitlePage/TitlePage';
+import { UserCard } from '../../components/UserCard/UserCard';
+import {
+  ProfileContainer,
+  ReversDiv,
+  TitleContainer,
+  // UserCardContainer,
+  // UserFormContainer,
+} from './ProfilePage.styled';
+import { UserForm } from '../../components/UserForm/UserForm';
 
 const ProfilePage = () => {
-    return (
-        <div>
-            <TitlePage text="Profile Settings" />
-        </div>
-    )
+  return (
+    <ProfileContainer className="container">
+      <TitleContainer>
+        <TitlePage text="Profile Settings" />
+      </TitleContainer>
+
+      <ReversDiv>
+        <UserCard />
+
+        <UserForm />
+      </ReversDiv>
+    </ProfileContainer>
+  );
 };
 
 export default ProfilePage;

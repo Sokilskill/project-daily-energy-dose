@@ -1,5 +1,5 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
-
+@import './components/ProductsFilters/style.filters.css';
 /* roboto-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -60,6 +60,8 @@
 
 :root {
   --white: #efede8;
+  --red: #e9101d;
+  --green: #419b09;
   --secondary-text-color: #efede866;
   --orange: #e6533c;
   --orange-1: #ef8964;
@@ -89,6 +91,14 @@
     var(--black, #040404) -2.45%,
     var(--semi-black, #04040400) 68.17%
   );
+  --default-avatar-fill: rgba(239, 237, 232, 0.1);
+  --background-color-avatar: rgba(48, 48, 48, 0.3);
+  --secondary-color-text: rgba(239, 237, 232, 0.5);
+  --icon-color: rgba(239, 137, 100, 1);
+  --text-calorie-intake: rgba(239, 237, 232, 0.8);
+  --input-border: rgba(239, 237, 232, 0.3);
+  --calendar-arrows: rgba(239, 237, 232, 0.4);
+  --calendar-button-border: rgba(239, 237, 232, 0.2);
 }
 
 body {
@@ -151,5 +161,6 @@ button {
 @media screen and (min-width: 1440px) {
   .container {
     width: 1440px;
+    padding: 0 96px;
   }
 }

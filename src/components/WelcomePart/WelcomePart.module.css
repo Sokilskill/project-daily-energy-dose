@@ -1,0 +1,46 @@
+@import '../../index.css';
+
+.text_box {
+  max-width: 335px;
+  height: 120px;
+  margin-bottom: 40px;
+}
+
+.title {
+  position: relative;
+  color: var(--white, #efede8);
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.38px;
+  z-index: 10;
+}
+
+.icon_line {
+  position: absolute;
+  top: 43px;
+  left: -9px;
+  width: 98px;
+  height: 35px;
+  z-index: -1;
+  stroke: var(--orange-1, #ef8964);
+}
+
+@media (min-width: 768px) {
+  .text_box {
+    max-width: 598px;
+    height: 234px;
+    margin-bottom: 64px;
+  }
+  .title {
+    font-size: 70px;
+    line-height: 1.11;
+    letter-spacing: 0.7px;
+  }
+  .icon_line {
+    top: 84px;
+    left: -16px;
+    width: 185px;
+    height: 67px;
+  }
+}

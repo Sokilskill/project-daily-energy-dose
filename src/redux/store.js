@@ -1,9 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-
-// import { authReducer } from '';
+import { authReducer } from './auth/authSlice';
 import { profileReducer } from './profileSettings/slice';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import msgpack from 'msgpack-lite';
+
+import { exercisesSliceReducer } from './exercises/exercisesSlice';
+import { productsReducer } from './products/sliceProducts';
+import { statisticsSliceReducer } from './statistics/statisticsSlice';
+import { diarySliceReducer } from './diary/diarySlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -11,18 +26,38 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const productsPersistConfig = {
+  key: 'products',
+  storage,
+  whitelist: ['list'],
+  transforms: [
+    {
+      in: (state) => {
+        return msgpack.encode(state);
+      },
+      out: (state) => {
+        return msgpack.decode(state);
+      },
+    },
+  ],
+  stateReconciler: autoMergeLevel2,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    diary: diarySliceReducer,
+    exercises: exercisesSliceReducer,
+    products: persistReducer(productsPersistConfig, productsReducer),
+    statistics: statisticsSliceReducer,
     profile: persistReducer(authPersistConfig, profileReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);

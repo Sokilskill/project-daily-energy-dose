@@ -1,15 +1,23 @@
-export const UserNav = () => {
+import { NavList, Link } from './UserNav.styled';
+
+export const UserNav = ({ className, closeMenu }) => {
   return (
-    <ul>
+    <NavList className={className}>
       <li>
-        <a href="">Diary</a>
+        <Link onClick={closeMenu} to="/diary">
+          Diary
+        </Link>
       </li>
       <li>
-        <a href="">Products</a>
+        <Link onClick={closeMenu} to="/products">
+          Products
+        </Link>
       </li>
       <li>
-        <a href="">Exercises</a>
+        <Link onClick={closeMenu} to="/exercises">
+          Exercises
+        </Link>
       </li>
-    </ul>
+    </NavList>
   );
 };

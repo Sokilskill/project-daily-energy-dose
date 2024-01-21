@@ -1,0 +1,108 @@
+@import '../../index.css';
+
+.form {
+  width: 335px;
+  height: fit-content;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form_input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 4px;
+  color: var(--secondary-text-color-1, #efede899);
+  font-size: 14px;
+  line-height: 1.28;
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid var(--border, #efede84d);
+  outline: none;
+  transition: border 250ms linear;
+}
+.form_input:is(:hover, :focus) {
+  border: 1px solid var(--orange, #e6533c);
+}
+.error_input {
+  border: 1px solid var(--error-color, #d80027);
+}
+.success_input {
+  border: 1px solid var(--success-color, #3cbf61);
+}
+.input_pass_field {
+  display: flex;
+  align-items: center;
+}
+.icon_eye {
+  width: 20px;
+  height: 20px;
+  margin-left: -34px;
+}
+.form_btn {
+  display: flex;
+  width: 136px;
+  margin-top: 28px;
+  padding: 12px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--white, #efede8);
+  background-color: var(--orange, #e6533c);
+  transition: background-color 250ms linear;
+}
+.form_btn:is(:hover, :focus) {
+  background-color: var(--orange-1, #ef8964);
+}
+.icon_checkbox_error {
+  fill: var(--error-color, #d80027);
+  width: 16px;
+  height: 16px;
+}
+.icon_checkbox_succsess {
+  fill: var(--success-color, #3cbf61);
+  width: 16px;
+  height: 16px;
+}
+.error_row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: var(--error-color, #d80027);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+}
+.success_row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: var(--success-color, #3cbf61);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+}
+
+@media (min-width: 768px) {
+  .form {
+    width: 364px;
+  }
+  .inputs {
+    gap: 20px;
+  }
+  .form_input {
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .form_btn {
+    min-width: 190px;
+    margin-top: 64px;
+    padding: 16px 60px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}

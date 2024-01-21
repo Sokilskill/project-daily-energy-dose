@@ -11,6 +11,11 @@ export const LogoLink = styled(Link)`
 `;
 
 export const LogoImg = styled.img`
-  width: 152px;
-  height: 17px;
+  width: 126px;
+  height: 13px;
+
+  @media screen and (min-width: 768px) {
+    width: 151px;
+    height: 17px;
+  }
 `;
