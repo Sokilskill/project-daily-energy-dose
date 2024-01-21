@@ -5,9 +5,9 @@ import { selectAllExercises } from '../../redux/exercises/exercisesSelectors';
 import { useEffect, useState } from 'react';
 import { getExercises } from '../../redux/exercises/exercisesOperations';
 
-export const ExercisesSubcategoriesList = ({ exercises }) => {
+export const ExercisesSubcategoriesList = ({ subcategory, exercises }) => {
   const dispatch = useDispatch();
-  const [selectedExercises, setSelectedExercises] = useState(null);
+  const [selectedExercises, setSelectedExercises] = useState([]);
 
   let selectedExercisesData = useSelector(selectAllExercises); //всі вправи
 
@@ -38,16 +38,29 @@ export const ExercisesSubcategoriesList = ({ exercises }) => {
   //   setSelectedExercises(selectedExercisesData);
   // };
 
-  useEffect(() => {
-    dispatch(getExercises());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getExercises());
+  // }, []);
 
   const handleExerciseSelect = async () => {
     dispatch(getExercises());
 
     setSelectedExercises(selectedExercisesData);
   };
-  // console.log(selectedExercisesData);
+
+  // const visibleExercises = selectedExercisesData.data.filter = (data) => {
+  //
+  // }
+  // exercises.map((exercise) => {
+  //   console.log(exercise);
+  // });
+
+  // const visibleExercises = selectedExercisesData.data.filter((data) => {
+  //   console.log(data);
+  //   // data.bodyPart === 'shoulders';
+  // });
+
+  console.log(selectedExercisesData.data);
 
   return (
     <SubcategoriesList>
