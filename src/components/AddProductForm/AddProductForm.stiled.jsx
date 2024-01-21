@@ -94,16 +94,47 @@ export const InputWrapper = styled.div`
 `;
 
 export const Placeholder = styled.span`
+  margin-bottom: 16px;
   position: absolute;
   right: 10px; 
   pointer-events: none; 
   color:var(--secondary-text-color);
+
+  @media (min-width: 768px) {
+    right: 25px; 
+  }
 `;
 
 export const Buttons = styled.div`
   display: flex;
 `
-export const Button = styled.button`
+export const Button1 = styled.button`
+  width: 130px;
+  height: 42px;
+  margin-right: 14px;
+  padding: 12px, 32px, 12px, 32px;
+  border-radius: 12px;
+  gap: 10px;
+  background: var(--orange) ;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: var(--white);
+  border:1px solid var(--border);
+
+    &:hover {
+      background-color: #E6533C;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #E6533C;
+    }
+`;
+export const Button2 = styled.button`
   width: 130px;
   height: 42px;
   margin-right: 14px;

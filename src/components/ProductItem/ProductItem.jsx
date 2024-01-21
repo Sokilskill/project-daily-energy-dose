@@ -17,7 +17,7 @@ import {
   WrapDescription,
 } from './ProductItem.styled.js';
 import sprite from '../../assets/sprite.svg';
-
+import AddProductForm from '../AddProductForm/AddProductForm.jsx'
 let recipeWindow;
 
 const initialRecipeWindow = () => {
@@ -31,6 +31,11 @@ const initialRecipeWindow = () => {
 initialRecipeWindow();
 
 export default function ProductItem({ productItem }) {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
 
   const { weight, calories, category, title, groupBloodNotAllowed, _id } =
     productItem;
@@ -73,6 +78,8 @@ export default function ProductItem({ productItem }) {
   };
   
   return (
+    <>
+   
     <Item>
       <UpperWrapper>
         <Chip>DIET</Chip>
@@ -85,7 +92,7 @@ export default function ProductItem({ productItem }) {
           <><Rectangle color={'#E9101D'} />
         <RecText>{'Not recommended'}</RecText></>
       )}
-          <AddBtn>
+          <AddBtn onClick={() => setOpenModal(true)}>
             Add
             <IconAdd>
               <use href={sprite + '#icon-arrow'} />
@@ -112,6 +119,7 @@ export default function ProductItem({ productItem }) {
         </WrapDescription>
         
       </LowerWrapper>
-    </Item>
+      </Item>
+      <AddProductForm onClose={handleCloseModal} open={openModal} /></>
   );
 }

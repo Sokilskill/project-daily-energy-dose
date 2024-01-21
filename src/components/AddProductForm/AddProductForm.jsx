@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { MdClose } from "react-icons/md";
 
-import { Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button, Buttons} from "./AddProductForm.stiled";
+import { Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button1,Button2, Buttons} from "./AddProductForm.stiled";
 
 const AddProductForm = ({onClose, open}) => {
   const handleKeyDown = useCallback((event) => {
@@ -25,8 +25,7 @@ const AddProductForm = ({onClose, open}) => {
             <Close>
                <MdClose onClick={onClose} size='22px' />
             </Close>
-             
-            {/* </div> */}
+        
             <Form name="addProductForm" action="#">
               <Inputs>
                 <Input 
@@ -44,8 +43,8 @@ const AddProductForm = ({onClose, open}) => {
               </Inputs>
               <Text>Calories:</Text>
               <Buttons>
-                <Button>Next product</Button>
-                <Button>Cancel</Button>
+                <Button1>Add to diary</Button1>
+                <Button2>Cancel</Button2>
               </Buttons>
               
             </Form> 

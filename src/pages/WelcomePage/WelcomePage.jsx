@@ -5,9 +5,9 @@ import { useState } from 'react';
 
 import sprite from '../../assets/sprite.svg'
 // import AddProductSuccess from '../../components/AddProductSuccess/AddProductSuccess.jsx'; 
-import AddProductForm from '../../components/AddProductForm/AddProductForm';
+// import AddProductForm from '../../components/AddProductForm/AddProductForm';
 // import AddExerciseSuccess from '../../components/AddExerciseSuccess/AddExerciseSuccess';
-// import AddExerciseForm from "../../components/AddExerciseForm/AddExerciseForm";
+import AddExerciseForm from "../../components/AddExerciseForm/AddExerciseForm";
 const WelcomePage = () => {
   const navigate = useNavigate()
   
@@ -70,25 +70,25 @@ const WelcomePage = () => {
         linkTo="#"
         linkText="To the diary"
       /> */}
-      <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-2</button>
+      {/* <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-2</button>
       <AddProductForm
         open={isOpenModal}
         onClose={onCloseModal}
-      />
+      /> */}
 
 {/* <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-3</button>
       <AddExerciseSuccess
         open={isOpenModal}
         onClose={onCloseModal}
       /> */}
-      {/* <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-4</button>
+      <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-4</button>
       <AddExerciseForm
         open={isOpenModal}
         onClose={onCloseModal}
         time={180}
         exerciseId={1}
         calories={500}
-      /> */}
+      />
 
 
    

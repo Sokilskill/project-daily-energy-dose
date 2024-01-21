@@ -17,12 +17,17 @@ export const Backdrop  = styled.div`;
 export const ModalContainer = styled.div`
   position: absolute;
   width: 335px;
-  padding: 48px 32px;
+  height: 788px;
+  padding: 22px 12px;
   text-align: center;
   border-radius: 12px;
   border: 1px;
   background: linear-gradient(0deg, #10100F, #10100F),
   linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
+
+  @media (min-width: 768px) {
+    width: 694px;
+  }
 `;
 
 export const Close = styled.div`
@@ -31,6 +36,16 @@ export const Close = styled.div`
   left: 299px;
   cursor: pointer;
 `
+export const Container = styled.div`
+  display: inline-block;
+  width: 50%;
+`;
+export const Flex = styled.div`
+  @media (min-width: 768px) {
+    displey:flex;
+  }
+  
+`;
 export const Div = styled.div`
   text-align: center;
   margin-bottom: 14px;
@@ -82,21 +97,54 @@ font-weight: 400;
 line-height: 18px;
 letter-spacing: 0px;
 text-align: left;
-color: var(--white);
+color: var(--secondary-text-color);
 text-align: center;
 `;
+
 export const StyledList = styled.ul`
-list-style: none;
-padding: 0;
-margin: 0;
+  margin-top: 40px;
+  list-style: none;
+  displey:flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+}
 `;
 
 export const StyledListItem = styled.li`
-margin-bottom: 10px;
-padding: 10px;
-background-color: #3498db;
-color: #fff;
+  margin:8px;
+  display: inline-block;
+  border: 1px solid var(--border);
+  width: 40%;
+
+  padding: 10px;
+  border-radius: 12px;
+  gap: 32px;
+  background: linear-gradient(0deg, rgba(239, 237, 232, 0.05), rgba(239, 237, 232, 0.05));
 `;
+
+export const Workout = styled.div`
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--secondary-text-color);
+  
+`
+export const WorkoutName = styled.p`
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--whiter);
+`
 export const Button = styled.button`
 width: 157px;
 height: 42px;
