@@ -84,9 +84,13 @@ function App() {
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
           >
-            <Route path="bodyParts" element={<ExercisesSubcategoriesList />} />
+            {/* <Route
+              path=":categoryName"
+              element={<ExercisesSubcategoriesList />}
+            /> */}
+            {/* <Route path="bodyParts" element={<ExercisesSubcategoriesList />} />
             <Route path="muscles" element={<ExercisesSubcategoriesList />} />
-            <Route path="equipment" element={<ExercisesSubcategoriesList />} />
+            <Route path="equipment" element={<ExercisesSubcategoriesList />} /> */}
             <Route path="list" element={<ExercisesList />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />

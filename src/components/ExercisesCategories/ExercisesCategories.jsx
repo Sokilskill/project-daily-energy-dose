@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import {
   CategoriesList,
   CategoriesListItem,
@@ -9,40 +8,69 @@ import {
   getExercisesByEquipment,
   getExercisesByMuscles,
 } from '../../redux/exercises/exercisesOperations';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { nanoid } from 'nanoid';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+
+const categories = [
+  {
+    id: nanoid(),
+    to: '/exercises/bodyParts',
+    text: 'Body Parts',
+    name: 'body',
+  },
+  {
+    id: nanoid(),
+    to: '/exercises/muscles',
+    text: 'Muscles',
+    name: 'muscles',
+  },
+  {
+    id: nanoid(),
+    to: '/exercises/equipment',
+    text: 'Equipment',
+    name: 'equipment',
+  },
+];
 
 export const ExercisesCategories = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [activeSubcategory, setActiveSubcategory] = useState('body');
+
+  //функція, яка записує активну категорію по кліку
+  const handleSubcategoryClick = (subcategory) => {
+    setActiveSubcategory(subcategory);
+  };
 
   useEffect(() => {
-    navigate('/exercises/bodyParts');
-  }, []);
+    if (activeSubcategory === 'body') {
+      dispatch(getExercisesByBodyParts());
+    } else if (activeSubcategory === 'muscles') {
+      dispatch(getExercisesByMuscles());
+    } else if (activeSubcategory === 'equipment') {
+      dispatch(getExercisesByEquipment());
+    }
+  }, [dispatch, activeSubcategory]);
+
+  //встановлена активна категорія в даному компоненті відображається коректно
+  console.log(activeSubcategory);
 
   return (
-    <CategoriesList>
-      <CategoriesListItem
-        onClick={() => {
-          dispatch(getExercisesByBodyParts());
-        }}
-      >
-        <Link to="bodyParts">Body parts</Link>
-      </CategoriesListItem>
-      <CategoriesListItem
-        onClick={() => {
-          dispatch(getExercisesByMuscles());
-        }}
-      >
-        <Link to="muscles">Muscles</Link>
-      </CategoriesListItem>
-      <CategoriesListItem
-        onClick={() => {
-          dispatch(getExercisesByEquipment());
-        }}
-      >
-        <Link to="equipment">Equipment</Link>
-      </CategoriesListItem>
-    </CategoriesList>
+    <div>
+      <CategoriesList>
+        {categories.map(({ text, id, name }) => (
+          <CategoriesListItem key={id}>
+            <Link onClick={() => handleSubcategoryClick(name)}>{text}</Link>
+          </CategoriesListItem>
+        ))}
+      </CategoriesList>
+      {activeSubcategory && (
+        <ExercisesSubcategoriesList
+          subcategory={activeSubcategory}
+          // onSelectExercise={(exercise) => console.log(exercise)}
+        />
+      )}
+    </div>
   );
 };

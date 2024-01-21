@@ -24,3 +24,18 @@ export const ExercisesSubcategoriesItem = () => {
     </SubcategoriesListItem>
   );
 };
+
+// export const ExercisesSubcategoriesItem = ({ data, onClick }) => {
+//   const handleImageClick = () => {
+//     onClick(data);
+//   };
+//   return (
+//     <SubcategoriesListItem onClick={handleImageClick}>
+//       <SubcategoriesImg src={data.imgURL} alt={data.name}></SubcategoriesImg>
+//       <SubcategoriesTextWrapper>
+//         <SubcategoriesTitle>{data.name}</SubcategoriesTitle>
+//         <SubcategoriesText>{data.filter}</SubcategoriesText>
+//       </SubcategoriesTextWrapper>
+//     </SubcategoriesListItem>
+//   );
+// };
