@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
 
 export const CategoriesList = styled.ul`
   display: flex;
@@ -10,9 +9,7 @@ export const CategoriesList = styled.ul`
   }
 `;
 
-export const CategoriesListItem = styled.li``;
-
-export const Link = styled(NavLink)`
+export const CategoriesListItem = styled.li`
   position: relative;
   padding-bottom: 5px;
   font-size: 14px;

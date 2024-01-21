@@ -1,7 +1,6 @@
 import {
   CategoriesList,
   CategoriesListItem,
-  Link,
 } from '../ExercisesCategories/ExercisesCategories.styled';
 import {
   getExercisesByBodyParts,
@@ -23,6 +22,10 @@ export const ExercisesCategories = () => {
   const [exercises, setExercises] = useState(
     useSelector(selectExercisesByBodyParts)
   );
+
+  useEffect(() => {
+    dispatch(getExercisesByBodyParts());
+  }, [dispatch]);
 
   useEffect(() => {
     if (activeSubcategory === 'body') {
@@ -55,22 +58,19 @@ export const ExercisesCategories = () => {
   };
   return (
     <div>
-      {/* <CategoriesList>
-        {categories.map(({ text, id, name }) => (
-          <CategoriesListItem key={id}>
-            <Link onClick={() => handleSubcategoryClick(name)}>{text}</Link>
-          </CategoriesListItem>
-        ))}
-      </CategoriesList> */}
-      <div>
-        <button onClick={() => setActiveExByBody('body')}>Body Parts</button>
+      <CategoriesList>
+        <CategoriesListItem onClick={() => setActiveExByBody('body')}>
+          Body Parts
+        </CategoriesListItem>
 
-        <button onClick={() => setActiveExByMuscles('muscles')}>Muscles</button>
+        <CategoriesListItem onClick={() => setActiveExByMuscles('muscles')}>
+          Muscles
+        </CategoriesListItem>
 
-        <button onClick={() => setActiveExByEquipmen('equipment')}>
+        <CategoriesListItem onClick={() => setActiveExByEquipmen('equipment')}>
           Equipments
-        </button>
-      </div>
+        </CategoriesListItem>
+      </CategoriesList>
       {activeSubcategory && (
         <ExercisesSubcategoriesList
           subcategory={activeSubcategory}

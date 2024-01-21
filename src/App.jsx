@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
-import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

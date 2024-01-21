@@ -1,20 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import { SubcategoriesList } from '../ExercisesSubcategoriesList/ExercisesSubcategoriesList.styled';
-import {
-  selectAllExercises,
-  selectExercisesByBodyParts,
-  selectExercisesByEquipment,
-  selectExercisesByMuscles,
-} from '../../redux/exercises/exercisesSelectors';
+import { selectAllExercises } from '../../redux/exercises/exercisesSelectors';
 import { useEffect, useState } from 'react';
 import { getExercises } from '../../redux/exercises/exercisesOperations';
 
-export const ExercisesSubcategoriesList = (exercises) => {
+export const ExercisesSubcategoriesList = ({ exercises }) => {
   const dispatch = useDispatch();
   const [selectedExercises, setSelectedExercises] = useState(null);
 
-  let selectedExercisesData = useSelector(selectAllExercises);
+  let selectedExercisesData = useSelector(selectAllExercises); //всі вправи
 
   // useEffect(() => {
   //   // const screenWidth = window.innerWidth;
@@ -56,17 +51,15 @@ export const ExercisesSubcategoriesList = (exercises) => {
 
   return (
     <SubcategoriesList>
-      {exercises.exercises.map((exercise) => (
+      {exercises.map((exercise) => (
         <ExercisesSubcategoriesItem
           key={exercise.id}
           data={exercise}
           onClick={() => handleExerciseSelect()}
         ></ExercisesSubcategoriesItem>
       ))}
+
       {/* <ExercisesSubcategoriesItem />
-      <ExercisesSubcategoriesItem />
-      <ExercisesSubcategoriesItem />
-      <ExercisesSubcategoriesItem />
       <ExercisesSubcategoriesItem />
       <ExercisesSubcategoriesItem />
       <ExercisesSubcategoriesItem />

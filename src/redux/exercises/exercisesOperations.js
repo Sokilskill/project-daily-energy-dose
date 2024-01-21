@@ -9,7 +9,7 @@ export const getExercises = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get('/exercises');
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       messageNotification(error.response.status);
