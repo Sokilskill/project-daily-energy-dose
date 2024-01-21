@@ -1,4 +1,4 @@
-import{m as I}from"./index-c4dfbdeb.js";var A={exports:{}},e={};/** @license React v16.13.1
+import{k as I}from"./index-7d70ff79.js";var A={exports:{}},e={};/** @license React v16.13.1
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
