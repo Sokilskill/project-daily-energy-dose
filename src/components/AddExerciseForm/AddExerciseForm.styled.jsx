@@ -37,8 +37,11 @@ export const Close = styled.div`
   cursor: pointer;
 `
 export const Container = styled.div`
-  display: inline-block;
-  width: 50%;
+  @media (min-width: 768px) {
+    display: inline-block;
+    width: 50%;
+  }
+
 `;
 export const Flex = styled.div`
   @media (min-width: 768px) {
