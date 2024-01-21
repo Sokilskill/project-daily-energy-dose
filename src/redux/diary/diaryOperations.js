@@ -2,9 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { messageNotification } from '../../components/alertMessages/alertMessages';
 
-const getDiary = createAsyncThunk('/diary', async (credentials, thunkAPI) => {
+const getDiary = createAsyncThunk('diary/getDiary', async (credentials, thunkAPI) => {
   try {
-    const { data } = await axios.get(`/diary${credentials}`);
+    const { userId, date } = credentials;
+    const { data } = await axios.get(`${baseURL}/${userId}/date/${date}`);
     return data;
   } catch (error) {
     messageNotification(error.response.status);
@@ -13,13 +14,14 @@ const getDiary = createAsyncThunk('/diary', async (credentials, thunkAPI) => {
 });
 
 const postDiaryProduct = createAsyncThunk(
-  '/diary/addProduct',
+  'diary/postDiaryProduct',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/diary/addproduct', credentials);
+      const { userId, date, productData } = credentials;
+      const { data } = await axios.post(`${baseURL}/${userId}/${date}/addproduct`, productData);
       return data;
     } catch (error) {
-    messageNotification(error.response.status);
+      messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -41,10 +43,11 @@ const deleteDiaryProduct = createAsyncThunk(
 );
 
 const postDiaryExercise = createAsyncThunk(
-  '/diary/addExercise',
+  'diary/postDiaryExercise',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/diary/addexercise', credentials);
+      const { userId, date, exerciseData } = credentials;
+      const { data } = await axios.post(`${baseURL}/${userId}/${date}/addexercise`, exerciseData);
       return data;
     } catch (error) {
       messageNotification(error.response.status);
