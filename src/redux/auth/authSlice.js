@@ -27,11 +27,11 @@ const initialState = {
   isLoading: false,
   isFetchingCurrentUser: false,
   isRefreshing: false,
-  error: '',
+  error: null,
   token: '',
 };
 
-const authSlise = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: (builder) => {
@@ -44,35 +44,41 @@ const authSlise = createSlice({
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isLoading = false;
+        state.error = null;
       })
-      .addCase(registerThunk.rejected, (state) => {
+      .addCase(registerThunk.rejected, (state, action) => {
         state.isLoggedIn = false;
         state.isLoading = false;
+        state.error = action.error.message || 'Registration failed';
       })
       .addCase(logInThunk.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(logInThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.token = action.payload.token;
         state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isLoading = false;
+        state.error = null;
       })
-      .addCase(logInThunk.rejected, (state) => {
+      .addCase(logInThunk.rejected, (state, action) => {
         state.isLoggedIn = false;
         state.isLoading = false;
+        state.error = action.error.message;
       })
       .addCase(logOutThunk.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(logOutThunk.fulfilled, (state) => {
-        state.isLoading = false;
-        state.user = { name: null, email: null };
-        state.token = null;
-        state.isLoggedIn = false;
-        state.isLoading = false;
+        return {
+          ...state.initialstate,
+          user: { name: null, email: null, avatarUrl: null },
+          token: null,
+          isLoggedIn: false,
+          isLoading: false,
+        };
       })
+
       .addCase(logOutThunk.rejected, (state) => {
         state.isLoggedIn = false;
         state.isLoading = false;
@@ -91,4 +97,9 @@ const authSlise = createSlice({
   },
 });
 
-export const authReducer = authSlise.reducer;
+export const authReducer = authSlice.reducer;
+
+// state.user = { name: null, email: null };
+// state.token = null;
+// state.isLoggedIn = false;
+// state.isLoading = false;

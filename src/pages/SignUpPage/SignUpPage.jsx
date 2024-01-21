@@ -10,7 +10,6 @@ const SignUpPage = () => {
   const dispatch = useDispatch();
   const handleFormData = (data) => {
     dispatch(registerThunk(data));
-    console.log(data);
   };
 
   return (
