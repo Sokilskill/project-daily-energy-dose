@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { messageNotification } from '../../components/alertMessages/alertMessages.jsx';
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api/';
@@ -17,11 +17,19 @@ export const registerThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await axios.post('/auth/register', body);
+      if (!data || data.token === null) {
+        throw new Error('No data!');
+      }
       setToken(data.token);
       return data;
     } catch (error) {
-      messageNotification(error.response.status);
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        const status = error.response.status;
+        messageNotification(status);
+        throw new Error(`Failed with status ${status}`);
+      } else {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
   }
 );
@@ -31,11 +39,19 @@ export const logInThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await axios.post('/auth/login', body);
+      if (!data || data.token === null) {
+        throw new Error('No data!');
+      }
       setToken(data.token);
       return data;
     } catch (error) {
-      messageNotification(error.response.status);
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        const status = error.response.status;
+        messageNotification(status);
+        throw new Error(`Failed with status ${status}`);
+      } else {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
   }
 );

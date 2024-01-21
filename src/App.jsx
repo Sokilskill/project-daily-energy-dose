@@ -7,7 +7,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectIsLoading,
   selectIsLoggedIn,
   selectIsParamsData,
   selectIsRefreshing,
@@ -37,7 +36,6 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
-  const isLoading = useSelector(selectIsLoading);
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
 
@@ -45,7 +43,7 @@ function App() {
     dispatch(refreshThunk());
   }, [dispatch]);
 
-  return isRefreshing || isLoading ? (
+  return isRefreshing ? (
     <MyLoader />
   ) : (
     <>

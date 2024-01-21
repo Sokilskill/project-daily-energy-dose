@@ -3,8 +3,6 @@ import sprite from '../../assets/sprite.svg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectisError } from '../../redux/auth/auth-selectors';
 
 const initialValues = {
   email: '',
@@ -22,7 +20,6 @@ const SignInSchema = Yup.object().shape({
 
 export const SignInForm = ({ onSubmit }) => {
   const [visible, setVisible] = useState(false);
-  const isError = useSelector(selectisError);
 
   return (
     <Formik
@@ -30,12 +27,7 @@ export const SignInForm = ({ onSubmit }) => {
       validationSchema={SignInSchema}
       onSubmit={(values, { resetForm }) => {
         onSubmit(values);
-        const clear = () => {
-          if (isError) {
-            setTimeout(resetForm, 3000);
-          }
-        };
-        clear();
+        resetForm();
       }}
     >
       {(formik) => {
