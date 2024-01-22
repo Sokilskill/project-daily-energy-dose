@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { messageNotification } from '../../components/alertMessages/alertMessages.jsx';
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api/';
