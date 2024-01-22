@@ -2,22 +2,26 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setIsParams } from '../auth/authSlice';
 
-export const setAuthToken = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// export const setAuthToken = (token) => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
   async (_, thunkApi) => {
     try {
-      const state = thunkApi.getState();
-      const userToken = state.auth.token;
-      if (userToken) {
-        const res = await axios.get('/profiles');
-        return res.data;
+      // const state = thunkApi.getState();
+      // const userToken = state.auth.token;
+      // if (userToken) {
+
+      const res = await axios.get('/profiles');
+      if (res.data.result === null) {
+        return thunkApi.rejectWithValue(message);
       }
-      return;
+      setIsParams(true);
+      return res.data;
     } catch (error) {
       toast.error(error.message);
       return thunkApi.rejectWithValue(error.message);
@@ -64,7 +68,7 @@ export const addUserData = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const res = await axios.put('/profiles', data);
-      toast.success("Settings updated, creating training plan");
+      toast.success('Settings updated, creating training plan');
       return res.data;
     } catch (error) {
       toast.error(error.message);

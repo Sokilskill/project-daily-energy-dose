@@ -37,10 +37,10 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isParamsData) {
+    if (isLoggedIn) {
       dispatch(getUserProfile());
     }
-  }, [dispatch, isParamsData]);
+  }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
     <MyLoader />
@@ -92,7 +92,7 @@ function App() {
           />
           <Route
             path="profile"
-            element={isLoggedIn ? <ProfilePage /> : <SignInPage />}
+            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
           />
           <Route
             path="diary"
