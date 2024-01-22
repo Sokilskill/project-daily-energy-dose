@@ -156,3 +156,19 @@ export function handleFulfilledProductList(state, { payload }) {
   state.total = payload.total;
   state.isLoading = false;
 }
+
+// ----------- Exercises
+
+export function handleFulfilledExercisesCategories(state, { payload }) {
+  state.items = payload.data;
+  state.page = payload.page + 1;
+  state.total = payload.total;
+  state.isLoading = false;
+}
+export function handlefulfilledExercises(state, { payload }) {
+  state.items = payload.data;
+  state.page = payload.page + 1;
+  state.total = payload.total;
+
+  state.isLoading = false;
+}
