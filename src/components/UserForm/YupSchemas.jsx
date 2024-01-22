@@ -14,7 +14,7 @@ export const ProfileSchema = Yup.object().shape({
   height: Yup.number()
   .label('Height')
   .min(150, 'min height 150(sm)')
-  .max(230, 'max height 230(sm)')
+  .max(250, 'max height 250(sm)')
   .required('Height is required'),
 desiredWeight: Yup.number()
   .label('Desired Weight')
@@ -28,14 +28,23 @@ desiredWeight: Yup.number()
   .required('Weight is required'),
   blood: Yup.number().required('Choose one of these fields'),
   levelActivity: Yup.number().required('Choose one of these fields'),
-  birthday: Yup.date()
-    .max(new Date(), 'Birthday cannot be in the future')
-    .required('Birthday is required')
-    .test('is-adult', 'You must be at least 18 years old', function (value) {
-      const today = new Date();
-      const birthDate = new Date(value);
-      const age = today.getFullYear() - birthDate.getFullYear();
+  // birthday: Yup.string()
+  // .nullable()
+  // .max(new Date(), 'Birthday cannot be in the future')
+  // .required('Birthday is required')
+  // .test('is-adult', 'You must be at least 18 years old', function (value) {
+  //   if (!value) {
+  //     return true;
+  //   }
 
-      return age >= 18;
-    }),
+  //   const today = new Date();
+  //   const birthDate = new Date(value);
+  //   const age =
+  //     today.getFullYear() -
+  //     birthDate.getFullYear() -
+  //     (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate()) ? 1 : 0);
+
+  //   return age >= 18;
+  // }),
+
 });

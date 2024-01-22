@@ -14,7 +14,7 @@ import {
   selectUserProfile,
 } from "../../redux/profileSettings/selectors";
 import { selectUser } from "../../redux/auth/auth-selectors";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import sprite from "../../assets/sprite.svg";
 import BirthdayPicker from "../../helperComponents/DatePicker/DatePicker";
 import {
@@ -24,8 +24,7 @@ import {
   Label,
   ProfileContainer,
   ProfileWrapper,
-  ProfileCalendarWrapper,
-  RadioContainer,
+ RadioContainer,
   WrapperRadio,
   BloodWrapper,
   UserField,
@@ -47,77 +46,34 @@ import {
 // ================ value - значення радіокнопки
 // ================ label - назва кнопки
 
-//---------- група крові ----------
-
 const bloodsValue = [
-  {
-    label: "1",
-    value: 1,
-  },
-  {
-    label: "2",
-    value: 2,
-  },
-  {
-    label: "3",
-    value: 3,
-  },
-  {
-    label: "4",
-    value: 4,
-  },
+  { label: "1", value: 1 },
+  { label: "2", value: 2 },
+  { label: "3", value: 3 },
+  { label: "4", value: 4 },
 ];
 
-//---------- стать ----------
 const sexValue = [
   { label: "Male", value: "male" },
   { label: "Female", value: "female" },
 ];
 
-//---------- рівень активного тренування ----------
 const levelActivityValue = [
-  {
-    id: 1,
-    label: "Sedentary lifestyle (little or no physical activity)",
-    value: 1,
-  },
-  {
-    id: 2,
-    label: "Light activity (light exercises/sports 1-3 days per week)",
-    value: 2,
-  },
-  {
-    id: 3,
-    label: "Moderately active (moderate exercises/sports 3-5 days per week)",
-    value: 3,
-  },
-  {
-    id: 4,
-    label: "Very active (intense exercises/sports 6-7 days per week)",
-    value: 4,
-  },
-  {
-    id: 5,
-    label:
-      "Extremely active (very strenuous exercises/sports and physical work)",
-    value: 5,
-  },
+  { id: 1, label: "Sedentary lifestyle (little or no physical activity)", value: 1 },
+  { id: 2, label: "Light activity (light exercises/sports 1-3 days per week)", value: 2 },
+  { id: 3, label: "Moderately active (moderate exercises/sports 3-5 days per week)", value: 3 },
+  { id: 4, label: "Very active (intense exercises/sports 6-7 days per week)", value: 4 },
+  { id: 5, label: "Extremely active (very strenuous exercises/sports and physical work)", value: 5 },
 ];
 
 export const UserForm = () => {
   const dispatch = useDispatch();
-
-  const {
-    height,
-    currentWeight,
-    desiredWeight,
-    birthday,
-    blood,
-    sex,
-    levelActivity,
-  } = useSelector(selectUserProfile);
+  const { height, currentWeight, desiredWeight, birthday, blood, sex, levelActivity } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
+  const storDate = localStorage.getItem('PowerPulsDate');
+  const initialDate = storDate ? new Date(storDate) : new Date();
+  const [date, setDate] = useState(initialDate);
 
   useEffect(() => {
     if (userName) {
@@ -125,16 +81,27 @@ export const UserForm = () => {
     }
   }, [dispatch, userName]);
 
-  const currentName = userName ? userName : userCurrent.name;
-  console.log("currentName", currentName);
+  const currentName = userName || userCurrent.name;
 
+  const dayOfBirthday = birthday ? new Date(birthday) : null;
+
+  const handlerDate = (selectedDate) => {
+    if (selectedDate < dayOfBirthday) {
+      
+      setDate(dayOfBirthday);
+    } else {
+      setDate(selectedDate);
+    }
+  };
+  
+  
   const initialValues = {
     name: currentName || "",
     email: userCurrent.email,
     height: height || "",
     currentWeight: currentWeight || "",
     desiredWeight: desiredWeight || "",
-    birthday: birthday || new Date().toISOString(),
+    birthday: new Date(birthday).toISOString(),
     blood: blood || 0,
     sex: sex || "",
     levelActivity: levelActivity || 1,
@@ -143,10 +110,12 @@ export const UserForm = () => {
   const handleSubmit = async (data) => {
     try {
       console.log("DATA", data);
-      const { name, email, ...profileData } = data;
+      const { name, email, birthday, ...profileData } = data;
+      
+
       const updateNameResult = await dispatch(updateUserName({ name }));
 
-      const updateProfileDataResult = await dispatch(addUserData(profileData));
+      const updateProfileDataResult = await dispatch(addUserData({...profileData, birthday}));
 
       if (
         updateNameResult.meta.requestStatus === "fulfilled" &&
@@ -440,11 +409,13 @@ export const UserForm = () => {
                       {({ field, form }) => (
                         <BirthdayPicker
                           id="date"
+                          currentDate={date}
+              handlerDate={handlerDate}
+              birthdayDate={dayOfBirthday}
                           {...field}
                           selected={field.value}
-                          onChange={(date) =>
-                            form.setFieldValue(field.name, date)
-                          }
+                          onChange={(date) => {
+                            form.setFieldValue(field.name, date);}}
                         />
                       )}
                     </BirthdayPickerField>
@@ -466,7 +437,7 @@ export const UserForm = () => {
                           />
                         </svg>
                       )}
-                      <ErrorMessage name="birthday" component="div" />
+                      <ErrorMessage name="birthday" component={ErrorMessageStyled} />
                     </div>
                   </div>
                 </ProfileWrapper>

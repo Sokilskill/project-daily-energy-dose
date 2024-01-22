@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -15,31 +16,21 @@ const BirthdayPicker = ({
   textWeight,
   iconColor,
   textHeight,
-  // showError,
-  // currentDate,
-  // birthdayDate,
+  birthdayDate,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(null);
-  // const [isUnderage, setIsUnderage] = useState(false);
-
-  // const calculateMinDateFor18Years = () => {
-  //   const today = new Date();
-  //   today.setFullYear(today.getFullYear() - 18);
-
-  //   return today;
-  // };
-
+  const [selectedDate, setSelectedDate] = useState(birthdayDate);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
-    // const minDateFor18Years = calculateMinDateFor18Years();
-    // const isUnderage = date > minDateFor18Years;
-    // setIsUnderage(isUnderage);
-  };
+    if (datePickerRef.current) {
+      datePickerRef.current.setOpen(true);
+    }
 
+    setSelectedDate(date);
+    console.log("Picked date:", date);
+  };
 
   return (
     <DaySwitchContainer>
@@ -48,12 +39,12 @@ const BirthdayPicker = ({
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          // minDate={calculateMinDateFor18Years}
+          minDate={birthdayDate}
           showYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput
-            className={`profile `}
+              className={`profile `}
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}
