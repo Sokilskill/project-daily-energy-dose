@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
@@ -12,19 +12,10 @@ import {
 } from './redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
 import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
-import { refreshThunk } from './redux/auth/auth-operations';
 import MyLoader from './components/Loader/DiaryLoader';
 import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
+import { getUserProfile } from './redux/profileSettings/operations';
 
-//неавторизованого користувача переадресовує на Welcome page, авторизованого
-//- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
-
-// та редірект на diary === коли користувач вже залогіненний заходить наприклад з
-// нової вкладки його не відправляє на сторінку Welcome
-
-// додати перед Routes спінер-завантаження/лоадер поки не завантажиться сторінка -
-
-// авторизований / залогінений
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -40,9 +31,18 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
 
+  console.log('isParamsData', isParamsData);
+  console.log('isLoggedIn', isLoggedIn);
+
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isParamsData) {
+      dispatch(getUserProfile());
+    }
+  }, [dispatch, isParamsData]);
 
   return isRefreshing ? (
     <MyLoader />
@@ -94,7 +94,7 @@ function App() {
           />
           <Route
             path="profile"
-            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
+            element={isLoggedIn ? <ProfilePage /> : <SignInPage />}
           />
           <Route
             path="diary"
