@@ -1,4 +1,4 @@
-import{n as t,j as i}from"./index-e48264d4.js";const n=t.h2`
+import{n as t,j as i}from"./index-ac8d2d43.js";const n=t.h2`
 margin: 0;
 color: var(--white, #efede8);
 font-size: 24px;
