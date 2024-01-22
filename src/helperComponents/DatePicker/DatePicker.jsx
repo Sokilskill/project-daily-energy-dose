@@ -20,15 +20,31 @@ const BirthdayPicker = ({
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(birthday);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
     console.log("Picked date:", date);
+
+    if (date instanceof Date && !isNaN(date)) {
+      form.setFieldValue(field.name, date);}
   };
 
   const openDatePicker = () => {
     if (datePickerRef.current) {
+      const popper = datePickerRef.current.getPopperRef();
+      const input = datePickerRef.current.getInputRef();
+
+      // Check if popper and input exist
+      if (popper && input) {
+        const popperInstance = popper._popper;
+        
+        // Check if popperInstance exists and update it
+        if (popperInstance) {
+          popperInstance.scheduleUpdate();
+        }
+      }
+
       datePickerRef.current.setOpen(true);
     }
   };

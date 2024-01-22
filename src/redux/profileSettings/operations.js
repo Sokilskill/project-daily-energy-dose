@@ -30,7 +30,7 @@ export const updateUserName = createAsyncThunk(
   async (userData, thunkApi) => {
     try {
       const res = await axios.patch('/users', userData);
-      toast.success('Name updated');
+      // toast.success('Name updated');
       return res.data;
     } catch (error) {
       toast.error(error.message);
@@ -64,7 +64,7 @@ export const addUserData = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const res = await axios.put('/profiles', data);
-      toast.success('Your profile updated');
+      toast.success("Settings updated, creating training plan");
       return res.data;
     } catch (error) {
       toast.error(error.message);
