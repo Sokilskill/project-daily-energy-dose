@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LogoLink = styled(Link)`
+  display: block;
   padding: 24px 0;
   margin-right: auto;
-
+  z-index: 10;
   @media screen and (min-width: 768px) {
     padding: 34px 0;
   }
