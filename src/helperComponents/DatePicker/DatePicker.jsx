@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -20,33 +21,15 @@ const BirthdayPicker = ({
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(birthday);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
-    console.log("Picked date:", date);
-
-    if (date instanceof Date && !isNaN(date)) {
-      form.setFieldValue(field.name, date);}
-  };
-
-  const openDatePicker = () => {
     if (datePickerRef.current) {
-      const popper = datePickerRef.current.getPopperRef();
-      const input = datePickerRef.current.getInputRef();
-
-      // Check if popper and input exist
-      if (popper && input) {
-        const popperInstance = popper._popper;
-        
-        // Check if popperInstance exists and update it
-        if (popperInstance) {
-          popperInstance.scheduleUpdate();
-        }
-      }
-
       datePickerRef.current.setOpen(true);
     }
+
+    setSelectedDate(date);
+    console.log("Picked date:", date);
   };
 
   return (
@@ -65,13 +48,12 @@ const BirthdayPicker = ({
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}
-              onClick={openDatePicker}
             />
           }
           ref={datePickerRef}
           shouldCloseOnSelect={true}
         />
-        <StyledIcon onClick={openDatePicker} stroke={iconColor}>
+        <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} stroke={iconColor}>
           <use href={sprite + '#icon-calendar'} />
         </StyledIcon>
       </StyledCalendarContainer>
