@@ -1,31 +1,15 @@
 import { Suspense } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import MyLoader from '../Loader/DiaryLoader';
+import { useSelector } from 'react-redux';
 
 const MainLayout = () => {
-  const location = useLocation();
-
-  // Define an array of valid paths where the header should be displayed
-  const validPaths = [
-    '/signup',
-    '/signin',
-    '/profile',
-    '/diary',
-    '/products',
-    '/exercises',
-    '/exercises/bodyParts',
-    '/exercises/muscles',
-    '/exercises/equipment',
-    '/exercises/list',
-  ];
-
-  // Check if the current location is in the valid paths array
-  const isHeaderVisible = validPaths.includes(location.pathname);
+  const isErrorPage = useSelector((state) => state.error.isErrorPage);
 
   return (
     <>
-      {isHeaderVisible && <Header />}
+      {!isErrorPage && <Header />}
       <main>
         <Suspense fallback={<MyLoader />}>
           <Outlet />
