@@ -19,7 +19,7 @@ import {
   Button,
 } from './AddExerciseForm.styled';
 // import BlockIcon from '../../assets/images/block.png';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import capitalizeString from '../../../hooks/capitalizeString';
 
 const AddExerciseForm = ({

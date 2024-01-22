@@ -13,6 +13,12 @@ import {
 } from './ErrorPage.styled';
 import { useDispatch } from 'react-redux';
 import { setErrorPage } from '../../redux/errorPage/err-slice';
+import bg_mod_1 from '../../assets/Welcome/images/people-training-gym-mob.webp';
+import bg_mod_2 from '../../assets/Welcome/images/people-training-gym-mob-2x.webp';
+import bg_tab_1 from '../../assets/Welcome/images/people-training-gym-tab.webp';
+import bg_tab_2 from '../../assets/Welcome/images/people-training-gym-tab-2x.webp';
+import bg_desk_1 from '../../assets/Welcome/images/people-training-gym-desk.webp';
+import bg_desk_2 from '../../assets/Welcome/images/people-training-gym-desk-2x.webp';
 
 const ErrorPage = () => {
   const dispatch = useDispatch();
@@ -27,7 +33,10 @@ const ErrorPage = () => {
 
   return (
     <>
-      <SectionWrapper className="container section-wrapper">
+      <SectionWrapper
+        bgi={[bg_mod_1, bg_mod_2, bg_tab_1, bg_tab_2, bg_desk_1, bg_desk_2]}
+        className="container section-wrapper"
+      >
         <BackgroundColor>
           <Container className="container">
             <LogoWrap>
