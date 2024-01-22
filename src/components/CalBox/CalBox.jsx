@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
 import css from './CalBox.module.css';
+import { selectBurnedCaloriesSum } from '../../redux/statistics/statisticsSecectors';
 
 const CalBox = () => {
+  const burnedCaloriesSum = useSelector(selectBurnedCaloriesSum);
   return (
     <div className={css.cal_box}>
       <div className={css.cal_ellips}>
@@ -12,7 +15,9 @@ const CalBox = () => {
           />
         </svg>
       </div>
-      <span className={css.cal}>500</span>
+      <span className={css.cal}>
+        {!burnedCaloriesSum ? `500` : burnedCaloriesSum}
+      </span>
       <span className={css.cal_text}>cal</span>
     </div>
   );
