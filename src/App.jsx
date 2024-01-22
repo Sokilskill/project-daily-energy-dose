@@ -10,11 +10,10 @@ import {
   selectIsParamsData,
   selectIsRefreshing,
 } from './redux/auth/auth-selectors';
-import { Navigate } from 'react-router-dom';
 import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import MyLoader from './components/Loader/DiaryLoader';
-import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
 import { getUserProfile } from './redux/profileSettings/operations';
+import { refreshThunk } from './redux/auth/auth-operations';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
