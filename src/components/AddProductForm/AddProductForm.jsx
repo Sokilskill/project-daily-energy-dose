@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { MdClose } from "react-icons/md";
 
-import { Backdrop, ModalContainer, Close, Form, Input, InputWrapper, Placeholder, Text, Button, Buttons} from "./AddProductForm.stiled";
+import { Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button1,Button2, Buttons} from "./AddProductForm.stiled";
 
 const AddProductForm = ({onClose, open}) => {
   const handleKeyDown = useCallback((event) => {
@@ -22,28 +22,29 @@ const AddProductForm = ({onClose, open}) => {
     <>
       <Backdrop onClick={onClose} style={{display: open ? 'flex' : 'none'}}>
           <ModalContainer onClick={event => event.stopPropagation()}>
-            {/* <div style={{textAlign: 'right', position: 'absolute', color: 'white', fill: 'white'}}> */}
             <Close>
                <MdClose onClick={onClose} size='22px' />
             </Close>
-             
-            {/* </div> */}
+        
             <Form name="addProductForm" action="#">
-            <Input 
-              id="product" 
-              type="text" 
-              name="product" 
-              placeholder="product">
-              </Input>
-              <InputWrapper>
-                <Input type="text" />
-                <Placeholder>grams</Placeholder>
-              </InputWrapper>
-           
+              <Inputs>
+                <Input 
+                  id="product" 
+                  type="text" 
+                  name="product" 
+                  placeholder="product">
+                </Input>
+                <InputContainer>
+                  <InputWrapper>
+                    <Input type="text" />
+                    <Placeholder>grams</Placeholder>
+                  </InputWrapper>
+                </InputContainer>
+              </Inputs>
               <Text>Calories:</Text>
               <Buttons>
-                <Button>Next product</Button>
-                <Button>Cancel</Button>
+                <Button1>Add to diary</Button1>
+                <Button2>Cancel</Button2>
               </Buttons>
               
             </Form> 
