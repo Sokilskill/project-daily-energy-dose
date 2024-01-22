@@ -25,7 +25,7 @@ import { errorPageReducer } from './errorPage/err-slice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isParams'],
+  whitelist: ['token'],
 };
 
 const productsPersistConfig = {
