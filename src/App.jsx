@@ -1,7 +1,7 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
-import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+// import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,19 +11,11 @@ import {
   selectIsParamsData,
   selectIsRefreshing,
 } from './redux/auth/auth-selectors';
-import { Navigate } from 'react-router-dom';
 import { refreshThunk } from './redux/auth/auth-operations';
 import MyLoader from './components/Loader/DiaryLoader';
+import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
+import { getUserProfile } from './redux/profileSettings/operations';
 
-//неавторизованого користувача переадресовує на Welcome page, авторизованого
-//- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
-
-// та редірект на diary === коли користувач вже залогіненний заходить наприклад з
-// нової вкладки його не відправляє на сторінку Welcome
-
-// додати перед Routes спінер-завантаження/лоадер поки не завантажиться сторінка -
-
-// авторизований / залогінений
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -36,10 +28,19 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
-  
+
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isParamsData) {
+      dispatch(getUserProfile());
+    }
+  }, [dispatch, isParamsData]);
 
   return isRefreshing ? (
     <MyLoader />
@@ -91,7 +92,7 @@ function App() {
           />
           <Route
             path="profile"
-            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
+            element={isLoggedIn ? <ProfilePage /> : <SignInPage />}
           />
           <Route
             path="diary"
@@ -101,8 +102,16 @@ function App() {
             path="products"
             element={isLoggedIn ? <ProductsPage /> : <Navigate to="/" />}
           />
-
           <Route
+            path="exercises"
+            element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
+          >
+            <Route index element={<Navigate to="bodyPart" />} />
+            <Route path=":category" element={<ExercisesCategories />} />
+            <Route path=":category/:subCategory" element={<ExercisesList />} />
+          </Route>
+
+          {/* <Route
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
           >
@@ -110,7 +119,7 @@ function App() {
             <Route path="muscles" element={<ExercisesSubcategoriesList />} />
             <Route path="equipment" element={<ExercisesSubcategoriesList />} />
             <Route path="list" element={<ExercisesList />} />
-          </Route>
+          </Route> */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
