@@ -14,7 +14,9 @@ import {
   selectExercisesByBodyParts,
   selectExercisesByEquipment,
   selectExercisesByMuscles,
+  selectLoading,
 } from '../../redux/exercises/exercisesSelectors';
+import MyLoader from '../Loader/DiaryLoader';
 
 export const ExercisesCategories = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,8 @@ export const ExercisesCategories = () => {
   const [exercises, setExercises] = useState(
     useSelector(selectExercisesByBodyParts)
   );
+
+  const isLoading = useSelector(selectLoading);
 
   useEffect(() => {
     dispatch(getExercisesByBodyParts());
@@ -58,19 +62,25 @@ export const ExercisesCategories = () => {
   };
   return (
     <div>
-      <CategoriesList>
-        <CategoriesListItem onClick={() => setActiveExByBody('body')}>
-          Body Parts
-        </CategoriesListItem>
+      {isLoading ? (
+        <MyLoader display={'flex'} />
+      ) : (
+        <CategoriesList>
+          <CategoriesListItem onClick={() => setActiveExByBody('body')}>
+            Body Parts
+          </CategoriesListItem>
 
-        <CategoriesListItem onClick={() => setActiveExByMuscles('muscles')}>
-          Muscles
-        </CategoriesListItem>
+          <CategoriesListItem onClick={() => setActiveExByMuscles('muscles')}>
+            Muscles
+          </CategoriesListItem>
 
-        <CategoriesListItem onClick={() => setActiveExByEquipmen('equipment')}>
-          Equipments
-        </CategoriesListItem>
-      </CategoriesList>
+          <CategoriesListItem
+            onClick={() => setActiveExByEquipmen('equipment')}
+          >
+            Equipments
+          </CategoriesListItem>
+        </CategoriesList>
+      )}
       {activeSubcategory && (
         <ExercisesSubcategoriesList
           subcategory={activeSubcategory}

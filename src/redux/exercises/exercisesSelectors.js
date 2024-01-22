@@ -11,6 +11,8 @@ export const selectExercisesByMuscles = (state) =>
 export const selectExercisesByEquipment = (state) =>
   state.exercises.filter.equipment.data;
 
+export const selectLoading = (state) => state.exercises.isLoading;
+
 // export const selectFilter = (state) => state.exercises.filter;
 
 // export const selectVisibleExercises = createSelector(

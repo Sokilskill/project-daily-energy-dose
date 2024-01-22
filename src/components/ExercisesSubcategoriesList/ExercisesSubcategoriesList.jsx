@@ -60,7 +60,7 @@ export const ExercisesSubcategoriesList = ({ subcategory, exercises }) => {
   //   // data.bodyPart === 'shoulders';
   // });
 
-  console.log(selectedExercisesData.data);
+  console.log(selectedExercisesData);
 
   return (
     <SubcategoriesList>

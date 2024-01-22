@@ -4,12 +4,30 @@ import { messageNotification } from '../../components/alertMessages/alertMessage
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api';
 
+// export const getExercises = createAsyncThunk(
+//   '/exercises',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/exercises');
+//       // console.log(data);
+//       return data;
+//     } catch (error) {
+//       messageNotification(error.response.status);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const getExercises = createAsyncThunk(
   '/exercises',
-  async (_, thunkAPI) => {
+  async (filterParams, thunkAPI) => {
+    // const { limit = 10, page = 1, filterParams } = credentials;
+    const { body, equipment, muscles } = filterParams;
     try {
-      const { data } = await axios.get('/exercises');
-      // console.log(data);
+      const { data } = await axios.get(
+        `/exercises?bodyPart=${body}&equipment=${equipment}&target=${muscles}`
+      );
+      console.log(data);
       return data;
     } catch (error) {
       messageNotification(error.response.status);
@@ -49,24 +67,6 @@ export const getExercisesByEquipment = createAsyncThunk(
     }
   }
 );
-
-// export const getExercisesByEquipment = createAsyncThunk(
-//   '/exercises/categories/Equipment',
-//   async (filterParams, thunkAPI) => {
-//     // const { limit = 10, page = 1, filterParams } = credentials;
-//     const { category } = filterParams;
-//     try {
-//       const { data } = await axios.get(
-//         `/exercises/categories?category=${category}`
-//       );
-//       console.log(data);
-//       return data;
-//     } catch (error) {
-//       messageNotification(error.response.status);
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const getExercisesByMuscles = createAsyncThunk(
   '/exercises/categories/Muscles',
