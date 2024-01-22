@@ -1,7 +1,8 @@
 @import '../../index.css';
 
 .cal_box {
-  width: 119px;
+  width: fit-content;
+  min-width: 119px;
   height: 76px;
   padding: 14px 18px;
   margin-left: auto;
@@ -41,7 +42,8 @@
 }
 @media (min-width: 768px) {
   .cal_box {
-    width: 180px;
+    width: fit-content;
+    min-width: 180px;
     height: 110px;
     padding: 14px 38px 14px 28px;
   }

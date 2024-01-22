@@ -17,6 +17,7 @@ import {
   WrapDescription,
 } from './ProductItem.styled.js';
 import sprite from '../../assets/sprite.svg';
+import AddProductForm from '../AddProductForm/AddProductForm.jsx'
 
 let recipeWindow;
 
@@ -31,6 +32,12 @@ const initialRecipeWindow = () => {
 initialRecipeWindow();
 
 export default function ProductItem({ productItem }) {
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
 
   const { weight, calories, category, title, groupBloodNotAllowed, _id } =
     productItem;
@@ -73,45 +80,48 @@ export default function ProductItem({ productItem }) {
   };
   
   return (
-    <Item>
-      <UpperWrapper>
-        <Chip>DIET</Chip>
+    <>
+      <Item>
+        <UpperWrapper>
+          <Chip>DIET</Chip>
 
-        <WrapBtn>
-          {groupBloodNotAllowed[groupBlood] ? (
-        <><Rectangle color={'#419B09'} />
-        <RecText>{'Recommended'}</RecText></>
-      ) : (
-          <><Rectangle color={'#E9101D'} />
-        <RecText>{'Not recommended'}</RecText></>
-      )}
-          <AddBtn>
-            Add
-            <IconAdd>
-              <use href={sprite + '#icon-arrow'} />
-            </IconAdd>
-          </AddBtn>
-        </WrapBtn>
-      </UpperWrapper>
+          <WrapBtn>
+            {groupBloodNotAllowed[groupBlood] ? (
+          <><Rectangle color={'#419B09'} />
+          <RecText>{'Recommended'}</RecText></>
+        ) : (
+            <><Rectangle color={'#E9101D'} />
+          <RecText>{'Not recommended'}</RecText></>
+        )}
+            <AddBtn onClick={() => setOpenModal(true)}>
+              Add
+              <IconAdd>
+                <use href={sprite + '#icon-arrow'} />
+              </IconAdd>
+            </AddBtn>
+          </WrapBtn>
+        </UpperWrapper>
 
-      <LowerWrapper>
-        <Icon>
-          <use href={sprite + '#icon-icon'} />
-        </Icon>
-        <ProductName>{normalizedTitle()}</ProductName>
-        <WrapDescription>
-        <InfoText>
-          Calories: <Accent> {calories}</Accent>
-        </InfoText>
-        <InfoText>
-          Category: <Accent>{normalizedCategory()}</Accent>
-        </InfoText>
-        <InfoText>
-          Weight: <Accent>{weight}</Accent>
-        </InfoText>
-        </WrapDescription>
-        
-      </LowerWrapper>
-    </Item>
+        <LowerWrapper>
+          <Icon>
+            <use href={sprite + '#icon-icon'} />
+          </Icon>
+          <ProductName>{normalizedTitle()}</ProductName>
+          <WrapDescription>
+          <InfoText>
+            Calories: <Accent> {calories}</Accent>
+          </InfoText>
+          <InfoText>
+            Category: <Accent>{normalizedCategory()}</Accent>
+          </InfoText>
+          <InfoText>
+            Weight: <Accent>{weight}</Accent>
+          </InfoText>
+          </WrapDescription>
+          
+        </LowerWrapper>
+      </Item>
+      <AddProductForm onClose={handleCloseModal} open={openModal} />
+    </>
   );
 }

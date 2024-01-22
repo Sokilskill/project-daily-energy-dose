@@ -40,6 +40,7 @@ import {
   NameEmailWrapper,
 } from './UserForm.styled';
 
+
 //================== Radio Button ==================
 
 // ================ id - для ключа(можна використовувати індекс)
@@ -100,8 +101,7 @@ export const UserForm = () => {
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
-  
- 
+
 
   useEffect(() => {
     if (userName) {
@@ -130,7 +130,6 @@ export const UserForm = () => {
   const handleSubmit = async (data) => {
     try {
       const { name, email, birthday, ...profileData } = data;
-
       const updateNameResult = await dispatch(updateUserName({ name }));
       const updateProfileDataResult = await dispatch(
         addUserData({ ...profileData, birthday: new Date(birthday).toISOString() })
@@ -141,7 +140,6 @@ export const UserForm = () => {
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
         await dispatch(getUserProfile());
-        // toast.success("Settings updated");
       } else {
         console.log('Setting update error');
       }
@@ -186,7 +184,7 @@ export const UserForm = () => {
                           : ''
                         : '',
                     }}
-                  />
+     
                   <div style={{ position: 'relative' }}>
                     {errors.name && touched.name && (
                       <svg

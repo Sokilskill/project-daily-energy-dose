@@ -36,8 +36,6 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
-  const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
   
   useEffect(() => {
     dispatch(refreshThunk());

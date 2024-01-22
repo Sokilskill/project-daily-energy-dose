@@ -1,10 +1,10 @@
 import { useEffect, useCallback } from 'react';
 import { MdClose } from "react-icons/md";
 import { IoMdArrowForward } from "react-icons/io";
-import { Backdrop, ModalContainer, Close, Image, Div, Title, Text, Button, StyledLink} from "./AddExerciseSuccess.stiled";
-import ThumbIcon from "../../assets/images/thumb_up.png";
+import { Backdrop, ModalContainer, Close, Image, Div, Title, Text, Button, StyledLink} from "./AddProductSuccess.styled";
+import foodIcon from "@/assets/images/3d-food-icon-by-OdafeUI.png";
 
-const AddExerciseSuccess = ({onClose, open }) => {
+const AddProductSuccess = ({onClose, open}) => {
   const handleKeyDown = useCallback((event) => {
     if (event.key === 'Escape') {
       onClose();
@@ -27,11 +27,10 @@ const AddExerciseSuccess = ({onClose, open }) => {
                <MdClose onClick={onClose} size='22px' />
             </Close>
               <Div>
-                <Image src={ThumbIcon} alt="" />
+                <Image src={foodIcon} alt="" />
               </Div>
               <Title>Well done</Title>
-              <Text>Your  time: </Text>
-              <Text>Burned calories:</Text>
+              <Text>Calories:</Text>
               <Button type='button' onClick={onClose}>Next product</Button>
               <Div>
                 <StyledLink to="/diary">To the diary <IoMdArrowForward /></StyledLink>
@@ -44,5 +43,5 @@ const AddExerciseSuccess = ({onClose, open }) => {
     );
   };
   
-export default AddExerciseSuccess;
+export default AddProductSuccess;
 
