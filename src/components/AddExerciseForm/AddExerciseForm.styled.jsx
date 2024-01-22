@@ -17,7 +17,7 @@ export const Backdrop  = styled.div`;
 export const ModalContainer = styled.div`
   position: absolute;
   width: 335px;
-  height: 788px;
+
   padding: 48px 32px;
   
   border-radius: 12px;
@@ -46,7 +46,7 @@ export const Container = styled.div`
 export const Flex = styled.div`
   @media (min-width: 768px) {
     displey:flex;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
   
 `;
@@ -91,6 +91,11 @@ export const TimerButton = styled.button`
   &:hover {
     background-color: #D6432C;
   }
+`;
+
+export const ButtonDiv = styled.div`
+
+text-align: center;
 `;
 
 export const Text = styled.p`
