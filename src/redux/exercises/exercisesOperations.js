@@ -56,4 +56,4 @@ const exercisesOperations = {
   getExercisesByMuscles,
 };
 
-// export default exercisesOperations;
+export default exercisesOperations;
