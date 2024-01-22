@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
-export const SubcategoriesListItem = styled.li`
+export const SubcategoriesListItem = styled.li``;
+
+export const SubcategoriesItemLink = styled(NavLink)`
   position: relative;
   width: 335px;
   height: 206px;
   cursor: pointer;
-
+  color: #efede8;
   @media screen and (min-width: 768px) {
     width: 224px;
   }

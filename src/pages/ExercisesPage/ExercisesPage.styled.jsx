@@ -20,13 +20,23 @@ export const ExercisesPageHeader = styled.h3`
   }
 `;
 
-export const ExercisesPageHeaderWrapper = styled.div`
+export const BackBtnWrapper = styled.div`
+  margin-bottom: 16px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+`;
 
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+export const ArrowIcon = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: rgba(239, 237, 232, 0.4);
+  transform: scaleX(-1);
+`;
+
+export const BackBtn = styled.div`
+  font-size: 16px;
+  color: rgba(239, 237, 232, 0.4);
+  background-color: transparent;
 `;

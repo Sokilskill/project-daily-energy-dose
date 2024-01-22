@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const CategoriesList = styled.ul`
   display: flex;
@@ -6,10 +7,14 @@ export const CategoriesList = styled.ul`
 
   @media screen and (min-width: 768px) {
     gap: 32px;
+    justify-content: flex-end;
+    margin-top: -24px;
   }
 `;
 
-export const CategoriesListItem = styled.li`
+export const CategoriesListItem = styled.li``;
+
+export const CategoriesItemLink = styled(NavLink)`
   position: relative;
   padding-bottom: 5px;
   font-size: 14px;
@@ -43,3 +48,4 @@ export const CategoriesListItem = styled.li`
     color: #efede8;
   }
 `;
+

@@ -1,93 +1,37 @@
 import {
+  CategoriesItemLink,
   CategoriesList,
   CategoriesListItem,
 } from '../ExercisesCategories/ExercisesCategories.styled';
-import {
-  getExercisesByBodyParts,
-  getExercisesByEquipment,
-  getExercisesByMuscles,
-} from '../../redux/exercises/exercisesOperations';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList/ExercisesSubcategoriesList';
-import {
-  selectExercisesByBodyParts,
-  selectExercisesByEquipment,
-  selectExercisesByMuscles,
-  selectLoading,
-} from '../../redux/exercises/exercisesSelectors';
-import MyLoader from '../Loader/DiaryLoader';
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export const ExercisesCategories = () => {
-  const dispatch = useDispatch();
-  const [activeSubcategory, setActiveSubcategory] = useState('body');
-  const [exercises, setExercises] = useState(
-    useSelector(selectExercisesByBodyParts)
-  );
-
-  const isLoading = useSelector(selectLoading);
+export const ExercisesCategories = ({ children }) => {
+  const navigate = useNavigate();
+  const { categoryType } = useParams();
 
   useEffect(() => {
-    dispatch(getExercisesByBodyParts());
-  });
-
-  useEffect(() => {
-    if (activeSubcategory === 'body') {
-      dispatch(getExercisesByBodyParts());
-    } else if (activeSubcategory === 'muscles') {
-      dispatch(getExercisesByMuscles());
-    } else if (activeSubcategory === 'equipment') {
-      dispatch(getExercisesByEquipment());
+    if (!categoryType) {
+      navigate('body');
     }
-  }, [dispatch, activeSubcategory]);
+  }, []);
 
-  const bodyList = useSelector(selectExercisesByBodyParts);
-  const musclesList = useSelector(selectExercisesByMuscles);
-  const equipmentList = useSelector(selectExercisesByEquipment);
-
-  console.log(exercises);
-
-  const setActiveExByBody = (subcategory) => {
-    setActiveSubcategory(subcategory);
-    setExercises(bodyList);
-  };
-
-  const setActiveExByMuscles = (subcategory) => {
-    setActiveSubcategory(subcategory);
-    setExercises(musclesList);
-  };
-  const setActiveExByEquipmen = (subcategory) => {
-    setActiveSubcategory(subcategory);
-    setExercises(equipmentList);
-  };
   return (
     <div>
-      {isLoading ? (
-        <MyLoader display={'flex'} />
-      ) : (
-        <CategoriesList>
-          <CategoriesListItem onClick={() => setActiveExByBody('body')}>
-            Body Parts
-          </CategoriesListItem>
+      <CategoriesList>
+        <CategoriesListItem>
+          <CategoriesItemLink to={'body'}> Body Parts</CategoriesItemLink>
+        </CategoriesListItem>
 
-          <CategoriesListItem onClick={() => setActiveExByMuscles('muscles')}>
-            Muscles
-          </CategoriesListItem>
+        <CategoriesListItem>
+          <CategoriesItemLink to={'muscles'}>Muscles</CategoriesItemLink>
+        </CategoriesListItem>
 
-          <CategoriesListItem
-            onClick={() => setActiveExByEquipmen('equipment')}
-          >
-            Equipments
-          </CategoriesListItem>
-        </CategoriesList>
-      )}
-      {activeSubcategory && (
-        <ExercisesSubcategoriesList
-          subcategory={activeSubcategory}
-          exercises={exercises}
-          // onSelectExercise={(exercise) => console.log(exercise)}
-        />
-      )}
+        <CategoriesListItem>
+          <CategoriesItemLink to={'equipment'}>Equipments</CategoriesItemLink>
+        </CategoriesListItem>
+      </CategoriesList>
+      {children}
     </div>
   );
 };

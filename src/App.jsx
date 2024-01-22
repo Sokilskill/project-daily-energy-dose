@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from './redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
+import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
 //- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
@@ -83,7 +84,11 @@ function App() {
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
           >
-            <Route path="list" element={<ExercisesList />} />
+            <Route
+              path=":categoryType"
+              element={<ExercisesSubcategoriesList />}
+            />
+            <Route path=":categoryType/:group" element={<ExercisesList />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>

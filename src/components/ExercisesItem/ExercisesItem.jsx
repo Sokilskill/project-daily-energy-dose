@@ -15,7 +15,16 @@ import {
 } from '../ExercisesItem/ExercisesItem.styled';
 import sprite from '../../assets/sprite.svg';
 
-export const ExercisesItem = () => {
+export const ExercisesItem = ({
+  bodyPart,
+  burnedCalories,
+  equipment,
+  gifUrl,
+  name,
+  target,
+  time,
+  _id,
+}) => {
   return (
     <ExerciseItem>
       <ItemTopBloc>
@@ -33,20 +42,20 @@ export const ExercisesItem = () => {
             href={`${sprite}#icon-running-stick-figure-svgrepo-com-1-1`}
           ></use>
         </FigureIcon>
-        <ExerciseTitle>Air bike</ExerciseTitle>
+        <ExerciseTitle>{name}</ExerciseTitle>
       </ExerciseTitleWrapper>
       <TargetsList>
         <TargetsListItem>
           <TargetsListTitle>Burned calories:</TargetsListTitle>
-          <TargetsListText>312</TargetsListText>
+          <TargetsListText>{burnedCalories}</TargetsListText>
         </TargetsListItem>
         <TargetsListItem>
           <TargetsListTitle>Body part:</TargetsListTitle>
-          <TargetsListText>Waist</TargetsListText>
+          <TargetsListText>{bodyPart}</TargetsListText>
         </TargetsListItem>
         <TargetsListItem>
           <TargetsListTitle>Target:</TargetsListTitle>
-          <TargetsListText>Abs</TargetsListText>
+          <TargetsListText>{target}</TargetsListText>
         </TargetsListItem>
       </TargetsList>
     </ExerciseItem>

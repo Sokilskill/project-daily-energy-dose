@@ -7,6 +7,7 @@ export const ExerciseItem = styled.div`
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   background-color: rgba(239, 237, 232, 0.05);
+  overflow: hidden;
 
   @media screen and (min-width: 1440px) {
     width: 405px;
@@ -78,7 +79,8 @@ export const FigureIcon = styled.svg`
 export const ExerciseTitle = styled.p`
   font-size: #efede8;
   font-size: 20px;
-
+  overflow: hidden;
+  white-space: nowrap;
   @media screen and (min-width: 768px) {
     font-size: 24px;
   }
@@ -98,9 +100,11 @@ export const TargetsListItem = styled.li`
 `;
 
 export const TargetsListTitle = styled.p`
+  white-space: nowrap;
   color: rgba(239, 237, 232, 0.4);
 `;
 
 export const TargetsListText = styled.p`
+  white-space: nowrap;
   color: #efede8;
 `;
