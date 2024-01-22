@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { handleFulfilled, handlePending, handleRejected } from '../../components/services/services';
+import {
+  handleStatisticsFulfilled,
+  handlePending,
+  handleRejected,
+} from '../../components/services/services';
 import getStatistics from './statisticsOperations';
 
 const initialState = {
-  data: {
-    totalUsersExercises: '',
-    exercisesQuantity: '',
-    usersQuantity: '',
-    totalExercisesTime: '',
-    totalBurnedCalories: '',
-  },
+  userCount: null,
+  workoutCount: null,
+  burnedCaloriesSum: null,
+  workoutsTimeSum: null,
+  videoCount: null,
 };
 
 const STATUS = {
@@ -23,15 +25,9 @@ export const statisticsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getStatistics[STATUS.FULFILLED], handleFulfilled)
-      .addCase(
-        getStatistics[STATUS.PENDING],
-        handlePending,
-      )
-      .addCase(
-        getStatistics[STATUS.REJECTED],
-        handleRejected,
-      );
+      .addCase(getStatistics[STATUS.FULFILLED], handleStatisticsFulfilled)
+      .addCase(getStatistics[STATUS.PENDING], handlePending)
+      .addCase(getStatistics[STATUS.REJECTED], handleRejected);
   },
 });
 

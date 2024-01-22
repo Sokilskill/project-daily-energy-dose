@@ -12,5 +12,4 @@ const getStatistics = createAsyncThunk('/statistics', async (_, thunkAPI) => {
   }
 });
 
-
 export default getStatistics;
