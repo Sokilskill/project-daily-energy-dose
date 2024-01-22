@@ -1,4 +1,4 @@
-import{n as i,N as n,j as e,I as t}from"./index-4a8699f1.js";const o="/project-daily-energy-dose/assets/people-training-gym-mob-09d55cdf.webp",a=i.div`
+import{n as i,N as n,j as e,K as t}from"./index-68796b7c.js";const o="/project-daily-energy-dose/assets/people-training-gym-mob-09d55cdf.webp",a=i.div`
   // position: relative;
   padding: 0;
   background-image: url(${o}), var(--bg-gradient);
