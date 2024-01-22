@@ -1,26 +1,26 @@
+import { useLocation } from 'react-router-dom';
 import {
   SubcategoriesListItem,
   SubcategoriesImg,
   SubcategoriesTextWrapper,
   SubcategoriesTitle,
   SubcategoriesText,
+  SubCategoryLink,
 } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem.styled';
-import Shoulders from '../../assets/Exercises/Shoulders.png';
-import { useNavigate } from 'react-router-dom';
+import capitalizeString from '../../../hooks/capitalizeString';
 
-export const ExercisesSubcategoriesItem = () => {
-  const navigate = useNavigate();
+export const ExercisesSubcategoriesItem = ({ _id, name, imgURL, filter }) => {
+  const location = useLocation();
+
   return (
-    <SubcategoriesListItem
-      onClick={() => {
-        navigate('/exercises/list');
-      }}
-    >
-      <SubcategoriesImg src={Shoulders}></SubcategoriesImg>
-      <SubcategoriesTextWrapper>
-        <SubcategoriesTitle>Shoulders</SubcategoriesTitle>
-        <SubcategoriesText>Body parts</SubcategoriesText>
-      </SubcategoriesTextWrapper>
+    <SubcategoriesListItem key={_id}>
+      <SubCategoryLink to={name} state={{ from: location }}>
+        <SubcategoriesImg src={imgURL} />
+        <SubcategoriesTextWrapper>
+          <SubcategoriesTitle>{capitalizeString(name)}</SubcategoriesTitle>
+          <SubcategoriesText>{filter}</SubcategoriesText>
+        </SubcategoriesTextWrapper>
+      </SubCategoryLink>
     </SubcategoriesListItem>
   );
 };

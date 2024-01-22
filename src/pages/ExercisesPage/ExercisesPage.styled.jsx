@@ -27,6 +27,11 @@ export const ExercisesPageHeaderWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
+`;
+export const GoBackBtnWrap = styled.div`
+  position: absolute;
+  top: 116px;
 `;
