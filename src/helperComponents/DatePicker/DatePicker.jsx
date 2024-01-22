@@ -17,6 +17,8 @@ const BirthdayPicker = ({
   iconColor,
   textHeight,
   birthday,
+
+  handlerDate,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
@@ -27,9 +29,12 @@ const BirthdayPicker = ({
     if (datePickerRef.current) {
       datePickerRef.current.setOpen(true);
     }
-
+  
     setSelectedDate(date);
+    handlerDate(date);
     console.log("Picked date:", date);
+  
+    
   };
 
   return (

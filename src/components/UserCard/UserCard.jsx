@@ -35,11 +35,12 @@ import {
 } from "./UserCard.styled";
 import { LogOutBtn } from "../../helperComponents/LogOutBtn/LogOutBtn";
 import { selectUser } from "../../redux/auth/auth-selectors";
-import { selectProfileName } from "../../redux/profileSettings/selectors";
+import { selectProfileName, selectUserProfile } from "../../redux/profileSettings/selectors";
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUser);
+  const ownerProfile = useSelector(selectUserProfile);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
     userProfile.avatarURL
   );
@@ -85,6 +86,7 @@ export const UserCard = ({ time }) => {
     }
   }, [showPreview]);
 
+
   return (
     <ProfileContainer>
       <WrapperAvatar>
@@ -128,8 +130,8 @@ export const UserCard = ({ time }) => {
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
-          {/* <Span>{Math.round(userProfile.bmr)}</Span> */}
-          <SpanIntake>0</SpanIntake>
+          <Span>{Math.round(ownerProfile.bmr)}</Span>
+          {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>

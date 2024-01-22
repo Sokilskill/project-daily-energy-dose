@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
@@ -100,9 +100,8 @@ export const UserForm = () => {
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
-  const storDate = localStorage.getItem('PowerPulsDate');
-  const initialDate = storDate ? new Date(storDate) : new Date();
-  const [date, setDate] = useState(initialDate);
+  
+ 
 
   useEffect(() => {
     if (userName) {
@@ -123,16 +122,18 @@ export const UserForm = () => {
     sex: sex || '',
     levelActivity: levelActivity || 1,
   };
+  const changeDate = (date) => {
+    const newDate = date.toISOString();
+    setFieldValue("birthday", newDate);
+  };
 
   const handleSubmit = async (data) => {
     try {
-      console.log('DATA', data);
       const { name, email, birthday, ...profileData } = data;
 
       const updateNameResult = await dispatch(updateUserName({ name }));
-
       const updateProfileDataResult = await dispatch(
-        addUserData({ ...profileData, birthday })
+        addUserData({ ...profileData, birthday: new Date(birthday).toISOString() })
       );
 
       if (
@@ -140,8 +141,7 @@ export const UserForm = () => {
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
         await dispatch(getUserProfile());
-
-        // toast.success("Settings updated, creating training plan");
+        // toast.success("Settings updated");
       } else {
         console.log('Setting update error');
       }
@@ -150,7 +150,6 @@ export const UserForm = () => {
       console.error('Error updating profile:', error);
     }
   };
-
   return (
     currentName && (
       <MainContainer>
@@ -418,14 +417,12 @@ export const UserForm = () => {
                     }}
                   >
                     <Label htmlFor="birthday">Date of birth</Label>
-                    <BirthdayPickerField required name="birthday">
-                      {({ field, form }) => (
+                    <BirthdayPickerField name="birthday">
+                      {({ field }) => (
                         <BirthdayPicker
                           id="date"
                           currentDate={field.value}
-                          handlerDate={(date) => {
-                            form.setFieldValue(field.name, date);
-                          }}
+                          handlerDate={(date) => setFieldValue('birthday', date)}
                         />
                       )}
                     </BirthdayPickerField>
