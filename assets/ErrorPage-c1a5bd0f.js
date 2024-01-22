@@ -1,7 +1,7 @@
-import{n as i,N as n,j as e,K as t}from"./index-68796b7c.js";const o="/project-daily-energy-dose/assets/people-training-gym-mob-09d55cdf.webp",a=i.div`
+import{n as i,N as a,a as o,r as d,K as t,j as e,P as r}from"./index-54a52f0d.js";const p="/project-daily-energy-dose/assets/people-training-gym-mob-09d55cdf.webp",s=i.div`
   // position: relative;
   padding: 0;
-  background-image: url(${o}), var(--bg-gradient);
+  background-image: url(${p}), var(--bg-gradient);
 
   background-image: url('/src/assets/Welcome/images/people-training-gym-mob.webp'),
     var(--bg-gradient);
@@ -22,7 +22,7 @@ import{n as i,N as n,j as e,K as t}from"./index-68796b7c.js";const o="/project-d
     background-repeat: no-repeat;
     background-position: right top;
   }
-`,d=i.div`
+`,c=i.div`
 padding-top: 250px ;
 padding-bottom: 250px;
 
@@ -33,12 +33,12 @@ padding-bottom: 250px;
   @media screen and (min-width: 1440px) {
   padding-top: 221 ;
   padding-bottom: 221;
-`,p=i.header`
+`,g=i.header`
   position: relative;
-`,r=i.header`
+`,x=i.header`
   position: absolute;
   top: 0;
-`,s=i.div`
+`,h=i.div`
   // position: absolute;
   // top: -100px;
   // left: 0;
@@ -55,7 +55,7 @@ padding-bottom: 250px;
   @media screen and (min-width: 1440px) {
     width: 669px;
   }
-`,g=i.div`
+`,m=i.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,7 +78,7 @@ padding-bottom: 250px;
 
     width: 477px;
   }
-`,c=i.h1`
+`,l=i.h1`
   font-size: 66px;
   font-weight: 500;
   line-height: 100%;
@@ -94,7 +94,7 @@ letter-spacing: 1.6px;
    @media screen and (min-width: 768px) {
 line-height:  93.75%;
    }
-`,x=i.p`
+`,u=i.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 128.571%;
@@ -104,7 +104,7 @@ line-height:  93.75%;
     font-size: 16px;
     line-height: 150%;
   }
-`,h=i(n)`
+`,b=i(a)`
   color: var(--white, #efede8);
   font-size: 16px;
   font-weight: 500;
@@ -123,4 +123,4 @@ line-height:  93.75%;
     font-size: 20px;
     line-height: 120%;
   }
-`,l=()=>e.jsx(e.Fragment,{children:e.jsx(a,{className:"container",children:e.jsx(s,{children:e.jsxs(p,{className:"container",children:[e.jsx(r,{children:e.jsx(t,{colorWhite:"true"})}),e.jsx(d,{children:e.jsxs(g,{children:[e.jsx(c,{children:"404"}),e.jsx(x,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(h,{to:"/",children:"Go Home"})]})})]})})})});export{l as default};
+`,f=()=>{const n=o();return d.useEffect(()=>(n(t(!0)),()=>{n(t(!1))}),[n]),e.jsx(e.Fragment,{children:e.jsx(s,{className:"container section-wrapper",children:e.jsx(h,{children:e.jsxs(g,{className:"container",children:[e.jsx(x,{children:e.jsx(r,{colorWhite:"true"})}),e.jsx(c,{children:e.jsxs(m,{children:[e.jsx(l,{children:"404"}),e.jsx(u,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(b,{to:"/",children:"Go Home"})]})})]})})})})};export{f as default};
