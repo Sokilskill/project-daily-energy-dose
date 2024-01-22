@@ -35,6 +35,7 @@ const initialState = {
       levelActivity: null,
     },
   },
+  isParams: false,
   isLoggedIn: false,
   isLoading: false,
   isFetchingCurrentUser: false,
@@ -46,6 +47,9 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  setIsParams: (state, action) => {
+    state.isParams = action.payload;
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerThunk.pending, handlePending)
@@ -73,5 +77,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setIsParams } = authSlice.actions;
 export const authReducer = authSlice.reducer;
