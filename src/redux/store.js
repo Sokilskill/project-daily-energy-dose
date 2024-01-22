@@ -20,11 +20,12 @@ import { productsReducer } from './products/sliceProducts';
 import { statisticsSliceReducer } from './statistics/statisticsSlice';
 import { diarySliceReducer } from './diary/diarySlice';
 import { commonExercisesReducer } from './exercises/commonExercisesReducer';
+import { errorPageReducer } from './errorPage/err-slice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isParams'],
 };
 
 const productsPersistConfig = {
@@ -52,6 +53,7 @@ export const store = configureStore({
     products: persistReducer(productsPersistConfig, productsReducer),
     statistics: statisticsSliceReducer,
     profile: persistReducer(authPersistConfig, profileReducer),
+    error: errorPageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

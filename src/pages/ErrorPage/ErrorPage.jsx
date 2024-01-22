@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Logo } from '../../helperComponents/Logo/Logo';
 import {
   ContentBox,
@@ -10,11 +11,23 @@ import {
   LogoWrap,
   Container,
 } from './ErrorPage.styled';
+import { useDispatch } from 'react-redux';
+import { setErrorPage } from '../../redux/errorPage/err-slice';
 
 const ErrorPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setErrorPage(true));
+
+    return () => {
+      dispatch(setErrorPage(false));
+    };
+  }, [dispatch]);
+
   return (
     <>
-      <SectionWrapper className="container">
+      <SectionWrapper className="container section-wrapper">
         <BackgroundColor>
           <Container className="container">
             <LogoWrap>
