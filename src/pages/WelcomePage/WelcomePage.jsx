@@ -62,15 +62,57 @@
 //       />  */}
       
 //     </>
-
+import { useState } from 'react';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
 import { WelcomePart } from '../../components/WelcomePart/WelcomePart';
+// import AddProductSuccess from '../../components/AddProductSuccess/AddProductSuccess.jsx'; 
+// import AddProductForm from '../../components/AddProductForm/AddProductForm';
+// import AddExerciseSuccess from '../../components/AddExerciseSuccess/AddExerciseSuccess';
+import AddExerciseForm from "../../components/AddExerciseForm/AddExerciseForm";
 
 const WelcomePage = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const onCloseModal = () => { setIsOpenModal(false) };
+
   return (
+    <>
     <WelcomeLayout>
       <WelcomePart />
     </WelcomeLayout>
+    {/* <button type="button" onClick={() => setIsOpenModal(true)}>Modal</button>
+    <AddProductSuccess
+    open={isOpenModal}
+    onClose={onCloseModal}
+ 
+  />  */}
+  {/* <AddProductSuccess
+    open={isOpenModal}
+    onClose={onCloseModal}
+    title="Modal title"
+    text={<p>Modal text</p>}
+    icon={foodIcon}
+    linkTo="#"
+    linkText="To the diary"
+  /> */}
+  {/* <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-2</button>
+  <AddProductForm
+    open={isOpenModal}
+    onClose={onCloseModal}
+  /> */}
+
+{/* <button type="button" className={css.btn_modal} onClick={() => setIsOpenModal(true)}>Modal-3</button>
+  <AddExerciseSuccess
+    open={isOpenModal}
+    onClose={onCloseModal}
+  /> */}
+<button type="button" onClick={() => setIsOpenModal(true)}>Modal-4</button>
+  <AddExerciseForm
+    open={isOpenModal}
+    onClose={onCloseModal}
+  />
+    </>
+    
   );
 };
 
