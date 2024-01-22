@@ -6,7 +6,9 @@ export const CategoriesList = styled.ul`
   gap: 28px;
 
   @media screen and (min-width: 768px) {
-    gap: 32px;
+    margin-top: 64px;
+    gap: 32px 16px;
+    flex-wrap: wrap;
   }
 `;
 
@@ -45,4 +47,8 @@ export const Link = styled(NavLink)`
   &:focus {
     color: #efede8;
   }
+`;
+export const CategoriesPaginationWrap = styled.div`
+  text-align: center;
+  margin-top: 32px;
 `;

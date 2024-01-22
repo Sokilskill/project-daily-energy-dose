@@ -88,7 +88,7 @@ export const handleFulfilledAddProduct = (state, { payload }) => {
 };
 export const handleFulfilledDeleteProduct = (state, { payload }) => {
   state.data.eatenProducts = state.data.eatenProducts.filter(
-    (el) => el._id !== payload._id,
+    (el) => el._id !== payload._id
   );
 };
 
@@ -99,7 +99,7 @@ export const handleFulfilledAddExercise = (state, { payload }) => {
 
 export const handleFulfilledDeleteExercise = (state, { payload }) => {
   state.data.doneExercises = state.data.doneExercises.filter(
-    (el) => el._id !== payload._id,
+    (el) => el._id !== payload._id
   );
 };
 
@@ -126,11 +126,25 @@ export const handleRejected = (state) => {
   state.isLoading = false;
 };
 
-
 //--------------Products
 
-export function handleFulfilledProductList (state, { payload }) {
+export function handleFulfilledProductList(state, { payload }) {
   state.list.push(...payload.products);
-    state.total = payload.total;
+  state.total = payload.total;
+  state.isLoading = false;
+}
+
+// ----------- Exercises
+
+export function handleFulfilledExercisesCategories(state, { payload }) {
+  state.items = payload.data;
+  state.page = payload.page + 1;
+  state.total = payload.total;
+  state.isLoading = false;
+}
+export function handlefulfilledExercises(state, { payload }) {
+  state.items = payload.data;
+  state.page = payload.page + 1;
+  state.total = payload.total;
   state.isLoading = false;
 }

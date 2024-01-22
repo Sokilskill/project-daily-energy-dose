@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
-import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+// import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ import {
 import { Navigate } from 'react-router-dom';
 import { refreshThunk } from './redux/auth/auth-operations';
 import MyLoader from './components/Loader/DiaryLoader';
+import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
 
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
 //- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
@@ -103,8 +104,16 @@ function App() {
             path="products"
             element={isLoggedIn ? <ProductsPage /> : <Navigate to="/" />}
           />
-
           <Route
+            path="exercises"
+            element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
+          >
+            <Route index element={<Navigate to="bodyPart" />} />
+            <Route path=":category" element={<ExercisesCategories />} />
+            <Route path=":category/:subCategory" element={<ExercisesList />} />
+          </Route>
+
+          {/* <Route
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
           >
@@ -112,7 +121,7 @@ function App() {
             <Route path="muscles" element={<ExercisesSubcategoriesList />} />
             <Route path="equipment" element={<ExercisesSubcategoriesList />} />
             <Route path="list" element={<ExercisesList />} />
-          </Route>
+          </Route> */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
