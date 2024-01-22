@@ -29,7 +29,7 @@ export const ExercisesCategories = () => {
 
   useEffect(() => {
     dispatch(getExercisesByBodyParts());
-  }, [dispatch]);
+  });
 
   useEffect(() => {
     if (activeSubcategory === 'body') {

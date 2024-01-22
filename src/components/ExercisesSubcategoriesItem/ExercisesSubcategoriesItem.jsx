@@ -39,6 +39,43 @@ export const ExercisesSubcategoriesItem = ({ data, onClick }) => {
     // onClick(data);
     dispatch(getExercises());
   };
+
+  // useEffect(() => {
+  //   const options = {
+  //     params: { body, equipment, muscles },
+  //   };
+
+  //   getExercises(options).then(({ data }) => {
+  //     setbody(data.data);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   const options = {
+  //     params: { body, equipment, muscles },
+  //   };
+
+  //   if (fetching) {
+  //     getProducts(options)
+  //       .then(({ data }) => {
+  //         setProducts([...products, ...data.data]);
+  //         setCurrentTotal(data.total);
+  //         setPage((p) => p + 1);
+  //       })
+  //       .finally(() => setFetching(false));
+  //   }
+  // }, [fetching]);
+
+  // const setParams = (params) => {
+  //   setProducts([]);
+  //   setCategory(params.category);
+  //   setGroupBloodNotAllowed(params.groupBloodNotAllowed);
+  //   setSearch(params.search);
+  //   setPage(1);
+  //   setFetching(true);
+  //   setCurrentTotal(0);
+  // };
+
   return (
     <SubcategoriesListItem onClick={handleImageClick}>
       <SubcategoriesImg src={data.imgURL} alt={data.name}></SubcategoriesImg>

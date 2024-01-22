@@ -22,7 +22,7 @@ export const getExercises = createAsyncThunk(
   '/exercises',
   async (filterParams, thunkAPI) => {
     // const { limit = 10, page = 1, filterParams } = credentials;
-    const { body, equipment, muscles } = filterParams;
+    const { body = '', equipment = '', muscles = '' } = filterParams;
     try {
       const { data } = await axios.get(
         `/exercises?bodyPart=${body}&equipment=${equipment}&target=${muscles}`
