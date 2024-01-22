@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { updatedUserAvatar } from '../../redux/profileSettings/operations';
 
 import sprite from '../../assets/sprite.svg';
-import { selectCurrentUser, selectUserProfile } from '../../redux/profileSettings/selectors';
 import {
   ActivityShower,
   AvatarContainer,
@@ -24,7 +23,6 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
-  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -36,11 +34,12 @@ import {
   WrapperLogOut,
 } from './UserCard.styled';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
-
+import { selectUser } from '../../redux/auth/auth-selectors';
+import { selectProfileName } from '../../redux/profileSettings/selectors';
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
-  const userProfile = useSelector(selectUserProfile);
+  const userProfile = useSelector(selectUser);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
     userProfile.avatarURL
   );
@@ -48,8 +47,7 @@ export const UserCard = ({ time }) => {
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const user  = useSelector(selectCurrentUser);
-  
+  const userName = useSelector(selectProfileName);
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -61,13 +59,15 @@ export const UserCard = ({ time }) => {
         setAvatarPreviewURL(objectURL);
 
         const data = await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log(newAvatarFile);
+        console.log('newAvatar ProfilePage', newAvatarFile);
+        console.log('data', data);
       } catch (error) {
         console.error('Failed to create object URL:', error);
         toast.error('Failed to update avatar');
       } finally {
-        setLoading(false); 
-        e.target.form.reset();
+        setLoading(false);
+        // e.target.form.reset();
+        // ===================== Переглянути чи є тут метод reset =============================
       }
     }
   };
@@ -85,8 +85,6 @@ export const UserCard = ({ time }) => {
     }
   }, [showPreview]);
 
-  
-
   return (
     <ProfileContainer>
       <WrapperAvatar>
@@ -100,7 +98,7 @@ export const UserCard = ({ time }) => {
         </AvatarContainer>
         <Label htmlFor="file-input">
           <AvatarPickerSvg>
-            <use href={sprite + '#icon-check-mark-1'} />
+            <use href={`${sprite}#icon-check-mark-1`} />
           </AvatarPickerSvg>
         </Label>
         <div>
@@ -118,7 +116,7 @@ export const UserCard = ({ time }) => {
         </div>
       </WrapperAvatar>
       <NameUserWrapper>
-        <UserName>{user.name}</UserName>
+        {/* <UserName>{userName}</UserName> */}
         <UserNameDescription>User</UserNameDescription>
       </NameUserWrapper>
 
@@ -130,7 +128,7 @@ export const UserCard = ({ time }) => {
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
-          <Span>{Math.round(userProfile.bmr)}</Span>
+          {/* <Span>{Math.round(userProfile.bmr)}</Span> */}
           {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
@@ -174,10 +172,8 @@ export const UserCard = ({ time }) => {
         </Desc>
       </DescWrapper>
       <WrapperLogOut>
-<LogOutBtn/>        
+        <LogOutBtn />
       </WrapperLogOut>
-
-     
     </ProfileContainer>
   );
 };

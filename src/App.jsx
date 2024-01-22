@@ -1,13 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from './redux/auth/auth-selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectIsLoggedIn,
+  selectIsParamsData,
+  selectIsRefreshing,
+} from './redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
 import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+import { refreshThunk } from './redux/auth/auth-operations';
+import MyLoader from './components/Loader/DiaryLoader';
+import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
 
 //неавторизованого користувача переадресовує на Welcome page, авторизованого
 //- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
@@ -29,35 +36,53 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const isLoggedIn = true;
-  const isParams = false;
-  // const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
-  // useEffect(() => {
-  //   dispatch(refreshThunk());
-  // }, [dispatch]);
+  const isParamsData = useSelector(selectIsParamsData);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
 
-  return (
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <MyLoader />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route
             index
             element={
-              isLoggedIn ? <Navigate to="/diary" replace /> : <WelcomePage />
+              isLoggedIn ? (
+                isParamsData ? (
+                  <Navigate to="/diary" replace />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
+              ) : (
+                <WelcomePage />
+              )
             }
           />
           <Route
             path="signup"
             element={
-              isLoggedIn ? <Navigate to="/diary" replace /> : <SignUpPage />
+              isLoggedIn ? (
+                isParamsData ? (
+                  <Navigate to="/diary" replace />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
+              ) : (
+                <SignUpPage />
+              )
             }
           />
           <Route
             path="signin"
             element={
               isLoggedIn ? (
-                isParams ? (
+                isParamsData ? (
                   <Navigate to="/diary" replace />
                 ) : (
                   <Navigate to="/profile" replace />
@@ -79,7 +104,6 @@ function App() {
             path="products"
             element={isLoggedIn ? <ProductsPage /> : <Navigate to="/" />}
           />
-
           <Route
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}

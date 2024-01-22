@@ -1,17 +1,13 @@
-import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
 import css from './SignUpPage.module.css';
 import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/auth-operations';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const handleFormData = (data) => {
-    console.log(isLoggedIn);
-    console.log(data);
     dispatch(registerThunk(data));
   };
 

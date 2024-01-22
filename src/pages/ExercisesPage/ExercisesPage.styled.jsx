@@ -40,3 +40,7 @@ export const BackBtn = styled.div`
   color: rgba(239, 237, 232, 0.4);
   background-color: transparent;
 `;
+export const GoBackBtnWrap = styled.div`
+  position: absolute;
+  top: 116px;
+`;

@@ -1,7 +1,13 @@
-
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { StyledDatepicker, CustomDatePickerInput, StyledIcon} from './DatePicker.styled';
+
+import {
+  DaySwitchContainer,
+  CustomDatePickerInput,
+  StyledCalendarContainer,
+  StyledIcon,
+} from './DatePicker.styled';
 import sprite from '../../assets/sprite.svg';
 
 const BirthdayPicker = ({
@@ -9,70 +15,44 @@ const BirthdayPicker = ({
   textWeight,
   iconColor,
   textHeight,
+  currentDate,
+  birthdayDate,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [popUpOpen, setPopUpOpen] = useState(true);
+  const numericMonthFormat = 'dd.MM.yyyy';
+
   const datePickerRef = useRef(null);
-  const wrapperRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setPopUpOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [wrapperRef]);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  const handleSubmit = () => {
-    console.log('Selected date:', selectedDate);
-
-    if (datePickerRef.current) {
-      datePickerRef.current.setOpen(true);
-    }
-
-    setPopUpOpen(false);
-  };
-
   return (
-    <div
-    ref={(node) => {
-      wrapperRef.current = node;
-    }}
-    style={{ position: 'relative' }}
-  >
-    <StyledDatepicker
-      ref={datePickerRef}
-      selected={selectedDate}
-      onChange={handleDateChange}
-      dateFormat="dd.MM.yyyy"
-      placeholderText="00.00.0000"
-      showYearDropdown
-      onSelect={handleSubmit}
-      required
-      customInput={
-        <CustomDatePickerInput className="profile"
-        >
-          <StyledIcon
-            onClick={handleSubmit}
-            stroke={iconColor}
-            style={{ position: 'absolute', right: '10px', top: '14px' }}
-          >
-            <use href={`${sprite}#icon-calendar`}></use>
-          </StyledIcon>
-        </CustomDatePickerInput>
-      }
-    />
-  </div>
+    <DaySwitchContainer>
+      <StyledCalendarContainer>
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat={numericMonthFormat}
+          minDate={birthdayDate}
+          showYearDropdown
+          showMonthDropdown
+          customInput={
+            <CustomDatePickerInput
+              className="profile"
+              $textSize={textSize}
+              $textWeight={textWeight}
+              $textHeight={textHeight}
+            />
+          }
+          ref={datePickerRef}
+          shouldCloseOnSelect={true}
+        />
+        <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} stroke={iconColor}>
+          <use href={`${sprite}#icon-calendar`} />
+        </StyledIcon>
+      </StyledCalendarContainer>
+    </DaySwitchContainer>
   );
 };
 

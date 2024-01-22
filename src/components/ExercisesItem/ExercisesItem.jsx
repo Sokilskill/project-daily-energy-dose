@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ExerciseItem,
   ItemTopBloc,
@@ -14,6 +15,8 @@ import {
   TargetsListText,
 } from '../ExercisesItem/ExercisesItem.styled';
 import sprite from '../../assets/sprite.svg';
+import AddExerciseForm from '../AddExerciseForm/AddExerciseForm.jsx';
+import capitalizeString from '../../../hooks/capitalizeString';
 
 export const ExercisesItem = ({
   bodyPart,

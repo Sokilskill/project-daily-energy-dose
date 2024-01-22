@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
 import { ExercisesWrapper, List } from '../ExercisesList/ExercisesList.styled';
 import { useEffect, useState } from 'react';

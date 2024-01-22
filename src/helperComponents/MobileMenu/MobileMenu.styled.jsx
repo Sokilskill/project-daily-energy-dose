@@ -30,7 +30,7 @@ export const Modal = styled.div`
     padding: 280px 115px 0;
   }
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1440px) {
     display: none;
   }
 `;

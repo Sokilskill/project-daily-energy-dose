@@ -11,18 +11,20 @@ import {
   UserBarWrapper,
   UserMenuBox,
 } from './Header.styled';
-import { selectIsLoggedIn } from '../../redux/auth/auth-selectors';
+import {
+  selectIsLoggedIn,
+  selectIsParamsData,
+} from '../../redux/auth/auth-selectors';
 import { MobileMenu } from '../../helperComponents/MobileMenu/MobileMenu';
 import { useState } from 'react';
 
-// по ТЗ хедер на всих сторінках
 // коли еррор === еррор передаєзначення в стор і лого змінюється
 // якщо не авторизований прибрати нижній бордер
 const borderBottomStyle = '1px solid rgba(239, 237, 232, 0.2)';
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
+  const isParamsDate = useSelector(selectIsParamsData);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const handlerBurgerButton = () => {
@@ -38,14 +40,18 @@ export const Header = () => {
 
         {isLoggedIn && (
           <UserMenuBox>
-            <Nav>
-              <UserNav />
-            </Nav>
+            {isParamsDate && (
+              <Nav>
+                <UserNav />
+              </Nav>
+            )}
 
             <UserBarWrapper>
               <UserBar />
               <LogOutBtn className="desktop" />
-              <BurgerButton toggleMenu={handlerBurgerButton} />
+              {isParamsDate && (
+                <BurgerButton toggleMenu={handlerBurgerButton} />
+              )}
             </UserBarWrapper>
           </UserMenuBox>
         )}

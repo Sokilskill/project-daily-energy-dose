@@ -4,37 +4,35 @@ import '../../index.css'
 export const DaySwitchContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: 30px;
 `;
 
 export const CustomDatePickerInput = styled.input`
-  display: flex;
-  align-items: center;
-  background: transparent;
-  width: 100%;
-  border: 1px solid var(--white);
-  border-radius: 12px;
-  padding: 14px;
-  background-color: inherit;
-  color: var(--white);
-  font-size: 16px;
+font-family: Roboto;
+font-weight: bold;
+background: transparent;
+border: none;
+background-color: inherit;
+color: var(--white);
+font-size: 18px;
+line-height: 1.5;
+outline: none;
+cursor: pointer;
+width: 100px;
+height: 100%;
+
+@media screen and (min-width: 768px) {
+  width: 135px;
+  font-size: 24px;
   line-height: 1.5;
-  outline: none;
-  cursor: pointer;
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  &:hover,
-  &:focus {
-    border-color: rgba(230, 83, 60, 1);
-  }
-  &.diary{
-    width: 135px;
-    border: none;
-  }
+}
 `;
 
 export const StyledCalendarContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
   position: relative;
   .react-datepicker {
     background: #ef8964;
@@ -97,32 +95,26 @@ export const StyledCalendarContainer = styled.div`
 `;
 
 export const StyledIcon = styled.svg`
-  width: 20px;
-  height: 20px;
-  fill: var(--white);
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 10px;
+width: 20px;
+height: 20px;
+stroke: var(--white);
+cursor: pointer;
+transition: stroke 0.3s ease;
 
-  &:hover,
-  &:focus {
-    & > path {
-      fill: #ef8964;
-    }
-  }
+&:hover,
+&:focus {
+  stroke: #EF8964;
+}
 
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 14px;
-  }
+@media screen and (min-width: 768px) {
+  width: 24px;
+  height: 24px;
+}
 `;
-
 
 export const StyledArrow = styled.div`
   display: flex;
-  margin-left: 10px;
+  margin-left: 26px;
   @media screen and (min-width: 768px) {
     margin-left: 26px;
   }

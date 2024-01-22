@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getCurrentUser,
   addUserData,
   updateUserName,
   updatedUserAvatar,
   getUserProfile,
 } from './operations';
+import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
@@ -15,17 +15,19 @@ const initialState = {
     desiredWeight: null,
     birthday: null,
     blood: null,
-    sex: 'male',
+    sex: null,
     levelActivity: null,
     bmr: 0,
+    owner: {
+      id: '',
+      name: '',
+      email: '',
+      avatarURL: '',
+    },
   },
-  token: null,
   isLoading: false,
   error: null,
-  isAuth: false,
 };
-
-
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -36,23 +38,16 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleCurrentUserFulfilled = (state, action) => {
-  state.profile = { ...action.payload };
-  state.token = action.payload.token;
-  state.isLoading = false;
-  state.error = null;
-  state.isAuth = true;
-};
-
-const handleAddUserDataFulfilled = (state, action) => {
-  state.profile = { ...action.payload };
-  state.token = action.payload.token;
+const handleAddUserDataFulfilled = (state) => {
+  // console.log('actionUPDATE++++++++', action.payload);
+  // state = { ...state, ...action.payload.profile };
   state.isLoading = false;
   state.error = null;
 };
 
-const handleUpdateUserNameFulfilled = (state, action) => {
-  state.profile.name = { ...action.payload };
+const handleUpdateUserNameFulfilled = (state) => {
+  // console.log('actionUPDATE NAMEEE++++++++', action);
+  // state.profile.owner.name = action.payload.name;
   state.isLoading = false;
   state.error = null;
 };
@@ -64,8 +59,8 @@ const handleUpdateAvatarFulfilled = (state, action) => {
 };
 
 const handleGetUserProfileFulfilled = (state, action) => {
-  state.profile = { ...action.payload };
-  state.token = action.payload.token;
+  // console.log('action.payload.result', action.payload.result);
+  state.profile = { ...action.payload.result };
   state.isLoading = false;
   state.error = null;
 };
@@ -83,9 +78,8 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getCurrentUser.pending, handlePending)
-      .addCase(getCurrentUser.rejected, handleRejected)
-      .addCase(getCurrentUser.fulfilled, handleCurrentUserFulfilled)
+      .addCase(refreshThunk.pending, handlePending)
+      .addCase(refreshThunk.rejected, handleRejected)
       .addCase(addUserData.pending, handlePending)
       .addCase(addUserData.rejected, handleRejected)
       .addCase(addUserData.fulfilled, handleAddUserDataFulfilled)
@@ -97,7 +91,7 @@ export const profileSlice = createSlice({
       .addCase(updatedUserAvatar.fulfilled, handleUpdateAvatarFulfilled)
       .addCase(getUserProfile.pending, handlePending)
       .addCase(getUserProfile.rejected, handleRejected)
-      .addCase(getUserProfile.fulfilled, handleGetUserProfileFulfilled)
+      .addCase(getUserProfile.fulfilled, handleGetUserProfileFulfilled);
   },
 });
 

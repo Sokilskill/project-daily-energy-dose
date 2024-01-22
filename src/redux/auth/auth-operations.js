@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { messageNotification } from '../../components/alertMessages/alertMessages.jsx';
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api/';
 const setToken = (token) => {
@@ -14,13 +15,19 @@ export const registerThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await axios.post('/auth/register', body);
-      console.log(body);
+      if (!data || data.token === null) {
+        throw new Error('No data!');
+      }
       setToken(data.token);
-      // toast.success('Registration is successful!', { position: 'top-right' });
-      console.log(data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        const status = error.response.status;
+        messageNotification(status);
+        throw new Error(`Failed with status ${status}`);
+      } else {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
   }
 );
@@ -30,17 +37,25 @@ export const logInThunk = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await axios.post('/auth/login', body);
+      if (!data || data.token === null) {
+        throw new Error('No data!');
+      }
       setToken(data.token);
-      //   toast.success('Login is successful!', { position: 'top-right' });
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response) {
+        const status = error.response.status;
+        messageNotification(status);
+        throw new Error(`Failed with status ${status}`);
+      } else {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
   }
 );
 
 export const refreshThunk = createAsyncThunk(
-  'auth/refresh',
+  'auth/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistToken = state.auth.token;
@@ -63,9 +78,19 @@ export const logOutThunk = createAsyncThunk(
     try {
       await axios.post('/auth/logout');
       unsetToken();
-      //   toast.success('Logout is successful!', { position: 'top-right' });
     } catch (error) {
+      messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+export async function getProducts(options) {
+  const data = await axios.get(`/food`, options);
+  return data;
+}
+
+export async function getAllCategories() {
+  const data = await axios.get('/food/categories');
+  return data;
+}

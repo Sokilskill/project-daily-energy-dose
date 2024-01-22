@@ -66,6 +66,7 @@
   .welcome_bgd {
     max-width: 670px;
     margin-top: -84px;
+    margin-right: -96px;
     padding: 384px 32px 172px 0;
     background-image: url(../../assets/Welcome/images/people-training-gym-desk.webp),
       var(--bg-desk-gradient);

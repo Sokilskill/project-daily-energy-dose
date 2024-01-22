@@ -3,31 +3,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com';
-
 export const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-
-export const getCurrentUser = createAsyncThunk(
-  'users/getCurrentUser',
-  async (_, thunkAPI) => {
-    try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      if (!persistedToken) {
-        toast.info('Unable to get user');
-        return thunkAPI.rejectWithValue('Token not available');
-      }
-      setAuthToken(persistedToken);
-      const res = await axios.get('/auth/current');
-      return res.data;
-    } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
@@ -36,7 +14,6 @@ export const getUserProfile = createAsyncThunk(
       const state = thunkApi.getState();
       const userToken = state.auth.token;
       if (userToken) {
-        token.set(userToken);
         const res = await axios.get('/profiles');
         return res.data;
       }
@@ -45,26 +22,26 @@ export const getUserProfile = createAsyncThunk(
       toast.error(error.message);
       return thunkApi.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 export const updateUserName = createAsyncThunk(
   'users/updateUserName',
-  async (userData, thunkAPI) => {
+  async (userData, thunkApi) => {
     try {
       const res = await axios.patch('/users', userData);
       toast.success('Name updated');
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
 export const updatedUserAvatar = createAsyncThunk(
   'user/avatar',
-  async (file, thunkAPI) => {
+  async (file, thunkApi) => {
     try {
       const formData = new FormData();
       formData.append('avatar', file);
@@ -77,40 +54,41 @@ export const updatedUserAvatar = createAsyncThunk(
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
-export const getTarget = createAsyncThunk(
-  'profile/getTarget',
-  async (_, thunkApi) => {
-    try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      if (!persistedToken) {
-        toast.info('Unable to get user');
-        return thunkAPI.rejectWithValue('Token not available');
-      }
-      setAuthToken(persistedToken);
-      const res = await axios.get('profiles/targets');
-      return res.data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  },
-);
+// export const getTarget = createAsyncThunk(
+//   'profile/getTarget',
+//   async (_, thunkApi) => {
+//     try {
+//       const state = thunkApi.getState();
+//       const persistedToken = state.auth.token;
+//       if (!persistedToken) {
+//         toast.info('Unable to get user');
+//         return thunkApi.rejectWithValue('Token not available');
+//       }
+//       setAuthToken(persistedToken);
+//       const res = await axios.get('profiles/targets');
+//       return res.data;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const addUserData = createAsyncThunk(
   'profile/addUserData',
-  async (data, thunkAPI) => {
+  async (data, thunkApi) => {
     try {
+      // console.log('data Operations', data);
       const res = await axios.put('/profiles', data);
       toast.success('Your profile updated');
       return res.data;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

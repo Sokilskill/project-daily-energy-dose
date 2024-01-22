@@ -48,4 +48,3 @@ export const CategoriesItemLink = styled(NavLink)`
     color: #efede8;
   }
 `;
-

@@ -25,6 +25,12 @@
 .form_input:is(:hover, :focus) {
   border: 1px solid var(--orange, #e6533c);
 }
+.error_input {
+  border: 1px solid var(--error-color, #d80027);
+}
+.success_input {
+  border: 1px solid var(--success-color, #3cbf61);
+}
 .input_pass_field {
   display: flex;
   align-items: center;
@@ -51,8 +57,13 @@
 .form_btn:is(:hover, :focus) {
   background-color: var(--orange-1, #ef8964);
 }
-.icon_checkbox_circle {
-  fill: #d80027;
+.icon_checkbox_error {
+  fill: var(--error-color, #d80027);
+  width: 16px;
+  height: 16px;
+}
+.icon_checkbox_succsess {
+  fill: var(--success-color, #3cbf61);
   width: 16px;
   height: 16px;
 }
@@ -60,7 +71,16 @@
   display: flex;
   gap: 4px;
   align-items: center;
-  color: #d80027;
+  color: var(--error-color, #d80027);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+}
+.success_row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: var(--success-color, #3cbf61);
   font-size: 12px;
   line-height: 1.5;
   letter-spacing: 0.12px;
