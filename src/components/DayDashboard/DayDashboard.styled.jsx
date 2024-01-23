@@ -4,8 +4,9 @@ import '../../index.css';
 export const Container = styled.div`
   display: flex;
   max-width: 335px;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  margin: 0 auto;
 
   column-gap: 13px;
   row-gap: 20px;
@@ -18,6 +19,7 @@ export const Container = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 390px;
     gap: 16px 16px;
+    margin-left: 32px;
   }
 `;
 
