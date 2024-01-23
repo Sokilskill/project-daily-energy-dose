@@ -15,6 +15,9 @@ import { refreshThunk } from './redux/auth/auth-operations';
 import MyLoader from './components/Loader/DiaryLoader';
 import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
 import { getUserProfile } from './redux/profileSettings/operations';
+import { setIsParams } from './redux/auth/authSlice';
+import { selectProfileEmail } from './redux/profileSettings/selectors';
+// import { setIsParams } from './redux/auth/authSlice';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -28,21 +31,25 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
+  const isProfileData = useSelector(selectProfileEmail);
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
-
-  console.log('isParamsData', isParamsData);
-  console.log('isLoggedIn', isLoggedIn);
 
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
 
   useEffect(() => {
-    if (isParamsData) {
+    if (isLoggedIn) {
       dispatch(getUserProfile());
     }
-  }, [dispatch, isParamsData]);
+  }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    if (isProfileData) {
+      dispatch(setIsParams());
+    }
+  }, [dispatch, isProfileData]);
 
   return isRefreshing ? (
     <MyLoader />
@@ -94,7 +101,7 @@ function App() {
           />
           <Route
             path="profile"
-            element={isLoggedIn ? <ProfilePage /> : <SignInPage />}
+            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/" />}
           />
           <Route
             path="diary"

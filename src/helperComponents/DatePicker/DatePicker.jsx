@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -15,16 +16,25 @@ const BirthdayPicker = ({
   textWeight,
   iconColor,
   textHeight,
-  currentDate,
-  birthdayDate,
+  birthday,
+
+  handlerDate,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(birthday);
 
   const handleDateChange = (date) => {
+    if (datePickerRef.current) {
+      datePickerRef.current.setOpen(true);
+    }
+  
     setSelectedDate(date);
+    handlerDate(date);
+    console.log("Picked date:", date);
+  
+    
   };
 
   return (
@@ -34,12 +44,12 @@ const BirthdayPicker = ({
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          minDate={birthdayDate}
+          minDate={birthday}
           showYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput
-              className="profile"
+              className={`profile `}
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}
@@ -49,7 +59,7 @@ const BirthdayPicker = ({
           shouldCloseOnSelect={true}
         />
         <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} stroke={iconColor}>
-          <use href={`${sprite}#icon-calendar`} />
+          <use href={sprite + '#icon-calendar'} />
         </StyledIcon>
       </StyledCalendarContainer>
     </DaySwitchContainer>

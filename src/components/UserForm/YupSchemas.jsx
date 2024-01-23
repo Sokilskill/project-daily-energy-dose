@@ -8,26 +8,43 @@ export const ProfileSchema = Yup.object().shape({
     )
     .required('Name is required'),
   email: Yup.string()
-    .email('Invalid email address')
+    .email('Changing is not allowed')
     .required('Email is required'),
   sex: Yup.string().required('Choose one of these fields'),
   height: Yup.number()
-    .label('Height')
-    .min(150, 'Must be a height min 150(sm)')
-    .max(230, 'Must be a height max 230(sm)')
-    .required('Height is required'),
-  desiredWeight: Yup.number()
-    .label('Desired Weight')
-    .min(35, 'Must be a weight min 35(kg)')
-    .max(300, 'Must be a number from 35 to 300')
-    .required('Desired Weight is required'),
+  .label('Height')
+  .min(150, 'min height 150(sm)')
+  .max(250, 'max height 250(sm)')
+  .required('Height is required'),
+desiredWeight: Yup.number()
+  .label('Desired Weight')
+  .min(35, 'min weight 35(kg)')
+  .max(300, 'put number from 35 to 300')
+  .required('Desired Weight is required'),
   currentWeight: Yup.number()
-    .label('Weight')
-    .min(35, 'Must be a weight min 35(kg)')
-    .max(300, 'Must be a number from 35 to 300')
-    .required('Weight is required'),
-  blood: Yup.number().label('blood').required('Choose one of these fields'),
-  levelActivity: Yup.number()
-    .label('levelActivity')
-    .required('Choose one of these fields'),
+  .label('Weight')
+  .min(35, 'min weight 35(kg)')
+  .max(300, 'put number from 35 to 300')
+  .required('Weight is required'),
+  blood: Yup.number().required('Choose one of these fields'),
+  levelActivity: Yup.number().required('Choose one of these fields'),
+  // birthday: Yup.string()
+  // .nullable()
+  // .max(new Date(), 'Birthday cannot be in the future')
+  // .required('Birthday is required')
+  // .test('is-adult', 'You must be at least 18 years old', function (value) {
+  //   if (!value) {
+  //     return true;
+  //   }
+
+  //   const today = new Date();
+  //   const birthDate = new Date(value);
+  //   const age =
+  //     today.getFullYear() -
+  //     birthDate.getFullYear() -
+  //     (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate()) ? 1 : 0);
+
+  //   return age >= 18;
+  // }),
+
 });

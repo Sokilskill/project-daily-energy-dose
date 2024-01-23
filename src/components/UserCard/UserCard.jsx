@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import { updatedUserAvatar } from '../../redux/profileSettings/operations';
-
-import sprite from '../../assets/sprite.svg';
+import { updatedUserAvatar } from "../../redux/profileSettings/operations";
+import sprite from "../../assets/sprite.svg";
 import {
   ActivityShower,
   AvatarContainer,
@@ -23,6 +22,7 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
+  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -32,14 +32,15 @@ import {
   WrapperIntake,
   WrapperIntakeFood,
   WrapperLogOut,
-} from './UserCard.styled';
-import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
-import { selectUser } from '../../redux/auth/auth-selectors';
-import { selectProfileName } from '../../redux/profileSettings/selectors';
+} from "./UserCard.styled";
+import { LogOutBtn } from "../../helperComponents/LogOutBtn/LogOutBtn";
+import { selectUser } from "../../redux/auth/auth-selectors";
+import { selectProfileName, selectUserProfile } from "../../redux/profileSettings/selectors";
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUser);
+  const ownerProfile = useSelector(selectUserProfile);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
     userProfile.avatarURL
   );
@@ -48,6 +49,7 @@ export const UserCard = ({ time }) => {
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
   const userName = useSelector(selectProfileName);
+  const currentName = userName ? userName : userProfile.name;
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -59,31 +61,31 @@ export const UserCard = ({ time }) => {
         setAvatarPreviewURL(objectURL);
 
         const data = await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log('newAvatar ProfilePage', newAvatarFile);
-        console.log('data', data);
+        console.log("newAvatar ProfilePage", newAvatarFile);
+        console.log("data", data);
       } catch (error) {
-        console.error('Failed to create object URL:', error);
-        toast.error('Failed to update avatar');
+        console.error("Failed to create object URL:", error);
+        toast.error("Failed to update avatar");
       } finally {
         setLoading(false);
         // e.target.form.reset();
-        // ===================== Переглянути чи є тут метод reset =============================
       }
     }
   };
 
   useEffect(() => {
     if (showPreview) {
-      setPreviewStyle({ borderRadius: '50%', width: '100%', height: '100%' });
+      setPreviewStyle({ borderRadius: "50%", width: "100%", height: "100%" });
       setShowPreview(false);
     }
   }, [showPreview]);
 
   useEffect(() => {
     if (!showPreview) {
-      setAvatarStyle({ width: '90px', height: '90px' });
+      setAvatarStyle({ width: "90px", height: "90px" });
     }
   }, [showPreview]);
+
 
   return (
     <ProfileContainer>
@@ -108,7 +110,7 @@ export const UserCard = ({ time }) => {
             <div>
               {!userProfile.avatarURL && (
                 <DefaultAvatarSvg>
-                  <use href={sprite + '#icon-gridicons_user'} />
+                  <use href={sprite + "#icon-gridicons_user"} />
                 </DefaultAvatarSvg>
               )}
             </div>
@@ -116,7 +118,7 @@ export const UserCard = ({ time }) => {
         </div>
       </WrapperAvatar>
       <NameUserWrapper>
-        {/* <UserName>{userName}</UserName> */}
+        <UserName>{currentName}</UserName>
         <UserNameDescription>User</UserNameDescription>
       </NameUserWrapper>
 
@@ -124,17 +126,17 @@ export const UserCard = ({ time }) => {
         <CalorieShower>
           <WrapperIntakeFood>
             <FoodSvg>
-              <use href={sprite + '#icon-fluenit_food-24-filled'} />
+              <use href={sprite + "#icon-fluenit_food-24-filled"} />
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
-          {/* <Span>{Math.round(userProfile.bmr)}</Span> */}
+          <Span>{Math.round(ownerProfile.bmr)}</Span>
           {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>
             <ParamsSvg>
-              <use href={sprite + '#icon-dumbbell'} />
+              <use href={sprite + "#icon-dumbbell"} />
             </ParamsSvg>
             <Text>Daily physical activity</Text>
           </WrapperIntake>
@@ -145,23 +147,23 @@ export const UserCard = ({ time }) => {
         <div>
           <ExcellMarkIcon>
             <use
-              href={sprite + '#icon-Ellipse-1'}
+              href={sprite + "#icon-Ellipse-1"}
               style={{
-                fill: 'rgba(239, 160, 130, 1)',
-                width: '100%',
-                height: '100%',
-                position: 'relative',
+                fill: "rgba(239, 160, 130, 1)",
+                width: "100%",
+                height: "100%",
+                position: "relative",
               }}
             />
             <use
-              href={sprite + '#icon-tabler_exclamation-mark'}
+              href={sprite + "#icon-tabler_exclamation-mark"}
               style={{
-                fill: 'rgba(239, 237, 232, 1)',
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: '100%',
-                height: '100%',
+                fill: "rgba(239, 237, 232, 1)",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: "100%",
+                height: "100%",
               }}
             />
           </ExcellMarkIcon>
