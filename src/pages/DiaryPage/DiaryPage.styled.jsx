@@ -18,6 +18,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1440px; /* Добавлено из media query 1440px в index.css */
+    padding: 0 96px;
   }
 `;
 
