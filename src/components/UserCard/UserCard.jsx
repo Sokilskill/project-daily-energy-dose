@@ -44,7 +44,7 @@ export const UserCard = ({ time }) => {
   const userProfile = useSelector(selectUser);
   const ownerProfile = useSelector(selectUserProfile);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
-    userProfile.LargeAvatarURL
+    userProfile.avatarURL
   );
   const [showPreview, setShowPreview] = useState(true);
   const [previewStyle, setPreviewStyle] = useState({});
@@ -140,7 +140,7 @@ export const UserCard = ({ time }) => {
             </ParamsSvg>
             <Text>Daily physical activity</Text>
           </WrapperIntake>
-          <Span>{time}0 min</Span>
+          <Span>{ownerProfile.time} min</Span>
         </ActivityShower>
       </UserParamsWrapper>
       <DescWrapper>

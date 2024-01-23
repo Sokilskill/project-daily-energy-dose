@@ -9,7 +9,7 @@ import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
-    largeAvatarURL: '',
+    avatarURL: '',
     height: null,
     currentWeight: null,
     desiredWeight: null,
@@ -18,6 +18,7 @@ const initialState = {
     sex: null,
     levelActivity: null,
     bmr: 0,
+    time: 0,
     owner: {
       id: '',
       name: '',

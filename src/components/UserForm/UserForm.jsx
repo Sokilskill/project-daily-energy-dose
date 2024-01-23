@@ -404,17 +404,17 @@ export const UserForm = () => {
                     </div>
                   </div>
 
-                  <div
-                    style={{
-                      borderColor: touched.birthday
-                        ? errors.birthday
-                          ? 'var(--error-color, #d80027)'
-                          : ''
-                        : '',
-                    }}
+                  <div style={{
+                        borderColor: touched.birthday
+                          ? errors.birthday
+                            ? 'var(--error-color, #d80027)'
+                            : ''
+                          : '',}}
+                    
                   >
                     <Label htmlFor="birthday">Date of birth</Label>
-                    <BirthdayPickerField name="birthday">
+                    <BirthdayPickerField name="birthday"
+                    >
                       {({ field }) => (
                         <BirthdayPicker
                           id="date"
