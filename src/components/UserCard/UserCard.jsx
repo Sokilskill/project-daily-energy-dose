@@ -22,7 +22,6 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
-  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -133,7 +132,6 @@ export const UserCard = ({ time }) => {
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
           <Span>{Math.round(ownerProfile.bmr)}</Span>
-          {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>
