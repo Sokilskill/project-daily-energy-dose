@@ -15,7 +15,10 @@ import MyLoader from './components/Loader/DiaryLoader';
 import { getUserProfile } from './redux/profileSettings/operations';
 import { refreshThunk } from './redux/auth/auth-operations';
 import { setIsParams } from './redux/auth/authSlice';
-import { selectProfileEmail } from './redux/profileSettings/selectors';
+import {
+  selectProfileEmail,
+  selectUserIsLoading,
+} from './redux/profileSettings/selectors';
 // import { setIsParams } from './redux/auth/authSlice';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -32,16 +35,24 @@ function App() {
   const isParamsData = useSelector(selectIsParamsData);
   const isProfileData = useSelector(selectProfileEmail);
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoading = useSelector(selectUserIsLoading);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshThunk());
-  }, [dispatch]);
+  console.log('isProfileData', isProfileData);
+  // useEffect(() => {
+  //   dispatch(refreshThunk());
+  // }, [dispatch]);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(getUserProfile());
-    }
+    const fetchData = async () => {
+      await dispatch(refreshThunk());
+
+      if (isLoggedIn) {
+        await dispatch(getUserProfile());
+      }
+    };
+
+    fetchData();
   }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
@@ -50,7 +61,7 @@ function App() {
     }
   }, [dispatch, isProfileData]);
 
-  return isRefreshing ? (
+  return isRefreshing || isLoading ? (
     <MyLoader />
   ) : (
     <>

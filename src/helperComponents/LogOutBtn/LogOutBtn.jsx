@@ -9,8 +9,8 @@ export const LogOutBtn = ({ className, closeMenu }) => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
 
-  const handlerLogOut = () => {
-    dispatch(logOutThunk());
+  const handlerLogOut = async () => {
+    await dispatch(logOutThunk());
     dispatch(setInitialState());
     if (closeMenu) {
       closeMenu();
