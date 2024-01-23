@@ -33,27 +33,27 @@ export const exercisesSlice = createSlice({
         exercisesOperations.getExercisesByBodyParts[STATUS.FULFILLED],
         handleFulfilledFilterExercisesBody
       )
-      .addCase(
-        exercisesOperations.getExercisesByEquipment[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesEquipment
-      )
-      .addCase(
-        exercisesOperations.getExercisesByMuscles[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesMuscles
-      )
+      // .addCase(
+      //   exercisesOperations.getExercisesByEquipment[STATUS.FULFILLED],
+      //   handleFulfilledFilterExercisesEquipment
+      // )
+      // .addCase(
+      //   exercisesOperations.getExercisesByMuscles[STATUS.FULFILLED],
+      //   handleFulfilledFilterExercisesMuscles
+      // )
       .addMatcher(
         isAnyOf(
-          exercisesOperations.getExercisesByBodyParts[STATUS.PENDING],
-          exercisesOperations.getExercisesByEquipment[STATUS.PENDING],
-          exercisesOperations.getExercisesByMuscles[STATUS.PENDING]
+          exercisesOperations.getExercisesByBodyParts[STATUS.PENDING]
+          // exercisesOperations.getExercisesByEquipment[STATUS.PENDING],
+          // exercisesOperations.getExercisesByMuscles[STATUS.PENDING]
         ),
         handlePending
       )
       .addMatcher(
         isAnyOf(
-          exercisesOperations.getExercisesByBodyParts[STATUS.REJECTED],
-          exercisesOperations.getExercisesByEquipment[STATUS.REJECTED],
-          exercisesOperations.getExercisesByMuscles[STATUS.REJECTED]
+          exercisesOperations.getExercisesByBodyParts[STATUS.REJECTED]
+          // exercisesOperations.getExercisesByEquipment[STATUS.REJECTED],
+          // exercisesOperations.getExercisesByMuscles[STATUS.REJECTED]
         ),
         handleRejected
       );

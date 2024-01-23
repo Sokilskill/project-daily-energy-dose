@@ -24,7 +24,7 @@ export const ExercisesCategories = ({ children }) => {
         </CategoriesListItem>
 
         <CategoriesListItem>
-          <CategoriesItemLink to={'muscles'}>Muscles</CategoriesItemLink>
+          <CategoriesItemLink to={'Muscles'}>Muscles</CategoriesItemLink>
         </CategoriesListItem>
 
         <CategoriesListItem>
