@@ -1,4 +1,4 @@
-import{n as i,j as e,a as E,c as b,d as M,e as I,r as l,f as O,s as o,h as V,i as Z,Q as B,k as z,m as Q,o as X,p as G,q as J}from"./index-bde1b2d5.js";import{c as K,a as q,e as S,b as ee,d as y,F as ie,E as v}from"./index.esm-92468aa0.js";import{e as re}from"./react-datepicker-8e527eac.js";import"./hoist-non-react-statics.cjs-8a3d9f43.js";import"./defineProperty-179e1ab7.js";const te=i.h2`
+import{n as i,j as e,a as B,c as j,d as V,e as I,f as O,r as l,s as o,h as Z,i as Q,Q as H,u as X,k as G,m as J,o as K,p as ee}from"./index-bad5c320.js";import{c as ie,a as A,e as S,f as re,b as te,d as k,F as ae,E as b}from"./index.esm-9ddfbaa9.js";import{e as oe}from"./react-datepicker-f5b75507.js";import"./hoist-non-react-statics.cjs-a8027492.js";import"./defineProperty-179e1ab7.js";const ne=i.h2`
 margin: 0;
 color: var(--white, #efede8);
 font-size: 24px;
@@ -9,7 +9,7 @@ line-height: 28px;
   font-size: 32px;
   line-height: 1.4;
 }
-`,ae=({text:d})=>e.jsx(te,{children:d}),oe=i.div`
+`,de=({text:n})=>e.jsx(ne,{children:n}),le=i.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ line-height: 28px;
     margin: 0;
 
   }
-`,ne=i.div`
+`,se=i.div`
   position: relative;
   display: inline-block;
   width: 90px;
@@ -39,13 +39,13 @@ line-height: 28px;
     width: 150px;
     height: 150px;
   }
-`,de=i.div`
+`,ce=i.div`
   position: relative;
   display: inline-block;
   width: 100%;
   height: 100%;
   border-radius: 100%;
-`,le=i.input`
+`,pe=i.input`
   position: absolute;
   top: 0;
   left: 0;
@@ -55,7 +55,7 @@ line-height: 28px;
   cursor: pointer;
   z-index: 2;
   opacity: 0;
-`,se=i.label`
+`,he=i.label`
   cursor: pointer;
   position: absolute;
   top: 47%;
@@ -66,7 +66,7 @@ line-height: 28px;
   justify-content: center;
   align-items: center;
   z-index: 99;
-`,ce=i.svg`
+`,xe=i.svg`
   width: 24px;
   height: 24px;
 
@@ -74,14 +74,14 @@ line-height: 28px;
     width: 32px;
     height: 32px;
   }
-`,pe=i.img`
+`,ge=i.img`
   border-radius: 100%;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-`,he=i.svg`
+`,me=i.svg`
   width: 62px;
   height: 62px;
   position: absolute;
@@ -93,7 +93,7 @@ line-height: 28px;
     width: 102px;
     height: 102px;
   }
-`,xe=i.div`
+`,fe=i.div`
   width: 100%;
   margin-top: 20px;
   text-align: center;
@@ -103,7 +103,7 @@ line-height: 28px;
     margin-top: 18px;
   }
  
-`,ge=i.p`
+`,ue=i.p`
   font-size: 18px;
   font-weight: 400;
   line-height: 1.1;
@@ -114,13 +114,13 @@ line-height: 28px;
     line-height: 1.2;
   }
  
-`,me=i.p`
+`,ve=i.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
   margin: 8px 0 0 0;
   color: var(--secondary-color-text, rgba(239, 237, 232, 0.5));
-`,fe=i.div`
+`,we=i.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,7 +131,7 @@ line-height: 28px;
     margin: 32px 0 0 0;
     gap: 16px;
   }
-`,ue=i.div`
+`,be=i.div`
   display: flex;
   width: 157px;
   height: 96px;
@@ -148,14 +148,14 @@ line-height: 28px;
     gap: 28px;
     flex-direction: column;
   }
-`,ve=i.div`
+`,ye=i.div`
   display: flex;
   gap: 8px;
-`,we=i.svg`
+`,je=i.svg`
   width: 20px;
   height: 20px;
   fill: var(--icon-color, rgba(239, 137, 100, 1));
-`,be=i.p`
+`,ke=i.p`
   font-feature-settings: ('clig' off), ('liga' off);
   font-size: 12px;
   font-weight: 400;
@@ -174,7 +174,7 @@ line-height: 28px;
     font-size: 24px;
     line-height: 1.3;
   }
-`;const ye=i.div`
+`;const _e=i.div`
   display: flex;
   width: 157px;
   height: 96px;
@@ -190,14 +190,14 @@ line-height: 28px;
     height: 108px;
     gap: 28px;
   }
-`,je=i.div`
+`,We=i.div`
   display: flex;
   gap: 8px;
-`,ke=i.svg`
+`,Ce=i.svg`
   width: 20px;
   height: 20px;
   fill: var(--icon-color, rgba(239, 137, 100, 1));
-`,_e=i.p`
+`,De=i.p`
   font-feature-settings: ('clig' off), ('liga' off);
   font-size: 12px;
   font-weight: 400;
@@ -206,7 +206,7 @@ line-height: 28px;
     (min-width: 768px) {
     line-height: 18px;
   }
-`,R=i.p`
+`,E=i.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 1.1;
@@ -216,7 +216,7 @@ line-height: 28px;
     font-size: 24px;
     line-height: 1.3;
   }
-`,We=i.div`
+`,Se=i.div`
   display: flex;
   justify-content: center;
   width: 335px;
@@ -227,10 +227,10 @@ line-height: 28px;
     margin: 32px 0 0 0;
     width: 439px;
   }
-`,Ce=i.svg`
+`,ze=i.svg`
   width: 24px;
   height: 24px;
-`,Se=i.p`
+`,Pe=i.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
@@ -240,7 +240,7 @@ line-height: 28px;
     font-size: 16px;
     line-height: 1.5;
   }
-`,ze=i.div`
+`,Fe=i.div`
   width: 100%;
   display: inline-flex;
   justify-content: flex-end;
@@ -253,7 +253,7 @@ line-height: 28px;
   @media (min-width: 1440px) {
     margin: 32px 0 0 0;
   }
-`,Pe=({time:d})=>{const j=E(),p=b(M),k=b(I),[h,_]=l.useState(p.avatarURL),[s,c]=l.useState(!0),[P,x]=l.useState({}),[W,g]=l.useState({}),[F,t]=l.useState(!1),r=b(O),u=r||p.name,C=async m=>{const a=m.target.files[0];if(a)try{const n=new Blob([a]),T=URL.createObjectURL(n);_(T);const H=await j(Z(a));console.log("newAvatar ProfilePage",a),console.log("data",H)}catch(n){console.error("Failed to create object URL:",n),B.error("Failed to update avatar")}finally{t(!1)}};return l.useEffect(()=>{s&&(x({borderRadius:"50%",width:"100%",height:"100%"}),c(!1))},[s]),l.useEffect(()=>{s||g({width:"90px",height:"90px"})},[s]),e.jsxs(oe,{children:[e.jsxs(ne,{children:[e.jsx(de,{children:e.jsx(le,{type:"file",id:"file-input",accept:"image/*",onChange:C})}),e.jsx(se,{htmlFor:"file-input",children:e.jsx(ce,{children:e.jsx("use",{href:`${o}#icon-check-mark-1`})})}),e.jsx("div",{children:h?e.jsx(pe,{src:h,alt:"Preview"}):e.jsx("div",{children:!p.avatarURL&&e.jsx(he,{children:e.jsx("use",{href:o+"#icon-gridicons_user"})})})})]}),e.jsxs(xe,{children:[e.jsx(ge,{children:u}),e.jsx(me,{children:"User"})]}),e.jsxs(fe,{children:[e.jsxs(ue,{children:[e.jsxs(ve,{children:[e.jsx(we,{children:e.jsx("use",{href:o+"#icon-fluenit_food-24-filled"})}),e.jsx(be,{children:"Daily calorie intake"})]}),e.jsx(R,{children:Math.round(k.bmr)})]}),e.jsxs(ye,{children:[e.jsxs(je,{children:[e.jsx(ke,{children:e.jsx("use",{href:o+"#icon-dumbbell"})}),e.jsx(_e,{children:"Daily physical activity"})]}),e.jsxs(R,{children:[d,"0 min"]})]})]}),e.jsxs(We,{children:[e.jsx("div",{children:e.jsxs(Ce,{children:[e.jsx("use",{href:o+"#icon-Ellipse-1",style:{fill:"rgba(239, 160, 130, 1)",width:"100%",height:"100%",position:"relative"}}),e.jsx("use",{href:o+"#icon-tabler_exclamation-mark",style:{fill:"rgba(239, 237, 232, 1)",position:"absolute",top:"50%",left:"50%",width:"100%",height:"100%"}})]})}),e.jsx(Se,{children:"We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals."})]}),e.jsx(ze,{children:e.jsx(V,{})})]})},qe=i.div`
+`,qe=({time:n})=>{const d=B(),s=j(V),x=j(I),g=j(O),[m,c]=l.useState(s),[p,h]=l.useState(!0),[z,f]=l.useState({}),[_,u]=l.useState({});l.useState(!1);const U=async P=>{const v=P.target.files[0];if(v)try{const W=new Blob([v]),t=URL.createObjectURL(W);await d(Q(v)),console.log("newAvatar ProfilePage",v),c(v)}catch(W){console.error("Failed to create object URL:",W),H.error("Failed to update avatar")}finally{}};return l.useEffect(()=>{p&&(f({borderRadius:"50%",width:"100%",height:"100%"}),h(!1))},[p]),l.useEffect(()=>{p||u({width:"90px",height:"90px"})},[p]),e.jsxs(le,{children:[e.jsxs(se,{children:[e.jsx(ce,{children:e.jsx(pe,{type:"file",id:"file-input",accept:"image/*",onChange:U})}),e.jsx(he,{htmlFor:"file-input",children:e.jsx(xe,{children:e.jsx("use",{href:`${o}#icon-check-mark-1`})})}),e.jsx("div",{children:m?e.jsx(ge,{src:m,alt:"Preview"}):e.jsx("div",{children:e.jsx(me,{children:e.jsx("use",{href:o+"#icon-gridicons_user"})})})})]}),e.jsxs(fe,{children:[e.jsx(ue,{children:g}),e.jsx(ve,{children:"User"})]}),e.jsxs(we,{children:[e.jsxs(be,{children:[e.jsxs(ye,{children:[e.jsx(je,{children:e.jsx("use",{href:o+"#icon-fluenit_food-24-filled"})}),e.jsx(ke,{children:"Daily calorie intake"})]}),e.jsx(E,{children:Math.round(x.bmr)})]}),e.jsxs(_e,{children:[e.jsxs(We,{children:[e.jsx(Ce,{children:e.jsx("use",{href:o+"#icon-dumbbell"})}),e.jsx(De,{children:"Daily physical activity"})]}),e.jsxs(E,{children:[x.time," min"]})]})]}),e.jsxs(Se,{children:[e.jsx("div",{children:e.jsxs(ze,{children:[e.jsx("use",{href:o+"#icon-Ellipse-1",style:{fill:"rgba(239, 160, 130, 1)",width:"100%",height:"100%",position:"relative"}}),e.jsx("use",{href:o+"#icon-tabler_exclamation-mark",style:{fill:"rgba(239, 237, 232, 1)",position:"absolute",top:"50%",left:"50%",width:"100%",height:"100%"}})]})}),e.jsx(Pe,{children:"We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals."})]}),e.jsx(Fe,{children:e.jsx(Z,{})})]})},Ae=i.div`
   padding-top: 40px;
   padding-bottom: 40px;
 
@@ -265,11 +265,11 @@ line-height: 28px;
   
   }
   
-`,De=i.div`
+`,Re=i.div`
 
 
   
-`,Ae=i.div`
+`,$e=i.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -305,16 +305,15 @@ line-height: 28px;
   @media (min-width: 1440px) {
     // width: 704px;
   }
-`;const Fe=K().shape({name:q().matches(/^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/,"Invalid name format").required("Name is required"),email:q().email("Changing is not allowed").required("Email is required"),sex:q().required("Choose one of these fields"),height:S().label("Height").min(150,"min height 150(sm)").max(250,"max height 250(sm)").required("Height is required"),desiredWeight:S().label("Desired Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Desired Weight is required"),currentWeight:S().label("Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Weight is required"),blood:S().required("Choose one of these fields"),levelActivity:S().required("Choose one of these fields")}),Re=z.div`
+`;const Ue=ie().shape({name:A().matches(/^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/,"Invalid name format").required("Name is required"),email:A().email("Changing is not allowed").required("Email is required"),sex:A().required("Choose one of these fields"),height:S().label("Height").min(150,"min height 150(sm)").max(250,"max height 250(sm)").required("Height is required"),desiredWeight:S().label("Desired Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Desired Weight is required"),currentWeight:S().label("Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Weight is required"),blood:S().required("Choose one of these fields"),levelActivity:S().required("Choose one of these fields"),birthday:re().nullable().max(new Date,"Birthday cannot be in the future").required("Birthday is required").test("is-adult","You must be at least 18 years old",function(n){if(!n)return!0;const d=new Date,s=new Date(n);return d.getFullYear()-s.getFullYear()-(d<new Date(d.getFullYear(),s.getMonth(),s.getDate())?1:0)>=18})}),Ee=i.div`
   display: flex;
   align-items: center;
  
-`,Y=z.input`
+`,T=i.input`
   display: flex;
   align-items: center;
   background: transparent;
- 
-  border: 1px solid var(--white);
+  border: 1px solid var(--border, #efede84d);
   border-radius: 12px;
   padding: 14px;
   background-color: inherit;
@@ -323,31 +322,38 @@ line-height: 28px;
   line-height: 1.5;
   outline: none;
   cursor: pointer;
+  border-color: var(--error-color, #d80027);
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
   }
   
-  &.profile{
+  &.profile {
     width: 161px;
     height: 52px;
     margin: 4px 0 0 0;
-    border: 1px solid var( --border, #efede84d);
+    border: 1px solid var(--border, #efede84d);
 
     &:hover,
-  &:focus {
-    border-color: rgba(230, 83, 60, 1);
-  }
-    @media screen and (min-width: 768px) {
-      width: 187px;
-     
+    &:focus {
+      border-color: rgba(230, 83, 60, 1);
     }
 
-    &::placeholder{
-color: var(--white, #efede8);
+    @media screen and (min-width: 768px) {
+      width: 187px;
+    }
+
+    &::placeholder {
+      color: var(--white, #efede8);
     }
   }
-`;Y.defaultProps={placeholder:"00.00.0000"};const Ue=z.div`
+
+  &:error {
+    border-color: var(--error-color, #d80027);
+
+  }
+`;T.defaultProps={placeholder:"00.00.0000"};const Le=i.div`
   position: relative;
   .react-datepicker {
     background: #ef8964;
@@ -405,7 +411,7 @@ align-items: flex-start;
 
   .react-datepicker__day:hover {
     color: var(--white, #efede8);
-    background-color: ar(--black, #040404);
+    background-color: var(--black, #040404);
     border-radius: 50%;
   }
 
@@ -442,7 +448,7 @@ align-items: flex-start;
   .react-datepicker__month-year-option--selected {
     position: absolute;
     left: 15px;
-    color: #040404;
+    color: var(--white, #efede8);
 }
 
 .react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected {
@@ -485,43 +491,42 @@ letter-spacing: -0.32px;
 
 
 
-`,Le=z.svg`
+`,Ne=i.svg`
   width: 20px;
   height: 20px;
-  fill: var(--white);
+  stroke: var(--white);
   cursor: pointer;
   position: absolute;
-  top: 16px;
+  top: 20px;
   right: 10px;
 
   &:hover,
   &:focus {
-    & > path {
-      fill: var(--orange-1, #ef8964);
-    }
+      stroke: var(--orange-1, #ef8964);
+    
   }
 
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
-    top: 20px;
+    top: 18px;
   }
-`;z.div`
+`;i.div`
   display: flex;
   margin-left: 10px;
   @media screen and (min-width: 768px) {
     margin-left: 26px;
   }
-`;const Ne=({textSize:d,textWeight:j,iconColor:p,textHeight:k,birthday:h,handlerDate:_})=>{const s="dd.MM.yyyy",c=l.useRef(null),[P,x]=l.useState(h),W=g=>{c.current&&c.current.setOpen(!0),x(g),_(g),console.log("Picked date:",g)};return e.jsx(Re,{children:e.jsxs(Ue,{children:[e.jsx(re,{selected:P,onChange:W,dateFormat:s,minDate:h,showYearDropdown:!0,showMonthDropdown:!0,customInput:e.jsx(Y,{className:"profile ",$textSize:d,$textWeight:j,$textHeight:k}),ref:c,shouldCloseOnSelect:!0}),e.jsx(Le,{onClick:()=>c.current.setOpen(!0),stroke:p,children:e.jsx("use",{href:o+"#icon-calendar"})})]})})},w=i.div`
+`;const Me=({textSize:n,textWeight:d,iconColor:s,textHeight:x,birthday:g,handlerDate:m,error:c})=>{const p="dd.MM.yyyy",h=l.useRef(null),[z,f]=l.useState(g),_=u=>{h.current&&h.current.setOpen(!0),f(u),m(u),console.log("Picked date:",u)};return e.jsx(Ee,{children:e.jsxs(Le,{children:[e.jsx(oe,{selected:z,onChange:_,dateFormat:p,minDate:g?new Date(g):null,showYearDropdown:!0,showMonthDropdown:!0,customInput:e.jsx(T,{className:`profile ${c?"error":""}`,$textSize:n,$textWeight:d,$textHeight:x,error:c&&c.birthday!==void 0?c.birthday:null}),ref:h,shouldCloseOnSelect:!0}),e.jsx(Ne,{onClick:()=>h.current.setOpen(!0),children:e.jsx("use",{href:`${o}#icon-calendar`})})]})})},y=i.div`
   font-size: 12px;
   font-weight: 400;
   color: var(--error-color, #d80027);
   margin: 0 0 0 20px;
-`,$e=i.div`
+`,Ye=i.div`
   display: flex;
   justify-content: center;
 
-`,Ee=i(ee)`
+`,Be=i(te)`
  
   
 
@@ -533,7 +538,7 @@ letter-spacing: -0.32px;
   @media (min-width: 1440px) {
     margin: 0 64px 0 0;
   }
-`,Me=i.div`
+`,Ie=i.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -545,7 +550,7 @@ letter-spacing: -0.32px;
     flex-direction: row;
     gap: 14px;
   }
-`,U=i.div`
+`,L=i.div`
 display: flex;
 flex-direction: column;
 width: 100%;
@@ -553,11 +558,11 @@ width: 100%;
 @media (min-width: 768px) {
  
 }
-`,f=i.label`
+`,w=i.label`
   font-size: 14px;
   line-height: 1.3;
   color: var(--secondary-color-text, rgba(239, 237, 232, 0.5));
-`,L=i(y)`
+`,N=i(k)`
   width: 335px;
   height: 46px;
   border-radius: 12px;
@@ -583,7 +588,7 @@ width: 100%;
     height: 52px;
     // margin: 8px 0 0 0;
   }
-`,Ie=i.div`
+`,Oe=i.div`
   width: 100%;
 display: flex;
   flex-direction: column;
@@ -593,7 +598,7 @@ display: flex;
     flex-direction: row;
     // justify-content: space-between
   }
-`,N=i.div`
+`,M=i.div`
 
   display: flex;
   gap: 14px;
@@ -612,7 +617,7 @@ display: flex;
   @media (min-width: 768px) {
     width: 140px;
   }
-`;const Oe=i(y)`
+`;const He=i(k)`
   width: 160px;
   height: 46px;
   border-radius: 12px;
@@ -636,7 +641,7 @@ display: flex;
     height: 52px;
     // margin: 8px 0 14px 0;
   }
-`,Be=i(y)`
+`,Te=i(k)`
   width: 161px;
   height: 46px;
   border-radius: 12px;
@@ -660,7 +665,7 @@ display: flex;
     height: 52px;
     // margin: 8px 0 14px 0;
   }
-`,Ye=i(y)`
+`,Ve=i(k)`
 width: 160px;
 height: 52px;
 border-radius: 12px;
@@ -684,7 +689,7 @@ color: var( --white, #efede8);
 
 
 }
-`,Te=i.button`
+`,Ze=i.button`
   display: inline-block;
   min-width: 115px;
   height: 42px;
@@ -730,12 +735,12 @@ color: var( --white, #efede8);
       border-color: var(--orange, #e6533c);
     }
   }
-`;const He=i(y)`
+`;const Qe=i(k)`
 
-`,Ve=i.div`
+`,Xe=i.div`
   width: 100%;
   margin: 20px 0 0 0;
-  `,Ze=i.div`
+  `,Ge=i.div`
 width: 100%;
 display: flex;
 margin: 5px 0 0 0;
@@ -754,7 +759,7 @@ gap: 9px;
   gap: 8px;
 }
 
-`;const $=i.div`
+`;const Y=i.div`
   width: 100%;
   display: flex;
 gap: 8px;
@@ -763,7 +768,7 @@ gap: 8px;
     width: 379px;
   }
  
-`,D=i.label`
+`,R=i.label`
 display: flex;
 align-items: center;
 font-family: Roboto;
@@ -775,7 +780,7 @@ color: var(--white, #efede8);
 @media (min-width: 768px) {
   font-size: 16px;
 }
-`,A=i(y)`
+`,$=i(k)`
   appearance: none;
 
   min-width: 20px;
@@ -801,7 +806,7 @@ color: var(--white, #efede8);
     min-height: 18px;
   }
 
-`,Qe=i.div`
+`,Je=i.div`
 width: 100%;
 display: flex;
 flex-direction: column;
@@ -811,4 +816,4 @@ gap: 9px;
   gap: 8px;
   margin: 32px 0 0 0;
 }
-`,Xe=[{label:"1",value:1},{label:"2",value:2},{label:"3",value:3},{label:"4",value:4}],Ge=[{label:"Male",value:"male"},{label:"Female",value:"female"}],Je=[{id:1,label:"Sedentary lifestyle (little or no physical activity)",value:1},{id:2,label:"Light activity (light exercises/sports 1-3 days per week)",value:2},{id:3,label:"Moderately active (moderate exercises/sports 3-5 days per week)",value:3},{id:4,label:"Very active (intense exercises/sports 6-7 days per week)",value:4},{id:5,label:"Extremely active (very strenuous exercises/sports and physical work)",value:5}],Ke=()=>{const d=E(),{height:j,currentWeight:p,desiredWeight:k,birthday:h,blood:_,sex:s,levelActivity:c}=b(I),P=b(O),x=b(M),W=P||x.name,g={name:W||"",email:x.email,height:j||"",currentWeight:p||"",desiredWeight:k||"",birthday:h,blood:_||0,sex:s||"",levelActivity:c||1},F=async t=>{try{const{name:r,email:u,birthday:C,...m}=t;console.log("DATA",t);const a=await d(Q({name:r})),n=await d(X({...m,birthday:new Date(C).toISOString()}));a.meta.requestStatus==="fulfilled"&&n.meta.requestStatus==="fulfilled"?(d(G()),d(J())):console.log("Setting update error")}catch(r){B.error("An error occurred while updating the profile"),console.error("Error updating profile:",r)}};return W&&e.jsx($e,{children:e.jsx(ie,{initialValues:g,validationSchema:Fe,onSubmit:F,children:({errors:t,touched:r,values:u,handleChange:C,setFieldValue:m})=>e.jsxs(Ee,{autoComplete:"off",children:[e.jsxs(Me,{children:[e.jsxs(U,{style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""},children:[e.jsx(f,{htmlFor:"name",children:"Name"}),e.jsx(L,{required:!0,type:"text",id:"name",name:"name",placeholder:"Name",value:u.name,onChange:C,style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.name&&r.name&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(v,{name:"name",component:w})]})]}),e.jsxs(U,{style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""},children:[e.jsx(f,{htmlFor:"email",children:"Email"}),e.jsx(L,{required:!0,type:"text",id:"email",name:"email",readOnly:!0,placeholder:x.email,style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.email&&r.email&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(v,{name:"email",component:w})]})]})]}),e.jsxs(Ie,{children:[e.jsxs(N,{children:[e.jsxs("div",{style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""},children:[e.jsx(f,{htmlFor:"height",children:"Height"}),e.jsx(Oe,{required:!0,type:"number",id:"height",name:"height",placeholder:"0",style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.height&&r.height&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(v,{name:"height",component:w})]})]}),e.jsxs("div",{style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""},children:[e.jsx(f,{htmlFor:"currentWeight",children:"Current Weight"}),e.jsx(Be,{required:!0,type:"number",id:"currentWeight",name:"currentWeight",placeholder:"0",style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.currentWeight&&r.currentWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(v,{name:"currentWeight",component:w})]})]})]}),e.jsxs(N,{children:[e.jsxs("div",{style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""},children:[e.jsx(f,{htmlFor:"desiredWeight",children:"Desired Weight"}),e.jsx(Ye,{required:!0,type:"number",id:"desiredWeight",name:"desiredWeight",placeholder:"0",style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.desiredWeight&&r.desiredWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(v,{name:"desiredWeight",component:w})]})]}),e.jsxs("div",{style:{borderColor:r.birthday&&t.birthday?"var(--error-color, #d80027)":""},children:[e.jsx(f,{htmlFor:"birthday",children:"Date of birth"}),e.jsx(He,{name:"birthday",children:({field:a})=>e.jsx(Ne,{id:"date",currentDate:a.value,handlerDate:n=>m("birthday",n)})}),e.jsxs("div",{style:{position:"relative"},children:[t.birthday&&r.birthday&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(v,{name:"birthday",component:w})]})]})]})]}),e.jsxs(Ve,{children:[e.jsx(f,{children:"Blood"}),e.jsxs(Ze,{children:[e.jsx($,{children:Xe.map((a,n)=>e.jsxs(D,{children:[e.jsx(A,{required:!0,type:"radio",name:"blood",value:a.value,checked:u.blood===a.value,onChange:()=>m("blood",a.value)}),a.label]},n))}),e.jsx($,{children:Ge.map((a,n)=>e.jsxs(D,{children:[e.jsx(A,{required:!0,type:"radio",name:"sex",value:a.value}),a.label]},n))})]}),e.jsx(Qe,{children:Je.map(a=>e.jsxs(D,{children:[e.jsx(A,{required:!0,type:"radio",name:"levelActivity",value:a.value,checked:u.levelActivity===a.value,onChange:()=>m("levelActivity",a.value)}),a.label]},a.id))})]}),e.jsx(Te,{type:"submit",children:"Save"})]})})})},oi=()=>e.jsxs(qe,{className:"container",children:[e.jsx(De,{children:e.jsx(ae,{text:"Profile Settings"})}),e.jsxs(Ae,{children:[e.jsx(Pe,{}),e.jsx(Ke,{})]})]});export{oi as default};
+`,Ke=[{label:"1",value:1},{label:"2",value:2},{label:"3",value:3},{label:"4",value:4}],ei=[{label:"Male",value:"male"},{label:"Female",value:"female"}],ii=[{id:1,label:"Sedentary lifestyle (little or no physical activity)",value:1},{id:2,label:"Light activity (light exercises/sports 1-3 days per week)",value:2},{id:3,label:"Moderately active (moderate exercises/sports 3-5 days per week)",value:3},{id:4,label:"Very active (intense exercises/sports 6-7 days per week)",value:4},{id:5,label:"Extremely active (very strenuous exercises/sports and physical work)",value:5}],ri=()=>{const n=B(),d=X(),{height:s,currentWeight:x,desiredWeight:g,birthday:m,blood:c,sex:p,levelActivity:h}=j(I),z=j(O),f=j(G),_=z||f.name;function u(t){const r=new Date(t);return`${r.getDate()}.${r.getMonth()+1}.${r.getFullYear()}`}const P=u(m||new Date);console.log(P);const v={name:_||"",email:f.email,height:s||"",currentWeight:x||"",desiredWeight:g||"",birthday:P,blood:c||0,sex:p||"",levelActivity:h||1},W=async t=>{try{const{email:r,birthday:C,...q}=t;(await n(J({...q,birthday:new Date(C).toISOString()}))).meta.requestStatus==="fulfilled"?(n(K()),n(ee()),d("/diary")):console.log("Setting update error")}catch(r){H.error("An error occurred while updating the profile"),console.error("Error updating profile:",r)}};return _&&e.jsx(Ye,{children:e.jsx(ae,{initialValues:v,validationSchema:Ue,onSubmit:W,children:({errors:t,touched:r,values:C,handleChange:q,setFieldValue:F})=>e.jsxs(Be,{autoComplete:"off",children:[e.jsxs(Ie,{children:[e.jsxs(L,{style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""},children:[e.jsx(w,{htmlFor:"name",children:"Name"}),e.jsx(N,{required:!0,type:"text",id:"name",name:"name",placeholder:"Name",value:C.name,onChange:q,style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.name&&r.name&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(b,{name:"name",component:y})]})]}),e.jsxs(L,{style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""},children:[e.jsx(w,{htmlFor:"email",children:"Email"}),e.jsx(N,{required:!0,type:"text",id:"email",name:"email",readOnly:!0,placeholder:f.email,style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.email&&r.email&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(b,{name:"email",component:y})]})]})]}),e.jsxs(Oe,{children:[e.jsxs(M,{children:[e.jsxs("div",{style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""},children:[e.jsx(w,{htmlFor:"height",children:"Height"}),e.jsx(He,{required:!0,type:"number",id:"height",name:"height",placeholder:"0",style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.height&&r.height&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(b,{name:"height",component:y})]})]}),e.jsxs("div",{style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""},children:[e.jsx(w,{htmlFor:"currentWeight",children:"Current Weight"}),e.jsx(Te,{required:!0,type:"number",id:"currentWeight",name:"currentWeight",placeholder:"0",style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.currentWeight&&r.currentWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(b,{name:"currentWeight",component:y})]})]})]}),e.jsxs(M,{children:[e.jsxs("div",{style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""},children:[e.jsx(w,{htmlFor:"desiredWeight",children:"Desired Weight"}),e.jsx(Ve,{required:!0,type:"number",id:"desiredWeight",name:"desiredWeight",placeholder:"0",style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.desiredWeight&&r.desiredWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(b,{name:"desiredWeight",component:y})]})]}),e.jsxs("div",{style:{borderColor:r.birthday&&t.birthday?"var(--error-color, #d80027)":""},children:[e.jsx(w,{htmlFor:"birthday",children:"Date of birth"}),e.jsx(Qe,{name:"birthday",children:({field:a})=>e.jsx(Me,{id:"date",currentDate:a.value,handlerDate:D=>F("birthday",D)})}),e.jsxs("div",{style:{position:"relative"},children:[t.birthday&&r.birthday&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${o}#checkbox-circle`})}),e.jsx(b,{name:"birthday",component:y})]})]})]})]}),e.jsxs(Xe,{children:[e.jsx(w,{children:"Blood"}),e.jsxs(Ge,{children:[e.jsx(Y,{children:Ke.map((a,D)=>e.jsxs(R,{children:[e.jsx($,{required:!0,type:"radio",name:"blood",value:a.value,checked:C.blood===a.value,onChange:()=>F("blood",a.value)}),a.label]},D))}),e.jsx(Y,{children:ei.map((a,D)=>e.jsxs(R,{children:[e.jsx($,{required:!0,type:"radio",name:"sex",value:a.value}),a.label]},D))})]}),e.jsx(Je,{children:ii.map(a=>e.jsxs(R,{children:[e.jsx($,{required:!0,type:"radio",name:"levelActivity",value:a.value,checked:C.levelActivity===a.value,onChange:()=>F("levelActivity",a.value)}),a.label]},a.id))})]}),e.jsx(Ze,{type:"submit",children:"Save"})]})})})},li=()=>e.jsxs(Ae,{className:"container",children:[e.jsx(Re,{children:e.jsx(de,{text:"Profile Settings"})}),e.jsxs($e,{children:[e.jsx(qe,{}),e.jsx(ri,{})]})]});export{li as default};
