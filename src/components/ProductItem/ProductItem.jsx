@@ -17,33 +17,33 @@ import {
   WrapDescription,
 } from './ProductItem.styled.js';
 import sprite from '../../assets/sprite.svg';
-import AddProductForm from '../AddProductForm/AddProductForm.jsx'
+import AddProductForm from '../AddProductForm/AddProductForm.jsx';
 
 let recipeWindow;
 
 const initialRecipeWindow = () => {
   if (window.screen.width < 1440) {
     recipeWindow = true;
-  } else  {
+  } else {
     recipeWindow = false;
   }
-}
+};
 
 initialRecipeWindow();
 
 export default function ProductItem({ productItem }) {
-
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+    document.body.style.overflow = 'auto';
+  };
 
   const { weight, calories, category, title, groupBloodNotAllowed, _id } =
     productItem;
   // const groupBlood = useSelector((state) => state.auth.user.bodyParams.blood);
   const groupBlood = 2;
-  
+
   const normalizedTitle = () => {
     if (title) {
       const upperLetter = title[0].toUpperCase();
@@ -51,19 +51,18 @@ export default function ProductItem({ productItem }) {
       if (recipeWindow) {
         newTitle = `${upperLetter + title.slice(1, 19)}`;
 
-      if (title.length > 19) {
-        return `${newTitle}...`;
-      }
-      return newTitle;
+        if (title.length > 19) {
+          return `${newTitle}...`;
+        }
+        return newTitle;
       } else {
         newTitle = `${upperLetter + title.slice(1, 24)}`;
 
-      if (title.length > 24) {
-        return `${newTitle}...`;
-      }
+        if (title.length > 24) {
+          return `${newTitle}...`;
+        }
         return newTitle;
       }
-      
     }
     return '';
   };
@@ -78,7 +77,7 @@ export default function ProductItem({ productItem }) {
     }
     return '';
   };
-  
+
   return (
     <>
       <Item>
@@ -87,13 +86,22 @@ export default function ProductItem({ productItem }) {
 
           <WrapBtn>
             {groupBloodNotAllowed[groupBlood] ? (
-          <><Rectangle color={'#419B09'} />
-          <RecText>{'Recommended'}</RecText></>
-        ) : (
-            <><Rectangle color={'#E9101D'} />
-          <RecText>{'Not recommended'}</RecText></>
-        )}
-            <AddBtn onClick={() => setOpenModal(true)}>
+              <>
+                <Rectangle color={'#419B09'} />
+                <RecText>{'Recommended'}</RecText>
+              </>
+            ) : (
+              <>
+                <Rectangle color={'#E9101D'} />
+                <RecText>{'Not recommended'}</RecText>
+              </>
+            )}
+            <AddBtn
+              onClick={() => {
+                setOpenModal(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
               Add
               <IconAdd>
                 <use href={sprite + '#icon-arrow'} />
@@ -108,21 +116,26 @@ export default function ProductItem({ productItem }) {
           </Icon>
           <ProductName>{normalizedTitle()}</ProductName>
           <WrapDescription>
-          <InfoText>
-            Calories: <Accent> {calories}</Accent>
-          </InfoText>
-          <InfoText>
-            Category: <Accent>{normalizedCategory()}</Accent>
-          </InfoText>
-          <InfoText>
-            Weight: <Accent>{weight}</Accent>
-          </InfoText>
+            <InfoText>
+              Calories: <Accent> {calories}</Accent>
+            </InfoText>
+            <InfoText>
+              Category: <Accent>{normalizedCategory()}</Accent>
+            </InfoText>
+            <InfoText>
+              Weight: <Accent>{weight}</Accent>
+            </InfoText>
           </WrapDescription>
-          
         </LowerWrapper>
       </Item>
-      {openModal && <AddProductForm onClose={handleCloseModal}  title={title} calories={calories } id={_id} />}
-      
+      {openModal && (
+        <AddProductForm
+          onClose={handleCloseModal}
+          title={title}
+          calories={calories}
+          id={_id}
+        />
+      )}
     </>
   );
 }
