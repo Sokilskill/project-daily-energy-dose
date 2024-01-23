@@ -39,6 +39,7 @@ import {
   NameEmailWrapper,
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 //================== Radio Button ==================
 
@@ -89,6 +90,7 @@ const levelActivityValue = [
 
 export const UserForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     height,
     currentWeight,
@@ -100,12 +102,6 @@ export const UserForm = () => {
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
-
-  // useEffect(() => {
-  //   if (userName) {
-  //     dispatch(getUserProfile());
-  //   }
-  // }, [dispatch, userName]);
 
   const currentName = userName || userCurrent.name;
 
@@ -121,16 +117,14 @@ export const UserForm = () => {
     levelActivity: levelActivity || 1,
   };
 
-  // const changeDate = (date) => {
-  //   const newDate = date.toISOString();
-  //   setFieldValue('birthday', newDate);
-  // };
-
   const handleSubmit = async (data) => {
     try {
       const { name, email, birthday, ...profileData } = data;
+
       console.log('DATA', data);
+
       const updateNameResult = await dispatch(updateUserName({ name }));
+
       const updateProfileDataResult = await dispatch(
         addUserData({
           ...profileData,
@@ -144,6 +138,7 @@ export const UserForm = () => {
       ) {
         dispatch(getUserProfile());
         dispatch(setIsParams());
+        navigate('/diary');
       } else {
         console.log('Setting update error');
       }
