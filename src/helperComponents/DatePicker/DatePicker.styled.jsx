@@ -25,18 +25,20 @@ export const CustomDatePickerInput = styled.input`
     font-size: 16px;
     line-height: 1.5;
   }
-  &:hover,
-  &:focus {
-    border-color: rgba(230, 83, 60, 1);
-  }
+  
   &.profile{
     width: 161px;
     height: 52px;
     margin: 4px 0 0 0;
     border: 1px solid var( --border, #efede84d);
+
+    &:hover,
+  &:focus {
+    border-color: rgba(230, 83, 60, 1);
+  }
     @media screen and (min-width: 768px) {
       width: 187px;
-      margin: 8px 0 0 0;
+     
     }
 
     &::placeholder{
@@ -199,7 +201,7 @@ export const StyledIcon = styled.svg`
   &:hover,
   &:focus {
     & > path {
-      fill: #ef8964;
+      fill: var(--orange-1, #ef8964);
     }
   }
 

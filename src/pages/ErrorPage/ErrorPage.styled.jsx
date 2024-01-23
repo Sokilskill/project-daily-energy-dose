@@ -1,30 +1,59 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-import backgroundImage from '../../assets/Welcome/images/people-training-gym-mob.webp';
 
 export const SectionWrapper = styled.div`
   // position: relative;
   padding: 0;
-  background-image: url(${backgroundImage}), var(--bg-gradient);
 
-  background-image: url('/src/assets/Welcome/images/people-training-gym-mob.webp'),
+
+  background-image: url(${(props) => props.bgi[0]}),
     var(--bg-gradient);
   background-repeat: no-repeat;
   background-position: 107px 240px;
 
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    max-width: 447px,
+    background-image: url(${(props) => props.bgi[1]}),
+      var(--bg-gradient);
+       background-repeat: no-repeat;
+  background-position: 107px 240px;
+}
+
   @media screen and (min-width: 768px) {
-    background-image: url('/src/assets/Welcome/images/people-training-gym-tab.webp'),
+    background-image: url(${(props) => props.bgi[2]}),
       var(--bg-gradient);
     background-repeat: no-repeat;
     background-position: 330px 130px;
-  }
+  
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      max-width: 670px,
+      background-image: url(${(props) => props.bgi[3]}),
+        var(--bg-gradient);
+      background-repeat: no-repeat;
+     background-position: 330px 130px;
+    }
+  }  
 
   @media screen and (min-width: 1440px) {
-
-    background-image: url('/public/assets/side-view-people-training-gym-desk.png');
+     height: 800px;
+    background-image: url(${(props) => props.bgi[4]});
       var(--bg-gradient);
     background-repeat: no-repeat;
     background-position: right top;
+ 
+   @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      max-width: 670px,
+      background-image: url(${(props) => props.bgi[5]}),
+        var(--bg-desk-gradient);
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
   }
 `;
 

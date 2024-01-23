@@ -52,7 +52,7 @@ export const store = configureStore({
     exercises: exercisesSliceReducer,
     products: persistReducer(productsPersistConfig, productsReducer),
     statistics: statisticsSliceReducer,
-    profile: persistReducer(authPersistConfig, profileReducer),
+    profile: profileReducer,
     error: errorPageReducer,
   },
   middleware: (getDefaultMiddleware) =>

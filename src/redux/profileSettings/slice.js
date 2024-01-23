@@ -39,15 +39,11 @@ const handleRejected = (state, action) => {
 };
 
 const handleAddUserDataFulfilled = (state) => {
-  // console.log('actionUPDATE++++++++', action.payload);
-  // state = { ...state, ...action.payload.profile };
   state.isLoading = false;
   state.error = null;
 };
 
 const handleUpdateUserNameFulfilled = (state) => {
-  // console.log('actionUPDATE NAMEEE++++++++', action);
-  // state.profile.owner.name = action.payload.name;
   state.isLoading = false;
   state.error = null;
 };
@@ -59,7 +55,6 @@ const handleUpdateAvatarFulfilled = (state, action) => {
 };
 
 const handleGetUserProfileFulfilled = (state, action) => {
-  // console.log('action.payload.result', action.payload.result);
   state.profile = { ...action.payload.result };
   state.isLoading = false;
   state.error = null;
@@ -69,6 +64,12 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
+    setInitialState: (state) => {
+      return {
+        ...state.initialState,
+        token: null,
+      };
+    },
     setAvatarURL: (state, action) => {
       state.profile.avatarURL = action.payload;
     },
@@ -95,5 +96,6 @@ export const profileSlice = createSlice({
   },
 });
 
-export const { setAvatarURL, setBirthday } = profileSlice.actions;
+export const { setAvatarURL, setBirthday, setInitialState } =
+  profileSlice.actions;
 export const profileReducer = profileSlice.reducer;
