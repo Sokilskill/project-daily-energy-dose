@@ -39,6 +39,8 @@ import {
   NameEmailWrapper,
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { current } from '@reduxjs/toolkit';
 
 //================== Radio Button ==================
 
@@ -89,6 +91,7 @@ const levelActivityValue = [
 
 export const UserForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     height,
     currentWeight,
@@ -101,13 +104,19 @@ export const UserForm = () => {
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
 
-  // useEffect(() => {
-  //   if (userName) {
-  //     dispatch(getUserProfile());
-  //   }
-  // }, [dispatch, userName]);
-
   const currentName = userName || userCurrent.name;
+
+  function formatDateString(DateStr) {
+    const originalDate = new Date(DateStr);
+    return `${originalDate.getDate()}.${
+      originalDate.getMonth() + 1
+    }.${originalDate.getFullYear()}`;
+  }
+  const currentDay = new Date();
+  const formattedDateBirthday = formatDateString(
+    birthday ? birthday : currentDay
+  );
+  console.log(formattedDateBirthday);
 
   const initialValues = {
     name: currentName || '',
@@ -115,22 +124,20 @@ export const UserForm = () => {
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: birthday,
+    birthday: formattedDateBirthday,
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
   };
 
-  // const changeDate = (date) => {
-  //   const newDate = date.toISOString();
-  //   setFieldValue('birthday', newDate);
-  // };
-
   const handleSubmit = async (data) => {
     try {
-      const { name, email, birthday, ...profileData } = data;
-      console.log('DATA', data);
-      const updateNameResult = await dispatch(updateUserName({ name }));
+      const { email, birthday, ...profileData } = data;
+
+      // console.log('DATA', data);
+
+      // const updateNameResult = await dispatch(updateUserName({ name }));
+
       const updateProfileDataResult = await dispatch(
         addUserData({
           ...profileData,
@@ -139,11 +146,12 @@ export const UserForm = () => {
       );
 
       if (
-        updateNameResult.meta.requestStatus === 'fulfilled' &&
+        // updateNameResult.meta.requestStatus === 'fulfilled' &&
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
         dispatch(getUserProfile());
         dispatch(setIsParams());
+        navigate('/diary');
       } else {
         console.log('Setting update error');
       }
@@ -444,7 +452,7 @@ export const UserForm = () => {
                         >
                           <use
                             href={`${sprite}#checkbox-circle`}
-                            style={{ fill: 'var(--error-color, #d80027)' }}
+                            // style={{ fill: 'var(--error-color, #d80027)' }}
                           />
                         </svg>
                       )}

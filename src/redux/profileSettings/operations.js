@@ -3,9 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// export const setAuthToken = (token) => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',

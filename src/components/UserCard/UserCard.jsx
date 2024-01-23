@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { updatedUserAvatar } from "../../redux/profileSettings/operations";
-import sprite from "../../assets/sprite.svg";
+import { updatedUserAvatar } from '../../redux/profileSettings/operations';
+import sprite from '../../assets/sprite.svg';
 import {
   ActivityShower,
   AvatarContainer,
@@ -22,7 +22,6 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
-  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -32,24 +31,30 @@ import {
   WrapperIntake,
   WrapperIntakeFood,
   WrapperLogOut,
-} from "./UserCard.styled";
-import { LogOutBtn } from "../../helperComponents/LogOutBtn/LogOutBtn";
-import { selectUser } from "../../redux/auth/auth-selectors";
-import { selectProfileName, selectUserProfile } from "../../redux/profileSettings/selectors";
+} from './UserCard.styled';
+import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
+import {
+  // selectUser,
+  selectUserLargeAvatar,
+} from '../../redux/auth/auth-selectors';
+import {
+  selectProfileName,
+  selectUserProfile,
+} from '../../redux/profileSettings/selectors';
+import { refreshThunk } from '../../redux/auth/auth-operations';
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
-  const userProfile = useSelector(selectUser);
+  // const userProfile = useSelector(selectUser);
+  const avatar = useSelector(selectUserLargeAvatar);
   const ownerProfile = useSelector(selectUserProfile);
-  const [avatarPreviewURL, setAvatarPreviewURL] = useState(
-    userProfile.avatarURL
-  );
+  const currentName = useSelector(selectProfileName);
+  const [avatarPreviewURL, setAvatarPreviewURL] = useState(avatar);
   const [showPreview, setShowPreview] = useState(true);
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const userName = useSelector(selectProfileName);
-  const currentName = userName ? userName : userProfile.name;
+  // const currentName = userName ? userName : userProfile.name;
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -58,34 +63,34 @@ export const UserCard = ({ time }) => {
       try {
         const blob = new Blob([newAvatarFile]);
         const objectURL = URL.createObjectURL(blob);
-        setAvatarPreviewURL(objectURL);
+        // setAvatarPreviewURL(objectURL);
 
-        const data = await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log("newAvatar ProfilePage", newAvatarFile);
-        console.log("data", data);
+        await dispatch(updatedUserAvatar(newAvatarFile));
+        console.log('newAvatar ProfilePage', newAvatarFile);
+
+        setAvatarPreviewURL(newAvatarFile);
       } catch (error) {
-        console.error("Failed to create object URL:", error);
-        toast.error("Failed to update avatar");
+        console.error('Failed to create object URL:', error);
+        toast.error('Failed to update avatar');
       } finally {
-        setLoading(false);
-        // e.target.form.reset();
+        // dispatch(refreshThunk());
+        // setLoading(true);
+        // setLoading(false);
       }
     }
   };
-
   useEffect(() => {
     if (showPreview) {
-      setPreviewStyle({ borderRadius: "50%", width: "100%", height: "100%" });
+      setPreviewStyle({ borderRadius: '50%', width: '100%', height: '100%' });
       setShowPreview(false);
     }
   }, [showPreview]);
 
   useEffect(() => {
     if (!showPreview) {
-      setAvatarStyle({ width: "90px", height: "90px" });
+      setAvatarStyle({ width: '90px', height: '90px' });
     }
   }, [showPreview]);
-
 
   return (
     <ProfileContainer>
@@ -108,11 +113,11 @@ export const UserCard = ({ time }) => {
             <NewAvatar src={avatarPreviewURL} alt="Preview" />
           ) : (
             <div>
-              {!userProfile.avatarURL && (
+              {
                 <DefaultAvatarSvg>
-                  <use href={sprite + "#icon-gridicons_user"} />
+                  <use href={sprite + '#icon-gridicons_user'} />
                 </DefaultAvatarSvg>
-              )}
+              }
             </div>
           )}
         </div>
@@ -126,44 +131,43 @@ export const UserCard = ({ time }) => {
         <CalorieShower>
           <WrapperIntakeFood>
             <FoodSvg>
-              <use href={sprite + "#icon-fluenit_food-24-filled"} />
+              <use href={sprite + '#icon-fluenit_food-24-filled'} />
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
           <Span>{Math.round(ownerProfile.bmr)}</Span>
-          {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>
             <ParamsSvg>
-              <use href={sprite + "#icon-dumbbell"} />
+              <use href={sprite + '#icon-dumbbell'} />
             </ParamsSvg>
             <Text>Daily physical activity</Text>
           </WrapperIntake>
-          <Span>{time}0 min</Span>
+          <Span>{ownerProfile.time} min</Span>
         </ActivityShower>
       </UserParamsWrapper>
       <DescWrapper>
         <div>
           <ExcellMarkIcon>
             <use
-              href={sprite + "#icon-Ellipse-1"}
+              href={sprite + '#icon-Ellipse-1'}
               style={{
-                fill: "rgba(239, 160, 130, 1)",
-                width: "100%",
-                height: "100%",
-                position: "relative",
+                fill: 'rgba(239, 160, 130, 1)',
+                width: '100%',
+                height: '100%',
+                position: 'relative',
               }}
             />
             <use
-              href={sprite + "#icon-tabler_exclamation-mark"}
+              href={sprite + '#icon-tabler_exclamation-mark'}
               style={{
-                fill: "rgba(239, 237, 232, 1)",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: "100%",
-                height: "100%",
+                fill: 'rgba(239, 237, 232, 1)',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '100%',
+                height: '100%',
               }}
             />
           </ExcellMarkIcon>

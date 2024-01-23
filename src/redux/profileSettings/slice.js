@@ -18,6 +18,7 @@ const initialState = {
     sex: null,
     levelActivity: null,
     bmr: 0,
+    time: 0,
     owner: {
       id: '',
       name: '',
@@ -55,7 +56,7 @@ const handleUpdateAvatarFulfilled = (state, action) => {
 };
 
 const handleGetUserProfileFulfilled = (state, action) => {
-  state.profile = { ...state.profile, ...action.payload.result };
+  state.profile = { ...state.profile, ...action.payload };
   state.isLoading = false;
   state.error = null;
 };
