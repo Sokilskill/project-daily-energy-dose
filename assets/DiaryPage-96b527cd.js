@@ -1,21 +1,27 @@
-import{t as n,r as v,j as e,s as c,L as $,c as l,a as k,M as T,v as D,w as C,n as p,x as B,Q as P}from"./index-bad5c320.js";import{e as L,s as W,a as M}from"./react-datepicker-f5b75507.js";import{G as z}from"./iconBase-f38a509d.js";import"./defineProperty-179e1ab7.js";function _(i){return z({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"},child:[]}]})(i)}function F(i){return z({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"},child:[]}]})(i)}const O=n.div`
+import{t as n,r as v,j as e,s as c,L as $,c as l,a as k,M as T,v as D,w as C,n as p,x as B,Q as P}from"./index-dbc84214.js";import{e as L,s as W,a as M}from"./react-datepicker-731b18dc.js";import{G as z}from"./iconBase-e7b57772.js";import"./defineProperty-179e1ab7.js";function _(i){return z({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"},child:[]}]})(i)}function F(i){return z({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"},child:[]}]})(i)}const O=n.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-right: 20px;
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 0;
+  }
 `,R=n.input`
 font-family: Roboto;
 font-weight: bold;
 background: transparent;
-border: none;
+border: 0;
+padding: 0;
+box-sizing: border-box;
 background-color: inherit;
 color: var(--white);
 font-size: 18px;
 line-height: 1.5;
 outline: none;
 cursor: pointer;
-width: 100px;
-height: 100%;
+
 
 @media screen and (min-width: 768px) {
   width: 135px;
@@ -24,7 +30,6 @@ height: 100%;
 }
 `,q=n.div`
   display: flex;
-  gap: 8px;
   align-items: center;
   position: relative;
   .react-datepicker {
@@ -85,6 +90,10 @@ height: 100%;
     color: #efede8;
     font-size: 16px;
   }
+
+  .react-datepicker__close-icon {
+    margin-left: 8px; /* Этот margin компенсирует смещение из-за gap */
+  }
 `,A=n.svg`
 width: 20px;
 height: 20px;
@@ -103,9 +112,9 @@ transition: stroke 0.3s ease;
 }
 `,V=n.div`
   display: flex;
-  margin-left: 26px;
+  margin-left: 20px;
   @media screen and (min-width: 768px) {
-    margin-left: 26px;
+    margin-left: 20px;
   }
 `,E=({textSize:i,textWeight:t,iconColor:a,sizeArrow:r,textHeight:d,handlerDate:s,currentDate:o,birthdayDate:w})=>{const g="dd/MM/yyyy",x=v.useRef(null),h=N=>{s(N)},y=()=>{x.current&&x.current.setOpen(!0)};return e.jsxs(O,{children:[e.jsxs(q,{children:[e.jsx(L,{selected:o,onChange:h,dateFormat:g,minDate:w,customInput:e.jsx(R,{className:"diary",$textSize:i,$textWeight:t,$textHeight:d}),ref:x,shouldCloseOnSelect:!0}),e.jsx(A,{onClick:y,stroke:a,children:e.jsx("use",{href:`${c}#icon-calendar`})})]}),e.jsxs(V,{children:[e.jsx(_,{onClick:()=>{h(W(o,1))},style:{cursor:"pointer",fontSize:r?`${r}px`:"16px",color:"var(--white)",userSelect:"none"}}),e.jsx(F,{onClick:()=>{h(M(o,1))},style:{cursor:"pointer",fontSize:r?`${r}px`:"16px",color:"var(--white)",userSelect:"none"}})]})]})},H=n.div`
   /* 320-375 */
@@ -718,8 +727,9 @@ transition: stroke 0.3s ease;
 `,Je=()=>{const i=l(m.getDiary).doneExercises;return e.jsxs(ve,{children:[e.jsxs(ke,{children:[e.jsx(Te,{children:"Execrcises"}),e.jsxs(Me,{to:"/exercises/bodyParts",children:[e.jsx(De,{children:"Add exercise"}),e.jsx(S,{width:16,height:16,className:"orange",children:e.jsx("use",{href:`${c}#icon-start`})})]})]}),e.jsx(Ke,{exercises:i})]})},Ke=({exercises:i})=>{const t=k(),a=l(m.getIsLoading);return e.jsx(e.Fragment,{children:a?e.jsx(T,{display:"flex"}):i.length?e.jsxs(e.Fragment,{children:[e.jsx(Xe,{}),e.jsx(Fe,{children:i.map(({burnedCalories:r,date:d,exerciseId:{bodyPart:s,equipment:o,name:w,target:g},time:x,_id:h})=>e.jsxs(Oe,{children:[e.jsxs(Ee,{children:[e.jsx(f,{value:s,children:"Body Part"}),e.jsx(f,{value:o,children:"Equipment"}),e.jsx(f,{value:w,children:"Name"})]}),e.jsxs($e,{children:[e.jsxs(Ce,{children:[e.jsx(f,{value:g,children:"Target"}),e.jsx(f,{value:r,children:"Burned Calories"}),e.jsx(f,{value:x,children:"Time"})]}),e.jsx(_e,{onClick:()=>{t(D.deleteDiaryExercise({exerciseId:h,date:d}))},children:e.jsx(We,{children:e.jsx(S,{width:20,height:20,className:"orange",children:e.jsx("use",{href:`${c}#icon-trash`})})})})]})]},h))})]}):e.jsx(Ze,{})})},f=({width:i,value:t,children:a})=>{let r=t,d=r;t.length>8&&(d=t.slice(0,8)+"...");let s=a,o=s;return a.length>10&&(o=a.slice(0,10)+"..."),e.jsxs(ze,{name:a,children:[e.jsxs(Ie,{children:[e.jsx(Pe,{children:s}),e.jsx(Le,{children:o})]}),e.jsxs(Se,{width:i,name:a,children:[e.jsx(Ne,{children:r}),e.jsx(Be,{children:d})]})]})},Xe=()=>e.jsxs(qe,{children:[e.jsx(Ae,{children:"Body Part"}),e.jsx(Ve,{children:"Equipment"}),e.jsx(He,{children:"Name"}),e.jsx(Ge,{children:"Target"}),e.jsx(Ye,{children:"Burned Calor..."}),e.jsx(Ue,{children:"Burned Calories"}),e.jsx(Qe,{children:"Time"})]}),Ze=()=>e.jsx(Re,{children:"Not found exercises"}),ei=n.div`
   display: flex;
   max-width: 335px;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  margin: 0 auto;
 
   column-gap: 13px;
   row-gap: 20px;
@@ -834,18 +844,21 @@ transition: stroke 0.3s ease;
 
   @media screen and (min-width: 1440px) {
     width: 1440px; /* Добавлено из media query 1440px в index.css */
+    padding: 0 96px;
   }
 `,si=p.h2`
   font-size: 24px;
   font-weight: bold;
   line-height: 28px;
   color: var(--white);
+  margin-left: 20px;
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: 44px;
     display: flex;
     align-items: end;
+    margin-left: 0;
   }
 `,oi=p.div`
   display: flex;
