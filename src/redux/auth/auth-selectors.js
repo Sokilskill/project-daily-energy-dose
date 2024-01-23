@@ -8,7 +8,7 @@ export const selectIsLoading = (state) => state.auth.isLoading;
 export const selectIsToken = (state) => state.auth.token;
 export const selectUserBodyParams = (state) => state.auth.user.bodyParams;
 
-export const selectIsParamsData = (state) => state.auth.isParams;
+export const selectIsParamsData = (state) => state.auth.user.isParams;
 
 // Diary
 const getUserMetricData = (state) => state.auth.user.bodyParams;

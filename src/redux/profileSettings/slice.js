@@ -55,7 +55,7 @@ const handleUpdateAvatarFulfilled = (state, action) => {
 };
 
 const handleGetUserProfileFulfilled = (state, action) => {
-  state.profile = { ...action.payload.result };
+  state.profile = { ...state.profile, ...action.payload.result };
   state.isLoading = false;
   state.error = null;
 };
@@ -64,12 +64,8 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setInitialState: (state) => {
-      return {
-        ...state.initialState,
-        token: null,
-      };
-    },
+    setInitialState: () => initialState,
+
     setAvatarURL: (state, action) => {
       state.profile.avatarURL = action.payload;
     },

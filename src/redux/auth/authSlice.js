@@ -33,9 +33,9 @@ const initialState = {
       blood: null,
       sex: null,
       levelActivity: null,
+      isParams: false,
     },
   },
-  isParams: false,
   isLoggedIn: false,
   isLoading: false,
   isFetchingCurrentUser: false,
@@ -49,7 +49,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setIsParams: (state) => {
-      state.isParams = true;
+      state.user.isParams = true;
     },
   },
 
