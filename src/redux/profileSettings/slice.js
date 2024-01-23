@@ -9,7 +9,7 @@ import { refreshThunk } from '../auth/auth-operations';
 
 const initialState = {
   profile: {
-    avatarURL: '',
+    avatarLargeURL: '',
     height: null,
     currentWeight: null,
     desiredWeight: null,
@@ -18,11 +18,12 @@ const initialState = {
     sex: null,
     levelActivity: null,
     bmr: 0,
+    sportTime: 110,
     owner: {
       id: '',
       name: '',
       email: '',
-      avatarURL: '',
+      avatarLargeURL: '',
     },
   },
   isLoading: false,
@@ -49,7 +50,8 @@ const handleUpdateUserNameFulfilled = (state) => {
 };
 
 const handleUpdateAvatarFulfilled = (state, action) => {
-  state.profile.avatarURL = action.payload.avatarURL;
+ 
+  state.profile.avatarLargeURL = action.payload;
   state.isLoading = false;
   state.error = null;
 };
@@ -67,7 +69,7 @@ export const profileSlice = createSlice({
     setInitialState: () => initialState,
 
     setAvatarURL: (state, action) => {
-      state.profile.avatarURL = action.payload;
+      state.profile.avatarLargeURL = action.payload;
     },
     setBirthday: (state, action) => {
       state.profile.birthday = action.payload;

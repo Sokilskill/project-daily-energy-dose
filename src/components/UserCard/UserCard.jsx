@@ -22,7 +22,6 @@ import {
   ParamsSvg,
   ProfileContainer,
   Span,
-  SpanIntake,
   Text,
   TextCalorie,
   UserName,
@@ -36,20 +35,17 @@ import {
 import { LogOutBtn } from "../../helperComponents/LogOutBtn/LogOutBtn";
 import { selectUser } from "../../redux/auth/auth-selectors";
 import { selectProfileName, selectUserProfile } from "../../redux/profileSettings/selectors";
+import { setAvatarURL } from "../../redux/profileSettings/slice";
 
-export const UserCard = ({ time }) => {
+export const UserCard = () => {
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUser);
   const ownerProfile = useSelector(selectUserProfile);
-  const [avatarPreviewURL, setAvatarPreviewURL] = useState(
-    userProfile.avatarURL
-  );
-  const [showPreview, setShowPreview] = useState(true);
-  const [previewStyle, setPreviewStyle] = useState({});
-  const [avatarStyle, setAvatarStyle] = useState({});
+const [avatarPreviewURL, setAvatarPreviewURL] = useState(null)
   const [loading, setLoading] = useState(false);
   const userName = useSelector(selectProfileName);
   const currentName = userName ? userName : userProfile.name;
+
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -58,8 +54,8 @@ export const UserCard = ({ time }) => {
       try {
         const blob = new Blob([newAvatarFile]);
         const objectURL = URL.createObjectURL(blob);
-        setAvatarPreviewURL(objectURL);
-
+       dispatch(setAvatarPreviewURL(objectURL)) ;
+       dispatch(setAvatarURL(objectURL)) 
         const data = await dispatch(updatedUserAvatar(newAvatarFile));
         console.log("newAvatar ProfilePage", newAvatarFile);
         console.log("data", data);
@@ -68,23 +64,23 @@ export const UserCard = ({ time }) => {
         toast.error("Failed to update avatar");
       } finally {
         setLoading(false);
-        // e.target.form.reset();
+    
       }
     }
   };
 
-  useEffect(() => {
-    if (showPreview) {
-      setPreviewStyle({ borderRadius: "50%", width: "100%", height: "100%" });
-      setShowPreview(false);
-    }
-  }, [showPreview]);
+  // useEffect(() => {
+  //   if (showPreview) {
+  //     setPreviewStyle({ borderRadius: "50%", width: "100%", height: "100%" });
+  //     setShowPreview(false);
+  //   }
+  // }, [showPreview]);
 
-  useEffect(() => {
-    if (!showPreview) {
-      setAvatarStyle({ width: "90px", height: "90px" });
-    }
-  }, [showPreview]);
+  // useEffect(() => {
+  //   if (!showPreview) {
+  //     setAvatarStyle({ width: "90px", height: "90px" });
+  //   }
+  // }, [showPreview]);
 
 
   return (
@@ -108,7 +104,7 @@ export const UserCard = ({ time }) => {
             <NewAvatar src={avatarPreviewURL} alt="Preview" />
           ) : (
             <div>
-              {!userProfile.avatarURL && (
+              {!userProfile.avatarLargeURL && (
                 <DefaultAvatarSvg>
                   <use href={sprite + "#icon-gridicons_user"} />
                 </DefaultAvatarSvg>
@@ -131,7 +127,6 @@ export const UserCard = ({ time }) => {
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
           <Span>{Math.round(ownerProfile.bmr)}</Span>
-          {/* <SpanIntake>0</SpanIntake> */}
         </CalorieShower>
         <ActivityShower>
           <WrapperIntake>
@@ -140,7 +135,7 @@ export const UserCard = ({ time }) => {
             </ParamsSvg>
             <Text>Daily physical activity</Text>
           </WrapperIntake>
-          <Span>{time}0 min</Span>
+          <Span>{ownerProfile.sportTime} min</Span>
         </ActivityShower>
       </UserParamsWrapper>
       <DescWrapper>

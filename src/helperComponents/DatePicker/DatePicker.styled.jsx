@@ -120,6 +120,8 @@ align-items: flex-start;
     border: none;
     color: var(--white, #efede8);
     font-size: 16px;
+   
+    overflow-y: scroll;
   }
 
   .react-datepicker__month-read-view--selected-month {
@@ -144,7 +146,7 @@ align-items: flex-start;
   .react-datepicker__month-year-option--selected {
     position: absolute;
     left: 15px;
-    color: #040404;
+    color: var(--white);
 }
 
 .react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected {
@@ -192,23 +194,23 @@ letter-spacing: -0.32px;
 export const StyledIcon = styled.svg`
   width: 20px;
   height: 20px;
-  fill: var(--white);
+  stroke: var(--white);
   cursor: pointer;
   position: absolute;
-  top: 16px;
+  top: 20px;
   right: 10px;
 
   &:hover,
   &:focus {
     & > path {
-      fill: var(--orange-1, #ef8964);
+      stroke: var(--orange-1, #ef8964);
     }
   }
 
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
-    top: 20px;
+    top: 18px;
   }
 `;
 

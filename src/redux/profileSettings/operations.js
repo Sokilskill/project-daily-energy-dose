@@ -49,7 +49,7 @@ export const updatedUserAvatar = createAsyncThunk(
         },
       });
       toast.success('Avatar updated');
-      return res.data;
+      return res.data.formData;
     } catch (error) {
       toast.error(error.message);
       return thunkApi.rejectWithValue(error.message);
