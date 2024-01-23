@@ -28,12 +28,19 @@ export const ExercisesItem = ({
   time,
   _id,
 }) => {
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
   return (
-    <ExerciseItem>
+    <>
+     <ExerciseItem>
       <ItemTopBloc>
         <Workout>WORKOUT</Workout>
         <StartBtnWrapper>
-          <StartBtn>Start</StartBtn>
+          <StartBtn onClick={() => setOpenModal(true)}>Start</StartBtn>
           <ArrowIcon>
             <use href={`${sprite}#icon-arrow`}></use>
           </ArrowIcon>
@@ -62,5 +69,13 @@ export const ExercisesItem = ({
         </TargetsListItem>
       </TargetsList>
     </ExerciseItem>
+    <AddExerciseForm
+    onClose={handleCloseModal}
+    open={openModal}
+    time={180}
+    exerciseId={1}
+    calories={500} />
+    </>
+   
   );
 };
