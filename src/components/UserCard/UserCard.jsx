@@ -44,7 +44,7 @@ export const UserCard = ({ time }) => {
   const userProfile = useSelector(selectUser);
   const ownerProfile = useSelector(selectUserProfile);
   const [avatarPreviewURL, setAvatarPreviewURL] = useState(
-    userProfile.avatarURL
+    userProfile.LargeAvatarURL
   );
   const [showPreview, setShowPreview] = useState(true);
   const [previewStyle, setPreviewStyle] = useState({});
