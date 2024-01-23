@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 
 export const Backdrop  = styled.div`;
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;

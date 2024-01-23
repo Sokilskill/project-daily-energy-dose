@@ -93,7 +93,7 @@ export const ProductName = styled.h2`
   font-style: normal;
   font-weight: 400;
   line-height: 1.2;
-
+  min-width: 100px;
   @media screen and (min-width: 768px) {
     font-size: 24px;
   line-height: 1.33;

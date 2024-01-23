@@ -32,7 +32,7 @@ const initialRecipeWindow = () => {
 initialRecipeWindow();
 
 export default function ProductItem({ productItem }) {
-
+  
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseModal = () => {
