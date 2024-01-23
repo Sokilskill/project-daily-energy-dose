@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
   Pagination,
@@ -6,35 +6,14 @@ import {
   PaginationIcon,
   SubcategoriesList,
 } from '../ExercisesSubcategoriesList/ExercisesSubcategoriesList.styled';
-import {
-  selectExercisesByBodyParts,
-  selectExercisesByEquipment,
-  selectExercisesByMuscles,
-} from '../../redux/exercises/exercisesSelectors';
 import { useEffect, useState } from 'react';
-import {
-  getExercisesByBodyParts,
-  // getExercisesByEquipment,
-  // getExercisesByMuscles,
-} from '../../redux/exercises/exercisesOperations';
+import { getExercisesByCategories } from '../../redux/exercises/exercisesOperations';
 import { useParams } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
 
 export const ExercisesSubcategoriesList = () => {
   const dispatch = useDispatch();
   const { categoryType } = useParams();
-
-  // const bodyList = useSelector(selectExercisesByBodyParts);
-  // const musclesList = useSelector(selectExercisesByMuscles);
-  // const equipmentList = useSelector(selectExercisesByEquipment);
-  // const exercisesList =
-  //   categoryType === 'body'
-  //     ? bodyList
-  //     : categoryType === 'Muscles'
-  //     ? musclesList
-  //     : categoryType === 'equipment'
-  //     ? equipmentList
-  //         : [];
   const [exercisesList, setExercisesList] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
@@ -51,30 +30,6 @@ export const ExercisesSubcategoriesList = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const category =
-  //     categoryType === 'body'
-  //       ? 'bodyPart'
-  //       : categoryType === 'Muscles'
-  //       ? 'Muscles'
-  //       : categoryType === 'equipment'
-  //       ? 'equipment'
-  //       : '';
-  //   const options = { page, limit };
-  //   const optionsforMuscles = { page, limit, category };
-  //   if (categoryType === 'body') {
-  //     dispatch(getExercisesByBodyParts(options)).then((data) => {
-  //       console.log(data);
-  //     });
-  //   } else if (categoryType === 'Muscles') {
-  //     dispatch(getExercisesByMuscles(optionsforMuscles)).then((data) => {
-  //       console.log(data);
-  //     });
-  //   } else if (categoryType === 'equipment') {
-  //     dispatch(getExercisesByEquipment());
-  //   }
-  // }, [dispatch, categoryType, limit, page]);
-
   useEffect(() => {
     const category =
       categoryType === 'body'
@@ -86,7 +41,7 @@ export const ExercisesSubcategoriesList = () => {
         : '';
 
     const options = { page, limit, category };
-    dispatch(getExercisesByBodyParts(options)).then(({ payload }) => {
+    dispatch(getExercisesByCategories(options)).then(({ payload }) => {
       setTotal(payload.total);
       setExercisesList(payload.data);
     });
