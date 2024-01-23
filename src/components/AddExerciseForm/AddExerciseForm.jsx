@@ -21,6 +21,9 @@ import {
 // import BlockIcon from '../../assets/images/block.png';
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import capitalizeString from '../../../hooks/capitalizeString';
+import { useDispatch } from 'react-redux';
+import diaryOperations from '../../redux/diary/diaryOperations';
+import diarySelectors from '../../redux/diary/diarySelectors';
 
 const AddExerciseForm = ({
   onClose,
@@ -32,7 +35,14 @@ const AddExerciseForm = ({
   target,
   equipment,
   name,
+  exercise,
+  // handleModalSuccess,
 }) => {
+  function convertToMinutes(seconds) {
+    let minutes = seconds / 60;
+    return minutes.toFixed(2);
+  }
+
   const handleKeyDown = useCallback(
     (event) => {
       if (event.key === 'Escape') {
@@ -50,8 +60,11 @@ const AddExerciseForm = ({
     };
   }, [handleKeyDown]);
 
+  const dispatch = useDispatch();
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [caloriesBurned, setCaloriesBurned] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  // const [isDisabled, setDisabled] = useState(true);
 
   const startPauseTimer = () => {
     setIsTimerRunning(!isTimerRunning);
@@ -59,8 +72,28 @@ const AddExerciseForm = ({
 
   const saveBurnedCalories = (remainingTime) => {
     const elapsedTime = time - remainingTime;
-    setCaloriesBurned(Math.floor((elapsedTime * calories) / time));
-    // TODO: save burned calories with API call
+    setCaloriesBurned(
+      Math.floor((convertToMinutes(elapsedTime) * calories) / time)
+    );
+    setElapsedTime(elapsedTime);
+  };
+
+
+  const handleAddToDairy = () => {
+    const workoutTime = convertToMinutes(elapsedTime);
+    const dataToDiary = {
+      date: Date.now(),
+      exercise: exercise._id,
+     time: workoutTime,
+      calories: caloriesBurned,
+    };
+    dispatch(diaryOperations.postDiaryExercise(dataToDiary));
+    console.log(diaryError);
+  if(diaryError || dataToDiary.calories === 0){
+    return
+  }else{
+    // handleModalSuccess();
+  }
   };
 
   return (
@@ -121,7 +154,18 @@ const AddExerciseForm = ({
                   <WorkoutName>{capitalizeString(equipment)}</WorkoutName>
                 </StyledListItem>
               </StyledList>
-              <Button>Add to diary</Button>
+              <Button
+              type='button'
+          //     disabled={isDisabled}
+          // $hoverColor={
+          //   isDisabled ? 'rgb(241, 153, 139, 0.8)' : 'var(--color-main-two)'
+          // }
+          // color={
+          //   isDisabled ? 'rgb(241, 153, 139, 0.8)' : 'var(--color-main-one)'
+          // }
+          // cursor={isDisabled ? 'not-allowed' : 'pointer'}
+          onClick={handleAddToDairy}
+              >Add to diary</Button>
             </Container>
           </Flex>
         </ModalContainer>

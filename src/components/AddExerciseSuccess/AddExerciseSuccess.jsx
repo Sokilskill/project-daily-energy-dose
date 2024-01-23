@@ -4,7 +4,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { Backdrop, ModalContainer, Close, Image, Div, Title, Text, Button, StyledLink} from "./AddExerciseSuccess.stiled";
 import ThumbIcon from "../../assets/images/thumb_up.png";
 
-const AddExerciseSuccess = ({onClose, open }) => {
+const AddExerciseSuccess = ({onClose, open, handleModalSuccess }) => {
   const handleKeyDown = useCallback((event) => {
     if (event.key === 'Escape') {
       onClose();
@@ -32,7 +32,7 @@ const AddExerciseSuccess = ({onClose, open }) => {
               <Title>Well done</Title>
               <Text>Your  time: </Text>
               <Text>Burned calories:</Text>
-              <Button type='button' onClick={onClose}>Next product</Button>
+              <Button type='button' onClick={handleModalSuccess}>Next product</Button>
               <Div>
                 <StyledLink to="/diary">To the diary <IoMdArrowForward /></StyledLink>
               </Div>
