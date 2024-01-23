@@ -1,7 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
-// import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,10 +10,10 @@ import {
   selectIsParamsData,
   selectIsRefreshing,
 } from './redux/auth/auth-selectors';
-import { refreshThunk } from './redux/auth/auth-operations';
+import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import MyLoader from './components/Loader/DiaryLoader';
-import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
 import { getUserProfile } from './redux/profileSettings/operations';
+import { refreshThunk } from './redux/auth/auth-operations';
 import { setIsParams } from './redux/auth/authSlice';
 import { selectProfileEmail } from './redux/profileSettings/selectors';
 // import { setIsParams } from './redux/auth/authSlice';
@@ -115,20 +114,12 @@ function App() {
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
           >
-            <Route index element={<Navigate to="bodyPart" />} />
-            <Route path=":category" element={<ExercisesCategories />} />
-            <Route path=":category/:subCategory" element={<ExercisesList />} />
+            <Route
+              path=":categoryType"
+              element={<ExercisesSubcategoriesList />}
+            />
+            <Route path=":categoryType/:group" element={<ExercisesList />} />
           </Route>
-
-          {/* <Route
-            path="exercises"
-            element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
-          >
-            <Route path="bodyParts" element={<ExercisesSubcategoriesList />} />
-            <Route path="muscles" element={<ExercisesSubcategoriesList />} />
-            <Route path="equipment" element={<ExercisesSubcategoriesList />} />
-            <Route path="list" element={<ExercisesList />} />
-          </Route> */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

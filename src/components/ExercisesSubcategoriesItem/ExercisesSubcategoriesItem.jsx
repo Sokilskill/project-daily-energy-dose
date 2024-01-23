@@ -5,22 +5,19 @@ import {
   SubcategoriesTextWrapper,
   SubcategoriesTitle,
   SubcategoriesText,
-  SubCategoryLink,
+  SubcategoriesItemLink,
 } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem.styled';
-import capitalizeString from '../../../hooks/capitalizeString';
 
-export const ExercisesSubcategoriesItem = ({ _id, name, imgURL, filter }) => {
-  const location = useLocation();
-
+export const ExercisesSubcategoriesItem = ({ data }) => {
   return (
-    <SubcategoriesListItem key={_id}>
-      <SubCategoryLink to={name} state={{ from: location }}>
-        <SubcategoriesImg src={imgURL} />
+    <SubcategoriesListItem>
+      <SubcategoriesItemLink to={data.name}>
+        <SubcategoriesImg src={data?.imgURL} alt={data?.name} />
         <SubcategoriesTextWrapper>
-          <SubcategoriesTitle>{capitalizeString(name)}</SubcategoriesTitle>
-          <SubcategoriesText>{filter}</SubcategoriesText>
+          <SubcategoriesTitle>{data?.name}</SubcategoriesTitle>
+          <SubcategoriesText>{data?.filter}</SubcategoriesText>
         </SubcategoriesTextWrapper>
-      </SubCategoryLink>
+      </SubcategoriesItemLink>
     </SubcategoriesListItem>
   );
 };

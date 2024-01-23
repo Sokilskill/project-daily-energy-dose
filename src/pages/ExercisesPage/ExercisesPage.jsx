@@ -1,48 +1,32 @@
-import { Suspense, useEffect } from 'react';
-import ExercisesCategoriesNav from '../../components/ExercisesCategoriesNav/ExercisesCategoriesNav';
-import { TitlePage } from '../../components/TitlePage/TitlePage';
-
+import { ExercisesCategories } from '../../components/ExercisesCategories/ExercisesCategories';
 import {
+  ArrowIcon,
+  BackBtn,
+  BackBtnWrapper,
   ExercisesPageContainer,
-  ExercisesPageHeaderWrapper,
-  GoBackBtnWrap,
+  ExercisesPageHeader,
 } from '../ExercisesPage/ExercisesPage.styled';
-
-import { Outlet, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import exercisesOperations from '../../redux/exercises/exercisesOperations';
-import MyLoader from '../../components/Loader/DiaryLoader';
-import capitalizeString from '../../../hooks/capitalizeString';
-import GoBackBtn from '../../components/GoBackBtn/GoBackBtn';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import sprite from '../../assets/sprite.svg';
 
 const ExercisesPage = () => {
-  const { subCategory } = useParams();
-  // console.log(subCategory);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(exercisesOperations.getCategories({ category: 'Body parts' }));
-  }, [dispatch]);
+  const { group } = useParams();
+  const navigate = useNavigate();
 
   return (
     <ExercisesPageContainer className="container">
-      {subCategory && (
-        <GoBackBtnWrap>
-          <GoBackBtn />
-        </GoBackBtnWrap>
+      {group && (
+        <BackBtnWrapper>
+          <ArrowIcon>
+            <use href={`${sprite}#icon-arrow`}></use>
+          </ArrowIcon>
+          <BackBtn onClick={() => navigate(-1)}>Back</BackBtn>
+        </BackBtnWrapper>
       )}
-      <ExercisesPageHeaderWrapper>
-        {subCategory ? (
-          <TitlePage text={capitalizeString(subCategory)} />
-        ) : (
-          <TitlePage text="Exercises" />
-        )}
-
-        <ExercisesCategoriesNav />
-      </ExercisesPageHeaderWrapper>
-      <Suspense fallback={<MyLoader />}>
+      <ExercisesPageHeader>{group || 'Exercises'}</ExercisesPageHeader>
+      <ExercisesCategories>
         <Outlet />
-      </Suspense>
+      </ExercisesCategories>
     </ExercisesPageContainer>
   );
 };

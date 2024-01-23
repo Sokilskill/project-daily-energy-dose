@@ -6,15 +6,15 @@ export const CategoriesList = styled.ul`
   gap: 28px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 64px;
-    gap: 32px 16px;
-    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: flex-end;
+    margin-top: -24px;
   }
 `;
 
 export const CategoriesListItem = styled.li``;
 
-export const Link = styled(NavLink)`
+export const CategoriesItemLink = styled(NavLink)`
   position: relative;
   padding-bottom: 5px;
   font-size: 14px;
@@ -47,8 +47,4 @@ export const Link = styled(NavLink)`
   &:focus {
     color: #efede8;
   }
-`;
-export const CategoriesPaginationWrap = styled.div`
-  text-align: center;
-  margin-top: 32px;
 `;
