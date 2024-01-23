@@ -101,14 +101,15 @@ const AddProductForm = ({
   onClose,
   open,
   onAddSuccess,
-  onError,
   product,
 }) => {
- 
+
+  const userProfile = useSelector(state => state.profile.profile.owner._id);
+
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [calories, setCalories] = useState(0);
 
-  const userProfile = useSelector(state => state.profile.profile.owner._id);
+ 
   const calculateCalories = (amount) => {
     return (product.calories * amount) / product.weight;
   };
@@ -138,7 +139,6 @@ const AddProductForm = ({
     } catch (error) {
       console.error('Помилка відправки на бекенд:', error);
 
-      onError('Помилка відправки на бекенд.');
     }
   };
 
@@ -163,7 +163,10 @@ const AddProductForm = ({
   }, [handleKeyDown]);
 
   return (
-    <>
+    <>{
+      showSuccessModal ? (
+        <AddProductSuccess onClose={handleSuccessModalClose} />
+      ) : (
       <Backdrop onClick={onClose} style={{ display: open ? 'flex' : 'none' }}>
         <ModalContainer onClick={(event) => event.stopPropagation()}>
           <Close>
@@ -183,6 +186,7 @@ const AddProductForm = ({
                 <InputWrapper>
                   <Input type="number" 
                   onInput={updateCalories}
+                  required pattern='[1-9]{1,5}'
                   />
                   <Placeholder>grams</Placeholder>
                 </InputWrapper>
@@ -198,9 +202,8 @@ const AddProductForm = ({
           </Form>
         </ModalContainer>
       </Backdrop>
-      {showSuccessModal && (
-        <AddProductSuccess onClose={handleSuccessModalClose} />
-      )}
+      )
+    }
     </>
   );
 };
