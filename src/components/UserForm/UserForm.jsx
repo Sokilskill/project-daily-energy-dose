@@ -40,6 +40,7 @@ import {
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { current } from '@reduxjs/toolkit';
 
 //================== Radio Button ==================
 
@@ -105,13 +106,25 @@ export const UserForm = () => {
 
   const currentName = userName || userCurrent.name;
 
+  function formatDateString(DateStr) {
+    const originalDate = new Date(DateStr);
+    return `${originalDate.getDate()}.${
+      originalDate.getMonth() + 1
+    }.${originalDate.getFullYear()}`;
+  }
+  const currentDay = new Date();
+  const formattedDateBirthday = formatDateString(
+    birthday ? birthday : currentDay
+  );
+  console.log(formattedDateBirthday);
+
   const initialValues = {
     name: currentName || '',
     email: userCurrent.email,
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: birthday,
+    birthday: formattedDateBirthday,
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
@@ -119,11 +132,11 @@ export const UserForm = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const { name, email, birthday, ...profileData } = data;
+      const { email, birthday, ...profileData } = data;
 
-      console.log('DATA', data);
+      // console.log('DATA', data);
 
-      const updateNameResult = await dispatch(updateUserName({ name }));
+      // const updateNameResult = await dispatch(updateUserName({ name }));
 
       const updateProfileDataResult = await dispatch(
         addUserData({
@@ -133,7 +146,7 @@ export const UserForm = () => {
       );
 
       if (
-        updateNameResult.meta.requestStatus === 'fulfilled' &&
+        // updateNameResult.meta.requestStatus === 'fulfilled' &&
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
         dispatch(getUserProfile());
@@ -404,17 +417,17 @@ export const UserForm = () => {
                     </div>
                   </div>
 
-                  <div style={{
-                        borderColor: touched.birthday
-                          ? errors.birthday
-                            ? 'var(--error-color, #d80027)'
-                            : ''
-                          : '',}}
-                    
+                  <div
+                    style={{
+                      borderColor: touched.birthday
+                        ? errors.birthday
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
                   >
                     <Label htmlFor="birthday">Date of birth</Label>
-                    <BirthdayPickerField name="birthday"
-                    >
+                    <BirthdayPickerField name="birthday">
                       {({ field }) => (
                         <BirthdayPicker
                           id="date"
@@ -439,7 +452,7 @@ export const UserForm = () => {
                         >
                           <use
                             href={`${sprite}#checkbox-circle`}
-                            style={{ fill: 'var(--error-color, #d80027)' }}
+                            // style={{ fill: 'var(--error-color, #d80027)' }}
                           />
                         </svg>
                       )}

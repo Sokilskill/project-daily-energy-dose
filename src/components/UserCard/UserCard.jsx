@@ -33,25 +33,28 @@ import {
   WrapperLogOut,
 } from './UserCard.styled';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
-import { selectUser } from '../../redux/auth/auth-selectors';
+import {
+  // selectUser,
+  selectUserLargeAvatar,
+} from '../../redux/auth/auth-selectors';
 import {
   selectProfileName,
   selectUserProfile,
 } from '../../redux/profileSettings/selectors';
+import { refreshThunk } from '../../redux/auth/auth-operations';
 
 export const UserCard = ({ time }) => {
   const dispatch = useDispatch();
-  const userProfile = useSelector(selectUser);
+  // const userProfile = useSelector(selectUser);
+  const avatar = useSelector(selectUserLargeAvatar);
   const ownerProfile = useSelector(selectUserProfile);
-  const [avatarPreviewURL, setAvatarPreviewURL] = useState(
-    userProfile.avatarURL
-  );
+  const currentName = useSelector(selectProfileName);
+  const [avatarPreviewURL, setAvatarPreviewURL] = useState(avatar);
   const [showPreview, setShowPreview] = useState(true);
   const [previewStyle, setPreviewStyle] = useState({});
   const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const userName = useSelector(selectProfileName);
-  const currentName = userName ? userName : userProfile.name;
+  // const currentName = userName ? userName : userProfile.name;
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
@@ -60,18 +63,19 @@ export const UserCard = ({ time }) => {
       try {
         const blob = new Blob([newAvatarFile]);
         const objectURL = URL.createObjectURL(blob);
-        setAvatarPreviewURL(objectURL);
+        // setAvatarPreviewURL(objectURL);
 
-        const data = await dispatch(updatedUserAvatar(newAvatarFile));
+        await dispatch(updatedUserAvatar(newAvatarFile));
         console.log('newAvatar ProfilePage', newAvatarFile);
-        console.log('data', data);
+
         setAvatarPreviewURL(newAvatarFile);
       } catch (error) {
         console.error('Failed to create object URL:', error);
         toast.error('Failed to update avatar');
       } finally {
-        setLoading(true);
-        setLoading(false);
+        // dispatch(refreshThunk());
+        // setLoading(true);
+        // setLoading(false);
       }
     }
   };
@@ -109,11 +113,11 @@ export const UserCard = ({ time }) => {
             <NewAvatar src={avatarPreviewURL} alt="Preview" />
           ) : (
             <div>
-              {!userProfile.avatarURL && (
+              {
                 <DefaultAvatarSvg>
                   <use href={sprite + '#icon-gridicons_user'} />
                 </DefaultAvatarSvg>
-              )}
+              }
             </div>
           )}
         </div>
