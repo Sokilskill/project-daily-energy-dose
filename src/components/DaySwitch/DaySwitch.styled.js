@@ -5,22 +5,28 @@ export const DaySwitchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-right: 20px;
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 0;
+  }
 `;
 
 export const CustomDatePickerInput = styled.input`
 font-family: Roboto;
 font-weight: bold;
 background: transparent;
-border: none;
+border: 0;
+padding: 0;
+box-sizing: border-box;
 background-color: inherit;
 color: var(--white);
 font-size: 18px;
 line-height: 1.5;
 outline: none;
 cursor: pointer;
-width: 100px;
-height: 100%;
+
 
 @media screen and (min-width: 768px) {
   width: 135px;
@@ -31,7 +37,6 @@ height: 100%;
 
 export const StyledCalendarContainer = styled.div`
   display: flex;
-  gap: 8px;
   align-items: center;
   position: relative;
   .react-datepicker {
@@ -92,6 +97,10 @@ export const StyledCalendarContainer = styled.div`
     color: #efede8;
     font-size: 16px;
   }
+
+  .react-datepicker__close-icon {
+    margin-left: 8px; /* Этот margin компенсирует смещение из-за gap */
+  }
 `;
 
 export const StyledIcon = styled.svg`
@@ -114,8 +123,8 @@ transition: stroke 0.3s ease;
 
 export const StyledArrow = styled.div`
   display: flex;
-  margin-left: 26px;
+  margin-left: 20px;
   @media screen and (min-width: 768px) {
-    margin-left: 26px;
+    margin-left: 20px;
   }
 `;
