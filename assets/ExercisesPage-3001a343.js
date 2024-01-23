@@ -1,4 +1,4 @@
-import{t as a,N as x,a as p,j as e,D as g,F as d,n as i,H as m,u as f,I as u,r,J as h,M as y,O as b}from"./index-ac8d2d43.js";import{T as c}from"./TitlePage-de5a8e0b.js";const j=a.div`
+import{k as a,N as x,a as p,j as e,I as g,J as d,n as i,K as m,u as f,O as u,r,P as h,M as y,R as b}from"./index-9f7993e6.js";import{T as c}from"./TitlePage-ece5c05e.js";const j=a.div`
   display: flex;
   gap: 32px;
 `,v=a.li`
@@ -65,4 +65,4 @@ import{t as a,N as x,a as p,j as e,D as g,F as d,n as i,H as m,u as f,I as u,r,J
 `,E=i.div`
   position: absolute;
   top: 116px;
-`,N=()=>{const t=m(),{from:s}=t.state,o=f(),n=()=>{o(s.pathname)};return e.jsx(e.Fragment,{children:e.jsx("button",{onClick:()=>n(),children:"Back"})})},L=()=>{const{subCategory:t}=u(),s=p();return r.useEffect(()=>{s(d.getCategories({category:"Body parts"}))},[s]),e.jsxs(C,{className:"container",children:[t&&e.jsx(E,{children:e.jsx(N,{})}),e.jsxs(B,{children:[t?e.jsx(c,{text:h(t)}):e.jsx(c,{text:"Exercises"}),e.jsx(w,{})]}),e.jsx(r.Suspense,{fallback:e.jsx(y,{}),children:e.jsx(b,{})})]})};export{L as default};
+`,P=()=>{const t=m(),{from:s}=t.state,o=f(),n=()=>{o(s.pathname)};return e.jsx(e.Fragment,{children:e.jsx("button",{onClick:()=>n(),children:"Back"})})},L=()=>{const{subCategory:t}=u(),s=p();return r.useEffect(()=>{s(d.getCategories({category:"Body parts"}))},[s]),e.jsxs(C,{className:"container",children:[t&&e.jsx(E,{children:e.jsx(P,{})}),e.jsxs(B,{children:[t?e.jsx(c,{text:h(t)}):e.jsx(c,{text:"Exercises"}),e.jsx(w,{})]}),e.jsx(r.Suspense,{fallback:e.jsx(y,{}),children:e.jsx(b,{})})]})};export{L as default};
