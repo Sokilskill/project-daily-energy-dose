@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
 import { Button, IconWrapper } from './LogOutBtn.styled';
 import { logOutThunk } from '../../redux/auth/auth-operations';
+import { setInitialState } from '../../redux/profileSettings/slice';
 
 export const LogOutBtn = ({ className, closeMenu }) => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export const LogOutBtn = ({ className, closeMenu }) => {
 
   const handlerLogOut = () => {
     dispatch(logOutThunk());
-
+    dispatch(setInitialState());
     if (closeMenu) {
       closeMenu();
     }

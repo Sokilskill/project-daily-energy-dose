@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { setIsParams } from '../auth/authSlice';
 
 // export const setAuthToken = (token) => {
 //   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,15 +11,10 @@ export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
   async (_, thunkApi) => {
     try {
-      // const state = thunkApi.getState();
-      // const userToken = state.auth.token;
-      // if (userToken) {
-
       const res = await axios.get('/profiles');
       if (res.data.result === null) {
-        return thunkApi.rejectWithValue(message);
+        return thunkApi.rejectWithValue('not data');
       }
-      setIsParams(true);
       return res.data;
     } catch (error) {
       toast.error(error.message);

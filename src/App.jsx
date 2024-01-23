@@ -15,6 +15,9 @@ import { refreshThunk } from './redux/auth/auth-operations';
 import MyLoader from './components/Loader/DiaryLoader';
 import { ExercisesCategories } from './components/ExercisesCategories/ExercisesCategories';
 import { getUserProfile } from './redux/profileSettings/operations';
+import { setIsParams } from './redux/auth/authSlice';
+import { selectProfileEmail } from './redux/profileSettings/selectors';
+// import { setIsParams } from './redux/auth/authSlice';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -28,7 +31,7 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
-
+  const isProfileData = useSelector(selectProfileEmail);
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
 
@@ -41,6 +44,12 @@ function App() {
       dispatch(getUserProfile());
     }
   }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    if (isProfileData) {
+      dispatch(setIsParams());
+    }
+  }, [dispatch, isProfileData]);
 
   return isRefreshing ? (
     <MyLoader />

@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
@@ -14,7 +14,6 @@ import {
   selectUserProfile,
 } from '../../redux/profileSettings/selectors';
 import { selectUser } from '../../redux/auth/auth-selectors';
-import { useEffect, useState } from 'react';
 import sprite from '../../assets/sprite.svg';
 import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
 import {
@@ -39,7 +38,7 @@ import {
   FormContainer,
   NameEmailWrapper,
 } from './UserForm.styled';
-
+import { setIsParams } from '../../redux/auth/authSlice';
 
 //================== Radio Button ==================
 
@@ -102,12 +101,11 @@ export const UserForm = () => {
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
 
-
-  useEffect(() => {
-    if (userName) {
-      dispatch(getUserProfile());
-    }
-  }, [dispatch, userName]);
+  // useEffect(() => {
+  //   if (userName) {
+  //     dispatch(getUserProfile());
+  //   }
+  // }, [dispatch, userName]);
 
   const currentName = userName || userCurrent.name;
 
@@ -122,24 +120,30 @@ export const UserForm = () => {
     sex: sex || '',
     levelActivity: levelActivity || 1,
   };
-  const changeDate = (date) => {
-    const newDate = date.toISOString();
-    setFieldValue("birthday", newDate);
-  };
+
+  // const changeDate = (date) => {
+  //   const newDate = date.toISOString();
+  //   setFieldValue('birthday', newDate);
+  // };
 
   const handleSubmit = async (data) => {
     try {
       const { name, email, birthday, ...profileData } = data;
+      console.log('DATA', data);
       const updateNameResult = await dispatch(updateUserName({ name }));
       const updateProfileDataResult = await dispatch(
-        addUserData({ ...profileData, birthday: new Date(birthday).toISOString() })
+        addUserData({
+          ...profileData,
+          birthday: new Date(birthday).toISOString(),
+        })
       );
 
       if (
         updateNameResult.meta.requestStatus === 'fulfilled' &&
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
-        await dispatch(getUserProfile());
+        dispatch(getUserProfile());
+        dispatch(setIsParams());
       } else {
         console.log('Setting update error');
       }
@@ -184,7 +188,7 @@ export const UserForm = () => {
                           : ''
                         : '',
                     }}
-     
+                  />
                   <div style={{ position: 'relative' }}>
                     {errors.name && touched.name && (
                       <svg
@@ -420,7 +424,9 @@ export const UserForm = () => {
                         <BirthdayPicker
                           id="date"
                           currentDate={field.value}
-                          handlerDate={(date) => setFieldValue('birthday', date)}
+                          handlerDate={(date) =>
+                            setFieldValue('birthday', date)
+                          }
                         />
                       )}
                     </BirthdayPickerField>

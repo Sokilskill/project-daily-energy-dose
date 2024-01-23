@@ -47,9 +47,12 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  setIsParams: (state, action) => {
-    state.isParams = action.payload;
+  reducers: {
+    setIsParams: (state) => {
+      state.isParams = true;
+    },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(registerThunk.pending, handlePending)
