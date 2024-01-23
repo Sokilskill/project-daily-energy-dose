@@ -4,7 +4,8 @@ import { IoMdArrowForward } from "react-icons/io";
 import { Backdrop, ModalContainer, Close, Image, Div, Title, Text, Button, StyledLink} from "./AddExerciseSuccess.stiled";
 import ThumbIcon from "../../assets/images/thumb_up.png";
 
-const AddExerciseSuccess = ({onClose, open }) => {
+const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
+  
   const handleKeyDown = useCallback((event) => {
     if (event.key === 'Escape') {
       onClose();
@@ -21,27 +22,27 @@ const AddExerciseSuccess = ({onClose, open }) => {
 
   return (
     <>
-      <Backdrop onClick={onClose} style={{display: open ? 'flex' : 'none'}}>
-          <ModalContainer onClick={event => event.stopPropagation()}>
-           <Close>
-               <MdClose onClick={onClose} size='22px' />
-            </Close>
-              <Div>
-                <Image src={ThumbIcon} alt="" />
-              </Div>
-              <Title>Well done</Title>
-              <Text>Your  time: </Text>
-              <Text>Burned calories:</Text>
-              <Button type='button' onClick={onClose}>Next product</Button>
-              <Div>
-                <StyledLink to="/diary">To the diary <IoMdArrowForward /></StyledLink>
-              </Div>
-          </ModalContainer>
-        </Backdrop>
-        
-    
+      <ModalContainer onClick={(event) => event.stopPropagation()}>
+        <Close onClick={onClose}>
+          <MdClose size="22px" fill="white" />
+        </Close>
+        <Div>
+          <Image src={ThumbIcon} alt="" />
+        </Div>
+        <Title>Well done</Title>
+        <Text>{`Your  time: ${time}`}</Text>
+        <Text>{`Burned calories: ${caloriesBurned}`}</Text>
+        <Button type="button" onClick={onClose}>
+          Next exercise
+        </Button>
+        <Div>
+          <StyledLink to="/diary">
+            To the diary <IoMdArrowForward />
+          </StyledLink>
+        </Div>
+      </ModalContainer>
     </>
-    );
+  );
   };
   
 export default AddExerciseSuccess;

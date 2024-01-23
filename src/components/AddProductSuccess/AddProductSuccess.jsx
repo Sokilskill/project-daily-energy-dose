@@ -4,7 +4,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { Backdrop, ModalContainer, Close, Image, Div, Title, Text, Button, StyledLink} from "./AddProductSuccess.styled";
 import foodIcon from "@/assets/images/3d-food-icon-by-OdafeUI.png";
 
-const AddProductSuccess = ({onClose, open}) => {
+export const AddProductSuccess = ({onClose}) => {
   const handleKeyDown = useCallback((event) => {
     if (event.key === 'Escape') {
       onClose();
@@ -21,7 +21,6 @@ const AddProductSuccess = ({onClose, open}) => {
 
   return (
     <>
-      <Backdrop onClick={onClose} style={{display: open ? 'flex' : 'none'}}>
           <ModalContainer onClick={event => event.stopPropagation()}>
            <Close>
                <MdClose onClick={onClose} size='22px' />
@@ -35,13 +34,10 @@ const AddProductSuccess = ({onClose, open}) => {
               <Div>
                 <StyledLink to="/diary">To the diary <IoMdArrowForward /></StyledLink>
               </Div>
-          </ModalContainer>
-        </Backdrop>
-        
-    
+          </ModalContainer> 
     </>
     );
   };
   
-export default AddProductSuccess;
+
 

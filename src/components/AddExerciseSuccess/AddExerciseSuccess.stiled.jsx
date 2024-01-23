@@ -28,11 +28,13 @@ export const ModalContainer = styled.div`
       width: 430px;
     }
 `;
-export const Close = styled.div`
+export const Close = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
   cursor: pointer;
+  background: rgba(0,0,0,0);
+  type: button;
 `
 export const Div = styled.div`
   text-align: center;

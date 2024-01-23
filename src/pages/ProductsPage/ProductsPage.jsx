@@ -8,7 +8,7 @@ import bg_min from '../../assets/productPage/side-view-people-training-gym.jpg';
 import bg_max from '../../assets/productPage/side-view-people-training-gym@max.jpg';
 
 const initialRecommended = [
-  { id: 'fdg12sdgdfdffsfd', value: 'all', label: 'all' },
+  { id: 'fdg12sdgdfdffsfd', value: 'all', label: 'All' },
   {
     id: 'fdg12234sdfsdgsfd',
     value: 'recommended',
