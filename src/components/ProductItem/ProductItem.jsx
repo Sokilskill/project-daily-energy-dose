@@ -121,7 +121,8 @@ export default function ProductItem({ productItem }) {
           
         </LowerWrapper>
       </Item>
-      <AddProductForm onClose={handleCloseModal} open={openModal} />
+      {openModal && <AddProductForm onClose={handleCloseModal}  title={title} calories={calories } id={_id} />}
+      
     </>
   );
 }

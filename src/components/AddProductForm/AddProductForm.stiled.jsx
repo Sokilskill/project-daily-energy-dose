@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Backdrop  = styled.div`;
-  z-index: 1;
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
@@ -47,6 +47,7 @@ export const Text = styled.p`
 
 export const Form = styled.form`
   padding: 24px,48px,25px,48px;
+  
 `; 
 
 export const Inputs = styled.div`
@@ -61,12 +62,12 @@ export const Input = styled.input`
   margin-bottom: 16px;
   width: 287px;
   height: 34px;
-  padding: 8px, 14px, 8px, 14px;
+  padding: 8px 14px 8px 14px;
   border-radius: 12px;
   border: 1px;
   gap: 10px;
   border: 1px solid #E6533C;
-  background: var(--black);
+  background: rgba(0,0,0,0);
   color:var(--white);
   flex: 1;
 
@@ -94,11 +95,16 @@ export const InputWrapper = styled.div`
 `;
 
 export const Placeholder = styled.span`
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.5;
+
   margin-bottom: 16px;
   position: absolute;
   right: 10px; 
   pointer-events: none; 
-  color:var(--secondary-text-color);
+  color:var(--calendar-arrows);
 
   @media (min-width: 768px) {
     right: 25px; 
@@ -161,4 +167,32 @@ export const Button2 = styled.button`
     }
 `;
 
+export const ImitationInput = styled.div`
+    width: 287px;
+    height: 34px;
+    border-radius: 12px;
+    border: 1px solid var(--orange);
+    background-color: rgba(0,0,0,0);
+    padding: 8px 14px;
+    margin-bottom: 16px;
 
+    @media screen and (min-width: 768px){
+    width: 244px;
+    height: 40px;
+  }
+
+`
+export const TextInInput = styled.p`
+color: var(--input-border);
+
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.28;
+
+@media screen and (min-width: 768px){
+    font-size: 16px;
+    line-height: 1.5;
+  }
+`
