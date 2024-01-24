@@ -15,7 +15,6 @@ import sprite from '../../assets/sprite.svg';
 const BirthdayPicker = ({
   textSize,
   textWeight,
-  iconColor,
   textHeight,
   birthday,
   handlerDate,
@@ -33,17 +32,20 @@ const BirthdayPicker = ({
   }, [currentDate]);
 
   const handleDateChange = (date) => {
+    if (date && !isNaN(date.getTime())) {
+      setSelectedDate(date);
+      handlerDate(date);
+    } else {
+      setSelectedDate(null);
+      handlerDate(null);
+      console.error("Invalid date");
+    }
+
     if (datePickerRef.current) {
       datePickerRef.current.setOpen(true);
     }
-  
-    setSelectedDate(date);
-    handlerDate(date);
-    console.log("Picked date:", date);
-  
-    
   };
-  console.log("Current Date in BirthdayPicker:", currentDate);
+
   return (
     <DaySwitchContainer>
       <StyledCalendarContainer>
@@ -53,6 +55,8 @@ const BirthdayPicker = ({
           dateFormat={numericMonthFormat}
           minDate={birthday}
           showYearDropdown
+          yearDropdownItemNumber={100}
+          scrollableYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput

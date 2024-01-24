@@ -8,7 +8,7 @@ import {
   getUserProfile,
   // updateUserName,
 } from '../../redux/profileSettings/operations';
-
+import { parseISO } from 'date-fns';
 import {
   selectProfileName,
   selectUserProfile,
@@ -37,6 +37,10 @@ import {
   LevelWrapper,
   FormContainer,
   NameEmailWrapper,
+  ProfileCalendarInput,
+  CurrentWeightWrapper,
+  DesiredWeightWrapper,
+  HeightWrapper,
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
@@ -105,18 +109,21 @@ export const UserForm = () => {
 
   const currentName = userName || userCurrent.name;
 
-  function formatDateString(DateStr) {
-    const date = new Date(DateStr);
-    const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear();
-  return `${day}.${month}.${year}`;
-  }
-  const currentDay = new Date();
-  const formattedDateBirthday = formatDateString(
-    birthday ? birthday : currentDay
-  );
-  console.log(formattedDateBirthday);
+  // function formatDateString(DateStr) {
+  //   const date = new Date(DateStr);
+  //   const day = date.getDate().toString().padStart(2, '0');
+  // const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  // const year = date.getFullYear();
+  // return `${day}.${month}.${year}`;
+  // }
+  // const currentDate = new Date();
+  // const formattedDateBirthday = formatDateString(
+  //  birthday ? new Date(birthday)  : currentDate
+  // );
+  
+
+  const formattedDate = parseISO(birthday);
+  console.log(formattedDate);
 
   const initialValues = {
     name: currentName || '',
@@ -124,42 +131,36 @@ export const UserForm = () => {
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: formattedDateBirthday,
+    birthday: formattedDate || '2001-01-01',
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
+    
   };
 
-  const handleSubmit = async (data) => {
-    try {
-      const { email, birthday, ...profileData } = data;
+  const handleSubmit = async (profileData) => {
+  try {
+    const data = {...profileData };
 
-      // console.log('DATA', data);
+    const updateProfileDataResult = await dispatch(addUserData(data));
+    console.log('Дані, що будуть відправлені на сервер:', data);
+        // birthday: new Date(birthday).toISOString().split('T')[0],
+   
 
-      // const updateNameResult = await dispatch(updateUserName({ name }));
-
-      const updateProfileDataResult = await dispatch(
-        addUserData({
-          ...profileData,
-          birthday: new Date(birthday).toISOString().split('T')[0],
-        })
-      );
-
-      if (
-        // updateNameResult.meta.requestStatus === 'fulfilled' &&
-        updateProfileDataResult.meta.requestStatus === 'fulfilled'
-      ) {
-        dispatch(getUserProfile());
-        dispatch(setIsParams());
-        navigate('/diary');
-      } else {
-        console.log('Setting update error');
-      }
-    } catch (error) {
-      toast.error('An error occurred while updating the profile');
-      console.error('Error updating profile:', error);
+    if (updateProfileDataResult.meta.requestStatus === 'fulfilled') {
+      dispatch(getUserProfile());
+      dispatch(setIsParams());
+      navigate('/diary');
+    } else {
+      console.log('Setting update error');
     }
-  };
+  } catch (error) {
+    toast.error('An error occurred while updating the profile');
+    console.error('Error updating profile:', error);
+    console.error('Помилка при оновленні профілю:', error);
+  }
+};
+
   return (
     currentName && (
       <MainContainer>
@@ -269,7 +270,7 @@ export const UserForm = () => {
               </UserContainer>
               <ProfileContainer>
                 <ProfileWrapper>
-                  <div
+                  <HeightWrapper
                     style={{
                       borderColor: touched.height
                         ? errors.height
@@ -316,8 +317,8 @@ export const UserForm = () => {
                         component={ErrorMessageStyled}
                       />
                     </div>
-                  </div>
-                  <div
+                  </HeightWrapper>
+                  <CurrentWeightWrapper
                     style={{
                       borderColor: touched.currentWeight
                         ? errors.currentWeight
@@ -364,11 +365,11 @@ export const UserForm = () => {
                         component={ErrorMessageStyled}
                       />
                     </div>
-                  </div>
+                  </CurrentWeightWrapper>
                 </ProfileWrapper>
 
                 <ProfileWrapper>
-                  <div
+                  <DesiredWeightWrapper
                     style={{
                       borderColor: touched.desiredWeight
                         ? errors.desiredWeight
@@ -415,7 +416,7 @@ export const UserForm = () => {
                         component={ErrorMessageStyled}
                       />
                     </div>
-                  </div>
+                  </DesiredWeightWrapper>
 
                   <div
                     style={{
@@ -427,18 +428,27 @@ export const UserForm = () => {
                     }}
                   >
                     <Label htmlFor="birthday">Date of birth</Label>
-                    <BirthdayPickerField name="birthday">
+                    <ProfileCalendarInput style={{
+                      borderColor: touched.birthday
+                        ? errors.birthday
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}>
+                      <BirthdayPickerField name="birthday">
                       {({ field }) => (
                        <BirthdayPicker
                        id="date"
-                       currentDate={formattedDateBirthday}
+                       currentDate={field.value}
                        handlerDate={(date) => {
-                         console.log('Sending to handlerDate:', date);
-                         setFieldValue('birthday', date);
-                       }}
-                     />
+                        console.log('Sending to handlerDate:', date);
+                        setFieldValue('birthday', date.toISOString().split('T')[0]);
+                      }}
+                      />
                       )}
                     </BirthdayPickerField>
+                    </ProfileCalendarInput>
+                    
                     <div style={{ position: 'relative' }}>
                       {errors.birthday && touched.birthday && (
                         <svg
@@ -453,7 +463,6 @@ export const UserForm = () => {
                         >
                           <use
                             href={`${sprite}#checkbox-circle`}
-                            // style={{ fill: 'var(--error-color, #d80027)' }}
                           />
                         </svg>
                       )}
