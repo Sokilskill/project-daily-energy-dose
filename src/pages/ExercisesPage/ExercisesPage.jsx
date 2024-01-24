@@ -8,10 +8,18 @@ import {
 } from '../ExercisesPage/ExercisesPage.styled';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
+import { useEffect } from 'react';
+import capitalizeString from '../../../hooks/capitalizeString';
 
 const ExercisesPage = () => {
-  const { group } = useParams();
+  const { categoryType, group } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!categoryType) {
+      navigate('/exercises/body');
+    }
+  }, [categoryType, navigate]);
 
   return (
     <ExercisesPageContainer className="container">
