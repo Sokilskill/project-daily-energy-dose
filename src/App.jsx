@@ -38,7 +38,6 @@ function App() {
   const isLoading = useSelector(selectUserIsLoading);
   const dispatch = useDispatch();
 
-  console.log('isProfileData', isProfileData);
   // useEffect(() => {
   //   dispatch(refreshThunk());
   // }, [dispatch]);
