@@ -40,10 +40,7 @@ const deleteDiaryProduct = createAsyncThunk(
     try {
       // console.log('credentials', credentials);
       const { date, productId } = credentials;
-      const { data } = await axios.delete(
-        `/diary/delete-entry/${date}/${productId}`,
-        {}
-      );
+      await axios.delete(`/diary/delete-entry/${date}/${productId}`, {});
       return { _id: productId };
     } catch (error) {
       messageNotification(error.response.status);
@@ -74,9 +71,7 @@ const deleteDiaryExercise = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { exerciseId, date } = credentials;
-      const { data } = await axios.delete(
-        `/diary/delete-entry/${date}/${exerciseId}`
-      );
+      await axios.delete(`/diary/delete-entry/${date}/${exerciseId}`);
       return { _id: exerciseId };
     } catch (error) {
       messageNotification(error.response.status);
