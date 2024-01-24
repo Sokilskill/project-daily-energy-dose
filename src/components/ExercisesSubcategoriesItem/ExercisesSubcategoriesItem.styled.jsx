@@ -5,27 +5,30 @@ export const SubcategoriesListItem = styled.li``;
 
 export const SubcategoriesItemLink = styled(NavLink)`
   position: relative;
-  width: 335px;
-  height: 206px;
+  width: 100%;
+  height: 100^;
   cursor: pointer;
   color: #efede8;
-  @media screen and (min-width: 768px) {
-    width: calc((100% - 2 * 16px) / 3);
-  }
-  @media screen and (min-width: 1440px) {
-    width: calc((100% - 4 * 16px) / 5);
-  }
 `;
 
 export const SubcategoriesImg = styled.img`
   display: block;
-  width: 100%;
-  /* width: 100%;
-  height: 100%;
-  object-fit: cover; */
-
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  width: 335px;
+  height: 206px;
+  object-fit: cover;
+  border: 1px solid rgba(239, 237, 232, 0.5);
   border-radius: 12px;
+  background-color: #040404;
+  opacity: 50%;
+
+  @media screen and (min-width: 768px) {
+    width: 224px;
+    height: 206px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 237px;
+    height: 206px;
+  }
 `;
 
 export const SubcategoriesTextWrapper = styled.div`
@@ -42,8 +45,9 @@ export const SubcategoriesTextWrapper = styled.div`
 `;
 
 export const SubcategoriesTitle = styled.p`
+  width: 180px;
   font-size: 24px;
-  white-space: nowrap;
+  text-align: center;
 `;
 
 export const SubcategoriesText = styled.p`
