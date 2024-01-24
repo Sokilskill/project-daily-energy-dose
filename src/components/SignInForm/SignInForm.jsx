@@ -37,11 +37,7 @@ export const SignInForm = ({ onSubmit }) => {
             <Form className={css.form}>
               <div className={css.inputs}>
                 <div className="form-row">
-                  <label htmlFor="email">
-                    {values.email ? (
-                      <span className={css.label_text}>Email</span>
-                    ) : null}
-                  </label>
+                  <label htmlFor="email"></label>
                   <Field
                     type="email"
                     name="email"
@@ -75,11 +71,7 @@ export const SignInForm = ({ onSubmit }) => {
                 </div>
 
                 <div className="form-row">
-                  <label htmlFor="password">
-                    {values.password ? (
-                      <span className={css.label_text}>Password</span>
-                    ) : null}
-                  </label>
+                  <label htmlFor="password"></label>
                   <div className={css.input_pass_field}>
                     <Field
                       type={visible ? 'text' : 'password'}
