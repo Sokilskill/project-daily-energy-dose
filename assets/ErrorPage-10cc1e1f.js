@@ -1,4 +1,4 @@
-import{n,N as o,a,r as d,J as t,j as i,K as r}from"./index-f2f0e006.js";const p=n.div`
+import{n,N as o,a,r as d,J as t,j as i,K as r}from"./index-fb9df91b.js";const p=n.div`
   // position: relative;
   padding: 0;
 
@@ -59,7 +59,8 @@ padding-bottom: 250px;
    @media screen and (min-width: 768px) {
   padding-top: 309px ;
   padding-bottom: 309px;
-
+   }
+   
   @media screen and (min-width: 1440px) {
   padding-top: 221 ;
   padding-bottom: 221;
