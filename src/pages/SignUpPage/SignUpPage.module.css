@@ -1,5 +1,12 @@
 @import '../../index.css';
 
+.signup_part {
+  background: linear-gradient(
+    330deg,
+    rgba(4, 4, 4, 0) 8%,
+    rgba(0, 0, 0, 0.8) 40%
+  );
+}
 .text_box {
   max-width: 335px;
   margin-bottom: 28px;
