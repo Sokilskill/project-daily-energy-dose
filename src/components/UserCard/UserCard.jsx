@@ -40,13 +40,12 @@ import { setAvatarURL } from "../../redux/profileSettings/slice";
 export const UserCard = () => {
   const dispatch = useDispatch();
   // const userProfile = useSelector(selectUser);
-  const avatar = useSelector(selectUserLargeAvatar);
+
   const ownerProfile = useSelector(selectUserProfile);
   const currentName = useSelector(selectProfileName);
-  const [avatarPreviewURL, setAvatarPreviewURL] = useState(avatar);
-  const [showPreview, setShowPreview] = useState(true);
-  const [previewStyle, setPreviewStyle] = useState({});
-  const [avatarStyle, setAvatarStyle] = useState({});
+  const [avatarPreviewURL, setAvatarPreviewURL] = useState(null);
+
+
   const [loading, setLoading] = useState(false);
   // const currentName = userName ? userName : userProfile.name;
 
@@ -57,10 +56,10 @@ export const UserCard = () => {
       try {
         const blob = new Blob([file]);
         const newAvatarFile = URL.createObjectURL(blob);
-        setAvatarPreviewURL(objectURL);
+        setAvatarPreviewURL(newAvatarFile);
 
-        const data = await dispatch(updatedUserAvatar(file));
-        console.log("newAvatar ProfilePage", file);
+        const data = await dispatch(updatedUserAvatar(newAvatarFile));
+        console.log("newAvatar ProfilePage", newAvatarFile);
         console.log("data", data);
       } catch (error) {
         console.error("Failed to create object URL:", error);

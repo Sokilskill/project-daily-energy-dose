@@ -1,8 +1,6 @@
-
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
 import {
   DaySwitchContainer,
   CustomDatePickerInput,
@@ -10,32 +8,43 @@ import {
   StyledIcon,
 } from './DatePicker.styled';
 import sprite from '../../assets/sprite.svg';
-
+import { useDispatch } from 'react-redux';
+import { date } from 'yup';
 
 const BirthdayPicker = ({
   textSize,
   textWeight,
-  iconColor,
+  setFieldValue, 
   textHeight,
   birthday,
-  handlerDate,
-  error,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
-
   const datePickerRef = useRef(null);
   const [selectedDate, setSelectedDate] = useState(birthday);
 
+
+  // Використовуємо useEffect для відстеження змін у властивості birthday
+  useEffect(() => {
+    setSelectedDate(birthday);
+  }, [ birthday]);
+
   const handleDateChange = (date) => {
+    try {
+      if (!date) {
+        throw new Error('Selected date is not defined');
+      } else {
+        setFieldValue('birthday', date); // Use the provided date directly
+        setSelectedDate(date);
+      }
+    } catch (error) {
+      console.error('Error setting field value:', error);
+    }
+  };
+
+  const onClick = () => {
     if (datePickerRef.current) {
       datePickerRef.current.setOpen(true);
     }
-  
-    setSelectedDate(date);
-    handlerDate(date);
-    console.log("Picked date:", date);
-  
-    
   };
 
   return (
@@ -45,22 +54,21 @@ const BirthdayPicker = ({
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          minDate={birthday ? new Date(birthday) : null}
+          minDate={date}
           showYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput
-              className={`profile ${error ? 'error' : ''}`}
+              className={'profile'}
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}
-              error={error && error.birthday !== undefined ? error.birthday : null}
             />
           }
           ref={datePickerRef}
           shouldCloseOnSelect={true}
         />
-        <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} >
+        <StyledIcon onClick={onClick} >
           <use href={`${sprite}#icon-calendar`} />
         </StyledIcon>
       </StyledCalendarContainer>

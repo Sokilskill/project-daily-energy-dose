@@ -107,9 +107,7 @@ export const UserForm = () => {
 
   const currentName = userName || userCurrent.name;
 
-  const birthdayDate = birthday ? new Date(birthday) : new Date('2000-01-01');
 
-const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
 
   const initialValues = {
     name: currentName || '',
@@ -117,7 +115,7 @@ const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: formattedBirthdayDate,
+    birthday: birthday ? new Date(birthday) : null,
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
@@ -129,15 +127,17 @@ const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
   const handleSubmit = async (data) => {
     try {
       const { name, email,  birthday, ...profileData } = data;
-      console.log('DATA', data);
-      const updateNameResult = await dispatch(updateUserName({ name }));
+    
+      // const updateNameResult = await dispatch(updateUserName({ name }));
       const updateProfileDataResult = await dispatch(
         addUserData({
           ...profileData,
           birthday: format(new Date(birthday), 'yyyy-MM-dd'),
+          
         })
+        
       );
-
+  console.log('DATA', data);
       if (
         // updateNameResult.meta.requestStatus === 'fulfilled' &&
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
@@ -421,13 +421,13 @@ const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
                   >
                     <Label htmlFor="birthday">Date of birth</Label>
                     <BirthdayPickerField name="birthday">
-                      {({ field }) => (
+                      {({ field, form }) => (
+                        
                         <BirthdayPicker
                           id="date"
                           currentDate={field.value}
-                          handlerDate={(date) =>
-                            setFieldValue('birthday', date)
-                          }
+                          
+                          setFieldValue={form.setFieldValue}
                         />
                       )}
                     </BirthdayPickerField>
