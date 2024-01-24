@@ -8,6 +8,7 @@ export const selectIsLoading = (state) => state.auth.isLoading;
 export const selectIsToken = (state) => state.auth.token;
 export const selectUserBodyParams = (state) => state.auth.user.bodyParams;
 export const selectUserLargeAvatar = (state) => state.auth.user.avatarLargeURL;
+export const selectUserSmallAvatar = (state) => state.auth.user.avatarURL;
 
 export const selectIsParamsData = (state) => state.auth.user.isParams;
 

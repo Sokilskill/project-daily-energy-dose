@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { ToastContainer } from 'react-toastify';
@@ -15,11 +15,7 @@ import MyLoader from './components/Loader/DiaryLoader';
 import { getUserProfile } from './redux/profileSettings/operations';
 import { refreshThunk } from './redux/auth/auth-operations';
 import { setIsParams } from './redux/auth/authSlice';
-import {
-  selectProfileEmail,
-  selectUserIsLoading,
-} from './redux/profileSettings/selectors';
-// import { setIsParams } from './redux/auth/authSlice';
+import { selectProfileEmail } from './redux/profileSettings/selectors';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -35,10 +31,10 @@ function App() {
   const isParamsData = useSelector(selectIsParamsData);
   const isProfileData = useSelector(selectProfileEmail);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoading = useSelector(selectUserIsLoading);
   const dispatch = useDispatch();
 
-  console.log('isProfileData', isProfileData);
+  const [isLoading, setIsloading] = useState(false);
+
   // useEffect(() => {
   //   dispatch(refreshThunk());
   // }, [dispatch]);
@@ -48,8 +44,10 @@ function App() {
       await dispatch(refreshThunk());
 
       if (isLoggedIn) {
+        setIsloading(true);
         await dispatch(getUserProfile());
       }
+      setIsloading(false);
     };
 
     fetchData();
