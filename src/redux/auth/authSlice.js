@@ -51,7 +51,6 @@ const handleRejected = (state, action) => {
 };
 
 const handleUpdateAvatarFulfilled = (state, action) => {
-  console.log('action.payload', action.payload);
   state.user.avatarLargeURL = action.payload.avatarLargeURL;
   state.user.avatarURL = action.payload.avatarLargeURL;
   state.isLoading = false;
@@ -85,7 +84,6 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshThunk.fulfilled, (state, action) => {
-        console.log('first', action);
         state.user = { ...action.payload };
         state.isLoggedIn = true;
         state.isRefreshing = false;
