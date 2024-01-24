@@ -35,10 +35,10 @@ const DayDashboard = () => {
 
   const caloriesBurned = useSelector(diarySelectors.getDiary).burnedCalories;
 
-  const restOfCalories = caloriesIntake - caloriesConsumed;
+  const restOfCalories = ownerProfile.targetBmr - caloriesConsumed;
 
   const restOfSports =
-    normOfSports -
+    ownerProfile.targetTime -
     Math.ceil(useSelector(diarySelectors.getDiary).sportTime / 60);
 
   return (
