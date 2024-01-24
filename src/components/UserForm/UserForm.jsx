@@ -1,6 +1,7 @@
 import { Formik, ErrorMessage } from 'formik';
 
 import { ProfileSchema } from './YupSchemas';
+import { format } from 'date-fns';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -110,32 +111,34 @@ export const UserForm = () => {
 
   const currentName = userName || userCurrent.name;
 
+  const birthdayDate = birthday ? new Date(birthday) : new Date('2000-01-01');
+
+const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
+
   const initialValues = {
     name: currentName || '',
     email: userCurrent.email,
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: birthday,
+    birthday: formattedBirthdayDate,
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
   };
 
-  // const changeDate = (date) => {
-  //   const newDate = date.toISOString();
-  //   setFieldValue('birthday', newDate);
-  // };
+
+
 
   const handleSubmit = async (data) => {
     try {
-      const { name, email, birthday, ...profileData } = data;
+      const { name, email,  birthday, ...profileData } = data;
       console.log('DATA', data);
       const updateNameResult = await dispatch(updateUserName({ name }));
       const updateProfileDataResult = await dispatch(
         addUserData({
           ...profileData,
-          birthday: new Date(birthday).toISOString(),
+          birthday: format(new Date(birthday), 'yyyy-MM-dd'),
         })
       );
 
