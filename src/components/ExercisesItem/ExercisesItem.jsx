@@ -34,6 +34,7 @@ export const ExercisesItem = ({
   
   const handleCloseModal = () => {
     setOpenModal(false);
+    document.body.style.overflow = 'auto';
   };
 
 
@@ -44,7 +45,11 @@ export const ExercisesItem = ({
         <ItemTopBloc>
           <Workout>WORKOUT</Workout>
           <StartBtnWrapper>
-            <StartBtn onClick={() => setOpenModal(true)}>Start</StartBtn>
+            <StartBtn onClick={() => {
+              setOpenModal(true);
+              document.body.style.overflow = 'hidden';
+            }
+            }>Start</StartBtn>
             <ArrowIcon>
               <use href={`${sprite}#icon-arrow`}></use>
             </ArrowIcon>
