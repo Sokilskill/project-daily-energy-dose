@@ -94,3 +94,9 @@ export async function getAllCategories() {
   const data = await axios.get('/food/categories');
   return data;
 }
+
+export async function addEntry(body) {
+  return await axios.post(`/diary/add-entry`, body);
+}
+
+

@@ -11,14 +11,15 @@ import {
 } from './DatePicker.styled';
 import sprite from '../../assets/sprite.svg';
 
+
 const BirthdayPicker = ({
   textSize,
   textWeight,
   iconColor,
   textHeight,
   birthday,
-
   handlerDate,
+  error,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
@@ -44,22 +45,23 @@ const BirthdayPicker = ({
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          minDate={birthday}
+          minDate={birthday ? new Date(birthday) : null}
           showYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput
-              className={`profile `}
+              className={`profile ${error ? 'error' : ''}`}
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}
+              error={error && error.birthday !== undefined ? error.birthday : null}
             />
           }
           ref={datePickerRef}
           shouldCloseOnSelect={true}
         />
-        <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} stroke={iconColor}>
-          <use href={sprite + '#icon-calendar'} />
+        <StyledIcon onClick={() => datePickerRef.current.setOpen(true)} >
+          <use href={`${sprite}#icon-calendar`} />
         </StyledIcon>
       </StyledCalendarContainer>
     </DaySwitchContainer>

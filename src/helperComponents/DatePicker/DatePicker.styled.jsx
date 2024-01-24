@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import '../../index.css'
 
 export const DaySwitchContainer = styled.div`
@@ -11,8 +11,7 @@ export const CustomDatePickerInput = styled.input`
   display: flex;
   align-items: center;
   background: transparent;
- 
-  border: 1px solid var(--white);
+  border: 1px solid var(--border, #efede84d);
   border-radius: 12px;
   padding: 14px;
   background-color: inherit;
@@ -21,31 +20,39 @@ export const CustomDatePickerInput = styled.input`
   line-height: 1.5;
   outline: none;
   cursor: pointer;
+  border-color: var(--error-color, #d80027);
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
   }
   
-  &.profile{
+  &.profile {
     width: 161px;
     height: 52px;
     margin: 4px 0 0 0;
-    border: 1px solid var( --border, #efede84d);
+    border: 1px solid var(--border, #efede84d);
 
     &:hover,
-  &:focus {
-    border-color: rgba(230, 83, 60, 1);
-  }
-    @media screen and (min-width: 768px) {
-      width: 187px;
-     
+    &:focus {
+      border-color: rgba(230, 83, 60, 1);
     }
 
-    &::placeholder{
-color: var(--white, #efede8);
+    @media screen and (min-width: 768px) {
+      width: 187px;
+    }
+
+    &::placeholder {
+      color: var(--white, #efede8);
     }
   }
+
+  &:error {
+    border-color: var(--error-color, #d80027);
+
+  }
 `;
+
 CustomDatePickerInput.defaultProps = {
   placeholder: '00.00.0000',
 };
@@ -107,7 +114,7 @@ align-items: flex-start;
 
   .react-datepicker__day:hover {
     color: var(--white, #efede8);
-    background-color: ar(--black, #040404);
+    background-color: var(--black, #040404);
     border-radius: 50%;
   }
 
@@ -210,6 +217,7 @@ export const StyledIcon = styled.svg`
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
+    top: 18px;
     top: 18px;
   }
 `;

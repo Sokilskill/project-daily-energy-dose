@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addUserData,
   getUserProfile,
-  updateUserName,
+  // updateUserName,
 } from '../../redux/profileSettings/operations';
 
 import {
@@ -40,6 +40,7 @@ import {
   NameEmailWrapper,
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 //================== Radio Button ==================
@@ -91,6 +92,7 @@ const levelActivityValue = [
 
 export const UserForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     height,
     currentWeight,
@@ -102,12 +104,6 @@ export const UserForm = () => {
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
-
-  // useEffect(() => {
-  //   if (userName) {
-  //     dispatch(getUserProfile());
-  //   }
-  // }, [dispatch, userName]);
 
   const currentName = userName || userCurrent.name;
 
@@ -143,11 +139,12 @@ const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
       );
 
       if (
-        updateNameResult.meta.requestStatus === 'fulfilled' &&
+        // updateNameResult.meta.requestStatus === 'fulfilled' &&
         updateProfileDataResult.meta.requestStatus === 'fulfilled'
       ) {
         dispatch(getUserProfile());
         dispatch(setIsParams());
+        navigate('/diary');
       } else {
         console.log('Setting update error');
       }
@@ -448,7 +445,7 @@ const formattedBirthdayDate = format(birthdayDate, 'yyyy-MM-dd');
                         >
                           <use
                             href={`${sprite}#checkbox-circle`}
-                            style={{ fill: 'var(--error-color, #d80027)' }}
+                            // style={{ fill: 'var(--error-color, #d80027)' }}
                           />
                         </svg>
                       )}

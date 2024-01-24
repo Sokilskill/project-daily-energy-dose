@@ -54,8 +54,8 @@ export function Filters({ setParams, initialCategory, initialRecommended }) {
   };
 
   const clearFilters = () => {
-    setCategory('');
-    setGroupBloodNotAllowed('');
+    // setCategory('');
+    // setGroupBloodNotAllowed('');
     setSearch('');
     setRequest('');
   };
@@ -86,8 +86,8 @@ export function Filters({ setParams, initialCategory, initialRecommended }) {
           </Btn>
         </Form>
         {
-          (request || groupBloodNotAllowed || category)
-           && (
+          // (request || groupBloodNotAllowed || category)
+           request && (
             <Btn right={'40px'} onClick={clearFilters}>
               <Icon color={'#E6533C'}>
                 <use href={sprite + '#icon-clear'} />

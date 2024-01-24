@@ -1,12 +1,32 @@
 import { useEffect, useCallback, useState } from 'react';
 import { MdClose } from "react-icons/md";
-
+import { addEntry } from '../../redux/auth/auth-operations';
+import {AddProductSuccess} from '../AddProductSuccess/AddProductSuccess'
 import { Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button1,Button2, Buttons, ImitationInput,TextInInput} from "./AddProductForm.stiled";
 
-const AddProductForm = ({ onClose, open, title, calories }) => {
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
+const notify = () => {
+  toast.warn('error', { theme: 'dark' });
+};
+
+function formatDate(date) {
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  day = day < 10 ? `0${day}` : day;
+  month = month < 10 ? `0${month}` : month;
+  return `${year}-${month}-${day}`;
+}
+
+const AddProductForm = ({ onClose, open, title, calories, id }) => {
+  const [openSuccess, setOpenSuccess] = useState(false);
   const [actualCalories, setactualCalories] = useState(0);
   const [gram, setGram] = useState('');
 
+  const normalizedTitle = `${title[0].toUpperCase() + title.slice(1, 111)}`;
 
   const handleKeyDown = useCallback((event) => {
     if (event.key === 'Escape') {
@@ -31,47 +51,74 @@ const AddProductForm = ({ onClose, open, title, calories }) => {
     setGram(e.target.value);
   }
 
-  const handlerSubmit = (e) => {
-    e.preventDefault()
-    onClose();
-    return 
+  const handlerSubmit = async (e) => {
+    e.preventDefault();
+    const body = {
+      date: formatDate(new Date()),
+      productData: {
+        productId: `${id}`,
+        amount: Number(gram),
+      },
+    };
+
+    addEntry(body)
+      .then((r) => {
+        setOpenSuccess(true);
+      })
+      .catch((e) => {
+        notify();
+      });
   }
-  const normalizedTitle = `${title[0].toUpperCase() + title.slice(1,111)}`;
+
+
+
+
+
+  
   return (
     <>
-      <Backdrop onClick={onClose} >
-          <ModalContainer onClick={event => event.stopPropagation()}>
+      <Backdrop onClick={onClose}>
+        <ToastContainer />
+        {!openSuccess ? (
+          <ModalContainer onClick={(event) => event.stopPropagation()}>
             <Close>
-               <MdClose onClick={onClose} size='22px' />
+              <MdClose onClick={onClose} size="22px" />
             </Close>
-        
+
             <Form name="addProductForm" onSubmit={handlerSubmit}>
               <Inputs>
-              <ImitationInput>
-                <TextInInput>
-                  {normalizedTitle}
-                </TextInInput>
+                <ImitationInput>
+                  <TextInInput>{normalizedTitle}</TextInInput>
                 </ImitationInput>
                 <InputContainer>
                   <InputWrapper>
-                    <Input type="text" value={gram} onChange={handlerInputChange} required pattern='[1-9]{1,5}'/>
+                    <Input
+                      type="text"
+                      value={gram}
+                      onChange={handlerInputChange}
+                      required
+                      pattern="[0-9]{1,5}"
+                      min={1}
+                    />
                     <Placeholder>grams</Placeholder>
                   </InputWrapper>
                 </InputContainer>
               </Inputs>
-            <Text>{`Calories: ${actualCalories}`}</Text>  
-            <Buttons>
-                <Button1 type='submit'>Add to diary</Button1>
-                <Button2 type='button' onClick={onClose}>Cancel</Button2>
+              <Text>{`Calories: ${actualCalories}`}</Text>
+              <Buttons>
+                <Button1 type="submit">Add to diary</Button1>
+                <Button2 type="button" onClick={onClose}>
+                  Cancel
+                </Button2>
               </Buttons>
-          </Form> 
-          
+            </Form>
           </ModalContainer>
-        </Backdrop>
-        
-    
+        ) : (
+          <AddProductSuccess onClose={onClose} />
+        )}
+      </Backdrop>
     </>
-    );
+  );
   };
   
 export default AddProductForm;

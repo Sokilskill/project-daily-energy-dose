@@ -18,6 +18,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1440px; /* Добавлено из media query 1440px в index.css */
+    padding: 0 96px;
   }
 `;
 
@@ -26,12 +27,14 @@ export const PageTitleText = styled.h2`
   font-weight: bold;
   line-height: 28px;
   color: var(--white);
+  margin-left: 20px;
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: 44px;
     display: flex;
     align-items: end;
+    margin-left: 0;
   }
 `;
 

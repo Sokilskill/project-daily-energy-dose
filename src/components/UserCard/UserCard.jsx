@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { updatedUserAvatar } from "../../redux/profileSettings/operations";
-import sprite from "../../assets/sprite.svg";
+import { updatedUserAvatar } from '../../redux/profileSettings/operations';
+import sprite from '../../assets/sprite.svg';
 import {
   ActivityShower,
   AvatarContainer,
@@ -39,34 +39,37 @@ import { setAvatarURL } from "../../redux/profileSettings/slice";
 
 export const UserCard = () => {
   const dispatch = useDispatch();
-  const userProfile = useSelector(selectUser);
+  // const userProfile = useSelector(selectUser);
+  const avatar = useSelector(selectUserLargeAvatar);
   const ownerProfile = useSelector(selectUserProfile);
+  const currentName = useSelector(selectProfileName);
+  const [avatarPreviewURL, setAvatarPreviewURL] = useState(avatar);
+  const [showPreview, setShowPreview] = useState(true);
+  const [previewStyle, setPreviewStyle] = useState({});
+  const [avatarStyle, setAvatarStyle] = useState({});
   const [loading, setLoading] = useState(false);
-  const [avatarPreviewURL, setAvatarPreviewURL] = useState();
-  const userName = useSelector(selectProfileName);
-  const currentName = userName ? userName : userProfile.name;
+  // const currentName = userName ? userName : userProfile.name;
 
-  const handleAvatarChange = (e) => {
+  const handleAvatarChange = async (e) => {
     const file = e.target.files[0];
+
     if (file) {
-      const objectURL = URL.createObjectURL(file);
-      console.log("objectURL:", objectURL);
-      dispatch(setAvatarURL(objectURL));
-      setAvatarPreviewURL(objectURL); 
-      setLoading(true); 
-      dispatch(updatedUserAvatar(file))
-      .then((data) => {
-        console.log("Response Data:", data);
-      })
-      .catch((error) => {
-        console.error("Failed to update avatar:", error);
+      try {
+        const blob = new Blob([file]);
+        const newAvatarFile = URL.createObjectURL(blob);
+        setAvatarPreviewURL(objectURL);
+
+        const data = await dispatch(updatedUserAvatar(file));
+        console.log("newAvatar ProfilePage", file);
+        console.log("data", data);
+      } catch (error) {
+        console.error("Failed to create object URL:", error);
         toast.error("Failed to update avatar");
-        
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
-  }
+        // e.target.form.reset();
+      }
+    }
   };
 
   return (
@@ -86,18 +89,17 @@ export const UserCard = () => {
           </AvatarPickerSvg>
         </Label>
         <div>
-          {avatarPreviewURL && !loading ? (
-            <NewAvatar
-              src={avatarPreviewURL}
-              alt="Preview"
-              size="90"
-              loading="lazy"
-            />
-          ) : !avatarPreviewURL && loading ? (
-            <DefaultAvatarSvg>
-              <use href={sprite + "#icon-gridicons_user"} />
-            </DefaultAvatarSvg>
-          ) : null}
+          {avatarPreviewURL ? (
+            <NewAvatar src={avatarPreviewURL} alt="Preview" />
+          ) : (
+            <div>
+              {
+                <DefaultAvatarSvg>
+                  <use href={sprite + '#icon-gridicons_user'} />
+                </DefaultAvatarSvg>
+              }
+            </div>
+          )}
         </div>
       </WrapperAvatar>
       <NameUserWrapper>
@@ -109,7 +111,7 @@ export const UserCard = () => {
         <CalorieShower>
           <WrapperIntakeFood>
             <FoodSvg>
-              <use href={sprite + "#icon-fluenit_food-24-filled"} />
+              <use href={sprite + '#icon-fluenit_food-24-filled'} />
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>
@@ -118,7 +120,7 @@ export const UserCard = () => {
         <ActivityShower>
           <WrapperIntake>
             <ParamsSvg>
-              <use href={sprite + "#icon-dumbbell"} />
+              <use href={sprite + '#icon-dumbbell'} />
             </ParamsSvg>
             <Text>Daily physical activity</Text>
           </WrapperIntake>
@@ -129,23 +131,23 @@ export const UserCard = () => {
         <div>
           <ExcellMarkIcon>
             <use
-              href={sprite + "#icon-Ellipse-1"}
+              href={sprite + '#icon-Ellipse-1'}
               style={{
-                fill: "rgba(239, 160, 130, 1)",
-                width: "100%",
-                height: "100%",
-                position: "relative",
+                fill: 'rgba(239, 160, 130, 1)',
+                width: '100%',
+                height: '100%',
+                position: 'relative',
               }}
             />
             <use
-              href={sprite + "#icon-tabler_exclamation-mark"}
+              href={sprite + '#icon-tabler_exclamation-mark'}
               style={{
-                fill: "rgba(239, 237, 232, 1)",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: "100%",
-                height: "100%",
+                fill: 'rgba(239, 237, 232, 1)',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '100%',
+                height: '100%',
               }}
             />
           </ExcellMarkIcon>
