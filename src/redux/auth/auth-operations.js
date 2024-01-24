@@ -59,7 +59,8 @@ export const refreshThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistToken = state.auth.token;
-    if (persistToken === null) {
+    console.log('persistToken', persistToken);
+    if (persistToken === null || persistToken === '') {
       return thunkAPI.rejectWithValue();
     }
     try {
@@ -98,5 +99,3 @@ export async function getAllCategories() {
 export async function addEntry(body) {
   return await axios.post(`/diary/add-entry`, body);
 }
-
-
