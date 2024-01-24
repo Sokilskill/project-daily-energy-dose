@@ -11,7 +11,7 @@ import sprite from '../../assets/sprite.svg';
 import { useSelector } from 'react-redux';
 import diarySelectors from '../../redux/diary/diarySelectors';
 import {
-  selectUserProfile,
+  selectUser,
 } from '../../redux/diary/diarySelectors';
 import authSelectors from '../../redux/auth/auth-selectors';
 import MyLoader from '../Loader/DiaryLoader';
@@ -24,7 +24,7 @@ const Icon = styled.svg`
 
 const DayDashboard = () => {
   const userMetricData = useSelector(authSelectors.getUserMetricData);
-  const ownerProfile = useSelector(selectUserProfile);
+  const ownerProfile = useSelector(selectUser);
 
   const caloriesIntake = userMetricData ? userMetricData.dailyIntakeCalories : null;
   const normOfSports = userMetricData ? userMetricData.dailyNormOfSport : null;
@@ -43,8 +43,8 @@ const DayDashboard = () => {
 
   return (
     <Container>
-      <Card value={Math.round(ownerProfile.bmr)}>Daily calorie intake</Card>
-      <Card value={ownerProfile.time}>Daily norm of sports</Card>
+      <Card value={Math.round(ownerProfile.targetBmr)}>Daily calorie intake</Card>
+      <Card value={ownerProfile.targetTime}>Daily norm of sports</Card>
       <Card value={caloriesConsumed}>Calories consumed</Card>
       <Card value={caloriesBurned}>Calories burned</Card>
       <Card value={restOfCalories}>The rest of the calories</Card>
