@@ -46,7 +46,6 @@ const BirthdayPicker = ({
           dateFormat={numericMonthFormat}
           minDate={birthday}
           showYearDropdown
-          scrollableYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput

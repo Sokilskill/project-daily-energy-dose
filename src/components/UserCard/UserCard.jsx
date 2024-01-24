@@ -41,47 +41,33 @@ export const UserCard = () => {
   const dispatch = useDispatch();
   const userProfile = useSelector(selectUser);
   const ownerProfile = useSelector(selectUserProfile);
-const [avatarPreviewURL, setAvatarPreviewURL] = useState(null)
   const [loading, setLoading] = useState(false);
+  const [avatarPreviewURL, setAvatarPreviewURL] = useState();
   const userName = useSelector(selectProfileName);
   const currentName = userName ? userName : userProfile.name;
 
-
-  const handleAvatarChange = async (e) => {
-    const newAvatarFile = e.target.files[0];
-
-    if (newAvatarFile) {
-      try {
-        const blob = new Blob([newAvatarFile]);
-        const objectURL = URL.createObjectURL(blob);
-       dispatch(setAvatarPreviewURL(objectURL)) ;
-       dispatch(setAvatarURL(objectURL)) 
-        const data = await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log("newAvatar ProfilePage", newAvatarFile);
-        console.log("data", data);
-      } catch (error) {
-        console.error("Failed to create object URL:", error);
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const objectURL = URL.createObjectURL(file);
+      console.log("objectURL:", objectURL);
+      dispatch(setAvatarURL(objectURL));
+      setAvatarPreviewURL(objectURL); 
+      setLoading(true); 
+      dispatch(updatedUserAvatar(file))
+      .then((data) => {
+        console.log("Response Data:", data);
+      })
+      .catch((error) => {
+        console.error("Failed to update avatar:", error);
         toast.error("Failed to update avatar");
-      } finally {
+        
+      })
+      .finally(() => {
         setLoading(false);
-    
-      }
-    }
+      });
+  }
   };
-
-  // useEffect(() => {
-  //   if (showPreview) {
-  //     setPreviewStyle({ borderRadius: "50%", width: "100%", height: "100%" });
-  //     setShowPreview(false);
-  //   }
-  // }, [showPreview]);
-
-  // useEffect(() => {
-  //   if (!showPreview) {
-  //     setAvatarStyle({ width: "90px", height: "90px" });
-  //   }
-  // }, [showPreview]);
-
 
   return (
     <ProfileContainer>
@@ -91,7 +77,7 @@ const [avatarPreviewURL, setAvatarPreviewURL] = useState(null)
             type="file"
             id="file-input"
             accept="image/*"
-            onChange={handleAvatarChange}
+            onChange={(e) => handleAvatarChange(e)}
           />
         </AvatarContainer>
         <Label htmlFor="file-input">
@@ -100,17 +86,18 @@ const [avatarPreviewURL, setAvatarPreviewURL] = useState(null)
           </AvatarPickerSvg>
         </Label>
         <div>
-          {avatarPreviewURL ? (
-            <NewAvatar src={avatarPreviewURL} alt="Preview" />
-          ) : (
-            <div>
-              {!userProfile.avatarLargeURL && (
-                <DefaultAvatarSvg>
-                  <use href={sprite + "#icon-gridicons_user"} />
-                </DefaultAvatarSvg>
-              )}
-            </div>
-          )}
+          {avatarPreviewURL && !loading ? (
+            <NewAvatar
+              src={avatarPreviewURL}
+              alt="Preview"
+              size="90"
+              loading="lazy"
+            />
+          ) : !avatarPreviewURL && loading ? (
+            <DefaultAvatarSvg>
+              <use href={sprite + "#icon-gridicons_user"} />
+            </DefaultAvatarSvg>
+          ) : null}
         </div>
       </WrapperAvatar>
       <NameUserWrapper>

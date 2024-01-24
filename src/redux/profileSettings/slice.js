@@ -50,7 +50,6 @@ const handleUpdateUserNameFulfilled = (state) => {
 };
 
 const handleUpdateAvatarFulfilled = (state, action) => {
- 
   state.profile.avatarLargeURL = action.payload;
   state.isLoading = false;
   state.error = null;
