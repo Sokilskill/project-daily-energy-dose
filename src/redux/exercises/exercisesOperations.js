@@ -5,9 +5,9 @@ import { messageNotification } from '../../components/alertMessages/alertMessage
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api';
 
 export const getExercisesByCategories = createAsyncThunk(
-  '/exercises/categories/Muscles',
+  '/exercises/categories',
   async (credentials, thunkAPI) => {
-    const { limit = 10, page = 1, category } = credentials;
+    const { limit = '', page = 1, category } = credentials;
     try {
       const { data } = await axios.get(
         `/exercises/categories?category=${category}&page=${page}&limit=${limit}`

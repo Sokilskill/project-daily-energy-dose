@@ -9,22 +9,14 @@ import {
 import { useEffect, useState } from 'react';
 import { getExercisesByCategories } from '../../redux/exercises/exercisesOperations';
 import { useParams } from 'react-router-dom';
-import sprite from '../../assets/sprite.svg';
 
 export const ExercisesSubcategoriesList = () => {
   const dispatch = useDispatch();
   const { categoryType } = useParams();
   const [exercisesList, setExercisesList] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(0);
   const [total, setTotal] = useState(0);
-
-  const pages = [];
-  const pagesAmount = Math.ceil(total / limit);
-  for (let i = 1; i <= pagesAmount; i++) {
-    pages.push(i);
-  }
-
   const category =
     categoryType === 'body'
       ? 'Body Part'
@@ -34,16 +26,29 @@ export const ExercisesSubcategoriesList = () => {
       ? 'Equipment'
       : '';
 
+  const [width, setWidth] = useState(0);
+  const handleResize = () => setWidth(window.innerWidth);
   useEffect(() => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1440) {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const pages = [];
+  const pagesAmount = Math.ceil(total / limit);
+  for (let i = 1; i <= pagesAmount; i++) {
+    pages.push(i);
+  }
+
+  useEffect(() => {
+    if (width >= 1440) {
       setLimit(10);
-    } else if (screenWidth < 1440) {
+    } else if (width < 1440 && width >= 768) {
       setLimit(9);
-    } else if (screenWidth <= 375) {
+    } else if (width < 768 && width >= 375) {
       setLimit(10);
     }
-  }, []);
+  }, [width]);
 
   useEffect(() => {
     const options = { page, limit, category };

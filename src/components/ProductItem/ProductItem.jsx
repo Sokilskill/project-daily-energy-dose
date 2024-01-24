@@ -57,7 +57,6 @@ export default function ProductItem({ productItem }) {
         return newTitle;
       } else {
         newTitle = `${upperLetter + title.slice(1, 24)}`;
-
         if (title.length > 24) {
           return `${newTitle}...`;
         }

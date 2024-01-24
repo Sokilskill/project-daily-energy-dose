@@ -1,27 +1,68 @@
 import styled from '@emotion/styled';
 
-export const ExercisesPageContainer = styled.div`
-  padding-top: 40px;
-  padding-bottom: 80px;
-  @media screen and (min-width: 768px) {
-    padding-top: 72px;
-    padding-bottom: 78px;
-  }
+export const Container = styled.section`
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+
   @media screen and (min-width: 1440px) {
-    padding-bottom: 92px;
+    background-image: linear-gradient(
+        107deg,
+        rgba(4, 4, 4, 1) 50%,
+        rgba(4, 4, 4, 0) 100%
+      ),
+      url(${(props) => props.bgi[0]});
+
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          107deg,
+          rgba(4, 4, 4, 1) 50%,
+          rgba(4, 4, 4, 0) 100%
+        ),
+        url(${(props) => props.bgi[1]});
+
+      background-size: contain;
+    }
   }
 `;
 
+export const ExercisesPageContainer = styled.div`
+  padding-top: 40px;
+  padding-top: 80px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 72px;
+    padding-bottom: 66px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-bottom: 80px;
+  }
+`;
+
+export const ExercisesPageHeaderWrapper = styled.div`
+  position: relative;
+`;
+
 export const ExercisesPageHeader = styled.h3`
+  position: relative;
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 20px;
   @media screen and (min-width: 768px) {
     font-size: 32px;
+    margin-bottom: 42px;
   }
 `;
 
 export const BackBtnWrapper = styled.div`
-  margin-bottom: 16px;
+  position: absolute;
+  bottom: 50px;
   display: flex;
   align-items: center;
   gap: 8px;

@@ -8,7 +8,7 @@ export const CategoriesList = styled.ul`
   @media screen and (min-width: 768px) {
     gap: 32px;
     justify-content: flex-end;
-    margin-top: -24px;
+    margin-top: -60px;
   }
 `;
 

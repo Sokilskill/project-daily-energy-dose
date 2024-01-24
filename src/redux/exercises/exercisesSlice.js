@@ -16,6 +16,17 @@ const initialState = {
   error: '',
 };
 
+// const initialState = {
+//   filter: {
+//     total: null,
+//     page: null,
+//     limit: null,
+//     data: [],
+//   },
+//   isLoading: false,
+//   error: '',
+// };
+
 const STATUS = {
   PENDING: 'pending',
   REJECTED: 'rejected',
