@@ -45,8 +45,9 @@ export const SubcategoriesTextWrapper = styled.div`
 `;
 
 export const SubcategoriesTitle = styled.p`
+  width: 180px;
   font-size: 24px;
-  white-space: nowrap;
+  text-align: center;
 `;
 
 export const SubcategoriesText = styled.p`

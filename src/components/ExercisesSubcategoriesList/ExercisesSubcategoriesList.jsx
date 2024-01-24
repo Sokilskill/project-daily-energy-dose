@@ -34,12 +34,6 @@ export const ExercisesSubcategoriesList = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const pages = [];
-  const pagesAmount = Math.ceil(total / limit);
-  for (let i = 1; i <= pagesAmount; i++) {
-    pages.push(i);
-  }
-
   useEffect(() => {
     if (width >= 1440) {
       setLimit(10);
@@ -58,6 +52,12 @@ export const ExercisesSubcategoriesList = () => {
     });
   }, [dispatch, category, categoryType, limit, page]);
 
+  const pages = [];
+  const pagesAmount = Math.ceil(total / limit);
+  for (let i = 1; i <= pagesAmount; i++) {
+    pages.push(i);
+  }
+
   return (
     <div>
       <SubcategoriesList>
@@ -68,29 +68,25 @@ export const ExercisesSubcategoriesList = () => {
           ></ExercisesSubcategoriesItem>
         ))}
       </SubcategoriesList>
-      {total > 10 && (
-        <Pagination>
-          {pages.map((number, index) => (
-            <div key={number}>
-              <PaginationItem
-                onClick={() => {
-                  setPage(number);
-                }}
-                color={`${
-                  page === index + 1
-                    ? 'transparent'
-                    : 'rgba(239, 237, 232, 0.2)'
-                }`}
-                active={`${page === index + 1 ? '#E6533C' : 'transparent'}`}
-              >
-                <PaginationIcon
-                  color={`${page === index + 1 ? '#E6533C' : 'transparent'}`}
-                />
-              </PaginationItem>
-            </div>
-          ))}
-        </Pagination>
-      )}
+      <Pagination>
+        {pages.map((number, index) => (
+          <div key={number}>
+            <PaginationItem
+              onClick={() => {
+                setPage(number);
+              }}
+              color={`${
+                page === index + 1 ? 'transparent' : 'rgba(239, 237, 232, 0.2)'
+              }`}
+              active={`${page === index + 1 ? '#E6533C' : 'transparent'}`}
+            >
+              <PaginationIcon
+                color={`${page === index + 1 ? '#E6533C' : 'transparent'}`}
+              />
+            </PaginationItem>
+          </div>
+        ))}
+      </Pagination>
     </div>
   );
 };
