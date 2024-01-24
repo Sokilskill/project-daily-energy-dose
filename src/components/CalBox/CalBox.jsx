@@ -13,7 +13,9 @@ const CalBox = ({ caloriesSum }) => {
           />
         </svg>
       </div>
-      <span className={css.cal}>{!caloriesSum ? 500 : burnCalSum}</span>
+      <span className={css.cal}>
+        {!caloriesSum ? 500 : caloriesSum > 1000 ? burnCalSum : caloriesSum}
+      </span>
       <span className={css.k}>{caloriesSum > 1000 && 'K '}</span>
       <span className={css.cal_text}>cal</span>
     </div>
