@@ -6,7 +6,7 @@ const getDiary = createAsyncThunk(
   'diary/getDiary',
   async (credentials, thunkAPI) => {
     try {
-      console.log('credentials', credentials);
+      //     console.log('credentials', credentials);
       const date = credentials;
       const { data } = await axios.get(`/diary/${date}`);
       return data;
@@ -38,10 +38,13 @@ const deleteDiaryProduct = createAsyncThunk(
   '/diary/deleteProduct',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.delete('/diary/deleteproduct', {
-        data: credentials,
-      });
-      return data;
+      // console.log('credentials', credentials);
+      const { date, productId } = credentials;
+      const { data } = await axios.delete(
+        `/diary/delete-entry/${date}/${productId}`,
+        {}
+      );
+      return { _id: productId };
     } catch (error) {
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
@@ -70,10 +73,11 @@ const deleteDiaryExercise = createAsyncThunk(
   '/diary/deleteExercise',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.delete('/diary/deleteexercise', {
-        data: credentials,
-      });
-      return data;
+      const { exerciseId, date } = credentials;
+      const { data } = await axios.delete(
+        `/diary/delete-entry/${date}/${exerciseId}`
+      );
+      return { _id: exerciseId };
     } catch (error) {
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);

@@ -42,8 +42,9 @@ const Icon = styled.svg`
 `;
 
 export const DayExercises = () => {
+  const diaryDate = useSelector(diarySelectors.getDiary).date;
   const visibleExercises = useSelector(diarySelectors.getDiary).exercises;
-  // console.log('visibleExercises', visibleExercises);
+
   return (
     <ContainerEx>
       <TitleMainEx>
@@ -55,12 +56,12 @@ export const DayExercises = () => {
           </Icon>
         </StyledLinkEx>
       </TitleMainEx>
-      <ExercisesTable exercises={visibleExercises} />
+      <ExercisesTable exercises={visibleExercises} date={diaryDate} />
     </ContainerEx>
   );
 };
 
-export const ExercisesTable = ({ exercises }) => {
+export const ExercisesTable = ({ exercises, date }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(diarySelectors.getIsLoading);
 
@@ -77,7 +78,6 @@ export const ExercisesTable = ({ exercises }) => {
             {exercises.map(
               ({
                 burnedCalories,
-                date,
                 exerciseId: { bodyPart, equipment, name, target },
                 time,
                 _id,
@@ -92,7 +92,7 @@ export const ExercisesTable = ({ exercises }) => {
                   <WrapMobileEx>
                     <WrapItemProductsEx>
                       <ItemProductEx value={target}>Target</ItemProductEx>
-                      <ItemProductEx value={burnedCalories}>
+                      <ItemProductEx value={Math.round(burnedCalories)}>
                         Burned Calories
                       </ItemProductEx>
                       <ItemProductEx value={time}>Time</ItemProductEx>
