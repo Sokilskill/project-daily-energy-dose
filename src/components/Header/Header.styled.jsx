@@ -17,7 +17,7 @@ export const UserMenuBox = styled.div`
 export const Nav = styled.nav`
   margin-right: 32px;
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1439px) {
     display: none;
   }
 `;
