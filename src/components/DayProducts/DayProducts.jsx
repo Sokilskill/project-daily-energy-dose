@@ -38,8 +38,7 @@ const Icon = styled.svg`
 `;
 
 const DayProducts = () => {
-  const visibleProducts = useSelector(diarySelectors.getDiary).eatenProducts;
-
+  const visibleProducts = useSelector(diarySelectors.getDiary).products;
   return (
     <Container>
       <TitleMain>
@@ -95,7 +94,7 @@ export const ProductsTable = ({ products }) => {
                             diaryOperations.deleteDiaryProduct({
                               productId: _id,
                               date,
-                            }),
+                            })
                           );
                         }}
                       >
@@ -108,7 +107,7 @@ export const ProductsTable = ({ products }) => {
                     </WrapMobile>
                   </ListItem>
                 );
-              },
+              }
             )}
           </TableList>
         </>

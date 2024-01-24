@@ -2,29 +2,36 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { messageNotification } from '../../components/alertMessages/alertMessages';
 
-const getDiary = createAsyncThunk('diary/getDiary', async (credentials, thunkAPI) => {
-  try {
-    const { userId, date } = credentials;
-    const { data } = await axios.get(`${baseURL}/${userId}/date/${date}`);
-    return data;
-  } catch (error) {
-    messageNotification(error.response.status);
-    return thunkAPI.rejectWithValue(error.message);
+const getDiary = createAsyncThunk(
+  'diary/getDiary',
+  async (credentials, thunkAPI) => {
+    try {
+      console.log('credentials', credentials);
+      const date = credentials;
+      const { data } = await axios.get(`/diary/${date}`);
+      return data;
+    } catch (error) {
+      messageNotification(error.response.status);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 const postDiaryProduct = createAsyncThunk(
   'diary/postDiaryProduct',
   async (credentials, thunkAPI) => {
     try {
       const { userId, date, productData } = credentials;
-      const { data } = await axios.post(`${baseURL}/${userId}/${date}/addproduct`, productData);
+      const { data } = await axios.post(
+        `/${userId}/${date}/addproduct`,
+        productData
+      );
       return data;
     } catch (error) {
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 const deleteDiaryProduct = createAsyncThunk(
@@ -39,7 +46,7 @@ const deleteDiaryProduct = createAsyncThunk(
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 const postDiaryExercise = createAsyncThunk(
@@ -47,13 +54,16 @@ const postDiaryExercise = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { userId, date, exerciseData } = credentials;
-      const { data } = await axios.post(`${baseURL}/${userId}/${date}/addexercise`, exerciseData);
+      const { data } = await axios.post(
+        `/${userId}/${date}/addexercise`,
+        exerciseData
+      );
       return data;
     } catch (error) {
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 const deleteDiaryExercise = createAsyncThunk(
@@ -68,7 +78,7 @@ const deleteDiaryExercise = createAsyncThunk(
       messageNotification(error.response.status);
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );
 
 const diaryOperations = {

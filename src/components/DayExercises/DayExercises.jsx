@@ -42,13 +42,13 @@ const Icon = styled.svg`
 `;
 
 export const DayExercises = () => {
-  const visibleExercises = useSelector(diarySelectors.getDiary).doneExercises;
-
+  const visibleExercises = useSelector(diarySelectors.getDiary).exercises;
+  // console.log('visibleExercises', visibleExercises);
   return (
     <ContainerEx>
       <TitleMainEx>
         <SubTitleEx>Execrcises</SubTitleEx>
-        <StyledLinkEx to="/exercises/bodyParts">
+        <StyledLinkEx to="/exercises/body">
           <AddProductEx>Add exercise</AddProductEx>
           <Icon width={16} height={16} className="orange">
             <use href={`${sprite}#icon-start`}></use>
@@ -104,7 +104,7 @@ export const ExercisesTable = ({ exercises }) => {
                           diaryOperations.deleteDiaryExercise({
                             exerciseId: _id,
                             date,
-                          }),
+                          })
                         );
                       }}
                     >
@@ -116,7 +116,7 @@ export const ExercisesTable = ({ exercises }) => {
                     </ButtonEx>
                   </WrapMobileEx>
                 </ListItemEx>
-              ),
+              )
             )}
           </TableListEx>
         </>
