@@ -47,24 +47,14 @@ export const UserCard = () => {
 
   const [loading, setLoading] = useState(false);
 
-  console.log('loading', loading);
-
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
 
     if (newAvatarFile) {
-      try {
-        setLoading(true);
-        await dispatch(updatedUserAvatar(newAvatarFile));
+      setLoading(true);
+      await dispatch(updatedUserAvatar(newAvatarFile));
 
-        toast.success('Avatar updated');
-      } catch (error) {
-        setLoading(false);
-        // console.error('Failed to create object URL:', error);
-        toast.error('Failed to update avatar');
-      } finally {
-        setLoading(false);
-      }
+      setLoading(false);
     }
   };
 
