@@ -106,11 +106,10 @@ export const UserForm = () => {
   const currentName = userName || userCurrent.name;
 
   function formatDateString(DateStr) {
-    const date = new Date(DateStr);
-    const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear();
-  return `${day}.${month}.${year}`;
+    const originalDate = new Date(DateStr);
+    return `${originalDate.getDate()}.${
+      originalDate.getMonth() + 1
+    }.${originalDate.getFullYear()}`;
   }
   const currentDay = new Date();
   const formattedDateBirthday = formatDateString(
@@ -141,7 +140,7 @@ export const UserForm = () => {
       const updateProfileDataResult = await dispatch(
         addUserData({
           ...profileData,
-          birthday: new Date(birthday).toISOString().split('T')[0],
+          birthday: new Date(birthday).toISOString(),
         })
       );
 
@@ -429,14 +428,13 @@ export const UserForm = () => {
                     <Label htmlFor="birthday">Date of birth</Label>
                     <BirthdayPickerField name="birthday">
                       {({ field }) => (
-                       <BirthdayPicker
-                       id="date"
-                       currentDate={formattedDateBirthday}
-                       handlerDate={(date) => {
-                         console.log('Sending to handlerDate:', date);
-                         setFieldValue('birthday', date);
-                       }}
-                     />
+                        <BirthdayPicker
+                          id="date"
+                          currentDate={field.value}
+                          handlerDate={(date) =>
+                            setFieldValue('birthday', date)
+                          }
+                        />
                       )}
                     </BirthdayPickerField>
                     <div style={{ position: 'relative' }}>
