@@ -89,7 +89,7 @@ export const ExerciseTitle = styled.p`
 export const TargetsList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 `;
 
 export const TargetsListItem = styled.li`

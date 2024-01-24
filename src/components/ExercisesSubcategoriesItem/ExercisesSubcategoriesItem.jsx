@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import capitalizeString from '../../../hooks/capitalizeString';
 import {
   SubcategoriesListItem,
   SubcategoriesImg,
@@ -14,7 +14,7 @@ export const ExercisesSubcategoriesItem = ({ data }) => {
       <SubcategoriesItemLink to={data.name}>
         <SubcategoriesImg src={data?.imgURL} alt={data?.name} />
         <SubcategoriesTextWrapper>
-          <SubcategoriesTitle>{data?.name}</SubcategoriesTitle>
+          <SubcategoriesTitle>{capitalizeString(data.name)}</SubcategoriesTitle>
           <SubcategoriesText>{data?.filter}</SubcategoriesText>
         </SubcategoriesTextWrapper>
       </SubcategoriesItemLink>

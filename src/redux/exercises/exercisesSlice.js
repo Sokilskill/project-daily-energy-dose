@@ -2,8 +2,6 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import exercisesOperations from './exercisesOperations';
 import {
   handleFulfilledFilterExercisesBody,
-  handleFulfilledFilterExercisesEquipment,
-  handleFulfilledFilterExercisesMuscles,
   handlePending,
   handleRejected,
 } from '../../components/services/services';
@@ -18,6 +16,17 @@ const initialState = {
   error: '',
 };
 
+// const initialState = {
+//   filter: {
+//     total: null,
+//     page: null,
+//     limit: null,
+//     data: [],
+//   },
+//   isLoading: false,
+//   error: '',
+// };
+
 const STATUS = {
   PENDING: 'pending',
   REJECTED: 'rejected',
@@ -30,31 +39,15 @@ export const exercisesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(
-        exercisesOperations.getExercisesByBodyParts[STATUS.FULFILLED],
+        exercisesOperations.getExercisesByCategories[STATUS.FULFILLED],
         handleFulfilledFilterExercisesBody
       )
-      .addCase(
-        exercisesOperations.getExercisesByEquipment[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesEquipment
-      )
-      .addCase(
-        exercisesOperations.getExercisesByMuscles[STATUS.FULFILLED],
-        handleFulfilledFilterExercisesMuscles
-      )
       .addMatcher(
-        isAnyOf(
-          exercisesOperations.getExercisesByBodyParts[STATUS.PENDING],
-          exercisesOperations.getExercisesByEquipment[STATUS.PENDING],
-          exercisesOperations.getExercisesByMuscles[STATUS.PENDING]
-        ),
+        isAnyOf(exercisesOperations.getExercisesByCategories[STATUS.PENDING]),
         handlePending
       )
       .addMatcher(
-        isAnyOf(
-          exercisesOperations.getExercisesByBodyParts[STATUS.REJECTED],
-          exercisesOperations.getExercisesByEquipment[STATUS.REJECTED],
-          exercisesOperations.getExercisesByMuscles[STATUS.REJECTED]
-        ),
+        isAnyOf(exercisesOperations.getExercisesByCategories[STATUS.REJECTED]),
         handleRejected
       );
   },
