@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -10,7 +10,7 @@ import {
   StyledIcon,
 } from './DatePicker.styled';
 import sprite from '../../assets/sprite.svg';
-
+ 
 
 const BirthdayPicker = ({
   textSize,
@@ -19,12 +19,18 @@ const BirthdayPicker = ({
   textHeight,
   birthday,
   handlerDate,
-  error,
+ currentDate,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(birthday);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  useEffect(() => {
+    if (currentDate) {
+      setSelectedDate(new Date(currentDate));
+    }
+  }, [currentDate]);
 
   const handleDateChange = (date) => {
     if (datePickerRef.current) {
@@ -37,7 +43,7 @@ const BirthdayPicker = ({
   
     
   };
-
+  console.log("Current Date in BirthdayPicker:", currentDate);
   return (
     <DaySwitchContainer>
       <StyledCalendarContainer>
@@ -45,16 +51,16 @@ const BirthdayPicker = ({
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          minDate={birthday ? new Date(birthday) : null}
+          minDate={birthday}
           showYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput
-              className={`profile ${error ? 'error' : ''}`}
+              className={'profile'}
               $textSize={textSize}
               $textWeight={textWeight}
               $textHeight={textHeight}
-              error={error && error.birthday !== undefined ? error.birthday : null}
+              
             />
           }
           ref={datePickerRef}
