@@ -21,8 +21,8 @@ const StatisticsInfo = () => {
 
   return (
     <>
-      <VideoBox />
-      <CalBox />
+      <VideoBox videoCount={videoCount} />
+      <CalBox caloriesSum={burnedCaloriesSum} />
     </>
   );
 };
