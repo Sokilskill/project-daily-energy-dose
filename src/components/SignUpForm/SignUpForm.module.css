@@ -9,6 +9,11 @@
   flex-direction: column;
   gap: 18px;
 }
+.label_text {
+  color: var(--secondary-text-color-1, #efede899);
+  font-size: 14px;
+  line-height: 1.28;
+}
 .form_input {
   width: 100%;
   padding: 14px;

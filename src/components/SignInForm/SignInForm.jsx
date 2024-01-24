@@ -31,13 +31,17 @@ export const SignInForm = ({ onSubmit }) => {
       }}
     >
       {(formik) => {
-        const { errors, touched } = formik;
+        const { errors, touched, values } = formik;
         return (
           <>
             <Form className={css.form}>
               <div className={css.inputs}>
                 <div className="form-row">
-                  <label htmlFor="email"></label>
+                  <label htmlFor="email">
+                    {values.email ? (
+                      <span className={css.label_text}>Email</span>
+                    ) : null}
+                  </label>
                   <Field
                     type="email"
                     name="email"
@@ -60,7 +64,7 @@ export const SignInForm = ({ onSubmit }) => {
                       <ErrorMessage name="email" />
                     </div>
                   ) : null}
-                  {!errors.email && touched.email ? (
+                  {!errors.email && values.email ? (
                     <div className={css.success_row}>
                       <svg className={css.icon_checkbox_succsess}>
                         <use href={`${sprite}#checkbox-circle`} />
@@ -71,7 +75,11 @@ export const SignInForm = ({ onSubmit }) => {
                 </div>
 
                 <div className="form-row">
-                  <label htmlFor="password"></label>
+                  <label htmlFor="password">
+                    {values.password ? (
+                      <span className={css.label_text}>Password</span>
+                    ) : null}
+                  </label>
                   <div className={css.input_pass_field}>
                     <Field
                       type={visible ? 'text' : 'password'}
@@ -106,7 +114,7 @@ export const SignInForm = ({ onSubmit }) => {
                       <ErrorMessage name="password" />
                     </div>
                   ) : null}
-                  {!errors.password && touched.password ? (
+                  {!errors.password && values.password ? (
                     <div className={css.success_row}>
                       <svg className={css.icon_checkbox_succsess}>
                         <use href={`${sprite}#checkbox-circle`} />
