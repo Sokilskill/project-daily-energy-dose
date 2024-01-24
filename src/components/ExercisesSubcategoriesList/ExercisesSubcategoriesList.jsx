@@ -74,6 +74,12 @@ export const ExercisesSubcategoriesList = () => {
             <PaginationItem
               onClick={() => {
                 setPage(number);
+                // dispatch(
+                //   getExercisesByCategories({ page: number, category, limit })
+                // ).then(({ payload }) => {
+                //   setTotal(payload.total);
+                //   setExercisesList(payload.data);
+                // });
               }}
               color={`${
                 page === index + 1 ? 'transparent' : 'rgba(239, 237, 232, 0.2)'
