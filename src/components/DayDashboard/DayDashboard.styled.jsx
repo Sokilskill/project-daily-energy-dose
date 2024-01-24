@@ -72,11 +72,11 @@ export const ContentContainerCard = styled.div`
   ${(props) => {
     // console.log(props.title);
     switch (true) {
-      case props.title === 'The rest of the calories' && props.value < 0:
+      case props.title === 'Calories remaining' && props.value < 0:
         return `
           border-color: var(--red);          
         `;
-      case props.title === 'The rest of sports' && props.value < 0:
+      case props.title === 'Sports remaining' && props.value < 0:
         return `
           border-color: var(--green);          
         `;
@@ -113,7 +113,7 @@ export const TitleTextCard = styled.p`
   line-height: 16px;
   @media screen and (min-width: 375px) {
     white-space: ${(props) =>
-      props.children === 'The rest of the calories' ? 'normal' : 'nowrap'};
+      props.children === 'Sports remaining' ? 'normal' : 'nowrap'};
   }
 
   @media screen and (min-width: 768px) {

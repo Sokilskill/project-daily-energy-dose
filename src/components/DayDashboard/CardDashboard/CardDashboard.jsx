@@ -9,6 +9,7 @@ import {
   WrapperTitleCard,
 } from '../DayDashboard.styled';
 import MyLoader from '../../Loader/DiaryLoader';
+
 const Icon = styled.svg`
   &.orange {
     fill: ${({ theme }) => theme.secondaryOrange};
@@ -67,10 +68,10 @@ export const Card = ({ value, children }) => {
       displayValue = displayValue.toString() + ' min';
       break;
   }
-  if (children === 'The rest of the calories' && value < 0) {
+  if (children === 'Calories remaining' && value < 0) {
     displayValue = '- ' + Math.abs(value).toString();
   }
-  if (children === 'The rest of sports' && value < 0) {
+  if (children === 'Sports remaining' && value < 0) {
     displayValue = '+ ' + Math.abs(value).toString() + ' min';
   }
   if (!displayValue) displayValue = 0;
