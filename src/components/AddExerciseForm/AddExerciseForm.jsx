@@ -7,18 +7,18 @@ import {
   ModalContainer,
   Close,
   Image,
-  Div,
   Container,
   Flex,
   TimerContainer,
   TimerButton,
-  ButtonDiv,
   Text,
   StyledList,
   StyledListItem,
   Workout,
   WorkoutName,
   Button,
+  ContainerBtn,
+  Accent,
 } from './AddExerciseForm.styled';
 import { Counter} from '../AddExerciseCounter/AddExerciseCounter'
 import { ToastContainer, toast } from 'react-toastify';
@@ -36,8 +36,17 @@ const notify = () => {
   toast.warn('error', { theme: 'dark' });
 };
 
+let recipeWindow;
 
+const initialRecipeWindow = () => {
+  if (window.screen.width < 768) {
+    recipeWindow = true;
+  } else {
+    recipeWindow = false;
+  }
+};
 
+initialRecipeWindow();
 
 const AddExerciseForm = ({
   onClose,
@@ -105,6 +114,30 @@ const [exerciseTime, setExerciseTime] = useState(0);
     setExerciseTime(time * 60 - remainingTime);
   };
  
+  const normalized = (value) => {
+
+    if (recipeWindow) {
+      if (value) {
+        const upperLetter = value[0].toUpperCase();
+        const newTitle = `${upperLetter + value.slice(1, 13)}`;
+        if (value.length > 13) {
+          return `${newTitle}...`;
+        }
+        return newTitle;
+      }
+      return '';
+    } else {
+      if (value) {
+        const upperLetter = value[0].toUpperCase();
+        const newTitle = `${upperLetter + value.slice(1, 15)}`;
+        if (value.length > 15) {
+          return `${newTitle}...`;
+        }
+        return newTitle;
+      }
+      return '';
+    }
+  };
 
 
   return (
@@ -118,9 +151,8 @@ const [exerciseTime, setExerciseTime] = useState(0);
             </Close>
             <Flex>
               <Container>
-                <Div>
-                  <Image src={gifUrl} alt="" />
-                </Div>
+                <Image src={gifUrl} alt="" />
+
                 <Text>Time</Text>
                 <TimerContainer>
                   <Counter
@@ -129,37 +161,40 @@ const [exerciseTime, setExerciseTime] = useState(0);
                     saveBurnedCalories={saveBurnedCalories}
                     startPauseTimer={startPauseTimer}
                   />
-                </TimerContainer>
-                <ButtonDiv>
+
                   <TimerButton onClick={startPauseTimer}>
                     {isTimerRunning ? <RiPauseLine /> : <RiPlayLine />}
                   </TimerButton>
-                </ButtonDiv>
-                <Text children={`Burned calories: ${caloriesBurned}`} />
+
+                  <Text>
+                    Burned calories:
+                    <Accent>{` ${caloriesBurned}`}</Accent>
+                  </Text>
+                </TimerContainer>
               </Container>
-              <Container>
+              <ContainerBtn>
                 <StyledList>
                   <StyledListItem>
                     <Workout>Name</Workout>
-                    <WorkoutName>{name}</WorkoutName>
+                    <WorkoutName>{normalized(name)}</WorkoutName>
                   </StyledListItem>
                   <StyledListItem>
                     <Workout>Target</Workout>
-                    <WorkoutName>{target}</WorkoutName>
+                    <WorkoutName>{normalized(target)}</WorkoutName>
                   </StyledListItem>
                   <StyledListItem>
                     <Workout>Body part</Workout>
-                    <WorkoutName>{bodyPart}</WorkoutName>
+                    <WorkoutName>{normalized(bodyPart)}</WorkoutName>
                   </StyledListItem>
                   <StyledListItem>
                     <Workout>Equipment</Workout>
-                    <WorkoutName>{equipment}</WorkoutName>
+                    <WorkoutName>{normalized(equipment)}</WorkoutName>
                   </StyledListItem>
                 </StyledList>
                 <Button disabled={isTimerRunning} onClick={handlerSubmit}>
                   Add to diary
                 </Button>
-              </Container>
+              </ContainerBtn>
             </Flex>
           </ModalContainer>
         ) : (

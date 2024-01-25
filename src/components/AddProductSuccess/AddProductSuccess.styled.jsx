@@ -21,26 +21,37 @@ export const ModalContainer = styled.div`
   text-align: center;
   border-radius: 12px;
   border: 1px;
-  background: linear-gradient(0deg, #10100F, #10100F),
-  linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
+  background: linear-gradient(0deg, #10100f, #10100f),
+    linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
 
-    @media (min-width: 768px) {
-      width: 430px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 430px;
+    padding: 64px 0
+  }
 `;
-export const Close = styled.div`
+export const Close = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
   cursor: pointer;
+  background-color: rgba(0,0,0,0);
+  color: var(--white);
+  height: 22px;
+  padding: 0;
 `
-export const Div = styled.div`
-  text-align: center;
-`;
+// export const Div = styled.div`
+//   text-align: center;
+
+  
+// `;
 export const Image = styled.img`
   display: inline-block;
   width: 123px;
-  height: 84px;
+  height: 97px;
+  margin-bottom: 3px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const Title = styled.p`
@@ -56,7 +67,6 @@ export const Title = styled.p`
 `;
 
 export const Text = styled.p`
-  margin-right: 9px; 
   margin-bottom: 24px;
   font-family: Roboto;
   font-size: 14px;
@@ -66,20 +76,33 @@ export const Text = styled.p`
   text-align: left;
   color: var(--border);
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+`;
+
+export const Accent = styled.span`
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--orange);
+  text-align: center;
 `;
 
 export const Button = styled.button`
-  width: 157px;
-  height: 42px;
+  
   margin-bottom: 16px;
-  padding: 12px, 32px, 12px, 32px;
+  padding: 14px 32px;
   border-radius: 12px;
-  gap: 10px;
   background: #E6533C;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.5;
   letter-spacing: 0em;
   text-align: center;
   color: var(--white);
@@ -107,3 +130,9 @@ export const StyledLink = styled(Link)`
   color: var(--border);
 `
 
+export const IconAdd = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: var(--input-border);
+  margin-left: 8px;
+`;

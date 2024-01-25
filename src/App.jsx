@@ -14,12 +14,8 @@ import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesL
 import MyLoader from './components/Loader/DiaryLoader';
 import { getUserProfile } from './redux/profileSettings/operations';
 import { refreshThunk } from './redux/auth/auth-operations';
-import { setIsParams } from './redux/auth/authSlice';
-import {
-  selectProfileEmail,
-  selectUserIsLoading,
-} from './redux/profileSettings/selectors';
 // import { setIsParams } from './redux/auth/authSlice';
+// import { selectProfileEmail } from './redux/profileSettings/selectors';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -33,10 +29,12 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
-  const isProfileData = useSelector(selectProfileEmail);
+  // const isProfileData = useSelector(selectProfileEmail);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoading = useSelector(selectUserIsLoading);
+  // const isLoading = useSelector(selectUserIsLoading);
   const dispatch = useDispatch();
+
+  // const [isLoading, setIsloading] = useState(false);
 
   // useEffect(() => {
   //   dispatch(refreshThunk());
@@ -46,21 +44,23 @@ function App() {
     const fetchData = async () => {
       await dispatch(refreshThunk());
 
-      if (isLoggedIn) {
+      if (isLoggedIn && isParamsData) {
+        // setIsloading(true);
         await dispatch(getUserProfile());
       }
+      // setIsloading(false);
     };
 
     fetchData();
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch, isLoggedIn, isParamsData]);
 
-  useEffect(() => {
-    if (isProfileData) {
-      dispatch(setIsParams());
-    }
-  }, [dispatch, isProfileData]);
+  // useEffect(() => {
+  //   if (isProfileData) {
+  //     dispatch(setIsParams());
+  //   }
+  // }, [dispatch, isProfileData]);
 
-  return isRefreshing || isLoading ? (
+  return isRefreshing ? (
     <MyLoader />
   ) : (
     <>

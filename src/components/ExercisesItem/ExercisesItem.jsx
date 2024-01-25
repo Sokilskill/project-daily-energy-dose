@@ -28,15 +28,12 @@ export const ExercisesItem = ({
   time,
   _id,
 }) => {
-
   const [openModal, setOpenModal] = useState(false);
 
-  
   const handleCloseModal = () => {
     setOpenModal(false);
+    document.body.style.overflow = 'auto';
   };
-
-
 
   return (
     <>
@@ -44,7 +41,14 @@ export const ExercisesItem = ({
         <ItemTopBloc>
           <Workout>WORKOUT</Workout>
           <StartBtnWrapper>
-            <StartBtn onClick={() => setOpenModal(true)}>Start</StartBtn>
+            <StartBtn
+              onClick={() => {
+                setOpenModal(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
+              Start
+            </StartBtn>
             <ArrowIcon>
               <use href={`${sprite}#icon-arrow`}></use>
             </ArrowIcon>
@@ -56,7 +60,7 @@ export const ExercisesItem = ({
               href={`${sprite}#icon-running-stick-figure-svgrepo-com-1-1`}
             ></use>
           </FigureIcon>
-          <ExerciseTitle>{name}</ExerciseTitle>
+          <ExerciseTitle>{capitalizeString(name)}</ExerciseTitle>
         </ExerciseTitleWrapper>
         <TargetsList>
           <TargetsListItem>

@@ -24,7 +24,7 @@ import sprite from '../../assets/sprite.svg';
 import { useEffect, useState } from 'react';
 import diarySelectors from '../../redux/diary/diarySelectors';
 import authSelectors from '../../redux/auth/auth-selectors';
-import '../../index.css'
+import '../../index.css';
 
 const Icon = styled.svg`
   &.orange {
@@ -38,7 +38,7 @@ function formatDate(date) {
   const year = date.getFullYear();
   day = day < 10 ? `0${day}` : day;
   month = month < 10 ? `0${month}` : month;
-  return `${day}/${month}/${year}`;
+  return `${year}-${month}-${day}`;
 }
 
 const notify = () => {
@@ -52,11 +52,13 @@ const Diary = () => {
   const dispatch = useDispatch();
 
   const diary = useSelector(diarySelectors.getDiary);
-  const { eatenProducts, doneExercises } = diary;
+  const { products, exercises } = diary;
 
   const userMetricData = useSelector(authSelectors.getUserMetricData);
 
-  const dayOfBirthday = userMetricData ? new Date(userMetricData.birthday) : null;
+  const dayOfBirthday = userMetricData
+    ? new Date(userMetricData.birthday)
+    : null;
 
   const handlerDate = (date) => {
     if (date < dayOfBirthday) {
@@ -67,8 +69,8 @@ const Diary = () => {
   };
 
   useEffect(() => {
-    dispatch(diaryOperations.getDiary(`?date=` + formatDate(date)));
-  }, [dispatch, date, eatenProducts.length, doneExercises.length]);
+    dispatch(diaryOperations.getDiary(formatDate(date)));
+  }, [dispatch, date, products.length, exercises.length]);
 
   return (
     <Container>

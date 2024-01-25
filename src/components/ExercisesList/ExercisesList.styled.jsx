@@ -1,17 +1,11 @@
 import styled from '@emotion/styled';
 
-export const ExercisesWrapper = styled.div`
-  @media screen and (min-width: 1440px) {
-    background-image: url('/src/assets/Exercises/Exercises.png');
-    background-repeat: no-repeat;
-    background-size: 35%;
-    background-position: right;
-  }
-`;
+export const ExercisesWrapper = styled.div``;
 
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
+  gap: 20px;
   margin-top: 40px;
 
   @media screen and (min-width: 768px) {
@@ -20,7 +14,7 @@ export const List = styled.ul`
     grid-column-gap: 16px;
     grid-row-gap: 32px;
     width: 704px;
-    height: 726px;
+    max-height: 726px;
     margin-top: 32px;
     overflow-y: scroll;
     ::-webkit-scrollbar {
@@ -35,6 +29,6 @@ export const List = styled.ul`
   }
   @media screen and (min-width: 1440px) {
     width: 850px;
-    height: 487px;
+    max-height: 487px;
   }
 `;

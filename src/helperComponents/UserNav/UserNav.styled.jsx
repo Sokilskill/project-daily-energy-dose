@@ -6,7 +6,7 @@ export const NavList = styled.ul`
   justify-content: space-between;
   gap: 16px;
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1439px) {
     flex-direction: column;
     align-items: center;
   }
@@ -23,7 +23,7 @@ export const Link = styled(NavLink)`
   &.active {
     background: #e6533c;
 
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1439px) {
       border: 1px solid #efede8;
     }
   }
@@ -32,7 +32,7 @@ export const Link = styled(NavLink)`
   &:focus {
     background: #e6533c;
 
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1439px) {
       border: 1px solid #efede8;
     }
   }

@@ -1,6 +1,5 @@
 const emptyList = [];
-export const selectExercisesByBodyParts = (state) =>
-  state.exercises.filter.body?.data ?? emptyList;
+export const selectPage = (state) => state.exercises.filter.body?.page;
 
 export const selectExercisesByMuscles = (state) =>
   state.exercises.filter.muscles?.data ?? emptyList;

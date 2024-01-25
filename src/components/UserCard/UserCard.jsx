@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { updatedUserAvatar } from '../../redux/profileSettings/operations';
 import sprite from '../../assets/sprite.svg';
 import {
   ActivityShower,
@@ -33,64 +30,33 @@ import {
   WrapperLogOut,
 } from './UserCard.styled';
 import { LogOutBtn } from '../../helperComponents/LogOutBtn/LogOutBtn';
-import {
-  // selectUser,
-  selectUserLargeAvatar,
-} from '../../redux/auth/auth-selectors';
+import { selectUserLargeAvatar } from '../../redux/auth/auth-selectors';
 import {
   selectProfileName,
   selectUserProfile,
 } from '../../redux/profileSettings/selectors';
-import { refreshThunk } from '../../redux/auth/auth-operations';
+import { updatedUserAvatar } from '../../redux/profileSettings/operations';
+import { useState } from 'react';
+import MyLoader from '../Loader/DiaryLoader';
 
-export const UserCard = ({ time }) => {
+export const UserCard = () => {
   const dispatch = useDispatch();
-  // const userProfile = useSelector(selectUser);
   const avatar = useSelector(selectUserLargeAvatar);
   const ownerProfile = useSelector(selectUserProfile);
   const currentName = useSelector(selectProfileName);
-  const [avatarPreviewURL, setAvatarPreviewURL] = useState(avatar);
-  const [showPreview, setShowPreview] = useState(true);
-  const [previewStyle, setPreviewStyle] = useState({});
-  const [avatarStyle, setAvatarStyle] = useState({});
+
   const [loading, setLoading] = useState(false);
-  // const currentName = userName ? userName : userProfile.name;
 
   const handleAvatarChange = async (e) => {
     const newAvatarFile = e.target.files[0];
 
     if (newAvatarFile) {
-      try {
-        const blob = new Blob([newAvatarFile]);
-        const objectURL = URL.createObjectURL(blob);
-        // setAvatarPreviewURL(objectURL);
+      setLoading(true);
+      await dispatch(updatedUserAvatar(newAvatarFile));
 
-        await dispatch(updatedUserAvatar(newAvatarFile));
-        console.log('newAvatar ProfilePage', newAvatarFile);
-
-        setAvatarPreviewURL(newAvatarFile);
-      } catch (error) {
-        console.error('Failed to create object URL:', error);
-        toast.error('Failed to update avatar');
-      } finally {
-        // dispatch(refreshThunk());
-        // setLoading(true);
-        // setLoading(false);
-      }
+      setLoading(false);
     }
   };
-  useEffect(() => {
-    if (showPreview) {
-      setPreviewStyle({ borderRadius: '50%', width: '100%', height: '100%' });
-      setShowPreview(false);
-    }
-  }, [showPreview]);
-
-  useEffect(() => {
-    if (!showPreview) {
-      setAvatarStyle({ width: '90px', height: '90px' });
-    }
-  }, [showPreview]);
 
   return (
     <ProfileContainer>
@@ -109,8 +75,10 @@ export const UserCard = ({ time }) => {
           </AvatarPickerSvg>
         </Label>
         <div>
-          {avatarPreviewURL ? (
-            <NewAvatar src={avatarPreviewURL} alt="Preview" />
+          {loading ? (
+            <MyLoader />
+          ) : avatar ? (
+            <NewAvatar src={avatar} alt="Preview" />
           ) : (
             <div>
               {
