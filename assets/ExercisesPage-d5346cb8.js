@@ -1,4 +1,4 @@
-import{n as i,N as b,u as g,J as m,r as h,j as e,s as u,O as c}from"./index-ed11d55e.js";const j=i.ul`
+import{n as i,N as b,u as g,J as m,r as h,j as e,s as u,O as c}from"./index-ea247ddd.js";const j=i.ul`
   display: flex;
   gap: 28px;
 
@@ -40,7 +40,7 @@ import{n as i,N as b,u as g,J as m,r as h,j as e,s as u,O as c}from"./index-ed11
   &:focus {
     color: #efede8;
   }
-`,d=({children:t})=>{const s=g(),{categoryType:n}=m();return h.useEffect(()=>{n||s("body")},[]),e.jsxs("div",{children:[e.jsxs(j,{children:[e.jsx(o,{children:e.jsx(r,{to:"body",children:" Body Parts"})}),e.jsx(o,{children:e.jsx(r,{to:"muscles",children:"Muscles"})}),e.jsx(o,{children:e.jsx(r,{to:"equipment",children:"Equipments"})})]}),t]})},f=i.section`
+`,d=({children:t})=>{const s=g(),{categoryType:n}=m();return h.useEffect(()=>{n||s("body")},[]),e.jsxs("div",{children:[e.jsxs(j,{children:[e.jsx(o,{children:e.jsx(r,{to:"body",children:"Body Parts"})}),e.jsx(o,{children:e.jsx(r,{to:"muscles",children:"Muscles"})}),e.jsx(o,{children:e.jsx(r,{to:"equipment",children:"Equipments"})})]}),t]})},f=i.section`
   width: 100%;
   height: 100vh;
   margin: 0 auto;
