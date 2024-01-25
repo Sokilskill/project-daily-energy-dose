@@ -24,7 +24,6 @@ const DayDashboard = () => {
     const minutesSpentOnSports = Math.floor(normOfSports);
   
     const restOfSports = Math.floor(normOfSports - minutesSpentOnSports / 60);
-    console.log('restOfSports:', restOfSports);
   
     return restOfSports;
   };

@@ -51,8 +51,8 @@ export const DayExercises = () => {
         <SubTitleEx>Execrcises</SubTitleEx>
         <StyledLinkEx to="/exercises/body">
           <AddProductEx>Add exercise</AddProductEx>
-          <Icon width={16} height={16} className="orange">
-            <use href={`${sprite}#icon-start`}></use>
+          <Icon width={16} height={16} className="orange" stroke='#E6533C'>
+            <use href={`${sprite}#icon-arrow`}></use>
           </Icon>
         </StyledLinkEx>
       </TitleMainEx>
