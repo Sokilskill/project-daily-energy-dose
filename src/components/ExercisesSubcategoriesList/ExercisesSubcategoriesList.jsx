@@ -43,6 +43,11 @@ export const ExercisesSubcategoriesList = () => {
       setLimit(10);
     }
   }, [width]);
+  const [currentCategoryType, setCurrentCategoryType] = useState(categoryType);
+  useEffect(() => {
+    setPage(1);
+    setCurrentCategoryType(categoryType);
+  }, [categoryType]);
 
   useEffect(() => {
     const options = { page, limit, category };
@@ -50,7 +55,7 @@ export const ExercisesSubcategoriesList = () => {
       setTotal(payload.total);
       setExercisesList(payload.data);
     });
-  }, [dispatch, category, categoryType, limit, page]);
+  }, [dispatch, currentCategoryType, limit, page]);
 
   const pages = [];
   const pagesAmount = Math.ceil(total / limit);
@@ -74,12 +79,6 @@ export const ExercisesSubcategoriesList = () => {
             <PaginationItem
               onClick={() => {
                 setPage(number);
-                // dispatch(
-                //   getExercisesByCategories({ page: number, category, limit })
-                // ).then(({ payload }) => {
-                //   setTotal(payload.total);
-                //   setExercisesList(payload.data);
-                // });
               }}
               color={`${
                 page === index + 1 ? 'transparent' : 'rgba(239, 237, 232, 0.2)'

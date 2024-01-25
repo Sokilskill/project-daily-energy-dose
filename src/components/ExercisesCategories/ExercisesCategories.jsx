@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const ExercisesCategories = ({ children }) => {
+  // const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const { categoryType } = useParams();
-
   useEffect(() => {
     if (!categoryType) {
       navigate('body');
@@ -20,7 +20,7 @@ export const ExercisesCategories = ({ children }) => {
     <div>
       <CategoriesList>
         <CategoriesListItem>
-          <CategoriesItemLink to={'body'}> Body Parts</CategoriesItemLink>
+          <CategoriesItemLink to={'body'}>Body Parts</CategoriesItemLink>
         </CategoriesListItem>
 
         <CategoriesListItem>
