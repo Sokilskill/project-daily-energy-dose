@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { messageNotification } from '../../components/alertMessages/alertMessages';
+import { messageNotification } from '../../components/alertMessages/alertMessages.jsx';
 
 axios.defaults.baseURL = 'https://power-pulse-6-backend.onrender.com/api';
 

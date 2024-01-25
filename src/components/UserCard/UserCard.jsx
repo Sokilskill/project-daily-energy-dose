@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 
 import sprite from '../../assets/sprite.svg';
 import {

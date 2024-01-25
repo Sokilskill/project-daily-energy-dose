@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { messageNotification } from '../../components/alertMessages/alertMessages.jsx';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
@@ -14,7 +14,8 @@ export const getUserProfile = createAsyncThunk(
       }
       return res.data;
     } catch (error) {
-      toast.error(error.message);
+      const status = error.response.status;
+      messageNotification(status);
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -25,10 +26,10 @@ export const updateUserName = createAsyncThunk(
   async (userData, thunkApi) => {
     try {
       const res = await axios.patch('/users', userData);
-      // toast.success('Name updated');
       return res.data;
     } catch (error) {
-      toast.error(error.message);
+      const status = error.response.status;
+      messageNotification(status);
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -45,10 +46,14 @@ export const updatedUserAvatar = createAsyncThunk(
           'content-type': 'multipart/form-data',
         },
       });
-      toast.success('Avatar updated');
+      toast.success('Avatar updated', {
+        position: 'top-center',
+        theme: 'dark',
+      });
       return res.data;
     } catch (error) {
-      toast.error(error.message);
+      const status = error.response.status;
+      messageNotification(status);
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -59,10 +64,14 @@ export const addUserData = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const res = await axios.put('/profiles', data);
-      toast.success('Settings updated, creating training plan');
+      toast.success('Settings updated, creating training plan', {
+        position: 'top-center',
+        theme: 'dark',
+      });
       return res.data;
     } catch (error) {
-      toast.error(error.message);
+      const status = error.response.status;
+      messageNotification(status);
       return thunkApi.rejectWithValue(error.message);
     }
   }

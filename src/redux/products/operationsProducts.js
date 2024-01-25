@@ -9,12 +9,13 @@ export const getProductsList = createAsyncThunk(
     const { search = '', category = '', recommended = '' } = filterParams;
     try {
       const res = await axios.get(
-        `/products?page=${page}&limit=${limit}&search=${search}&category=${category}&recommended=${recommended}`,
+        `/products?page=${page}&limit=${limit}&search=${search}&category=${category}&recommended=${recommended}`
       );
       return res.data;
     } catch (error) {
-      messageNotification(error.response.status);
+      const status = error.response.status;
+      messageNotification(status);
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );

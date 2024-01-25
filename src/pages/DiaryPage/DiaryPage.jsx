@@ -42,7 +42,10 @@ function formatDate(date) {
 }
 
 const notify = () => {
-  toast.warn('the date must be greater than your birthday', { theme: 'dark' });
+  toast.warn('the date must be greater than your birthday', {
+    position: 'top-center',
+    theme: 'dark',
+  });
 };
 
 const Diary = () => {
