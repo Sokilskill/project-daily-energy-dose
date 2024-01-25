@@ -10,8 +10,10 @@ export const selectUserBodyParams = (state) => state.auth.user.bodyParams;
 export const selectUserLargeAvatar = (state) => state.auth.user.avatarLargeURL;
 export const selectUserSmallAvatar = (state) => state.auth.user.avatarURL;
 
+export const selectBurnedCalories = (state) => state.diary.data.diary.exercises;
+export const selectDiaryProduct = (state) => state.diary.data.diary.products;
 export const selectIsParamsData = (state) => state.auth.user.isParams;
-
+export const selectTargetTime = (state) => state.auth.user.targetTime;
 export const selectTargetBmr = (state) => state.auth.user.targetBmr;
 
 // Diary

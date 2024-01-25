@@ -1,38 +1,50 @@
+import React from 'react';
 import { Container } from './DayDashboard.styled';
-
 import { useSelector } from 'react-redux';
-// import diarySelectors from '../../redux/diary/diarySelectors';
-import { selectTargetBmr } from '../../redux/auth/auth-selectors';
+import { selectTargetBmr, selectTargetTime, selectDiaryProduct, selectBurnedCalories } from '../../redux/auth/auth-selectors';
 import { Card } from './CardDashboard/CardDashboard';
 
 const DayDashboard = () => {
   const targetBmr = Math.ceil(useSelector(selectTargetBmr));
+  const normOfSports = useSelector(selectTargetTime);
+  const calorieIntake = useSelector(selectDiaryProduct);
+  const burnedCalories = useSelector(selectBurnedCalories);
 
-  const caloriesIntake = targetBmr;
-  const normOfSports = 110;
+  const caloriesConsumed = Math.round(calorieIntake.reduce((accumulator, currentValue) => accumulator + currentValue.calories, 0));
 
-  const caloriesConsumed = 400;
-  // const caloriesConsumed = useSelector(
-  //   diarySelectors.getDiary
-  // ).consumedCalories;
+  const caloriesBurned = Math.round(burnedCalories.reduce((accumulator, currentValue) => accumulator + currentValue.burnedCalories, 0));
+  
+  const calculateRestOfCalories = () => {
+    const caloriesIntake = targetBmr;
+    const restOfCalories = caloriesIntake - caloriesConsumed;
+    return restOfCalories;
+  };
 
-  const caloriesBurned = 500;
-  // const caloriesBurned = useSelector(diarySelectors.getDiary).burnedCalories;
+  const calculateRestOfSports = () => {
+    const minutesSpentOnSports = Math.floor(normOfSports);
+  
+    const restOfSports = Math.floor(normOfSports - minutesSpentOnSports / 60);
+    console.log('restOfSports:', restOfSports);
+  
+    return restOfSports;
+  };
+  
 
-  const restOfCalories = caloriesIntake - caloriesConsumed;
-
-  const restOfSports = 777;
-  // normOfSports -
-  // Math.ceil(useSelector(diarySelectors.getDiary).sportTime / 60);
+  const restOfCalories = calculateRestOfCalories();
+  const restOfSports = calculateRestOfSports();
 
   return (
     <Container>
-      <Card value={caloriesIntake}>Daily calorie intake</Card>
+      <Card value={targetBmr}>Daily calorie intake</Card>
       <Card value={normOfSports}>Daily physical activity</Card>
       <Card value={caloriesConsumed}>Calories consumed</Card>
       <Card value={caloriesBurned}>Calories burned</Card>
-      <Card value={restOfCalories}>Calories remaining</Card>
-      <Card value={restOfSports}>Sports remaining</Card>
+      <Card value={restOfCalories} highlight={restOfCalories < 0}>
+        Calories remaining
+      </Card>
+      <Card value={restOfSports} highlight={restOfSports < 0}>
+        Sports remaining
+      </Card>
     </Container>
   );
 };
