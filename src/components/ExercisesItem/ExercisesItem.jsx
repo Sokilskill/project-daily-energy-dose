@@ -16,22 +16,39 @@ import {
 } from '../ExercisesItem/ExercisesItem.styled';
 import sprite from '../../assets/sprite.svg';
 import AddExerciseForm from '../AddExerciseForm/AddExerciseForm.jsx';
+import capitalizeString from '../../../hooks/capitalizeString';
 
-export const ExercisesItem = () => {
-
+export const ExercisesItem = ({
+  bodyPart,
+  burnedCalories,
+  equipment,
+  gifUrl,
+  name,
+  target,
+  time,
+  _id,
+}) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-  }
-  
+    setOpenModal(false);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <>
       <ExerciseItem>
         <ItemTopBloc>
           <Workout>WORKOUT</Workout>
           <StartBtnWrapper>
-            <StartBtn onClick={() => setOpenModal(true)}>Start</StartBtn>
+            <StartBtn
+              onClick={() => {
+                setOpenModal(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
+              Start
+            </StartBtn>
             <ArrowIcon>
               <use href={`${sprite}#icon-arrow`}></use>
             </ArrowIcon>
@@ -43,30 +60,36 @@ export const ExercisesItem = () => {
               href={`${sprite}#icon-running-stick-figure-svgrepo-com-1-1`}
             ></use>
           </FigureIcon>
-          <ExerciseTitle>Air bike</ExerciseTitle>
+          <ExerciseTitle>{capitalizeString(name)}</ExerciseTitle>
         </ExerciseTitleWrapper>
         <TargetsList>
           <TargetsListItem>
             <TargetsListTitle>Burned calories:</TargetsListTitle>
-            <TargetsListText>312</TargetsListText>
+            <TargetsListText>{burnedCalories}</TargetsListText>
           </TargetsListItem>
           <TargetsListItem>
             <TargetsListTitle>Body part:</TargetsListTitle>
-            <TargetsListText>Waist</TargetsListText>
+            <TargetsListText>{bodyPart}</TargetsListText>
           </TargetsListItem>
           <TargetsListItem>
             <TargetsListTitle>Target:</TargetsListTitle>
-            <TargetsListText>Abs</TargetsListText>
+            <TargetsListText>{target}</TargetsListText>
           </TargetsListItem>
         </TargetsList>
       </ExerciseItem>
-      <AddExerciseForm
-      onClose={handleCloseModal} 
-      open={openModal}
-      time={180}
-      exerciseId={1}
-      calories={500} />
+      {openModal && (
+        <AddExerciseForm
+          onClose={handleCloseModal}
+          time={time}
+          name={name}
+          target={target}
+          bodyPart={bodyPart}
+          equipment={equipment}
+          burnedCalories={burnedCalories}
+          gifUrl={gifUrl}
+          id={_id}
+        />
+      )}
     </>
-    
   );
 };

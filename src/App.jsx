@@ -1,9 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
-import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
-import { ToastContainer } from 'react-toastify';
+import { Bounce, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -11,19 +10,13 @@ import {
   selectIsParamsData,
   selectIsRefreshing,
 } from './redux/auth/auth-selectors';
-import { Navigate } from 'react-router-dom';
-import { refreshThunk } from './redux/auth/auth-operations';
+import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import MyLoader from './components/Loader/DiaryLoader';
+import { getUserProfile } from './redux/profileSettings/operations';
+import { refreshThunk } from './redux/auth/auth-operations';
+// import { setIsParams } from './redux/auth/authSlice';
+// import { selectProfileEmail } from './redux/profileSettings/selectors';
 
-//неавторизованого користувача переадресовує на Welcome page, авторизованого
-//- на Diary page або Profile page(якщо на backendі відсутня інформація про параметри авторизованого користувача)
-
-// та редірект на diary === коли користувач вже залогіненний заходить наприклад з
-// нової вкладки його не відправляє на сторінку Welcome
-
-// додати перед Routes спінер-завантаження/лоадер поки не завантажиться сторінка -
-
-// авторизований / залогінений
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -36,12 +29,36 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isParamsData = useSelector(selectIsParamsData);
+  // const isProfileData = useSelector(selectProfileEmail);
   const isRefreshing = useSelector(selectIsRefreshing);
+  // const isLoading = useSelector(selectUserIsLoading);
   const dispatch = useDispatch();
 
+  // const [isLoading, setIsloading] = useState(false);
+
+  // useEffect(() => {
+  //   dispatch(refreshThunk());
+  // }, [dispatch]);
+
   useEffect(() => {
-    dispatch(refreshThunk());
-  }, [dispatch]);
+    const fetchData = async () => {
+      await dispatch(refreshThunk());
+
+      if (isLoggedIn && isParamsData) {
+        // setIsloading(true);
+        await dispatch(getUserProfile());
+      }
+      // setIsloading(false);
+    };
+
+    fetchData();
+  }, [dispatch, isLoggedIn, isParamsData]);
+
+  // useEffect(() => {
+  //   if (isProfileData) {
+  //     dispatch(setIsParams());
+  //   }
+  // }, [dispatch, isProfileData]);
 
   return isRefreshing ? (
     <MyLoader />
@@ -103,21 +120,33 @@ function App() {
             path="products"
             element={isLoggedIn ? <ProductsPage /> : <Navigate to="/" />}
           />
-
           <Route
             path="exercises"
             element={isLoggedIn ? <ExercisesPage /> : <Navigate to="/" />}
           >
-            <Route path="bodyParts" element={<ExercisesSubcategoriesList />} />
-            <Route path="muscles" element={<ExercisesSubcategoriesList />} />
-            <Route path="equipment" element={<ExercisesSubcategoriesList />} />
-            <Route path="list" element={<ExercisesList />} />
+            <Route
+              path=":categoryType"
+              element={<ExercisesSubcategoriesList />}
+            />
+            <Route path=":categoryType/:group" element={<ExercisesList />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
 
-      <ToastContainer />
+      <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+transition={Bounce}
+borderRadius={12}
+ />
     </>
   );
 }

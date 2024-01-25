@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+
 export const ProfileContainer = styled.div`
   width: 100%;
   display: flex;
@@ -14,6 +15,7 @@ export const ProfileContainer = styled.div`
   @media (min-width: 1440px) {
     width: 439px;
     margin: 0;
+
   }
 `;
 
@@ -103,11 +105,12 @@ export const NameUserWrapper = styled.div`
   width: 100%;
   margin-top: 20px;
   text-align: center;
-  gap: 8px;
+
 
   @media (min-width: 768px) {
     margin-top: 18px;
   }
+ 
 `;
 
 export const UserName = styled.p`
@@ -120,12 +123,14 @@ export const UserName = styled.p`
     font-size: 24px;
     line-height: 1.2;
   }
+ 
 `;
 
 export const UserNameDescription = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
+  margin: 8px 0 0 0;
   color: var(--secondary-color-text, rgba(239, 237, 232, 0.5));
 `;
 

@@ -100,28 +100,30 @@ export const handleStatisticsFulfilled = (state, { payload }) => {
 
 //--------------------------DIARY
 export const handleFulfilled = (state, { payload }) => {
+  // console.log('payload', payload);
   state.data = payload;
   state.isLoading = false;
   console.log(state.data);
 };
 
 export const handleFulfilledAddProduct = (state, { payload }) => {
-  state.data.eatenProducts.push(payload);
+  state.data.products.push(payload);
   state.isLoading = false;
 };
 export const handleFulfilledDeleteProduct = (state, { payload }) => {
-  state.data.eatenProducts = state.data.eatenProducts.filter(
+  state.data.diary.products = state.data.diary.products.filter(
     (el) => el._id !== payload._id
   );
 };
 
 export const handleFulfilledAddExercise = (state, { payload }) => {
-  state.data.doneExercises = payload;
+  state.data.exercises = payload;
   state.isLoading = false;
 };
 
 export const handleFulfilledDeleteExercise = (state, { payload }) => {
-  state.data.doneExercises = state.data.doneExercises.filter(
+  console.log('payload', payload);
+  state.data.diary.exercises = state.data.diary.exercises.filter(
     (el) => el._id !== payload._id
   );
 };
@@ -154,5 +156,21 @@ export const handleRejected = (state) => {
 export function handleFulfilledProductList(state, { payload }) {
   state.list.push(...payload.products);
   state.total = payload.total;
+  state.isLoading = false;
+}
+
+// ----------- Exercises
+
+export function handleFulfilledExercisesCategories(state, { payload }) {
+  state.items = payload.data;
+  state.page = payload.page + 1;
+  state.total = payload.total;
+  state.isLoading = false;
+}
+export function handlefulfilledExercises(state, { payload }) {
+  state.items = payload.data;
+  state.page = payload.page + 1;
+  state.total = payload.total;
+
   state.isLoading = false;
 }

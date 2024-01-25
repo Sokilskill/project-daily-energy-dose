@@ -1,263 +1,64 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-
+import { Formik, ErrorMessage } from 'formik';
+import { format } from 'date-fns';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addUserData,
   getUserProfile,
-  updateUserName,
+  // updateUserName,
 } from '../../redux/profileSettings/operations';
-
+import { parseISO } from 'date-fns';
 import {
   selectProfileName,
   selectUserProfile,
 } from '../../redux/profileSettings/selectors';
 import { selectUser } from '../../redux/auth/auth-selectors';
-import { useEffect } from 'react';
+import sprite from '../../assets/sprite.svg';
+import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
+import {
+  ErrorMessageStyled,
+  MainContainer,
+  UserContainer,
+  Label,
+  ProfileContainer,
+  ProfileWrapper,
+  RadioContainer,
+  WrapperRadio,
+  BloodWrapper,
+  UserField,
+  HeightField,
+  CurrentWeightField,
+  DesiredWeightField,
+  SaveButton,
+  BirthdayPickerField,
+  RadioLabel,
+  ActivField,
+  LevelWrapper,
+  FormContainer,
+  NameEmailWrapper,
+  ProfileCalendarInput,
+  CurrentWeightWrapper,
+  DesiredWeightWrapper,
+  HeightWrapper,
+} from './UserForm.styled';
+import { setIsParams } from '../../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
 
-// import 'react-toastify/dist/ReactToastify.css';
-
-// import { addUserData } from '../../redux/profileSettings/operations';
-// import { selectUserProfile } from '../../redux/profileSettings/selectors';
-
-// import {
-//   CalendarField,
-//   CurrentWeightInput,
-//   DesiredWeightInput,
-//   ErrorMessageStyled,
-//   HeightInput,
-//   Label,
-//   MainContainer,
-//   MainFormContainer,
-//   ProfileCalendarWrapper,
-//   ProfileContainer,
-//   ProfileWrapper,
-//   SaveButton,
-//   UserContainer,
-//   UserInput,
-//   DesiredWeight,
-// } from './UserForm.styled';
-
-// // import { useEffect } from 'react';
-// import { RadioInput } from './RadioInput';
-// // import { DaySwitch } from '../DaySwitch/DaySwitch';
-// import BirthdayPicker from '../../helperComponents/DatePicker/DatePicker';
-// import { selectUser } from '../../redux/auth/auth-selectors';
-// // import { refreshThunk } from '../../redux/auth/auth-operations';
-
-// export const UserForm = () => {
-//   const dispatch = useDispatch();
-//   const user = useSelector(selectUser);
-//   const userProfile = useSelector(selectUserProfile);
-
-//   // useEffect(() => {
-//   //   dispatch(refreshThunk(user));
-//   // }, [dispatch, user]);
-
-//   const handleSubmitttt = async ({ onSubmit }) => {
-//     try {
-//       console.log('FORMA');
-//       // setIsSubmitted(true);
-//       // await dispatch(addUserData(values));
-//       toast.success('Profile updated successfully');
-//     } catch (error) {
-//       toast.error('An error occurred while updating the profile');
-//       console.error('Error updating profile:', error);
-//     }
-//   };
-
-// const initialValues = {
-//   name: user.mane || '',
-//   email: user.email || '',
-//   height: userProfile.height || '',
-//   currentWeight: userProfile.currentWeight || '',
-//   desiredWeight: userProfile.desiredWeight || '',
-//   birthday: userProfile.birthday || new Date().toISOString(),
-//   blood: String(userProfile.blood) || '1',
-//   sex: userProfile.sex || '',
-//   levelActivity: String(userProfile.levelActivity) || '1',
-// };
-
-//   return (
-//     <MainContainer>
-//       <Formik
-//         initialValues={initialValues}
-//         validationSchema={ProfileSchema}
-//         // onSubmit={handleSubmit}
-//         //   onSubmit={(values, { resetForm }) => {
-//         //     onSubmit(values);
-//         //     resetForm();
-//         //   }}
-//         // >
-//         //   {({ values, handleChange, handleBlur })
-
-//         onSubmit={(values, { setSubmitting }) => {
-//           console.log('values', values);
-//           setTimeout(() => {
-//             alert(JSON.stringify(values, null, 2));
-//             setSubmitting(false);
-//           }, 400);
-//         }}
-//       >
-//         {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-//           <MainFormContainer autoComplete="off" onSubmit={handleSubmit}>
-//             <UserContainer>
-//               <div>
-//                 <Label>Name </Label>
-//                 <UserInput
-//                   type="text"
-//                   id="name"
-//                   name="name"
-//                   value={values.name}
-//                   placeholder="Name"
-//                   aria-label="Name Input"
-//                   onChange={handleChange}
-//                   onBlur={handleBlur}
-//                 />
-//                 <ErrorMessage name="name" component={ErrorMessageStyled} />
-//               </div>
-
-//               <div>
-//                 <Label>Email</Label>
-//                 <UserInput
-//                   type="email"
-//                   id="email"
-//                   name="email"
-//                   placeholder="E-mail"
-//                   onChange={handleChange}
-//                   onBlur={handleBlur}
-//                   value={values.email}
-//                 />
-//                 <ErrorMessage name="email" component={ErrorMessageStyled} />
-//               </div>
-//             </UserContainer>
-//             <ProfileContainer>
-//               <ProfileWrapper>
-//                 <div>
-//                   <Label>Height</Label>
-//                   <HeightInput
-//                     type="number"
-//                     id="height"
-//                     name="height"
-//                     placeholder="0"
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     value={values.height}
-//                     required
-//                   />
-//                   <ErrorMessage name="height" component={ErrorMessageStyled} />
-//                 </div>
-//                 <div>
-//                   <Label>Current Weight</Label>
-//                   <CurrentWeightInput
-//                     type="number"
-//                     id="currentWeight"
-//                     name="currentWeight"
-//                     placeholder="0"
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     value={values.currentWeight}
-//                     required
-//                   />
-//                   <ErrorMessage
-//                     name="currentWeigh"
-//                     component={ErrorMessageStyled}
-//                   />
-//                 </div>
-//               </ProfileWrapper>
-//               <ProfileCalendarWrapper>
-//                 <DesiredWeight>
-//                   <Label>Desired Weight</Label>
-//                   <DesiredWeightInput
-//                     type="number"
-//                     id="desiredWeight"
-//                     name="desiredWeight"
-//                     placeholder="0"
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     value={values.desiredWeight}
-//                     required
-//                   />
-//                   <ErrorMessage
-//                     name="desiredWeight"
-//                     component={ErrorMessageStyled}
-//                   />
-//                 </DesiredWeight>
-
-//                 <div>
-//                   <Label>Date of birth </Label>
-
-//                   <CalendarField name="birthday">
-//                     {({ field }) => (
-//                       <div>
-//                         <BirthdayPicker {...field} />
-//                         <ErrorMessage
-//                           name="birthday"
-//                           component={ErrorMessageStyled}
-//                         />
-//                       </div>
-//                     )}
-//                   </CalendarField>
-//                 </div>
-//               </ProfileCalendarWrapper>
-//             </ProfileContainer>
-
-//             <div>
-//               <RadioInput
-//                 dataBlood={values.blood}
-//                 dataSex={values.sex}
-//                 dataLevelActivity={values.levelActivity}
-//               />
-//             </div>
-
-//             {/* <SaveButton type="submit" onSubmit={handleSubmit}> */}
-//             <SaveButton type="submit" disabled={isSubmitting}>
-//               Save
-//             </SaveButton>
-//           </MainFormContainer>
-//         )}
-//       </Formik>
-//     </MainContainer>
-//   );
-// };
-
-// Define validation schema using Yup
-
-//================== Radio Button ==================
-
-// ================ id - для ключа(можна використовувати індекс)
-// ================ value - значення радіокнопки
-// ================ label - назва кнопки
-
-//---------- група крові ----------
 
 const bloodsValue = [
-  {
-    label: '1',
-    value: 1,
-  },
-  {
-    label: '2',
-    value: 2,
-  },
-  {
-    label: '3',
-    value: 3,
-  },
-  {
-    label: '4',
-    value: 4,
-  },
+  { label: '1', value: 1 },
+  { label: '2', value: 2 },
+  { label: '3', value: 3 },
+  { label: '4', value: 4 },
 ];
 
-//---------- стать ----------
 const sexValue = [
   { label: 'Male', value: 'male' },
   { label: 'Female', value: 'female' },
 ];
 
-//---------- рівень активного тренування ----------
 const levelActivityValue = [
   {
     id: 1,
@@ -289,7 +90,7 @@ const levelActivityValue = [
 
 export const UserForm = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const {
     height,
     currentWeight,
@@ -300,166 +101,436 @@ export const UserForm = () => {
     levelActivity,
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
-  // const userEmail = useSelector(selectProfileEmail);
   const userCurrent = useSelector(selectUser);
+  // const [selectedDate, setSelectedDate] = useState(null);
+  const currentName = userName || userCurrent.name;
 
-  useEffect(() => {
-    if (userName) {
-      dispatch(getUserProfile());
-    }
-  }, [dispatch, userName]);
 
-  const currentName = userName ? userName : userCurrent.name;
-  console.log('currentName', currentName);
+  function formatDateString(DateStr) {
+    const originalDate = new Date(DateStr);
+    return `${originalDate.getDate()}.${
+      originalDate.getMonth() + 1
+    }.${originalDate.getFullYear()}`;
+  }
+  const currentDay = new Date();
+  const formattedDateBirthday = formatDateString(
+    birthday ? birthday : currentDay
+  );
+
 
   const initialValues = {
     name: currentName || '',
-    email: userCurrent.email || '',
+    email: userCurrent.email,
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: birthday || 0,
+    birthday: birthday ? new Date(birthday) : new Date('2000-01-01'),
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
+    
   };
-
-  // console.log('initialValues', initialValues);
+ 
 
   const handleSubmit = async (data) => {
     try {
-      console.log('DATA', data);
-      const { name, email, ...profileData } = data;
-      const updateNameResult = await dispatch(updateUserName({ name }));
+      const { email, birthday, ...profileData } = data;
+      // console.log('DATA', data);
+      const formattedBirthday = format(new Date(birthday), 'yyyy-MM-dd');
+      const updateProfileDataResult = await dispatch(
+        addUserData({
+          ...profileData,
 
-      // console.log('PROFILEDATA]', profileData);
-      const updateProfileDataResult = await dispatch(addUserData(profileData));
-      // console.log('updateNameResult', updateNameResult);
-      // console.log('updateProfileDataResult', updateProfileDataResult);
+          birthday: formattedBirthday,
+        })
+      );
 
-      if (
-        updateNameResult.meta.requestStatus === 'fulfilled' &&
-        updateProfileDataResult.meta.requestStatus === 'fulfilled'
-      ) {
-        await dispatch(getUserProfile());
-
-        toast.success('Дані оброблюються, створюється план тренувань');
-      } else {
-        console.log('Помилка оновлення даних');
-      }
-    } catch (error) {
-      toast.error('An error occurred while updating the profile');
-      console.error('Error updating profile:', error);
+    if (updateProfileDataResult.meta.requestStatus === 'fulfilled') {
+      dispatch(getUserProfile());
+      dispatch(setIsParams());
+      navigate('/diary');
+    } else {
+      console.log('Setting update error');
     }
-  };
+  } catch (error) {
+    toast.error('An error occurred while updating the profile');
+    console.error('Error updating profile:', error);
+  }
+};
 
   return (
     currentName && (
-      <Formik
-        initialValues={initialValues}
-        validationSchema={ProfileSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched, values, setFieldValue }) => (
-          <Form>
-            <div>
-              <label htmlFor="name">Name</label>
-              <Field type="text" id="name" name="name" value={values.name} />
-              <ErrorMessage name="name" component="div" />
-            </div>
-
-            {/* email зробити не активним */}
-            <div>
-              <label htmlFor="email">Email</label>
-              <Field type="text" id="email" name="email" />
-              <ErrorMessage name="email" component="div" />
-            </div>
-
-            <div>
-              <label htmlFor="height">Height</label>
-              <Field type="number" id="height" name="height" />
-              <ErrorMessage name="height" component="div" />
-            </div>
-
-            <div>
-              <label htmlFor="currentWeight">currentWeight</label>
-              <Field type="number" id="currentWeight" name="currentWeight" />
-              <ErrorMessage name="currentWeight" component="div" />
-            </div>
-
-            <div>
-              <label htmlFor="desiredWeight">desiredWeight</label>
-              <Field type="number" id="desiredWeight" name="desiredWeight" />
-              <ErrorMessage name="desiredWeight" component="div" />
-            </div>
-
-            <div>
-              <label htmlFor="birthday">Birthday</label>
-              <input type="number" id="birthday" name="birthday" />
-              <ErrorMessage name="birthday" component="div" />
-            </div>
-
-            <div>
-              <label>Blood</label>
-              {bloodsValue.map((blood, index) => (
-                <label key={index}>
-                  <Field
-                    type="radio"
-                    name="blood"
-                    value={blood.value}
-                    checked={values.blood === blood.value}
-                    onChange={() => setFieldValue('blood', blood.value)}
+      <MainContainer>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={ProfileSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched, values, handleChange, setFieldValue }) => (
+            <FormContainer autoComplete="off">
+              <UserContainer>
+                <NameEmailWrapper
+                  style={{
+                    borderColor: touched.name
+                      ? errors.name
+                        ? 'var(--error-color, #d80027)'
+                        : ''
+                      : '',
+                  }}
+                >
+                  <Label htmlFor="name">Name</Label>
+                  <UserField
+                    required
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    value={values.name}
+                    onChange={handleChange}
+                    style={{
+                      borderColor: touched.name
+                        ? errors.name
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
                   />
-                  {blood.label}
-                </label>
-              ))}
-              <ErrorMessage name="blood" component="div" />
-            </div>
+                  <div style={{ position: 'relative' }}>
+                    {errors.name && touched.name && (
+                      <svg
+                        style={{
+                          width: '16px',
+                          height: '16px',
+                          position: 'absolute',
+                          left: 0,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                        }}
+                      >
+                        <use
+                          href={`${sprite}#checkbox-circle`}
+                          style={{ fill: 'var(--error-color, #d80027)' }}
+                        />
+                      </svg>
+                    )}
+                    <ErrorMessage name="name" component={ErrorMessageStyled} />
+                  </div>
+                </NameEmailWrapper>
 
-            <div>
-              {sexValue.map((option, index) => (
-                <label key={index}>
-                  <Field type="radio" name="sex" value={option.value} />
-                  {option.label}
-                </label>
-              ))}
-              <ErrorMessage name="sex" component="div" />
-            </div>
+                <NameEmailWrapper
+                  style={{
+                    borderColor: touched.email
+                      ? errors.email
+                        ? 'var(--error-color, #d80027)'
+                        : ''
+                      : '',
+                  }}
+                >
+                  <Label htmlFor="email">Email</Label>
 
-            <div>
-              {levelActivityValue.map((option) => (
-                <label key={option.id}>
-                  <Field
-                    type="radio"
-                    name="levelActivity"
-                    value={option.value}
-                    checked={values.levelActivity === option.value}
-                    onChange={() =>
-                      setFieldValue('levelActivity', option.value)
-                    }
+                  <UserField
+                    required
+                    type="text"
+                    id="email"
+                    name="email"
+                    readOnly
+                    placeholder={userCurrent.email}
+                    style={{
+                      borderColor: touched.email
+                        ? errors.email
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
                   />
-                  {option.label}
-                </label>
-              ))}
-              <ErrorMessage name="levelActivity" component="div" />
-            </div>
+                  <div style={{ position: 'relative' }}>
+                    {errors.email && touched.email && (
+                      <svg
+                        style={{
+                          width: '16px',
+                          height: '16px',
+                          position: 'absolute',
+                          left: 0,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                        }}
+                      >
+                        <use
+                          href={`${sprite}#checkbox-circle`}
+                          style={{ fill: 'var(--error-color, #d80027)' }}
+                        />
+                      </svg>
+                    )}
+                    <ErrorMessage name="email" component={ErrorMessageStyled} />
+                  </div>
+                </NameEmailWrapper>
+              </UserContainer>
+              <ProfileContainer>
+                <ProfileWrapper>
+                  <HeightWrapper
+                    style={{
+                      borderColor: touched.height
+                        ? errors.height
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
+                  >
+                    <Label htmlFor="height">Height</Label>
+                    <HeightField
+                      required
+                      type="number"
+                      id="height"
+                      name="height"
+                      placeholder="0"
+                      style={{
+                        borderColor: touched.height
+                          ? errors.height
+                            ? 'var(--error-color, #d80027)'
+                            : ''
+                          : '',
+                      }}
+                    />
+                    <div style={{ position: 'relative' }}>
+                      {errors.height && touched.height && (
+                        <svg
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            position: 'absolute',
+                            left: 0,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                          }}
+                        >
+                          <use
+                            href={`${sprite}#checkbox-circle`}
+                            style={{ fill: 'var(--error-color, #d80027)' }}
+                          />
+                        </svg>
+                      )}
+                      <ErrorMessage
+                        name="height"
+                        component={ErrorMessageStyled}
+                      />
+                    </div>
+                  </HeightWrapper>
+                  <CurrentWeightWrapper
+                    style={{
+                      borderColor: touched.currentWeight
+                        ? errors.currentWeight
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
+                  >
+                    <Label htmlFor="currentWeight">Current Weight</Label>
+                    <CurrentWeightField
+                      required
+                      type="number"
+                      id="currentWeight"
+                      name="currentWeight"
+                      placeholder="0"
+                      style={{
+                        borderColor: touched.currentWeight
+                          ? errors.currentWeight
+                            ? 'var(--error-color, #d80027)'
+                            : ''
+                          : '',
+                      }}
+                    />
+                    <div style={{ position: 'relative' }}>
+                      {errors.currentWeight && touched.currentWeight && (
+                        <svg
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            position: 'absolute',
+                            left: 0,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                          }}
+                        >
+                          <use
+                            href={`${sprite}#checkbox-circle`}
+                            style={{ fill: 'var(--error-color, #d80027)' }}
+                          />
+                        </svg>
+                      )}
+                      <ErrorMessage
+                        name="currentWeight"
+                        component={ErrorMessageStyled}
+                      />
+                    </div>
+                  </CurrentWeightWrapper>
+                </ProfileWrapper>
 
-            <button type="submit">Save</button>
-          </Form>
-        )}
-      </Formik>
+                <ProfileWrapper>
+                  <DesiredWeightWrapper
+                    style={{
+                      borderColor: touched.desiredWeight
+                        ? errors.desiredWeight
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
+                  >
+                    <Label htmlFor="desiredWeight">Desired Weight</Label>
+                    <DesiredWeightField
+                      required
+                      type="number"
+                      id="desiredWeight"
+                      name="desiredWeight"
+                      placeholder="0"
+                      style={{
+                        borderColor: touched.desiredWeight
+                          ? errors.desiredWeight
+                            ? 'var(--error-color, #d80027)'
+                            : ''
+                          : '',
+                      }}
+                    />
+                    <div style={{ position: 'relative' }}>
+                      {errors.desiredWeight && touched.desiredWeight && (
+                        <svg
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            position: 'absolute',
+                            left: 0,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                          }}
+                        >
+                          <use
+                            href={`${sprite}#checkbox-circle`}
+                            style={{ fill: 'var(--error-color, #d80027)' }}
+                          />
+                        </svg>
+                      )}
+                      <ErrorMessage
+                        name="desiredWeight"
+                        component={ErrorMessageStyled}
+                      />
+                    </div>
+                  </DesiredWeightWrapper>
+
+                  <div
+                    style={{
+                      borderColor: touched.birthday
+                        ? errors.birthday
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}
+                  >
+                    <Label htmlFor="birthday">Date of birth</Label>
+                    <ProfileCalendarInput style={{
+                      borderColor: touched.birthday
+                        ? errors.birthday
+                          ? 'var(--error-color, #d80027)'
+                          : ''
+                        : '',
+                    }}>
+                      <BirthdayPickerField name="birthday">
+                      {({ field }) => (
+                       <BirthdayPicker
+                       id="date"
+                       currentDate={field.value}
+                       setSelectedDate={(date) => {
+                        const formattedDate = parseISO(date.toISOString());
+                        setFieldValue('birthday', formattedDate);
+                      }}
+                      />
+
+                      )}
+                    </BirthdayPickerField>
+                    </ProfileCalendarInput>
+                    
+                    <div style={{ position: 'relative' }}>
+                      {errors.birthday && touched.birthday && (
+                        <svg
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            position: 'absolute',
+                            left: 0,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                          }}
+                        >
+                          <use
+                            href={`${sprite}#checkbox-circle`}
+                          />
+                        </svg>
+                      )}
+                      <ErrorMessage
+                        name="birthday"
+                        component={ErrorMessageStyled}
+                      />
+                    </div>
+                  </div>
+                </ProfileWrapper>
+              </ProfileContainer>
+
+              <RadioContainer>
+                <Label>Blood</Label>
+                <WrapperRadio>
+                  <BloodWrapper>
+                    {bloodsValue.map((blood, index) => (
+                      <RadioLabel key={index}>
+                        <ActivField
+                          required
+                          type="radio"
+                          name="blood"
+                          value={blood.value}
+                          checked={values.blood === blood.value}
+                          onChange={() => setFieldValue('blood', blood.value)}
+                        />
+                        {blood.label}
+                      </RadioLabel>
+                    ))}
+                  </BloodWrapper>
+
+                  <BloodWrapper>
+                    {sexValue.map((option, index) => (
+                      <RadioLabel key={index}>
+                        <ActivField
+                          required
+                          type="radio"
+                          name="sex"
+                          value={option.value}
+                        />
+                        {option.label}
+                      </RadioLabel>
+                    ))}
+                  </BloodWrapper>
+                </WrapperRadio>
+
+                <LevelWrapper>
+                  {levelActivityValue.map((option) => (
+                    <RadioLabel key={option.id}>
+                      <ActivField
+                        required
+                        type="radio"
+                        name="levelActivity"
+                        value={option.value}
+                        checked={values.levelActivity === option.value}
+                        onChange={() =>
+                          setFieldValue('levelActivity', option.value)
+                        }
+                      />
+                      {option.label}
+                    </RadioLabel>
+                  ))}
+                </LevelWrapper>
+              </RadioContainer>
+
+              <SaveButton type="submit">Save</SaveButton>
+            </FormContainer>
+          )}
+        </Formik>
+      </MainContainer>
     )
   );
 };
-
-/* <div>
-            <label htmlFor="blood">blood</label>
-            <input type="number" id="blood" name="blood" />
-            <ErrorMessage name="blood" component="div" />
-          </div> */
-
-/* <div>
-            <label htmlFor="levelActivity">levelActivity</label>
-            <input type="number" id="levelActivity" name="levelActivity" />
-            <ErrorMessage name="levelActivity" component="div" />
-          </div> */

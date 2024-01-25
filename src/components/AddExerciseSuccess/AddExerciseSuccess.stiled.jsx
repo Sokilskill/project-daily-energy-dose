@@ -28,11 +28,13 @@ export const ModalContainer = styled.div`
       width: 430px;
     }
 `;
-export const Close = styled.div`
+export const Close = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
   cursor: pointer;
+  background: rgba(0,0,0,0);
+  type: button;
 `
 export const Div = styled.div`
   text-align: center;
@@ -60,16 +62,13 @@ export const Title = styled.p`
 `;
 
 export const Text = styled.p`
-  margin-right: 9px;
-  margin-bottom: 4px;
+  color: rgba(239, 237, 232, 0.3);
+
   font-family: Roboto;
   font-size: 14px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0px;
-  text-align: left;
-  color: var(--white);
-  text-align: center;
+  line-height: 1.28;
 `;
 
 export const Button = styled.button`
@@ -102,13 +101,30 @@ export const Button = styled.button`
 export const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
+  color: rgba(239, 237, 232, 0.3);
+
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
   align-items: center;
+`;
+
+export const IconAdd = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: var(--input-border);
+  margin-left: 8px;
+`;
+
+export const Accent = styled.span`
   font-family: Roboto;
   font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.28;
   letter-spacing: 0px;
   text-align: left;
-  color: var(--white);
-`
-
+  color: var(--orange);
+  text-align: center;
+`;

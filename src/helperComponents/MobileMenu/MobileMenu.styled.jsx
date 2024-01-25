@@ -11,11 +11,16 @@ export const Overlay = styled.div`
 `;
 
 export const Modal = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: fixed;
   top: 0;
   right: 0;
   height: 100%;
-  padding: 245px 45px 0;
+  // padding: 245px 45px 0;
+  padding: 0 45px 0;
 
   background-color: #e6533c;
   z-index: 100;
@@ -26,11 +31,22 @@ export const Modal = styled.div`
     transform: translate(0);
   }
 
-  @media screen and (min-width: 768px) {
-    padding: 280px 115px 0;
+  @media screen and (min-height: 550px) {
+    display: block;
+    padding: 245px 45px 0;
   }
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 768px) {
+    // padding: 280px 114px 0;
+    padding: 0 114px 0;
+  }
+
+  @media screen and (min-width: 768px) and (min-height: 550px) {
+    display: block;
+    padding: 280px 114px 0;
+  }
+
+  @media screen and (min-width: 1440px) {
     display: none;
   }
 `;

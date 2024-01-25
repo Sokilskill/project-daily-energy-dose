@@ -19,6 +19,8 @@ import { exercisesSliceReducer } from './exercises/exercisesSlice';
 import { productsReducer } from './products/sliceProducts';
 import { statisticsSliceReducer } from './statistics/statisticsSlice';
 import { diarySliceReducer } from './diary/diarySlice';
+// import { commonExercisesReducer } from './exercises/commonExercisesReducer';
+import { errorPageReducer } from './errorPage/err-slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -50,7 +52,8 @@ export const store = configureStore({
     exercises: exercisesSliceReducer,
     products: persistReducer(productsPersistConfig, productsReducer),
     statistics: statisticsSliceReducer,
-    profile: persistReducer(authPersistConfig, profileReducer),
+    profile: profileReducer,
+    error: errorPageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

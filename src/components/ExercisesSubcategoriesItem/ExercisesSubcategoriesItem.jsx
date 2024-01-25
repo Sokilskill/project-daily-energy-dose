@@ -1,26 +1,23 @@
+import capitalizeString from '../../../hooks/capitalizeString';
 import {
   SubcategoriesListItem,
   SubcategoriesImg,
   SubcategoriesTextWrapper,
   SubcategoriesTitle,
   SubcategoriesText,
+  SubcategoriesItemLink,
 } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem.styled';
-import Shoulders from '../../assets/Exercises/Shoulders.png';
-import { useNavigate } from 'react-router-dom';
 
-export const ExercisesSubcategoriesItem = () => {
-  const navigate = useNavigate();
+export const ExercisesSubcategoriesItem = ({ data }) => {
   return (
-    <SubcategoriesListItem
-      onClick={() => {
-        navigate('/exercises/list');
-      }}
-    >
-      <SubcategoriesImg src={Shoulders}></SubcategoriesImg>
-      <SubcategoriesTextWrapper>
-        <SubcategoriesTitle>Shoulders</SubcategoriesTitle>
-        <SubcategoriesText>Body parts</SubcategoriesText>
-      </SubcategoriesTextWrapper>
+    <SubcategoriesListItem>
+      <SubcategoriesItemLink to={data.name}>
+        <SubcategoriesImg src={data?.imgURL} alt={data?.name} />
+        <SubcategoriesTextWrapper>
+          <SubcategoriesTitle>{capitalizeString(data.name)}</SubcategoriesTitle>
+          <SubcategoriesText>{data?.filter}</SubcategoriesText>
+        </SubcategoriesTextWrapper>
+      </SubcategoriesItemLink>
     </SubcategoriesListItem>
   );
 };

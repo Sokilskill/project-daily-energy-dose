@@ -9,6 +9,7 @@ export const MobileMenu = ({ isOpenMenu }) => {
 
   const closeMenu = () => {
     setMenuIsOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   const handleBackdropClick = (event) => {
@@ -18,23 +19,20 @@ export const MobileMenu = ({ isOpenMenu }) => {
   };
 
   useEffect(() => {
-    setMenuIsOpen(isOpenMenu);
-  }, [isOpenMenu]);
-
-  useEffect(() => {
     const handleEscKey = (event) => {
       if (event.key === 'Escape') {
         closeMenu();
       }
     };
-    if (menuIsOpen) {
+    if (isOpenMenu) {
+      setMenuIsOpen(true);
+      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleEscKey);
     }
-
     return () => {
       window.removeEventListener('keydown', handleEscKey);
     };
-  }, [menuIsOpen]);
+  }, [isOpenMenu]);
 
   return (
     <>

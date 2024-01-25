@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 
 export const Backdrop  = styled.div`;
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,13 +19,13 @@ export const ModalContainer = styled.div`
   width: 335px;
 
   padding: 48px 32px;
-  
+
   border-radius: 12px;
   border: 1px;
-  background: linear-gradient(0deg, #10100F, #10100F),
-  linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
+  background: linear-gradient(0deg, #10100f, #10100f),
+    linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 694px;
   }
 `;
@@ -37,23 +37,31 @@ export const Close = styled.div`
   cursor: pointer;
 `
 export const Container = styled.div`
-  @media (min-width: 768px) {
-    display: inline-block;
-    width: 50%;
-  }
 
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const ContainerBtn = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 345px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 `;
 export const Flex = styled.div`
-  @media (min-width: 768px) {
-    displey:flex;
-    flex-wrap: wrap;
+  @media screen and (min-width: 768px) {
+    
+    display: flex;
+    justify-content: space-between;
   }
-  
 `;
-export const Div = styled.div`
-  text-align: center;
-  margin-bottom: 14px;
-`;
+
 
 export const Image = styled.img`
   display: inline-block;
@@ -65,41 +73,52 @@ export const Image = styled.img`
   border-radius: 12px;
   border: 1px;
   gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 14px;
+  }
 `;
 
 export const TimerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 8px;
+  margin-top: 4px;
 `;
 
 export const TimerButton = styled.button`
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.75rem;
-  padding: 0.5rem;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   border: none;
   outline: none;
-  transition: background-color 0.3s ease;
   color: #fff;
-  border-radius: 1px;
-  
-  background-color: #E6533C;
+  border-radius: 8px;
+  background-color: var(--orange);
+  margin: 14px 0 8px 0;
+  transition: background-color 0.3s ease;
   &:hover {
-    background-color: #D6432C;
+    background-color: #d6432c;
   }
 `;
 
-export const ButtonDiv = styled.div`
-
-text-align: center;
+export const Accent = styled.span`
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--orange);
+  text-align: center;
 `;
 
 export const Text = styled.p`
-margin-bottom: 4px;
+
 font-family: Roboto;
 font-size: 14px;
 font-weight: 400;
@@ -111,31 +130,30 @@ text-align: center;
 `;
 
 export const StyledList = styled.ul`
-  margin-top: 40px;
-  list-style: none;
-  displey:flex;
+  display:flex; 
   flex-wrap: wrap;
-  align-content: space-between;
-
-  @media (min-width: 768px) {
-    margin-top: 0;
+  gap: 8px;
+  
+  
+  list-style: none;
+  @media screen and (min-width: 768px) {
+    width: 345px;
   }
 }
 `;
 
 export const StyledListItem = styled.li`
-  margin:8px;
-  display: inline-block;
-  border: 1px solid var(--border);
-  width: 40%;
-
-  padding: 10px;
+  border: 1px solid var(--calendar-button-border);
   border-radius: 12px;
-  gap: 32px;
-  background: linear-gradient(0deg, rgba(239, 237, 232, 0.05), rgba(239, 237, 232, 0.05));
+  background-color: rgba(239, 237, 232, 0.05);
+  padding: 12px 18px;
+  width: calc((100% / 2) - 8px);
+  @media screen and (min-width: 768px) {
+    width: calc((100% / 2) - 4px);
+  }
 `;
 
-export const Workout = styled.div`
+export const Workout = styled.p`
   font-family: Roboto;
   font-size: 12px;
   font-weight: 400;
@@ -143,8 +161,12 @@ export const Workout = styled.div`
   letter-spacing: 0px;
   text-align: left;
   color: var(--secondary-text-color);
-  
-`
+
+  @media screen and (min-width: 768px) {
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+`;
 export const WorkoutName = styled.p`
   font-family: Roboto;
   font-size: 14px;
@@ -153,31 +175,42 @@ export const WorkoutName = styled.p`
   letter-spacing: 0px;
   text-align: left;
   color: var(--whiter);
-`
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+`;
 export const Button = styled.button`
-width: 157px;
-height: 42px;
-margin-top: 24px;
-margin-bottom: 16px;
-padding: 12px, 32px, 12px, 32px;
-border-radius: 12px;
-gap: 10px;
-background: #E6533C;
-font-family: Roboto;
-font-size: 16px;
-font-weight: 500;
-line-height: 18px;
-letter-spacing: 0em;
-text-align: center;
-color: var(--white);
+  
+  margin-top: 24px;
 
-&:hover {
-  background-color: #E6533C;
-}
+  padding: 12px 32px 12px 32px;
+  border-radius: 12px;
 
-&:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #E6533C;
-}
+  background: #e6533c;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: var(--white);
+
+  &:hover {
+    background-color: #e6533c;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #e6533c;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    padding: 14px 32px;
+    line-height: 1.5; 
+  }
 `;
 

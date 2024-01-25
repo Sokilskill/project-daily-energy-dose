@@ -1,48 +1,37 @@
-import { useDispatch } from 'react-redux';
 import {
+  CategoriesItemLink,
   CategoriesList,
   CategoriesListItem,
-  Link,
 } from '../ExercisesCategories/ExercisesCategories.styled';
-import {
-  getExercisesByBodyParts,
-  getExercisesByEquipment,
-  getExercisesByMuscles,
-} from '../../redux/exercises/exercisesOperations';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export const ExercisesCategories = () => {
-  const dispatch = useDispatch();
+export const ExercisesCategories = ({ children }) => {
   const navigate = useNavigate();
+  const { categoryType } = useParams();
 
   useEffect(() => {
-    navigate('/exercises/bodyParts');
+    if (!categoryType) {
+      navigate('body');
+    }
   }, []);
 
   return (
-    <CategoriesList>
-      <CategoriesListItem
-        onClick={() => {
-          dispatch(getExercisesByBodyParts());
-        }}
-      >
-        <Link to="bodyParts">Body parts</Link>
-      </CategoriesListItem>
-      <CategoriesListItem
-        onClick={() => {
-          dispatch(getExercisesByMuscles());
-        }}
-      >
-        <Link to="muscles">Muscles</Link>
-      </CategoriesListItem>
-      <CategoriesListItem
-        onClick={() => {
-          dispatch(getExercisesByEquipment());
-        }}
-      >
-        <Link to="equipment">Equipment</Link>
-      </CategoriesListItem>
-    </CategoriesList>
+    <div>
+      <CategoriesList>
+        <CategoriesListItem>
+          <CategoriesItemLink to={'body'}> Body Parts</CategoriesItemLink>
+        </CategoriesListItem>
+
+        <CategoriesListItem>
+          <CategoriesItemLink to={'muscles'}>Muscles</CategoriesItemLink>
+        </CategoriesListItem>
+
+        <CategoriesListItem>
+          <CategoriesItemLink to={'equipment'}>Equipments</CategoriesItemLink>
+        </CategoriesListItem>
+      </CategoriesList>
+      {children}
+    </div>
   );
 };

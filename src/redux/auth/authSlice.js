@@ -14,12 +14,13 @@ import {
   refreshThunk,
   registerThunk,
 } from './auth-operations';
+import { updatedUserAvatar } from '../profileSettings/operations';
 
 const initialState = {
   user: {
     name: null,
     email: null,
-    avatarUrl: null,
+    avatarURL: null,
     avatarLargeURL: null,
     targetBmr: null,
     targetTime: null,
@@ -33,6 +34,7 @@ const initialState = {
       blood: null,
       sex: null,
       levelActivity: null,
+      isParams: false,
     },
   },
   isLoggedIn: false,
@@ -43,9 +45,27 @@ const initialState = {
   token: '',
 };
 
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const handleUpdateAvatarFulfilled = (state, action) => {
+  state.user.avatarLargeURL = action.payload.avatarLargeURL;
+  state.user.avatarURL = action.payload.avatarLargeURL;
+  state.isLoading = false;
+  state.error = null;
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setIsParams: (state) => {
+      state.user.isParams = true;
+    },
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(registerThunk.pending, handlePending)
@@ -64,14 +84,17 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshThunk.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = { ...action.payload };
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(refreshThunk.rejected, (state) => {
         state.isRefreshing = false;
-      });
+      })
+      .addCase(updatedUserAvatar.pending, handlePending)
+      .addCase(updatedUserAvatar.rejected, handleRejected)
+      .addCase(updatedUserAvatar.fulfilled, handleUpdateAvatarFulfilled);
   },
 });
-
+export const { setIsParams } = authSlice.actions;
 export const authReducer = authSlice.reducer;

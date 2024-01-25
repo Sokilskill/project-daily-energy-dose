@@ -7,15 +7,12 @@ export const selectIsLoading = (state) => state.auth.isLoading;
 
 export const selectIsToken = (state) => state.auth.token;
 export const selectUserBodyParams = (state) => state.auth.user.bodyParams;
+export const selectUserLargeAvatar = (state) => state.auth.user.avatarLargeURL;
+export const selectUserSmallAvatar = (state) => state.auth.user.avatarURL;
 
-export const selectIsParamsData = ({ profile }) => {
-  // console.log('STATE AUTH', state);
+export const selectIsParamsData = (state) => state.auth.user.isParams;
 
-  if (!profile.profile.levelActivity) {
-    return false;
-  }
-  return true;
-};
+export const selectTargetBmr = (state) => state.auth.user.targetBmr;
 
 // Diary
 const getUserMetricData = (state) => state.auth.user.bodyParams;

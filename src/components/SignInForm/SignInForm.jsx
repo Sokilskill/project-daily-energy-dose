@@ -31,7 +31,7 @@ export const SignInForm = ({ onSubmit }) => {
       }}
     >
       {(formik) => {
-        const { errors, touched } = formik;
+        const { errors, touched, values } = formik;
         return (
           <>
             <Form className={css.form}>
@@ -60,7 +60,7 @@ export const SignInForm = ({ onSubmit }) => {
                       <ErrorMessage name="email" />
                     </div>
                   ) : null}
-                  {!errors.email && touched.email ? (
+                  {!errors.email && values.email ? (
                     <div className={css.success_row}>
                       <svg className={css.icon_checkbox_succsess}>
                         <use href={`${sprite}#checkbox-circle`} />
@@ -106,7 +106,7 @@ export const SignInForm = ({ onSubmit }) => {
                       <ErrorMessage name="password" />
                     </div>
                   ) : null}
-                  {!errors.password && touched.password ? (
+                  {!errors.password && values.password ? (
                     <div className={css.success_row}>
                       <svg className={css.icon_checkbox_succsess}>
                         <use href={`${sprite}#checkbox-circle`} />

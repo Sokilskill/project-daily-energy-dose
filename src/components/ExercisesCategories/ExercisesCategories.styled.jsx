@@ -7,12 +7,14 @@ export const CategoriesList = styled.ul`
 
   @media screen and (min-width: 768px) {
     gap: 32px;
+    justify-content: flex-end;
+    margin-top: -60px;
   }
 `;
 
 export const CategoriesListItem = styled.li``;
 
-export const Link = styled(NavLink)`
+export const CategoriesItemLink = styled(NavLink)`
   position: relative;
   padding-bottom: 5px;
   font-size: 14px;
