@@ -38,7 +38,8 @@ const Icon = styled.svg`
 `;
 
 const DayProducts = () => {
-  const visibleProducts = useSelector(diarySelectors.getDiary).eatenProducts;
+  const diaryDate = useSelector(diarySelectors.getDiary).date;
+  const visibleProducts = useSelector(diarySelectors.getDiary).products;
 
   return (
     <Container>
@@ -51,12 +52,11 @@ const DayProducts = () => {
           </Icon>
         </StyledLink>
       </TitleMain>
-      <ProductsTable products={visibleProducts} />
+      <ProductsTable products={visibleProducts} date={diaryDate} />
     </Container>
   );
 };
-
-export const ProductsTable = ({ products }) => {
+export const ProductsTable = ({ products, date }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(diarySelectors.getIsLoading);
 
@@ -76,7 +76,6 @@ export const ProductsTable = ({ products }) => {
                 calories,
                 amount,
                 recommend,
-                date,
                 productId: { category, title },
               }) => {
                 return (
@@ -85,7 +84,9 @@ export const ProductsTable = ({ products }) => {
                     <ItemProduct value={category}>Category</ItemProduct>
                     <WrapMobile>
                       <WrapItemProducts>
-                        <ItemProduct value={calories}>Calories</ItemProduct>
+                        <ItemProduct value={Math.round(calories)}>
+                          Calories
+                        </ItemProduct>
                         <ItemProduct value={amount}>Weight</ItemProduct>
                         <ItemProduct value={recommend}>Recommend</ItemProduct>
                       </WrapItemProducts>
@@ -95,20 +96,20 @@ export const ProductsTable = ({ products }) => {
                             diaryOperations.deleteDiaryProduct({
                               productId: _id,
                               date,
-                            }),
+                            })
                           );
                         }}
                       >
                         <DeleteIconWrapper>
                           <Icon width={20} height={20} className="orange">
-                            <use href={`${sprite}#icon-trash`}></use>
+                            <use href={`${sprite}#icon-trash-03`}></use>
                           </Icon>
                         </DeleteIconWrapper>
                       </Button>
                     </WrapMobile>
                   </ListItem>
                 );
-              },
+              }
             )}
           </TableList>
         </>

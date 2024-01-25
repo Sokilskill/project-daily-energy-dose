@@ -105,10 +105,18 @@ export const UserForm = () => {
   // const [selectedDate, setSelectedDate] = useState(null);
   const currentName = userName || userCurrent.name;
 
-  
 
-  // const formattedDate = parseISO(birthday);
- 
+  function formatDateString(DateStr) {
+    const originalDate = new Date(DateStr);
+    return `${originalDate.getDate()}.${
+      originalDate.getMonth() + 1
+    }.${originalDate.getFullYear()}`;
+  }
+  const currentDay = new Date();
+  const formattedDateBirthday = formatDateString(
+    birthday ? birthday : currentDay
+  );
+
 
   const initialValues = {
     name: currentName || '',
@@ -132,6 +140,7 @@ export const UserForm = () => {
       const updateProfileDataResult = await dispatch(
         addUserData({
           ...profileData,
+
           birthday: formattedBirthday,
         })
       );
@@ -433,6 +442,7 @@ export const UserForm = () => {
                         setFieldValue('birthday', formattedDate);
                       }}
                       />
+
                       )}
                     </BirthdayPickerField>
                     </ProfileCalendarInput>

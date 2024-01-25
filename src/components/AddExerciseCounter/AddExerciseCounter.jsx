@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 export const Counter = ({
   isTimerRunning,
@@ -12,14 +11,16 @@ export const Counter = ({
     <CountdownCircleTimer
       isPlaying={isTimerRunning}
       duration={time * 60}
-      
       colors={'#E6533C'}
       colorsTime={[7, 5, 2, 0]}
       strokeWidth={[4]}
       updateInterval={1}
+      size={125}
+      isGrowing={true}
+      trailColor={'rgba(239, 237, 232, 0.10)'}
+      rotation="clockwise "
       onComplete={() => {
         startPauseTimer();
-        
       }}
     >
       {({ remainingTime }) => {
