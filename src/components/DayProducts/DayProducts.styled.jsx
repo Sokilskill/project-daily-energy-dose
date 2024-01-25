@@ -167,7 +167,7 @@ export const SliceText = styled.div`
 export const IconWrapper = styled.svg`
   width: ${(props) => props.size || '13px'};
   height: ${(props) => props.size || '13px'};
-  fill: ${(props) => props.color || '#ffffff'};
+  stroke: #EF8964;
   display: inline-block;
   margin-left: 9px;
 `;
