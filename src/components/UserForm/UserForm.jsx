@@ -126,8 +126,8 @@ export const UserForm = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const { name, email, birthday, ...profileData } = data;
-      console.log('DATA', data);
+      const { email, birthday, ...profileData } = data;
+      // console.log('DATA', data);
       const formattedBirthday = format(new Date(birthday), 'yyyy-MM-dd');
       const updateProfileDataResult = await dispatch(
         addUserData({
