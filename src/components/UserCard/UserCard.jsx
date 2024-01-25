@@ -77,7 +77,7 @@ export const UserCard = () => {
           {loading ? (
             <MyLoader />
           ) : avatar ? (
-            <NewAvatar src={avatar} alt="Preview" />
+            <NewAvatar src={avatar} alt="Preview" width={90}/>
           ) : (
             <div>
               {
