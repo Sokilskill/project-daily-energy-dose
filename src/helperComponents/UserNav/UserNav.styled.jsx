@@ -26,7 +26,6 @@ export const Link = styled(NavLink)`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    font-weight: 400;
     line-height: 150%;
   }
 
