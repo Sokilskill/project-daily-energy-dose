@@ -3,7 +3,7 @@ import '../../index.css';
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding-top: 106px;
+  padding-top: 40px;
   padding-bottom: 80px;
 
   @media screen and (min-width: 375px) {
@@ -65,7 +65,7 @@ export const WrapTitle = styled.div`
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
-    height: 64px;
+    margin-top: 72px;
     margin-bottom: 32px;
     align-items: normal;
   }

@@ -41,8 +41,8 @@ export default function ProductItem({ productItem }) {
 
   const { weight, calories, category, title, groupBloodNotAllowed, _id } =
     productItem;
-  // const groupBlood = useSelector((state) => state.auth.user.bodyParams.blood);
-  const groupBlood = 2;
+  const groupBlood = useSelector((state) => state.profile.profile.blood);
+  
 
   const normalizedTitle = () => {
     if (title) {
@@ -85,22 +85,14 @@ export default function ProductItem({ productItem }) {
 
           <WrapBtn>
             {groupBloodNotAllowed[groupBlood] ? (
-              <>
-                <Rectangle color={'#419B09'} />
-                <RecText>{'Recommended'}</RecText>
-              </>
-            ) : (
-              <>
-                <Rectangle color={'#E9101D'} />
-                <RecText>{'Not recommended'}</RecText>
-              </>
-            )}
-            <AddBtn
-              onClick={() => {
-                setOpenModal(true);
-                document.body.style.overflow = 'hidden';
-              }}
-            >
+            <><Rectangle color = { '#E9101D' } />
+          <RecText>{'Not recommended'}</RecText></>
+        ) : (
+            <><Rectangle color={'#419B09'} />
+          <RecText>{'Recommended'}</RecText></>
+            
+        )}
+            <AddBtn onClick={() => setOpenModal(true)}>
               Add
               <IconAdd>
                 <use href={sprite + '#icon-arrow'} />

@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -19,7 +19,6 @@ const BirthdayPicker = ({
   birthday,
 currentDate,
 setSelectedDate,
-  handlerDate,
   error,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';

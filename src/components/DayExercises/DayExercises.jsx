@@ -63,7 +63,8 @@ export const DayExercises = () => {
 
 export const ExercisesTable = ({ exercises, date }) => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(diarySelectors.getIsLoading);
+  // const isLoading = useSelector(diarySelectors.getIsLoading);
+  const isLoading = false;
 
   return (
     <>
@@ -110,7 +111,7 @@ export const ExercisesTable = ({ exercises, date }) => {
                     >
                       <DeleteIconWrapper>
                         <Icon width={20} height={20} className="orange">
-                          <use href={`${sprite}#icon-trash`}></use>
+                          <use href={`${sprite}#icon-trash-03`}></use>
                         </Icon>
                       </DeleteIconWrapper>
                     </ButtonEx>

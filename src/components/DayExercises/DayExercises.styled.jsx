@@ -4,6 +4,7 @@ import '../../index.css';
 
 export const ContainerEx = styled.div`
   /* 320-375 */
+  margin: 0 auto;
   box-sizing: border-box;
   max-height: 824px;
   width: 335px;

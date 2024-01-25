@@ -17,7 +17,8 @@ const Icon = styled.svg`
 `;
 
 export const Card = ({ value, children }) => {
-  const isLoading = useSelector(diarySelectors.getIsLoading);
+  // const isLoading = useSelector(diarySelectors.getIsLoading);
+  const isLoading = false;
   let icon = '';
   let displayValue = value;
 
