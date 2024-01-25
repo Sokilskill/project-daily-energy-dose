@@ -2,6 +2,7 @@ import { Formik, ErrorMessage } from 'formik';
 import { format } from 'date-fns';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addUserData,
@@ -45,7 +46,6 @@ import {
 import { setIsParams } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react';
-
 
 const bloodsValue = [
   { label: '1', value: 1 },
@@ -105,7 +105,6 @@ export const UserForm = () => {
   // const [selectedDate, setSelectedDate] = useState(null);
   const currentName = userName || userCurrent.name;
 
-
   function formatDateString(DateStr) {
     const originalDate = new Date(DateStr);
     return `${originalDate.getDate()}.${
@@ -117,7 +116,6 @@ export const UserForm = () => {
     birthday ? birthday : currentDay
   );
 
-
   const initialValues = {
     name: currentName || '',
     email: userCurrent.email,
@@ -128,9 +126,7 @@ export const UserForm = () => {
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
-    
   };
- 
 
   const handleSubmit = async (data) => {
     try {
@@ -145,18 +141,21 @@ export const UserForm = () => {
         })
       );
 
-    if (updateProfileDataResult.meta.requestStatus === 'fulfilled') {
-      dispatch(getUserProfile());
-      dispatch(setIsParams());
-      navigate('/diary');
-    } else {
-      console.log('Setting update error');
+      if (updateProfileDataResult.meta.requestStatus === 'fulfilled') {
+        dispatch(getUserProfile());
+        dispatch(setIsParams());
+        navigate('/diary');
+      } else {
+        console.log('Setting update error');
+      }
+    } catch (error) {
+      toast.error('An error occurred while updating the profile', {
+        position: 'top-center',
+        theme: 'dark',
+      });
+      console.error('Error updating profile:', error);
     }
-  } catch (error) {
-    toast.error('An error occurred while updating the profile');
-    console.error('Error updating profile:', error);
-  }
-};
+  };
 
   return (
     currentName && (
@@ -425,28 +424,31 @@ export const UserForm = () => {
                     }}
                   >
                     <Label htmlFor="birthday">Date of birth</Label>
-                    <ProfileCalendarInput style={{
-                      borderColor: touched.birthday
-                        ? errors.birthday
-                          ? 'var(--error-color, #d80027)'
-                          : ''
-                        : '',
-                    }}>
-                      <BirthdayPickerField name="birthday">
-                      {({ field }) => (
-                       <BirthdayPicker
-                       id="date"
-                       currentDate={field.value}
-                       setSelectedDate={(date) => {
-                        const formattedDate = parseISO(date.toISOString());
-                        setFieldValue('birthday', formattedDate);
+                    <ProfileCalendarInput
+                      style={{
+                        borderColor: touched.birthday
+                          ? errors.birthday
+                            ? 'var(--error-color, #d80027)'
+                            : ''
+                          : '',
                       }}
-                      />
-
-                      )}
-                    </BirthdayPickerField>
+                    >
+                      <BirthdayPickerField name="birthday">
+                        {({ field }) => (
+                          <BirthdayPicker
+                            id="date"
+                            currentDate={field.value}
+                            setSelectedDate={(date) => {
+                              const formattedDate = parseISO(
+                                date.toISOString()
+                              );
+                              setFieldValue('birthday', formattedDate);
+                            }}
+                          />
+                        )}
+                      </BirthdayPickerField>
                     </ProfileCalendarInput>
-                    
+
                     <div style={{ position: 'relative' }}>
                       {errors.birthday && touched.birthday && (
                         <svg
@@ -459,9 +461,7 @@ export const UserForm = () => {
                             transform: 'translateY(-50%)',
                           }}
                         >
-                          <use
-                            href={`${sprite}#checkbox-circle`}
-                          />
+                          <use href={`${sprite}#checkbox-circle`} />
                         </svg>
                       )}
                       <ErrorMessage

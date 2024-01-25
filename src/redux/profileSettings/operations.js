@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { messageNotification } from '../../components/alertMessages/alertMessages.jsx';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export const getUserProfile = createAsyncThunk(
   'profile/getUserProfile',
@@ -46,10 +44,6 @@ export const updatedUserAvatar = createAsyncThunk(
           'content-type': 'multipart/form-data',
         },
       });
-      toast.success('Avatar updated', {
-        position: 'top-center',
-        theme: 'dark',
-      });
       return res.data;
     } catch (error) {
       const status = error.response.status;
@@ -64,10 +58,6 @@ export const addUserData = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const res = await axios.put('/profiles', data);
-      toast.success('Settings updated, creating training plan', {
-        position: 'top-center',
-        theme: 'dark',
-      });
       return res.data;
     } catch (error) {
       const status = error.response.status;

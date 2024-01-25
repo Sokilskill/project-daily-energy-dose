@@ -39,6 +39,9 @@
 }
 
 @media (min-width: 768px) {
+  .signin_part {
+    background: none;
+  }
   .text_box {
     min-width: 496px;
     margin-bottom: 32px;
