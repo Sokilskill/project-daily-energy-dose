@@ -445,12 +445,12 @@ export const UserForm = () => {
                             height: '16px',
                             position: 'absolute',
                             left: 0,
-                            top: '50%',
+                            top: '25%',
                             transform: 'translateY(-50%)',
                           }}
                         >
                           <use
-                            href={`${sprite}#checkbox-circle`}
+                            href={sprite+'#icon-checkbox-circle'}
                           />
                         </svg>
                       )}
