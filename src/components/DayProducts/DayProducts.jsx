@@ -58,7 +58,8 @@ const DayProducts = () => {
 };
 export const ProductsTable = ({ products, date }) => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(diarySelectors.getIsLoading);
+  // const isLoading = useSelector(diarySelectors.getIsLoading);
+  const isLoading = false;
 
   return (
     <>
