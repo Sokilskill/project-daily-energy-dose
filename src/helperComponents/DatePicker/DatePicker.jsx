@@ -15,38 +15,33 @@ import sprite from '../../assets/sprite.svg';
 const BirthdayPicker = ({
   textSize,
   textWeight,
-  iconColor,
   textHeight,
   birthday,
+currentDate,
+setSelectedDate,
   handlerDate,
   error,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(birthday);
-
-  const handleDateChange = (date) => {
-    if (datePickerRef.current) {
-      datePickerRef.current.setOpen(true);
-    }
-  
-    setSelectedDate(date);
-    handlerDate(date);
-    console.log("Picked date:", date);
-  
-    
+ 
+const handleDateChange = (date) => {
+ const currentDate = new Date(date)
+    setSelectedDate(currentDate);
   };
-
+  
   return (
     <DaySwitchContainer>
       <StyledCalendarContainer>
         <DatePicker
-          selected={selectedDate}
+          selected={currentDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
-          minDate={birthday ? new Date(birthday) : null}
+          minDate={birthday}
           showYearDropdown
+          yearDropdownItemNumber={100}
+          scrollableYearDropdown
           showMonthDropdown
           customInput={
             <CustomDatePickerInput

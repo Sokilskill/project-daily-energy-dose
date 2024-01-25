@@ -11,7 +11,7 @@ export const CustomDatePickerInput = styled.input`
   display: flex;
   align-items: center;
   background: transparent;
-  border: 1px solid var(--border, #efede84d);
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 14px;
   background-color: inherit;
@@ -20,23 +20,23 @@ export const CustomDatePickerInput = styled.input`
   line-height: 1.5;
   outline: none;
   cursor: pointer;
-  border-color: var(--error-color, #d80027);
+  // border-color: var(--error-color, #d80027);
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
   }
   
-  &.profile {
+  // &.profile {
     width: 161px;
     height: 52px;
-    margin: 4px 0 0 0;
-    border: 1px solid var(--border, #efede84d);
+    // margin: 4px 0 0 0;
+  //   // border: 1px solid var(--border, #efede84d);
 
-    &:hover,
-    &:focus {
-      border-color: rgba(230, 83, 60, 1);
-    }
+    // &:hover,
+    // &:focus {
+    //   border-color: rgba(230, 83, 60, 1);
+    // }
 
     @media screen and (min-width: 768px) {
       width: 187px;
@@ -47,10 +47,10 @@ export const CustomDatePickerInput = styled.input`
     }
   }
 
-  &:error {
-    border-color: var(--error-color, #d80027);
+  // &:error {
+  //   border-color: var(--error-color, #d80027);
 
-  }
+  // }
 `;
 
 CustomDatePickerInput.defaultProps = {
@@ -127,6 +127,8 @@ align-items: flex-start;
     border: none;
     color: var(--white, #efede8);
     font-size: 16px;
+    max-height: 500px;
+    overflow-y: auto;
   }
 
   .react-datepicker__month-read-view--selected-month {
@@ -202,8 +204,8 @@ export const StyledIcon = styled.svg`
   stroke: var(--white);
   cursor: pointer;
   position: absolute;
-  top: 20px;
-  right: 10px;
+  top: 14px;
+  right: 14px;
 
   &:hover,
   &:focus {
@@ -214,7 +216,7 @@ export const StyledIcon = styled.svg`
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
-    top: 18px;
+  
   }
 `;
 
