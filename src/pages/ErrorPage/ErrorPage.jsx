@@ -10,6 +10,7 @@ import {
   SectionContainer,
   LogoWrap,
   Container,
+  ErrorSection,
 } from './ErrorPage.styled';
 import { useDispatch } from 'react-redux';
 import { setErrorPage } from '../../redux/errorPage/err-slice';
@@ -33,32 +34,33 @@ const ErrorPage = () => {
 
   return (
     <>
-      <SectionWrapper
+      <ErrorSection
         bgi={[bg_mod_1, bg_mod_2, bg_tab_1, bg_tab_2, bg_desk_1, bg_desk_2]}
-        className="container section-wrapper"
       >
-        <BackgroundColor>
-          <Container className="container">
-            <LogoWrap>
-              <Logo colorWhite="true" />
-            </LogoWrap>
-            <SectionContainer>
-              <ContentBox>
-                <Title>404</Title>
-                <Text>
-                  Sorry, you have reached a page that we could not find. It
-                  seems that you are lost among the numbers and letters of our
-                  virtual space. Perhaps this page went on vacation or decided
-                  to disappear into another dimension. We apologize for this
-                  inconvenience.
-                </Text>
+        <SectionWrapper className="container section-wrapper">
+          <BackgroundColor>
+            <Container className="container">
+              <LogoWrap>
+                <Logo colorWhite="true" />
+              </LogoWrap>
+              <SectionContainer>
+                <ContentBox>
+                  <Title>404</Title>
+                  <Text>
+                    Sorry, you have reached a page that we could not find. It
+                    seems that you are lost among the numbers and letters of our
+                    virtual space. Perhaps this page went on vacation or decided
+                    to disappear into another dimension. We apologize for this
+                    inconvenience.
+                  </Text>
 
-                <Link to="/">Go Home</Link>
-              </ContentBox>
-            </SectionContainer>
-          </Container>
-        </BackgroundColor>
-      </SectionWrapper>
+                  <Link to="/">Go Home</Link>
+                </ContentBox>
+              </SectionContainer>
+            </Container>
+          </BackgroundColor>
+        </SectionWrapper>
+      </ErrorSection>
     </>
   );
 };
