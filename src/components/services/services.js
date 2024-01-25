@@ -100,10 +100,8 @@ export const handleStatisticsFulfilled = (state, { payload }) => {
 
 //--------------------------DIARY
 export const handleFulfilled = (state, { payload }) => {
-  // console.log('payload', payload);
   state.data = payload;
   state.isLoading = false;
-  console.log(state.data);
 };
 
 export const handleFulfilledAddProduct = (state, { payload }) => {
@@ -122,7 +120,6 @@ export const handleFulfilledAddExercise = (state, { payload }) => {
 };
 
 export const handleFulfilledDeleteExercise = (state, { payload }) => {
-  console.log('payload', payload);
   state.data.diary.exercises = state.data.diary.exercises.filter(
     (el) => el._id !== payload._id
   );

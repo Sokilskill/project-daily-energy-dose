@@ -47,8 +47,8 @@ const DayProducts = () => {
         <SubTitle>Products</SubTitle>
         <StyledLink to="/products">
           <AddProduct>Add product</AddProduct>
-          <Icon width={16} height={16} className="orange">
-            <use href={`${sprite}#icon-start`}></use>
+          <Icon width={16} height={16} className="orange" stroke='#E6533C'>
+            <use href={`${sprite}#icon-arrow`}></use>
           </Icon>
         </StyledLink>
       </TitleMain>
@@ -58,7 +58,6 @@ const DayProducts = () => {
 };
 export const ProductsTable = ({ products, date }) => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(diarySelectors.getIsLoading);
   const isLoading = false;
 
   return (
