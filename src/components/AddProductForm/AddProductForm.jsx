@@ -2,7 +2,7 @@ import { useEffect, useCallback, useState } from 'react';
 import { MdClose } from "react-icons/md";
 import { addEntry } from '../../redux/auth/auth-operations';
 import {AddProductSuccess} from '../AddProductSuccess/AddProductSuccess'
-import { Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button1,Button2, Buttons, ImitationInput,TextInInput} from "./AddProductForm.stiled";
+import {Accent, Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button1,Button2, Buttons, ImitationInput,TextInInput} from "./AddProductForm.stiled";
 
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -90,21 +90,23 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
                 <ImitationInput>
                   <TextInInput>{normalizedTitle}</TextInInput>
                 </ImitationInput>
-                <InputContainer>
-                  <InputWrapper>
-                    <Input
-                      type="text"
-                      value={gram}
-                      onChange={handlerInputChange}
-                      required
-                      pattern="[0-9]{1,5}"
-                      min={1}
-                    />
-                    <Placeholder>grams</Placeholder>
-                  </InputWrapper>
-                </InputContainer>
+
+                <InputWrapper>
+                  <Input
+                    type="text"
+                    value={gram}
+                    onChange={handlerInputChange}
+                    required
+                    pattern="[0-9]{1,5}"
+                    min={1}
+                  />
+                  <Placeholder>grams</Placeholder>
+                </InputWrapper>
+
+                <Text>
+                  {`Calories: `} <Accent>{actualCalories}</Accent>
+                </Text>
               </Inputs>
-              <Text>{`Calories: ${actualCalories}`}</Text>
               <Buttons>
                 <Button1 type="submit">Add to diary</Button1>
                 <Button2 type="button" onClick={onClose}>
@@ -114,7 +116,10 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
             </Form>
           </ModalContainer>
         ) : (
-          <AddProductSuccess onClose={onClose} />
+          <AddProductSuccess
+            onClose={onClose}
+            actualCalories={actualCalories}
+          />
         )}
       </Backdrop>
     </>

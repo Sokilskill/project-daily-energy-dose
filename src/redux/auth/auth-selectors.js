@@ -12,6 +12,8 @@ export const selectUserSmallAvatar = (state) => state.auth.user.avatarURL;
 
 export const selectIsParamsData = (state) => state.auth.user.isParams;
 
+export const selectTargetBmr = (state) => state.auth.user.targetBmr;
+
 // Diary
 const getUserMetricData = (state) => state.auth.user.bodyParams;
 
