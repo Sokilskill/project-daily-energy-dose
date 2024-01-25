@@ -6,10 +6,10 @@ export const DaySwitchContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  margin-top: 20px;
 
   @media screen and (min-width: 768px) {
     margin-right: 0;
+    margin-bottom: 32px;
   }
 `;
 
@@ -19,6 +19,7 @@ font-weight: bold;
 background: transparent;
 border: 0;
 padding: 0;
+margin-right: 8px;
 box-sizing: border-box;
 background-color: inherit;
 color: var(--white);
@@ -26,10 +27,12 @@ font-size: 18px;
 line-height: 1.5;
 outline: none;
 cursor: pointer;
+width: 96px;
 
 
 @media screen and (min-width: 768px) {
-  width: 135px;
+  width: 129px;
+  height: 32px;
   font-size: 24px;
   line-height: 1.5;
 }
