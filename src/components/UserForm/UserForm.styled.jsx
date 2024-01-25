@@ -49,7 +49,7 @@ flex-direction: column;
 width: 100%;
 
 @media (min-width: 768px) {
- 
+ width: 341px;
 }
 `;
 
@@ -61,8 +61,8 @@ export const Label = styled.label`
 
 
 
-export const UserField = styled(Field)`
-  width: 335px;
+export const UserField = styled.input`
+  width: 100%;
   height: 46px;
   border-radius: 12px;
   margin: 4px 0 0 0;
@@ -151,6 +151,10 @@ export const HeightField = styled(Field)`
   }
 `;
 
+export const CurrentWeightWrapper = styled.div`
+width: 161px;
+`;
+
 export const CurrentWeightField = styled(Field)`
   width: 161px;
   height: 46px;
@@ -177,6 +181,22 @@ export const CurrentWeightField = styled(Field)`
   }
 `;
 
+export const HeightWrapper = styled.div`
+width: 160px;
+
+@media (min-width: 768px) {
+  width: 168px;
+ 
+ 
+}
+`;
+export const DesiredWeightWrapper = styled.div`
+@media (min-width: 768px) {
+  width: 140px;
+
+}
+
+`;
 export const DesiredWeightField = styled(Field)`
 width: 160px;
 height: 52px;
@@ -235,24 +255,19 @@ export const SaveButton = styled.button`
 
 export const ProfileCalendarInput = styled.div`
   position: relative;
-  margin-bottom: 20px;
-
-  label {
-    display: block;
-    font-size: 16px;
-    // margin-bottom: 8px;
+  // margin-bottom: 20px;
+  border: 1px solid var(--border, #efede84d);
+  border-radius: 12px;
+  height: 52px;
+  margin-top: 3px;
+  &:hover,
+  &:focus {
+    border-color: rgba(230, 83, 60, 1);
   }
-
-  input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid var(--input-border-color, #ced4da);
-    border-radius: 12px;
-    outline: none;
-    &:hover{
-      border-color: var(--orange, #e6533c);
-    }
+ 
+  
+  @media screen and (min-width: 768px) {
+    width: 187px;
   }
 `;
 

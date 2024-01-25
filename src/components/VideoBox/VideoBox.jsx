@@ -1,10 +1,7 @@
 import css from './VideoBox.module.css';
 import sprite from '../../assets/sprite.svg';
-import { useSelector } from 'react-redux';
-import { selectVideoCount } from '../../redux/statistics/statisticsSecectors';
 
-const VideoBox = () => {
-  const videoCount = useSelector(selectVideoCount);
+const VideoBox = ({ videoCount }) => {
   return (
     <div className={css.video_box}>
       <div className={css.ellips}>
