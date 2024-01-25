@@ -1,4 +1,4 @@
-import{n as i,j as e,a as R,c as f,d as H,r as U,s as n,M as T,e as V,f as Z,u as Q,h as X,i as G,k as J,m as K,Q as ee}from"./index-ea247ddd.js";import{c as ie,a as S,e as j,f as re,b as te,d as k,F as ae,E as g}from"./index.esm-ebaaeee5.js";import{e as oe,p as ne,f as de}from"./react-datepicker-bad64310.js";import"./hoist-non-react-statics.cjs-75b0f228.js";import"./defineProperty-179e1ab7.js";const le=i.h2`
+import{n as i,j as e,a as N,c as f,d as H,r as R,s as n,M as T,e as V,f as Z,u as Q,h as X,i as G,k as J,m as K,Q as ee}from"./index-1ed2d4ac.js";import{c as ie,a as z,e as k,f as re,b as te,d as _,F as ae,E as g}from"./index.esm-0b7bc748.js";import{e as oe,p as ne,f as de}from"./react-datepicker-4f14a4e4.js";import"./hoist-non-react-statics.cjs-6635498d.js";import"./defineProperty-179e1ab7.js";const le=i.h2`
 margin: 0;
 color: var(--white, #efede8);
 font-size: 24px;
@@ -9,7 +9,7 @@ line-height: 28px;
   font-size: 32px;
   line-height: 1.4;
 }
-`,se=({text:a})=>e.jsx(le,{children:a}),pe=i.div`
+`,se=({text:a})=>e.jsx(le,{children:a}),ce=i.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ line-height: 28px;
     margin: 0;
 
   }
-`,ce=i.div`
+`,pe=i.div`
   position: relative;
   display: inline-block;
   width: 90px;
@@ -174,7 +174,7 @@ line-height: 28px;
     font-size: 24px;
     line-height: 1.3;
   }
-`;const De=i.div`
+`;const Ce=i.div`
   display: flex;
   width: 157px;
   height: 96px;
@@ -190,7 +190,7 @@ line-height: 28px;
     height: 108px;
     gap: 28px;
   }
-`,Ce=i.div`
+`,De=i.div`
   display: flex;
   gap: 8px;
 `,ze=i.svg`
@@ -206,7 +206,7 @@ line-height: 28px;
     (min-width: 768px) {
     line-height: 18px;
   }
-`,P=i.p`
+`,F=i.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 1.1;
@@ -253,7 +253,7 @@ line-height: 28px;
   @media (min-width: 1440px) {
     margin: 32px 0 0 0;
   }
-`,E=a=>a.profile.profile.owner.name,I=a=>a.profile.profile,$e=()=>{const a=R(),d=f(H),l=f(I),h=f(E),[u,s]=U.useState(!1),_=async p=>{const x=p.target.files[0];x&&(s(!0),await a(Z(x)),s(!1))};return e.jsxs(pe,{children:[e.jsxs(ce,{children:[e.jsx(he,{children:e.jsx(xe,{type:"file",id:"file-input",accept:"image/*",onChange:_})}),e.jsx(ge,{htmlFor:"file-input",children:e.jsx(me,{children:e.jsx("use",{href:`${n}#icon-check-mark-1`})})}),e.jsx("div",{children:u?e.jsx(T,{}):d?e.jsx(fe,{src:d,alt:"Preview"}):e.jsx("div",{children:e.jsx(ue,{children:e.jsx("use",{href:n+"#icon-gridicons_user"})})})})]}),e.jsxs(ve,{children:[e.jsx(we,{children:h}),e.jsx(be,{children:"User"})]}),e.jsxs(ye,{children:[e.jsxs(je,{children:[e.jsxs(ke,{children:[e.jsx(_e,{children:e.jsx("use",{href:n+"#icon-fluent_food-24-filled"})}),e.jsx(We,{children:"Daily calorie intake"})]}),e.jsx(P,{children:Math.round(l.bmr)})]}),e.jsxs(De,{children:[e.jsxs(Ce,{children:[e.jsx(ze,{children:e.jsx("use",{href:n+"#icon-dumbbell"})}),e.jsx(Se,{children:"Daily physical activity"})]}),e.jsxs(P,{children:[l.time," min"]})]})]}),e.jsxs(qe,{children:[e.jsx("div",{children:e.jsxs(Fe,{children:[e.jsx("use",{href:n+"#icon-Ellipse-1",style:{fill:"rgba(239, 160, 130, 1)",width:"100%",height:"100%",position:"relative"}}),e.jsx("use",{href:n+"#icon-tabler_exclamation-mark",style:{fill:"rgba(239, 237, 232, 1)",position:"absolute",top:"50%",left:"50%",width:"100%",height:"100%"}})]})}),e.jsx(Pe,{children:"We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals."})]}),e.jsx(Ae,{children:e.jsx(V,{})})]})},Me=i.div`
+`,U=a=>a.profile.profile.owner.name,E=a=>a.profile.profile,$e=()=>{const a=N(),d=f(H),l=f(E),x=f(U),[u,s]=R.useState(!1),c=async v=>{const p=v.target.files[0];p&&(s(!0),await a(Z(p)),s(!1))};return e.jsxs(ce,{children:[e.jsxs(pe,{children:[e.jsx(he,{children:e.jsx(xe,{type:"file",id:"file-input",accept:"image/*",onChange:c})}),e.jsx(ge,{htmlFor:"file-input",children:e.jsx(me,{children:e.jsx("use",{href:`${n}#icon-check-mark-1`})})}),e.jsx("div",{children:u?e.jsx(T,{}):d?e.jsx(fe,{src:d,alt:"Preview"}):e.jsx("div",{children:e.jsx(ue,{children:e.jsx("use",{href:n+"#icon-gridicons_user"})})})})]}),e.jsxs(ve,{children:[e.jsx(we,{children:x}),e.jsx(be,{children:"User"})]}),e.jsxs(ye,{children:[e.jsxs(je,{children:[e.jsxs(ke,{children:[e.jsx(_e,{children:e.jsx("use",{href:n+"#icon-fluent_food-24-filled"})}),e.jsx(We,{children:"Daily calorie intake"})]}),e.jsx(F,{children:Math.round(l.bmr)})]}),e.jsxs(Ce,{children:[e.jsxs(De,{children:[e.jsx(ze,{children:e.jsx("use",{href:n+"#icon-dumbbell"})}),e.jsx(Se,{children:"Daily physical activity"})]}),e.jsxs(F,{children:[l.time," min"]})]})]}),e.jsxs(qe,{children:[e.jsx("div",{children:e.jsxs(Fe,{children:[e.jsx("use",{href:n+"#icon-Ellipse-1",style:{fill:"rgba(239, 160, 130, 1)",width:"100%",height:"100%",position:"relative"}}),e.jsx("use",{href:n+"#icon-tabler_exclamation-mark",style:{fill:"rgba(239, 237, 232, 1)",position:"absolute",top:"50%",left:"50%",width:"100%",height:"100%"}})]})}),e.jsx(Pe,{children:"We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals."})]}),e.jsx(Ae,{children:e.jsx(V,{})})]})},Me=i.div`
   padding-top: 40px;
   padding-bottom: 40px;
 
@@ -305,11 +305,11 @@ line-height: 28px;
   @media (min-width: 1440px) {
     // width: 704px;
   }
-`;const Ue=ie().shape({name:S().matches(/^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/,"Invalid name format").required("Name is required"),email:S().email("Changing is not allowed").required("Email is required"),sex:S().required("Choose one of these fields"),height:j().label("Height").min(150,"min height 150(sm)").max(250,"max height 250(sm)").required("Height is required"),desiredWeight:j().label("Desired Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Desired Weight is required"),currentWeight:j().label("Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Weight is required"),blood:j().required("Choose one of these fields"),levelActivity:j().required("Choose one of these fields"),birthday:re().nullable().max(new Date,"Birthday cannot be in the future").required("Birthday is required").test("is-adult","You must be at least 18 years old",function(a){if(!a)return!0;const d=new Date,l=new Date(a);return d.getFullYear()-l.getFullYear()-(d<new Date(d.getFullYear(),l.getMonth(),l.getDate())?1:0)>=18})}),Ee=i.div`
+`;const Ue=ie().shape({name:z().matches(/^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/,"Invalid name format").required("Name is required"),email:z().email("Changing is not allowed").required("Email is required"),sex:z().required("Choose one of these fields"),height:k().label("Height").min(150,"min height 150(sm)").max(250,"max height 250(sm)").required("Height is required"),desiredWeight:k().label("Desired Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Desired Weight is required"),currentWeight:k().label("Weight").min(35,"min weight 35(kg)").max(300,"put number from 35 to 300").required("Weight is required"),blood:k().required("Choose one of these fields"),levelActivity:k().required("Choose one of these fields"),birthday:re().nullable().max(new Date,"Birthday cannot be in the future").required("Birthday is required").test("is-adult","You must be at least 18 years old",function(a){if(!a)return!0;const d=new Date,l=new Date(a);return d.getFullYear()-l.getFullYear()-(d<new Date(d.getFullYear(),l.getMonth(),l.getDate())?1:0)>=18})}),Ee=i.div`
   display: flex;
   align-items: center;
  
-`,Y=i.input`
+`,I=i.input`
   display: flex;
   align-items: center;
   background: transparent;
@@ -353,7 +353,7 @@ line-height: 28px;
   //   border-color: var(--error-color, #d80027);
 
   // }
-`;Y.defaultProps={placeholder:"00.00.0000"};const Ie=i.div`
+`;I.defaultProps={placeholder:"00.00.0000"};const Ie=i.div`
   position: relative;
   .react-datepicker {
     background: #ef8964;
@@ -519,7 +519,7 @@ letter-spacing: -0.32px;
   @media screen and (min-width: 768px) {
     margin-left: 26px;
   }
-`;const Le=({textSize:a,textWeight:d,textHeight:l,birthday:h,currentDate:u,setSelectedDate:s,handlerDate:_,error:p})=>{const x="dd.MM.yyyy",W=U.useRef(null),v=D=>{const C=new Date(D);s(C)};return e.jsx(Ee,{children:e.jsxs(Ie,{children:[e.jsx(oe,{selected:u,onChange:v,dateFormat:x,minDate:h,showYearDropdown:!0,yearDropdownItemNumber:100,scrollableYearDropdown:!0,showMonthDropdown:!0,customInput:e.jsx(Y,{className:`profile ${p?"error":""}`,$textSize:a,$textWeight:d,$textHeight:l,error:p&&p.birthday!==void 0?p.birthday:null}),ref:W,shouldCloseOnSelect:!0}),e.jsx(Ye,{onClick:()=>W.current.setOpen(!0),children:e.jsx("use",{href:`${n}#icon-calendar`})})]})})},m=i.div`
+`;const Le=({textSize:a,textWeight:d,textHeight:l,birthday:x,currentDate:u,setSelectedDate:s,error:c})=>{const v="dd.MM.yyyy",p=R.useRef(null),C=w=>{const W=new Date(w);s(W)};return e.jsx(Ee,{children:e.jsxs(Ie,{children:[e.jsx(oe,{selected:u,onChange:C,dateFormat:v,minDate:x,showYearDropdown:!0,yearDropdownItemNumber:100,scrollableYearDropdown:!0,showMonthDropdown:!0,customInput:e.jsx(I,{className:`profile ${c?"error":""}`,$textSize:a,$textWeight:d,$textHeight:l,error:c&&c.birthday!==void 0?c.birthday:null}),ref:p,shouldCloseOnSelect:!0}),e.jsx(Ye,{onClick:()=>p.current.setOpen(!0),children:e.jsx("use",{href:`${n}#icon-calendar`})})]})})},m=i.div`
   font-size: 12px;
   font-weight: 400;
   color: var(--error-color, #d80027);
@@ -552,7 +552,7 @@ letter-spacing: -0.32px;
     flex-direction: row;
     gap: 14px;
   }
-`,A=i.div`
+`,P=i.div`
 display: flex;
 flex-direction: column;
 width: 100%;
@@ -560,11 +560,11 @@ width: 100%;
 @media (min-width: 768px) {
  width: 341px;
 }
-`,c=i.label`
+`,h=i.label`
   font-size: 14px;
   line-height: 1.3;
   color: var(--secondary-color-text, rgba(239, 237, 232, 0.5));
-`,$=i.input`
+`,A=i.input`
   width: 100%;
   height: 46px;
   border-radius: 12px;
@@ -588,7 +588,7 @@ width: 100%;
   @media (min-width: 768px) {
     width: 341px;
     height: 52px;
-    // margin: 8px 0 0 0;
+   
   }
 `,Te=i.div`
   width: 100%;
@@ -598,9 +598,9 @@ display: flex;
   @media (min-width: 768px) {
     width: 704px;
     flex-direction: row;
-    // justify-content: space-between
+
   }
-`,M=i.div`
+`,$=i.div`
 
   display: flex;
   gap: 14px;
@@ -619,7 +619,7 @@ display: flex;
   @media (min-width: 768px) {
     width: 140px;
   }
-`;const Ve=i(k)`
+`;const Ve=i(_)`
   width: 160px;
   height: 46px;
   border-radius: 12px;
@@ -641,11 +641,11 @@ display: flex;
   @media (min-width: 768px) {
     width: 168px;
     height: 52px;
-    // margin: 8px 0 14px 0;
+   
   }
 `,Ze=i.div`
 width: 161px;
-`,Qe=i(k)`
+`,Qe=i(_)`
   width: 161px;
   height: 46px;
   border-radius: 12px;
@@ -667,7 +667,7 @@ width: 161px;
   @media (min-width: 768px) {
     width: 159px;
     height: 52px;
-    // margin: 8px 0 14px 0;
+ 
   }
 `,Xe=i.div`
 width: 160px;
@@ -683,7 +683,7 @@ width: 160px;
 
 }
 
-`,Je=i(k)`
+`,Je=i(_)`
 width: 160px;
 height: 52px;
 border-radius: 12px;
@@ -748,7 +748,7 @@ color: var( --white, #efede8);
   @media screen and (min-width: 768px) {
     width: 187px;
   }
-`,ii=i(k)`
+`,ii=i(_)`
 
 `,ri=i.div`
   width: 100%;
@@ -772,7 +772,7 @@ gap: 9px;
   gap: 8px;
 }
 
-`;const N=i.div`
+`;const M=i.div`
   width: 100%;
   display: flex;
 gap: 8px;
@@ -781,7 +781,7 @@ gap: 8px;
     width: 379px;
   }
  
-`,q=i.label`
+`,S=i.label`
 display: flex;
 align-items: center;
 font-family: Roboto;
@@ -793,7 +793,7 @@ color: var(--white, #efede8);
 @media (min-width: 768px) {
   font-size: 16px;
 }
-`,F=i(k)`
+`,q=i(_)`
   appearance: none;
 
   min-width: 20px;
@@ -829,4 +829,4 @@ gap: 9px;
   gap: 8px;
   margin: 32px 0 0 0;
 }
-`,oi=[{label:"1",value:1},{label:"2",value:2},{label:"3",value:3},{label:"4",value:4}],ni=[{label:"Male",value:"male"},{label:"Female",value:"female"}],di=[{id:1,label:"Sedentary lifestyle (little or no physical activity)",value:1},{id:2,label:"Light activity (light exercises/sports 1-3 days per week)",value:2},{id:3,label:"Moderately active (moderate exercises/sports 3-5 days per week)",value:3},{id:4,label:"Very active (intense exercises/sports 6-7 days per week)",value:4},{id:5,label:"Extremely active (very strenuous exercises/sports and physical work)",value:5}],li=()=>{const a=R(),d=Q(),{height:l,currentWeight:h,desiredWeight:u,birthday:s,blood:_,sex:p,levelActivity:x}=f(I),W=f(E),v=f(X),D=W||v.name;function C(t){const r=new Date(t);return`${r.getDate()}.${r.getMonth()+1}.${r.getFullYear()}`}C(s||new Date);const L={name:D||"",email:v.email,height:l||"",currentWeight:h||"",desiredWeight:u||"",birthday:s?new Date(s):new Date("2000-01-01"),blood:_||0,sex:p||"",levelActivity:x||1},B=async t=>{try{const{email:r,birthday:w,...z}=t,b=de(new Date(w),"yyyy-MM-dd");(await a(G({...z,birthday:b}))).meta.requestStatus==="fulfilled"?(a(J()),a(K()),d("/diary")):console.log("Setting update error")}catch(r){ee.error("An error occurred while updating the profile"),console.error("Error updating profile:",r)}};return D&&e.jsx(Be,{children:e.jsx(ae,{initialValues:L,validationSchema:Ue,onSubmit:B,children:({errors:t,touched:r,values:w,handleChange:z,setFieldValue:b})=>e.jsxs(Oe,{autoComplete:"off",children:[e.jsxs(He,{children:[e.jsxs(A,{style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""},children:[e.jsx(c,{htmlFor:"name",children:"Name"}),e.jsx($,{required:!0,type:"text",id:"name",name:"name",placeholder:"Name",value:w.name,onChange:z,style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.name&&r.name&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"name",component:m})]})]}),e.jsxs(A,{style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""},children:[e.jsx(c,{htmlFor:"email",children:"Email"}),e.jsx($,{required:!0,type:"text",id:"email",name:"email",readOnly:!0,placeholder:v.email,style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.email&&r.email&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"email",component:m})]})]})]}),e.jsxs(Te,{children:[e.jsxs(M,{children:[e.jsxs(Xe,{style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""},children:[e.jsx(c,{htmlFor:"height",children:"Height"}),e.jsx(Ve,{required:!0,type:"number",id:"height",name:"height",placeholder:"0",style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.height&&r.height&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"height",component:m})]})]}),e.jsxs(Ze,{style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""},children:[e.jsx(c,{htmlFor:"currentWeight",children:"Current Weight"}),e.jsx(Qe,{required:!0,type:"number",id:"currentWeight",name:"currentWeight",placeholder:"0",style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.currentWeight&&r.currentWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"currentWeight",component:m})]})]})]}),e.jsxs(M,{children:[e.jsxs(Ge,{style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""},children:[e.jsx(c,{htmlFor:"desiredWeight",children:"Desired Weight"}),e.jsx(Je,{required:!0,type:"number",id:"desiredWeight",name:"desiredWeight",placeholder:"0",style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.desiredWeight&&r.desiredWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"desiredWeight",component:m})]})]}),e.jsxs("div",{style:{borderColor:r.birthday&&t.birthday?"var(--error-color, #d80027)":""},children:[e.jsx(c,{htmlFor:"birthday",children:"Date of birth"}),e.jsx(ei,{style:{borderColor:r.birthday&&t.birthday?"var(--error-color, #d80027)":""},children:e.jsx(ii,{name:"birthday",children:({field:o})=>e.jsx(Le,{id:"date",currentDate:o.value,setSelectedDate:y=>{const O=ne(y.toISOString());b("birthday",O)}})})}),e.jsxs("div",{style:{position:"relative"},children:[t.birthday&&r.birthday&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`})}),e.jsx(g,{name:"birthday",component:m})]})]})]})]}),e.jsxs(ri,{children:[e.jsx(c,{children:"Blood"}),e.jsxs(ti,{children:[e.jsx(N,{children:oi.map((o,y)=>e.jsxs(q,{children:[e.jsx(F,{required:!0,type:"radio",name:"blood",value:o.value,checked:w.blood===o.value,onChange:()=>b("blood",o.value)}),o.label]},y))}),e.jsx(N,{children:ni.map((o,y)=>e.jsxs(q,{children:[e.jsx(F,{required:!0,type:"radio",name:"sex",value:o.value}),o.label]},y))})]}),e.jsx(ai,{children:di.map(o=>e.jsxs(q,{children:[e.jsx(F,{required:!0,type:"radio",name:"levelActivity",value:o.value,checked:w.levelActivity===o.value,onChange:()=>b("levelActivity",o.value)}),o.label]},o.id))})]}),e.jsx(Ke,{type:"submit",children:"Save"})]})})})},mi=()=>e.jsxs(Me,{className:"container",children:[e.jsx(Ne,{children:e.jsx(se,{text:"Profile Settings"})}),e.jsxs(Re,{children:[e.jsx($e,{}),e.jsx(li,{})]})]});export{mi as default};
+`,oi=[{label:"1",value:1},{label:"2",value:2},{label:"3",value:3},{label:"4",value:4}],ni=[{label:"Male",value:"male"},{label:"Female",value:"female"}],di=[{id:1,label:"Sedentary lifestyle (little or no physical activity)",value:1},{id:2,label:"Light activity (light exercises/sports 1-3 days per week)",value:2},{id:3,label:"Moderately active (moderate exercises/sports 3-5 days per week)",value:3},{id:4,label:"Very active (intense exercises/sports 6-7 days per week)",value:4},{id:5,label:"Extremely active (very strenuous exercises/sports and physical work)",value:5}],li=()=>{const a=N(),d=Q(),{height:l,currentWeight:x,desiredWeight:u,birthday:s,blood:c,sex:v,levelActivity:p}=f(E),C=f(U),w=f(X),W=C||w.name;function Y(t){const r=new Date(t);return`${r.getDate()}.${r.getMonth()+1}.${r.getFullYear()}`}Y(s||new Date);const L={name:W||"",email:w.email,height:l||"",currentWeight:x||"",desiredWeight:u||"",birthday:s?new Date(s):new Date("2000-01-01"),blood:c||0,sex:v||"",levelActivity:p||1},B=async t=>{try{const{email:r,birthday:b,...D}=t,y=de(new Date(b),"yyyy-MM-dd");(await a(G({...D,birthday:y}))).meta.requestStatus==="fulfilled"?(a(J()),a(K()),d("/diary")):console.log("Setting update error")}catch(r){ee.error("An error occurred while updating the profile"),console.error("Error updating profile:",r)}};return W&&e.jsx(Be,{children:e.jsx(ae,{initialValues:L,validationSchema:Ue,onSubmit:B,children:({errors:t,touched:r,values:b,handleChange:D,setFieldValue:y})=>e.jsxs(Oe,{autoComplete:"off",children:[e.jsxs(He,{children:[e.jsxs(P,{style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""},children:[e.jsx(h,{htmlFor:"name",children:"Name"}),e.jsx(A,{required:!0,type:"text",id:"name",name:"name",placeholder:"Name",value:b.name,onChange:D,style:{borderColor:r.name&&t.name?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.name&&r.name&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"name",component:m})]})]}),e.jsxs(P,{style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""},children:[e.jsx(h,{htmlFor:"email",children:"Email"}),e.jsx(A,{required:!0,type:"text",id:"email",name:"email",readOnly:!0,placeholder:w.email,style:{borderColor:r.email&&t.email?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.email&&r.email&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"email",component:m})]})]})]}),e.jsxs(Te,{children:[e.jsxs($,{children:[e.jsxs(Xe,{style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""},children:[e.jsx(h,{htmlFor:"height",children:"Height"}),e.jsx(Ve,{required:!0,type:"number",id:"height",name:"height",placeholder:"0",style:{borderColor:r.height&&t.height?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.height&&r.height&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"height",component:m})]})]}),e.jsxs(Ze,{style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""},children:[e.jsx(h,{htmlFor:"currentWeight",children:"Current Weight"}),e.jsx(Qe,{required:!0,type:"number",id:"currentWeight",name:"currentWeight",placeholder:"0",style:{borderColor:r.currentWeight&&t.currentWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.currentWeight&&r.currentWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"currentWeight",component:m})]})]})]}),e.jsxs($,{children:[e.jsxs(Ge,{style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""},children:[e.jsx(h,{htmlFor:"desiredWeight",children:"Desired Weight"}),e.jsx(Je,{required:!0,type:"number",id:"desiredWeight",name:"desiredWeight",placeholder:"0",style:{borderColor:r.desiredWeight&&t.desiredWeight?"var(--error-color, #d80027)":""}}),e.jsxs("div",{style:{position:"relative"},children:[t.desiredWeight&&r.desiredWeight&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:`${n}#checkbox-circle`,style:{fill:"var(--error-color, #d80027)"}})}),e.jsx(g,{name:"desiredWeight",component:m})]})]}),e.jsxs("div",{style:{borderColor:r.birthday&&t.birthday?"var(--error-color, #d80027)":""},children:[e.jsx(h,{htmlFor:"birthday",children:"Date of birth"}),e.jsx(ei,{style:{borderColor:r.birthday&&t.birthday?"var(--error-color, #d80027)":""},children:e.jsx(ii,{name:"birthday",children:({field:o})=>e.jsx(Le,{id:"date",currentDate:o.value,setSelectedDate:j=>{const O=ne(j.toISOString());y("birthday",O)}})})}),e.jsxs("div",{style:{position:"relative"},children:[t.birthday&&r.birthday&&e.jsx("svg",{style:{width:"16px",height:"16px",position:"absolute",left:0,top:"50%",transform:"translateY(-50%)"},children:e.jsx("use",{href:n+"#icon-checkbox-circle"})}),e.jsx(g,{name:"birthday",component:m})]})]})]})]}),e.jsxs(ri,{children:[e.jsx(h,{children:"Blood"}),e.jsxs(ti,{children:[e.jsx(M,{children:oi.map((o,j)=>e.jsxs(S,{children:[e.jsx(q,{required:!0,type:"radio",name:"blood",value:o.value,checked:b.blood===o.value,onChange:()=>y("blood",o.value)}),o.label]},j))}),e.jsx(M,{children:ni.map((o,j)=>e.jsxs(S,{children:[e.jsx(q,{required:!0,type:"radio",name:"sex",value:o.value}),o.label]},j))})]}),e.jsx(ai,{children:di.map(o=>e.jsxs(S,{children:[e.jsx(q,{required:!0,type:"radio",name:"levelActivity",value:o.value,checked:b.levelActivity===o.value,onChange:()=>y("levelActivity",o.value)}),o.label]},o.id))})]}),e.jsx(Ke,{type:"submit",children:"Save"})]})})})},mi=()=>e.jsxs(Me,{className:"container",children:[e.jsx(Ne,{children:e.jsx(se,{text:"Profile Settings"})}),e.jsxs(Re,{children:[e.jsx($e,{}),e.jsx(li,{})]})]});export{mi as default};
