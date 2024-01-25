@@ -1,92 +1,83 @@
 @import '../../index.css';
 
-.welcome_section {
-  background-image: url(../../assets/Welcome/images/people-training-gym-mob.webp),
-    var(--bg-gradient);
-  background-repeat: no-repeat;
-  background-size: 298px;
-  background-position: bottom right;
-}
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .welcome_section {
-    background-image: url(../../assets/Welcome/images/people-training-gym-mob-2x.webp),
-      var(--bg-gradient);
-    background-repeat: no-repeat;
-  }
-}
-.welcome_container {
+.page_part {
   position: relative;
   padding-top: 180px;
-  padding-bottom: 40px;
 }
 .insert_part {
   position: absolute;
   top: 66px;
 }
-.ststistics {
-  max-width: 254px;
+
+.welcome_bgd {
+  max-width: 298px;
+  height: 100%;
   margin-left: auto;
-  margin-top: 320px;
+  margin-right: -20px;
+  padding: 319px 20px 40px 44px;
+  background-image: url(../../assets/Welcome/images/people-training-gym-mob.webp),
+    var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .welcome_bgd {
+    background-image: url(../../assets/Welcome/images/people-training-gym-mob-2x.webp),
+      var(--bg-gradient);
+  }
 }
 
 @media (min-width: 768px) {
-  .welcome_section {
-    background: url(../../assets/Welcome/images/people-training-gym-tab.webp),
-      var(--bg-gradient);
-    background-repeat: no-repeat;
-    background-size: 437px;
-    background-position: bottom right;
-  }
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .welcome_section {
-      background-image: url(../../assets/Welcome/images/people-training-gym-tab-2x.webp),
-        var(--bg-gradient);
-    }
-  }
-  .welcome_container {
+  .page_part {
     padding-top: 48px;
-    padding-bottom: 48px;
   }
   .insert_part {
     top: 105px;
   }
-  .ststistics {
-    max-width: 436px;
-    margin-top: 582px;
-  }
-}
-@media (min-width: 1440px) {
-  .welcome_section {
-    background-image: url(../../assets/Welcome/images/people-training-gym-desk.webp),
+
+  .welcome_bgd {
+    max-width: 437px;
+    padding: 583px 32px 48px 0;
+    margin-right: -32px;
+    background: url(../../assets/Welcome/images/people-training-gym-tab.webp),
       var(--bg-gradient);
-    background-repeat: no-repeat;
-    background-size: 670px;
-    background-position: bottom right;
   }
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    .welcome_section {
+    .welcome_bgd {
+      background-image: url(../../assets/Welcome/images/people-training-gym-tab-2x.webp),
+        var(--bg-gradient);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .page_part {
+    padding-top: 0;
+  }
+  .insert_part {
+    top: 200px;
+  }
+  .welcome_bgd {
+    max-width: 670px;
+    margin-top: -84px;
+    margin-right: -96px;
+    padding: 384px 32px 172px 0;
+    background-image: url(../../assets/Welcome/images/people-training-gym-desk.webp),
+      var(--bg-desk-gradient);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .welcome_bgd {
       background-image: url(../../assets/Welcome/images/people-training-gym-desk-2x.webp),
         var(--bg-desk-gradient);
-    }
-    .welcome_container {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .insert_part {
-      top: 200px;
-    }
-    .ststistics {
-      max-width: 670px;
-      margin-top: -84px;
-      margin-right: -64px;
-      padding-top: 384px;
-      padding-bottom: 172px;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 }

@@ -1,56 +1,60 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
-export const ErrorSection = styled.section`
+export const SectionWrapper = styled.div`
+  // position: relative;
+  padding: 0;
+
+
   background-image: url(${(props) => props.bgi[0]}),
     var(--bg-gradient);
-    background-size: 298px;
   background-repeat: no-repeat;
-  background-position: bottom right;
+  background-position: 107px 240px;
 
   @media (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
+    max-width: 447px,
     background-image: url(${(props) => props.bgi[1]}),
       var(--bg-gradient);
+       background-repeat: no-repeat;
+  background-position: 107px 240px;
+}
 
   @media screen and (min-width: 768px) {
     background-image: url(${(props) => props.bgi[2]}),
       var(--bg-gradient);
-      background-size: 437px;
     background-repeat: no-repeat;
-    background-position: bottom right;
+    background-position: 330px 130px;
   
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
+      max-width: 670px,
       background-image: url(${(props) => props.bgi[3]}),
         var(--bg-gradient);
+      background-repeat: no-repeat;
+     background-position: 330px 130px;
     }
   }  
 
   @media screen and (min-width: 1440px) {
+     height: 800px;
     background-image: url(${(props) => props.bgi[4]});
       var(--bg-gradient);
-       background-size: 670px;
     background-repeat: no-repeat;
-    background-position: bottom right;
+    background-position: right top;
  
-  //  @media (min-device-pixel-ratio: 2),
-  //   (min-resolution: 192dpi),
-  //   (min-resolution: 2dppx) {
-  //     max-width: 670px,
-  //     background-image: url(${(props) => props.bgi[5]}),
-  //       var(--bg-desk-gradient);
-  //     background-repeat: no-repeat;
-  //     background-position: right top;
+   @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      max-width: 670px,
+      background-image: url(${(props) => props.bgi[5]}),
+        var(--bg-desk-gradient);
+      background-repeat: no-repeat;
+      background-position: right top;
     }
   }
-`;
-
-export const SectionWrapper = styled.div`
-  // position: relative;
-  padding: 0;
 `;
 
 export const SectionContainer = styled.div`
@@ -92,7 +96,6 @@ export const BackgroundColor = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 669px;
-    height: 800px;
   }
 `;
 
