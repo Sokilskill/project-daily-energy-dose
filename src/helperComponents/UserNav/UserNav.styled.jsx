@@ -20,6 +20,16 @@ export const Link = styled(NavLink)`
   padding: 10px 27px;
   transition: background 250ms linear;
 
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 128.571%;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
   &.active {
     background: #e6533c;
 
