@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 export const Counter = ({
   isTimerRunning,
