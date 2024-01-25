@@ -99,7 +99,7 @@ export const UserCard = () => {
         <CalorieShower>
           <WrapperIntakeFood>
             <FoodSvg>
-              <use href={sprite + '#icon-fluenit_food-24-filled'} />
+              <use href={sprite + '#icon-fluent_food-24-filled'} />
             </FoodSvg>
             <TextCalorie>Daily calorie intake</TextCalorie>
           </WrapperIntakeFood>

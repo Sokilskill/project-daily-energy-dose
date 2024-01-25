@@ -1,5 +1,5 @@
 import { Formik, ErrorMessage } from 'formik';
-
+import { format } from 'date-fns';
 import { ProfileSchema } from './YupSchemas';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,12 +44,8 @@ import {
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
 
-//================== Radio Button ==================
-
-// ================ id - для ключа(можна використовувати індекс)
-// ================ value - значення радіокнопки
-// ================ label - назва кнопки
 
 const bloodsValue = [
   { label: '1', value: 1 },
@@ -106,24 +102,13 @@ export const UserForm = () => {
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
-
+  // const [selectedDate, setSelectedDate] = useState(null);
   const currentName = userName || userCurrent.name;
 
-  // function formatDateString(DateStr) {
-  //   const date = new Date(DateStr);
-  //   const day = date.getDate().toString().padStart(2, '0');
-  // const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  // const year = date.getFullYear();
-  // return `${day}.${month}.${year}`;
-  // }
-  // const currentDate = new Date();
-  // const formattedDateBirthday = formatDateString(
-  //  birthday ? new Date(birthday)  : currentDate
-  // );
   
 
-  const formattedDate = parseISO(birthday);
-  console.log(formattedDate);
+  // const formattedDate = parseISO(birthday);
+ 
 
   const initialValues = {
     name: currentName || '',
@@ -131,21 +116,25 @@ export const UserForm = () => {
     height: height || '',
     currentWeight: currentWeight || '',
     desiredWeight: desiredWeight || '',
-    birthday: formattedDate || '2001-01-01',
+    birthday: birthday ? new Date(birthday) : new Date('2000-01-01'),
     blood: blood || 0,
     sex: sex || '',
     levelActivity: levelActivity || 1,
     
   };
+ 
 
-  const handleSubmit = async (profileData) => {
-  try {
-    const data = {...profileData };
-
-    const updateProfileDataResult = await dispatch(addUserData(data));
-    console.log('Дані, що будуть відправлені на сервер:', data);
-        // birthday: new Date(birthday).toISOString().split('T')[0],
-   
+  const handleSubmit = async (data) => {
+    try {
+      const { name, email, birthday, ...profileData } = data;
+      console.log('DATA', data);
+      const formattedBirthday = format(new Date(birthday), 'yyyy-MM-dd');
+      const updateProfileDataResult = await dispatch(
+        addUserData({
+          ...profileData,
+          birthday: formattedBirthday,
+        })
+      );
 
     if (updateProfileDataResult.meta.requestStatus === 'fulfilled') {
       dispatch(getUserProfile());
@@ -157,7 +146,6 @@ export const UserForm = () => {
   } catch (error) {
     toast.error('An error occurred while updating the profile');
     console.error('Error updating profile:', error);
-    console.error('Помилка при оновленні профілю:', error);
   }
 };
 
@@ -440,9 +428,9 @@ export const UserForm = () => {
                        <BirthdayPicker
                        id="date"
                        currentDate={field.value}
-                       handlerDate={(date) => {
-                        console.log('Sending to handlerDate:', date);
-                        setFieldValue('birthday', date.toISOString().split('T')[0]);
+                       setSelectedDate={(date) => {
+                        const formattedDate = parseISO(date.toISOString());
+                        setFieldValue('birthday', formattedDate);
                       }}
                       />
                       )}

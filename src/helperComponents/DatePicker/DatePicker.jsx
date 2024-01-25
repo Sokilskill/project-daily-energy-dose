@@ -17,43 +17,32 @@ const BirthdayPicker = ({
   textWeight,
   textHeight,
   birthday,
-  handlerDate,
- currentDate,
+currentDate,
+setSelectedDate,
 }) => {
   const numericMonthFormat = 'dd.MM.yyyy';
 
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  useEffect(() => {
-    if (currentDate) {
-      setSelectedDate(new Date(currentDate));
-    }
-  }, [currentDate]);
-
-  const handleDateChange = (date) => {
-    if (date && !isNaN(date.getTime())) {
-      setSelectedDate(date);
-      handlerDate(date);
-    } else {
-      setSelectedDate(null);
-      handlerDate(null);
-      console.error("Invalid date");
-    }
-
-    if (datePickerRef.current) {
-      datePickerRef.current.setOpen(true);
-    }
+ 
+const handleDateChange = (date) => {
+ const currentDate = new Date(date)
+    setSelectedDate(currentDate);
   };
+  
+ 
+
+
+  
 
   return (
     <DaySwitchContainer>
       <StyledCalendarContainer>
         <DatePicker
-          selected={selectedDate}
+          selected={currentDate}
           onChange={handleDateChange}
           dateFormat={numericMonthFormat}
           minDate={birthday}
+     
           showYearDropdown
           yearDropdownItemNumber={100}
           scrollableYearDropdown
