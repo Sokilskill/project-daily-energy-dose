@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { RiCloseLine, RiPlayLine, RiPauseLine } from 'react-icons/ri';
 import { addEntry } from '../../redux/auth/auth-operations';
-import AddExerciseSuccess from '../AddExerciseSuccess/AddExerciseSuccess'
+import AddExerciseSuccess from '../AddExerciseSuccess/AddExerciseSuccess';
 import {
   Backdrop,
   ModalContainer,
@@ -20,8 +20,9 @@ import {
   ContainerBtn,
   Accent,
 } from './AddExerciseForm.styled';
-import { Counter} from '../AddExerciseCounter/AddExerciseCounter'
+import { Counter } from '../AddExerciseCounter/AddExerciseCounter';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function formatDate(date) {
   let day = date.getDate();
@@ -33,7 +34,10 @@ function formatDate(date) {
 }
 
 const notify = () => {
-  toast.warn('error', { theme: 'dark' });
+  toast.warn('error', {
+    position: 'top-center',
+    theme: 'dark',
+  });
 };
 
 let recipeWindow;
@@ -57,13 +61,12 @@ const AddExerciseForm = ({
   target,
   equipment,
   name,
-  id
+  id,
 }) => {
-const [openSuccess, setOpenSuccess] = useState(false);
-const [isTimerRunning, setIsTimerRunning] = useState(false);
-const [caloriesBurned, setCaloriesBurned] = useState(0);
-const [exerciseTime, setExerciseTime] = useState(0);
- 
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [caloriesBurned, setCaloriesBurned] = useState(0);
+  const [exerciseTime, setExerciseTime] = useState(0);
 
   const handleKeyDown = useCallback(
     (event) => {
@@ -76,22 +79,20 @@ const [exerciseTime, setExerciseTime] = useState(0);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
-    
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleKeyDown]);
 
- 
-
   const handlerSubmit = () => {
-  const body = {
-    date: formatDate(new Date()),
-    exerciseData: {
-      exerciseId: id,
-      time: exerciseTime,
-    },
-  };
+    const body = {
+      date: formatDate(new Date()),
+      exerciseData: {
+        exerciseId: id,
+        time: exerciseTime,
+      },
+    };
 
     addEntry(body)
       .then((r) => {
@@ -100,22 +101,20 @@ const [exerciseTime, setExerciseTime] = useState(0);
       .catch((e) => {
         notify();
       });
-  }
-   
- 
+  };
+
   const startPauseTimer = () => {
     setIsTimerRunning(!isTimerRunning);
   };
 
   const saveBurnedCalories = (remainingTime) => {
-     setCaloriesBurned(
-       Math.floor(((time * 60 - remainingTime) * burnedCalories) / (time * 60))
-     );
+    setCaloriesBurned(
+      Math.floor(((time * 60 - remainingTime) * burnedCalories) / (time * 60))
+    );
     setExerciseTime(time * 60 - remainingTime);
   };
- 
-  const normalized = (value) => {
 
+  const normalized = (value) => {
     if (recipeWindow) {
       if (value) {
         const upperLetter = value[0].toUpperCase();
@@ -138,7 +137,6 @@ const [exerciseTime, setExerciseTime] = useState(0);
       return '';
     }
   };
-
 
   return (
     <>
@@ -211,18 +209,13 @@ const [exerciseTime, setExerciseTime] = useState(0);
 
 export default AddExerciseForm;
 
-
-
-
-
-
-
-
-{/* <CountdownCircleTimer
+{
+  /* <CountdownCircleTimer
   isPlaying
   duration={7}
   colors={['#004777', '#F7B801', '#A30000', '#A30000']}
   colorsTime={[7, 5, 2, 0]}
 >
   {({ remainingTime }) => remainingTime}
-</CountdownCircleTimer>; */}
+</CountdownCircleTimer>; */
+}

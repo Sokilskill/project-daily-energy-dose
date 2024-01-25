@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
-import { MdClose } from "react-icons/md";
-import { IoMdArrowForward } from "react-icons/io";
+import { MdClose } from 'react-icons/md';
+import { IoMdArrowForward } from 'react-icons/io';
 import {
   Backdrop,
   ModalContainer,
@@ -15,15 +15,17 @@ import {
   Accent,
 } from './AddExerciseSuccess.stiled';
 import sprite from '../../assets/sprite.svg';
-import ThumbIcon from "../../assets/images/thumb_up.png";
+import ThumbIcon from '../../assets/images/thumb_up.png';
 
 const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
-  
-  const handleKeyDown = useCallback((event) => {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  }, [onClose]);
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -31,7 +33,7 @@ const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]); 
+  }, [handleKeyDown]);
 
   const normalizeTime = (time) => {
     let minutes;
@@ -44,10 +46,7 @@ const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
     } else {
       return `${time} seconds`;
     }
-    
-  }
-
-
+  };
 
   return (
     <>
@@ -71,7 +70,7 @@ const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
           Next exercise
         </Button>
         <Div>
-          <StyledLink to="/diary">
+          <StyledLink to="/diary" onClick={onClose}>
             To the diary
             <IconAdd>
               <use href={sprite + '#icon-arrow'} />
@@ -81,7 +80,6 @@ const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
       </ModalContainer>
     </>
   );
-  };
-  
-export default AddExerciseSuccess;
+};
 
+export default AddExerciseSuccess;

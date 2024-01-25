@@ -1,15 +1,33 @@
 import { useEffect, useCallback, useState } from 'react';
-import { MdClose } from "react-icons/md";
+import { MdClose } from 'react-icons/md';
 import { addEntry } from '../../redux/auth/auth-operations';
-import {AddProductSuccess} from '../AddProductSuccess/AddProductSuccess'
-import {Accent, Backdrop, ModalContainer, Close, Form, Input, Inputs, InputWrapper, InputContainer,Placeholder, Text, Button1,Button2, Buttons, ImitationInput,TextInInput} from "./AddProductForm.stiled";
-
+import { AddProductSuccess } from '../AddProductSuccess/AddProductSuccess';
+import {
+  Accent,
+  Backdrop,
+  ModalContainer,
+  Close,
+  Form,
+  Input,
+  Inputs,
+  InputWrapper,
+  InputContainer,
+  Placeholder,
+  Text,
+  Button1,
+  Button2,
+  Buttons,
+  ImitationInput,
+  TextInInput,
+} from './AddProductForm.stiled';
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
-
-
 const notify = () => {
-  toast.warn('error', { theme: 'dark' });
+  toast.warn('error', {
+    position: 'top-center',
+    theme: 'dark',
+  });
 };
 
 function formatDate(date) {
@@ -28,11 +46,14 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
 
   const normalizedTitle = `${title[0].toUpperCase() + title.slice(1, 111)}`;
 
-  const handleKeyDown = useCallback((event) => {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  }, [onClose]);
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -40,16 +61,16 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]); 
+  }, [handleKeyDown]);
 
   const handlerInputChange = (e) => {
-    const actCalories = ((Number(e.target.value) * calories) / 100)
-    
+    const actCalories = (Number(e.target.value) * calories) / 100;
+
     if (actCalories) {
       setactualCalories(actCalories);
     }
     setGram(e.target.value);
-  }
+  };
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
@@ -68,13 +89,8 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
       .catch((e) => {
         notify();
       });
-  }
+  };
 
-
-
-
-
-  
   return (
     <>
       <Backdrop onClick={onClose}>
@@ -124,7 +140,6 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
       </Backdrop>
     </>
   );
-  };
-  
-export default AddProductForm;
+};
 
+export default AddProductForm;
