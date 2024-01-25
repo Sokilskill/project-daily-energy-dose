@@ -11,7 +11,7 @@ const initialState = {
     sex: null,
     levelActivity: null,
     bmr: 0,
-    time: 0,
+    time: 110,
     owner: {
       id: '',
       name: '',

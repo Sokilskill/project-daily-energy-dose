@@ -29,7 +29,7 @@ export const ExercisesList = () => {
         setExercises(data.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   }, [categoryType, group, isLoggedIn]);
 

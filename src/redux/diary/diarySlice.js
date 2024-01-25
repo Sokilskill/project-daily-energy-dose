@@ -12,14 +12,16 @@ import {
 
 const initialState = {
   data: {
-    eatenProducts:[],
-    doneExercises:[],
-    consumedCalories:0,
-    burnedCalories:0,
-    sportTime:0,
+    diary: {
+      products: [],
+      exercises: [],
+      consumedCalories: 0,
+      burnedCalories: 0,
+      sportTime: 0,
+    },
   },
   isLoading: false,
-  error:"",
+  error: '',
 };
 
 const STATUS = {
@@ -36,19 +38,19 @@ export const diarySlice = createSlice({
       .addCase(diaryOperations.getDiary[STATUS.FULFILLED], handleFulfilled)
       .addCase(
         diaryOperations.postDiaryProduct[STATUS.FULFILLED],
-        handleFulfilledAddProduct,
+        handleFulfilledAddProduct
       )
       .addCase(
         diaryOperations.deleteDiaryProduct[STATUS.FULFILLED],
-        handleFulfilledDeleteProduct,
+        handleFulfilledDeleteProduct
       )
       .addCase(
         diaryOperations.postDiaryExercise[STATUS.FULFILLED],
-        handleFulfilledAddExercise,
+        handleFulfilledAddExercise
       )
       .addCase(
         diaryOperations.deleteDiaryExercise[STATUS.FULFILLED],
-        handleFulfilledDeleteExercise,
+        handleFulfilledDeleteExercise
       )
       .addMatcher(
         isAnyOf(
@@ -56,9 +58,9 @@ export const diarySlice = createSlice({
           diaryOperations.postDiaryProduct[STATUS.PENDING],
           diaryOperations.deleteDiaryProduct[STATUS.PENDING],
           diaryOperations.postDiaryExercise[STATUS.PENDING],
-          diaryOperations.deleteDiaryExercise[STATUS.PENDING],
+          diaryOperations.deleteDiaryExercise[STATUS.PENDING]
         ),
-        handlePending,
+        handlePending
       )
       .addMatcher(
         isAnyOf(
@@ -66,9 +68,9 @@ export const diarySlice = createSlice({
           diaryOperations.postDiaryProduct[STATUS.REJECTED],
           diaryOperations.deleteDiaryProduct[STATUS.REJECTED],
           diaryOperations.postDiaryExercise[STATUS.REJECTED],
-          diaryOperations.deleteDiaryExercise[STATUS.REJECTED],
+          diaryOperations.deleteDiaryExercise[STATUS.REJECTED]
         ),
-        handleRejected,
+        handleRejected
       );
   },
 });

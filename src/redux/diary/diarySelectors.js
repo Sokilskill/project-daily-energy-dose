@@ -1,14 +1,12 @@
-export const getDiary = (state) => state.diary.data;
-export const getIsLoading = (state) => state.diary.isLoading;
-export const getIsError = (state) => state.diary.error;
-export const selectUser = (state) => state.auth.user;
+const getDiary = (state) => state.diary.data.diary;
+const getIsLoading = (state) => state.diary.isLoading;
 
+const getIsError = (state) => state.diary.error;
 
 const diarySelectors = {
   getDiary,
   getIsLoading,
   getIsError,
-  selectUser,
 };
 
 export default diarySelectors;

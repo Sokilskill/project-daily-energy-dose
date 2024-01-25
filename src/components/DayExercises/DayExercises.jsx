@@ -42,25 +42,26 @@ const Icon = styled.svg`
 `;
 
 export const DayExercises = () => {
-  const visibleExercises = useSelector(diarySelectors.getDiary).doneExercises;
+  const diaryDate = useSelector(diarySelectors.getDiary).date;
+  const visibleExercises = useSelector(diarySelectors.getDiary).exercises;
 
   return (
     <ContainerEx>
       <TitleMainEx>
         <SubTitleEx>Execrcises</SubTitleEx>
-        <StyledLinkEx to="/exercises/bodyParts">
+        <StyledLinkEx to="/exercises/body">
           <AddProductEx>Add exercise</AddProductEx>
           <Icon width={16} height={16} className="orange">
             <use href={`${sprite}#icon-start`}></use>
           </Icon>
         </StyledLinkEx>
       </TitleMainEx>
-      <ExercisesTable exercises={visibleExercises} />
+      <ExercisesTable exercises={visibleExercises} date={diaryDate} />
     </ContainerEx>
   );
 };
 
-export const ExercisesTable = ({ exercises }) => {
+export const ExercisesTable = ({ exercises, date }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(diarySelectors.getIsLoading);
 
@@ -77,7 +78,6 @@ export const ExercisesTable = ({ exercises }) => {
             {exercises.map(
               ({
                 burnedCalories,
-                date,
                 exerciseId: { bodyPart, equipment, name, target },
                 time,
                 _id,
@@ -92,7 +92,7 @@ export const ExercisesTable = ({ exercises }) => {
                   <WrapMobileEx>
                     <WrapItemProductsEx>
                       <ItemProductEx value={target}>Target</ItemProductEx>
-                      <ItemProductEx value={burnedCalories}>
+                      <ItemProductEx value={Math.round(burnedCalories)}>
                         Burned Calories
                       </ItemProductEx>
                       <ItemProductEx value={time}>Time</ItemProductEx>
@@ -104,7 +104,7 @@ export const ExercisesTable = ({ exercises }) => {
                           diaryOperations.deleteDiaryExercise({
                             exerciseId: _id,
                             date,
-                          }),
+                          })
                         );
                       }}
                     >
@@ -116,7 +116,7 @@ export const ExercisesTable = ({ exercises }) => {
                     </ButtonEx>
                   </WrapMobileEx>
                 </ListItemEx>
-              ),
+              )
             )}
           </TableListEx>
         </>

@@ -72,11 +72,11 @@ export const ContentContainerCard = styled.div`
   ${(props) => {
     // console.log(props.title);
     switch (true) {
-      case props.title === 'The rest of the calories' && props.value < 0:
+      case props.title === 'Calories remaining' && props.value < 0:
         return `
           border-color: var(--red);          
         `;
-      case props.title === 'The rest of sports' && props.value < 0:
+      case props.title === 'Sports remaining' && props.value < 0:
         return `
           border-color: var(--green);          
         `;
@@ -84,7 +84,7 @@ export const ContentContainerCard = styled.div`
 
     switch (true) {
       case props.title === 'Daily calorie intake' ||
-        props.title === 'Daily norm of sports':
+        props.title === 'Daily physical activity':
         return `
           background-color: var(--orange);          
         `;
@@ -113,21 +113,20 @@ export const TitleTextCard = styled.p`
   line-height: 16px;
   @media screen and (min-width: 375px) {
     white-space: ${(props) =>
-    props.children === 'The rest of the calories' ? 'normal' : 'nowrap'};
+      props.children === 'Sports remaining' ? 'normal' : 'nowrap'};
   }
 
   @media screen and (min-width: 768px) {
     line-height: 18px;
   }
   @media screen and (min-width: 1440px) {
-
   }
 
   ${(props) => {
     // console.log(props.title);
     switch (true) {
       case props.children === 'Daily calorie intake' ||
-        props.children === 'Daily norm of sports':
+        props.children === 'Daily physical activity':
         return `
           color: var(--white)
         `;
