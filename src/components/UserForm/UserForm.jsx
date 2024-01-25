@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addUserData,
   getUserProfile,
-  // updateUserName,
 } from '../../redux/profileSettings/operations';
 import { parseISO } from 'date-fns';
 import {
@@ -44,7 +43,6 @@ import {
 } from './UserForm.styled';
 import { setIsParams } from '../../redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
 
 
 const bloodsValue = [
@@ -102,7 +100,6 @@ export const UserForm = () => {
   } = useSelector(selectUserProfile);
   const userName = useSelector(selectProfileName);
   const userCurrent = useSelector(selectUser);
-  // const [selectedDate, setSelectedDate] = useState(null);
   const currentName = userName || userCurrent.name;
 
 
@@ -135,7 +132,6 @@ export const UserForm = () => {
   const handleSubmit = async (data) => {
     try {
       const { email, birthday, ...profileData } = data;
-      // console.log('DATA', data);
       const formattedBirthday = format(new Date(birthday), 'yyyy-MM-dd');
       const updateProfileDataResult = await dispatch(
         addUserData({
@@ -460,7 +456,7 @@ export const UserForm = () => {
                           }}
                         >
                           <use
-                            href={`${sprite}#checkbox-circle`}
+                            href={sprite+'#icon-checkbox-circle'}
                           />
                         </svg>
                       )}

@@ -1,6 +1,4 @@
 export const selectProfileName = (state) => {
-  //   console.log('STATE ---PROFILE====', state);
-  //   console.log('state.profile-NAME', state.profile.profile.owner);
 
   return state.profile.profile.owner.name;
 };

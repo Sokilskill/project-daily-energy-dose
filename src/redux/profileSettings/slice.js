@@ -53,9 +53,6 @@ export const profileSlice = createSlice({
   reducers: {
     setInitialState: () => initialState,
 
-    // setAvatarURL: (state, action) => {
-    //   state.profile.avatarURL = action.payload;
-    // },
     setBirthday: (state, action) => {
       state.profile.birthday = action.payload;
     },
@@ -74,6 +71,6 @@ export const profileSlice = createSlice({
   },
 });
 
-export const { setAvatarURL, setBirthday, setInitialState } =
+export const { setBirthday, setInitialState } =
   profileSlice.actions;
 export const profileReducer = profileSlice.reducer;

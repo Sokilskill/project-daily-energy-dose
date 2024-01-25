@@ -85,7 +85,7 @@ export const UserField = styled.input`
   @media (min-width: 768px) {
     width: 341px;
     height: 52px;
-    // margin: 8px 0 0 0;
+   
   }
 `;
 
@@ -97,7 +97,7 @@ display: flex;
   @media (min-width: 768px) {
     width: 704px;
     flex-direction: row;
-    // justify-content: space-between
+
   }
 `;
 
@@ -147,7 +147,7 @@ export const HeightField = styled(Field)`
   @media (min-width: 768px) {
     width: 168px;
     height: 52px;
-    // margin: 8px 0 14px 0;
+   
   }
 `;
 
@@ -177,7 +177,7 @@ export const CurrentWeightField = styled(Field)`
   @media (min-width: 768px) {
     width: 159px;
     height: 52px;
-    // margin: 8px 0 14px 0;
+ 
   }
 `;
 
