@@ -85,14 +85,22 @@ export default function ProductItem({ productItem }) {
 
           <WrapBtn>
             {groupBloodNotAllowed[groupBlood] ? (
-            <><Rectangle color = { '#E9101D' } />
-          <RecText>{'Not recommended'}</RecText></>
-        ) : (
-            <><Rectangle color={'#419B09'} />
-          <RecText>{'Recommended'}</RecText></>
-            
-        )}
-            <AddBtn onClick={() => setOpenModal(true)}>
+              <>
+                <Rectangle color={'#E9101D'} />
+                <RecText>{'Not recommended'}</RecText>
+              </>
+            ) : (
+              <>
+                <Rectangle color={'#419B09'} />
+                <RecText>{'Recommended'}</RecText>
+              </>
+            )}
+            <AddBtn
+              onClick={() => {
+                setOpenModal(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
               Add
               <IconAdd>
                 <use href={sprite + '#icon-arrow'} />
