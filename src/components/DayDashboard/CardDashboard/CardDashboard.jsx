@@ -1,7 +1,5 @@
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import styled from '@emotion/styled';
 import sprite from '../../../assets/sprite.svg';
-import diarySelectors from '../../../redux/diary/diarySelectors';
 import {
   ContentContainerCard,
   TitleTextCard,
@@ -9,6 +7,8 @@ import {
   WrapperTitleCard,
 } from '../DayDashboard.styled';
 import MyLoader from '../../Loader/DiaryLoader';
+import { useSelector } from 'react-redux';
+import diarySelectors from '../../../redux/diary/diarySelectors';
 
 const Icon = styled.svg`
   &.orange {
@@ -17,8 +17,8 @@ const Icon = styled.svg`
 `;
 
 export const Card = ({ value, children }) => {
-  // const isLoading = useSelector(diarySelectors.getIsLoading);
-  const isLoading = false;
+  const isLoading = useSelector(diarySelectors.getIsLoading);
+
   let icon = '';
   let displayValue = value;
 

@@ -14,8 +14,6 @@ import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesL
 import MyLoader from './components/Loader/DiaryLoader';
 import { getUserProfile } from './redux/profileSettings/operations';
 import { refreshThunk } from './redux/auth/auth-operations';
-// import { setIsParams } from './redux/auth/authSlice';
-// import { selectProfileEmail } from './redux/profileSettings/selectors';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -61,7 +59,7 @@ function App() {
   // }, [dispatch, isProfileData]);
 
   return isRefreshing ? (
-    <MyLoader />
+    <MyLoader position={'absolute'} />
   ) : (
     <>
       <Routes>

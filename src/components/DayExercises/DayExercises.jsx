@@ -63,8 +63,7 @@ export const DayExercises = () => {
 
 export const ExercisesTable = ({ exercises, date }) => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(diarySelectors.getIsLoading);
-  const isLoading = false;
+  const isLoading = useSelector(diarySelectors.getIsLoading);
 
   return (
     <>

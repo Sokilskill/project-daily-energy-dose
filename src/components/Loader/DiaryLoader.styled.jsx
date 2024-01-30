@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  position: absolute;
+  // position: absolute;
   top: 35%;
   display: flex;
   justify-content: center;

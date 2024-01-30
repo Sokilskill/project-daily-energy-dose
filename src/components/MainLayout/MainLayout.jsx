@@ -11,7 +11,7 @@ const MainLayout = () => {
     <>
       {!isErrorPage && <Header />}
       <main>
-        <Suspense fallback={<MyLoader />}>
+        <Suspense fallback={<MyLoader position={'absolute'} />}>
           <Outlet />
         </Suspense>
       </main>
