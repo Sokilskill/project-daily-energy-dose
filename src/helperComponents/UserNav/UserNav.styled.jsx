@@ -22,11 +22,11 @@ export const Link = styled(NavLink)`
 
   font-size: 14px;
   font-weight: 400;
-  line-height: 128.571%;
+  line-height: 1.28;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    line-height: 150%;
+    line-height: 1.5;
   }
 
   &.active {

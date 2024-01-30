@@ -127,30 +127,30 @@ export const ContentBox = styled.div`
 export const Title = styled.h1`
   font-size: 66px;
   font-weight: 500;
-  line-height: 100%;
+  line-height: 1;
   letter-spacing: 0.66px;
   margin-bottom: 14px;
 
    @media screen and (min-width: 768px) {
 font-size: 160px;
-line-height: 93.75%;
+line-height: 0.93;
 letter-spacing: 1.6px;
   margin-bottom: 28px;
 
    @media screen and (min-width: 768px) {
-line-height:  93.75%;
+line-height:  0.93;
    }
 `;
 
 export const Text = styled.p`
   font-size: 14px;
   font-weight: 400;
-  line-height: 128.571%;
+  line-height: 1.28;
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    line-height: 150%;
+    line-height: 1.5;
   }
 `;
 
@@ -158,7 +158,7 @@ export const Link = styled(NavLink)`
   color: var(--white, #efede8);
   font-size: 16px;
   font-weight: 500;
-  line-height: 112.5%;
+  line-height: 1.12;
   padding: 12px 40px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
@@ -171,6 +171,6 @@ export const Link = styled(NavLink)`
   @media screen and (min-width: 768px) {
     padding: 16px 60px;
     font-size: 20px;
-    line-height: 120%;
+    line-height: 1.2;
   }
 `;
