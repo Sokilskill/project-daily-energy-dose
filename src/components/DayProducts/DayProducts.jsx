@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import {
   Container,
   TitleMain,
@@ -47,7 +47,7 @@ const DayProducts = () => {
         <SubTitle>Products</SubTitle>
         <StyledLink to="/products">
           <AddProduct>Add product</AddProduct>
-          <Icon width={16} height={16} className="orange" stroke='#E6533C'>
+          <Icon width={16} height={16} className="orange" stroke="#E6533C">
             <use href={`${sprite}#icon-arrow`}></use>
           </Icon>
         </StyledLink>

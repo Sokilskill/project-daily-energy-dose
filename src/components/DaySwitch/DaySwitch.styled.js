@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import '../../index.css'
+import styled from '@emotion/styled';
+import '../../index.css';
 
 export const DaySwitchContainer = styled.div`
   display: flex;
@@ -14,28 +14,27 @@ export const DaySwitchContainer = styled.div`
 `;
 
 export const CustomDatePickerInput = styled.input`
-font-family: Roboto;
-font-weight: bold;
-background: transparent;
-border: 0;
-padding: 0;
-margin-right: 8px;
-box-sizing: border-box;
-background-color: inherit;
-color: var(--white);
-font-size: 18px;
-line-height: 1.5;
-outline: none;
-cursor: pointer;
-width: 96px;
-
-
-@media screen and (min-width: 768px) {
-  width: 129px;
-  height: 32px;
-  font-size: 24px;
+  font-family: Roboto;
+  font-weight: bold;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin-right: 8px;
+  box-sizing: border-box;
+  background-color: inherit;
+  color: var(--white);
+  font-size: 18px;
   line-height: 1.5;
-}
+  outline: none;
+  cursor: pointer;
+  width: 96px;
+
+  @media screen and (min-width: 768px) {
+    width: 129px;
+    height: 32px;
+    font-size: 24px;
+    line-height: 1.5;
+  }
 `;
 
 export const StyledCalendarContainer = styled.div`
@@ -107,21 +106,21 @@ export const StyledCalendarContainer = styled.div`
 `;
 
 export const StyledIcon = styled.svg`
-width: 20px;
-height: 20px;
-stroke: var(--white);
-cursor: pointer;
-transition: stroke 0.3s ease;
+  width: 20px;
+  height: 20px;
+  stroke: var(--white);
+  cursor: pointer;
+  transition: stroke 0.3s ease;
 
-&:hover,
-&:focus {
-  stroke: #EF8964;
-}
+  &:hover,
+  &:focus {
+    stroke: #ef8964;
+  }
 
-@media screen and (min-width: 768px) {
-  width: 24px;
-  height: 24px;
-}
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const StyledArrow = styled.div`

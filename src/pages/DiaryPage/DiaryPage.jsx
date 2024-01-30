@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { useDispatch, useSelector } from 'react-redux';
 import diaryOperations from '../../redux/diary/diaryOperations';
 import { DaySwitch } from '../../components/DaySwitch/DaySwitch';
@@ -131,26 +131,26 @@ export const IconInfo = ({ size }) => {
   return (
     <div style={{ width: `${size}px`, height: `${size}px` }}>
       <Icon width={size} height={size} className="orange">
-      <use
-              href={sprite + '#icon-Ellipse-1'}
-              style={{
-                fill: 'rgba(239, 160, 130, 1)',
-                width: '100%',
-                height: '100%',
-                position: 'relative',
-              }}
-            />
-            <use
-              href={sprite + '#icon-tabler_exclamation-mark'}
-              style={{
-                fill: 'rgba(239, 237, 232, 1)',
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: '100%',
-                height: '100%',
-              }}
-            />
+        <use
+          href={sprite + '#icon-Ellipse-1'}
+          style={{
+            fill: 'rgba(239, 160, 130, 1)',
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+          }}
+        />
+        <use
+          href={sprite + '#icon-tabler_exclamation-mark'}
+          style={{
+            fill: 'rgba(239, 237, 232, 1)',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100%',
+            height: '100%',
+          }}
+        />
       </Icon>
     </div>
   );
