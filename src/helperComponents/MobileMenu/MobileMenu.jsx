@@ -12,12 +12,6 @@ export const MobileMenu = ({ isOpenMenu }) => {
     document.body.style.overflow = 'auto';
   };
 
-  const handleBackdropClick = (event) => {
-    if (event.target === event.currentTarget) {
-      closeMenu();
-    }
-  };
-
   useEffect(() => {
     const handleEscKey = (event) => {
       if (event.key === 'Escape') {
@@ -36,7 +30,7 @@ export const MobileMenu = ({ isOpenMenu }) => {
 
   return (
     <>
-      {menuIsOpen && <Overlay onClick={handleBackdropClick} />}
+      {menuIsOpen && <Overlay onClick={closeMenu} />}
       <Modal className={menuIsOpen ? 'is-open' : ''}>
         <CloseButton onClick={closeMenu}>
           <IconWrapper>
