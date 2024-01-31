@@ -2,23 +2,25 @@ import styled from '@emotion/styled';
 import '../../index.css';
 
 export const Container = styled.div`
-  margin: 0 auto;
+  // margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 80px;
 
   @media screen and (min-width: 375px) {
-    width: 375px; /* Добавлено из media query 375px в index.css */
+    // width: 375px; /* Добавлено из media query 375px в index.css */
   }
 
   @media screen and (min-width: 768px) {
-    padding-top: 136px;
-    padding: 0 32px; /* Добавлено из media query 768px в index.css */
-    width: 768px;
+    padding-top: 72px;
+    padding-bottom: 64px;
+
+    // padding: 0 32px; /* Добавлено из media query 768px в index.css */
+    // width: 768px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1440px; /* Добавлено из media query 1440px в index.css */
-    padding: 0 96px;
+    // width: 1440px; /* Добавлено из media query 1440px в index.css */
+    // padding: 0 96px;
   }
 `;
 
@@ -27,20 +29,18 @@ export const PageTitleText = styled.h2`
   font-weight: bold;
   line-height: 28px;
   color: var(--white);
-  margin-left: 20px;
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: 44px;
     display: flex;
     align-items: end;
-    margin-left: 0;
   }
 `;
 
 export const WrapDaySwitcher = styled.div`
   display: flex;
-  
+
   @media screen and (min-width: 768px) {
     align-items: flex-start;
   }
@@ -48,12 +48,12 @@ export const WrapDaySwitcher = styled.div`
 export const MobileDaySwitch = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
-  }  
+  }
 `;
 export const NotMobileDaySwitch = styled.div`
   display: none;
   @media screen and (min-width: 768px) {
-  display: flex;
+    display: flex;
   }
 `;
 
@@ -65,9 +65,8 @@ export const WrapTitle = styled.div`
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 72px;
     margin-bottom: 32px;
-    align-items: normal;
+    align-items: center;
   }
 `;
 
@@ -102,7 +101,7 @@ export const WrapInfoText = styled.div`
 
 export const WrapDashBoard = styled.div`
   @media screen and (min-width: 768px) {
-    order: 1;    
+    order: 1;
   }
 `;
 
@@ -127,6 +126,6 @@ export const WrapMainBlock = styled.div`
     flex-wrap: wrap;
   }
   @media screen and (min-width: 1440px) {
-   column-gap: 32px;
+    column-gap: 32px;
   }
 `;

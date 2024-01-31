@@ -37,10 +37,10 @@ export const ContentContainerCard = styled.div`
     max-width: 157px;
   }
   @media screen and (max-width: 767px) {
-    &:nth-type(odd) {
+    &:nth-of-type(odd) {
       width: 157px;
     }
-    &:nth-type(even) {
+    &:nth-of-type(even) {
       width: 165px;
     }
   }

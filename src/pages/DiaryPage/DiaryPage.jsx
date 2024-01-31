@@ -76,7 +76,7 @@ const Diary = () => {
   }, [dispatch, date, products.length, exercises.length]);
 
   return (
-    <Container>
+    <Container className="container">
       <ToastContainer />
       <WrapTitle>
         <PageTitleText>Diary</PageTitleText>

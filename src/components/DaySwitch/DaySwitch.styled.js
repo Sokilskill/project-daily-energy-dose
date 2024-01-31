@@ -5,12 +5,12 @@ export const DaySwitchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
+  // margin-right: 20px;
 
-  @media screen and (min-width: 768px) {
-    margin-right: 0;
-    margin-bottom: 32px;
-  }
+  // @media screen and (min-width: 768px) {
+  //   margin-right: 0;
+  //   margin-bottom: 32px;
+  // }
 `;
 
 export const CustomDatePickerInput = styled.input`
