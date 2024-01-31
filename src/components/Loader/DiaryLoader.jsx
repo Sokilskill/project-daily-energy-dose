@@ -2,8 +2,8 @@ import { RotatingLines } from 'react-loader-spinner';
 import '../../index.css';
 import { Container, Loader } from './DiaryLoader.styled';
 
-const MyLoader = () => (
-  <Container>
+const MyLoader = ({ position }) => (
+  <Container style={{ position: position ? position : 'static' }}>
     <Loader>
       <RotatingLines
         // strokeColor={`var(--white)`}

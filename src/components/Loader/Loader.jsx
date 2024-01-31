@@ -1,5 +1,5 @@
 import { ProgressBar } from 'react-loader-spinner';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const Container = styled.div`
   }
 `;
 
-function Loader({cls}) {
+function Loader({ cls }) {
   return (
     <Container className={cls}>
       <ProgressBar
@@ -34,7 +34,4 @@ function Loader({cls}) {
   );
 }
 
-
-
 export default Loader;
-

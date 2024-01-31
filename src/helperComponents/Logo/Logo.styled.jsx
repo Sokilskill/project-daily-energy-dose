@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const LogoLink = styled(Link)`
   display: block;

@@ -65,5 +65,5 @@ export const SubCategoryLink = styled(Link)`
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 32px; /* 133.333% */
+  line-height: 1.33;
 `;

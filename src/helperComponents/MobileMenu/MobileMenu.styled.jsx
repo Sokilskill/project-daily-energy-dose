@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -56,9 +56,7 @@ export const IconWrapper = styled.svg`
   width: 20px;
   height: 20px;
   fill: currentColor;
-  stroke: #efede8;
-
-  transition: stroke 250ms linear;
+  stroke: currentColor;
 
   @media screen and (min-width: 768px) {
     width: 32px;
@@ -72,12 +70,13 @@ export const CloseButton = styled.button`
   right: 20px;
   top: 20px;
   background-color: unset;
+  color: #efede8;
+
+  transition: color 250ms linear;
 
   &:hover,
   &:focus {
-    ${IconWrapper} {
-      stroke: green;
-    }
+    color: green;
   }
 
   @media screen and (min-width: 768px) {

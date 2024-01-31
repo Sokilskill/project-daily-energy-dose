@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import '../../index.css';
 
 export const Container = styled.div`
@@ -37,10 +37,10 @@ export const ContentContainerCard = styled.div`
     max-width: 157px;
   }
   @media screen and (max-width: 767px) {
-    &:nth-child(odd) {
+    &:nth-of-type(odd) {
       width: 157px;
     }
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       width: 165px;
     }
   }
@@ -52,15 +52,15 @@ export const ContentContainerCard = styled.div`
       switch (props.title) {
         case 'Daily calorie intake':
           return 0;
-        case 'Daily norm of sports':
+        case 'Daily physical activity':
           return 3;
         case 'Calories consumed':
           return 1;
         case 'Calories burned':
           return 4;
-        case 'The rest of the calories':
+        case 'Calories remaining':
           return 2;
-        case 'The rest of sports':
+        case 'Sports remaining':
           return 5;
       }
     }};

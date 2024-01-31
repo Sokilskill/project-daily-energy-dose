@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Button = styled.button`
   display: flex;
@@ -10,7 +10,7 @@ export const Button = styled.button`
   height: 20px;
   color: #efede8;
   font-size: 14px;
-  line-height: 128.571%;
+  line-height: 1.28;
   padding: 0;
 
   &.mobile {
@@ -29,7 +29,7 @@ export const Button = styled.button`
     height: 24px;
     padding: 2px 0;
 
-    line-height: 150%;
+    line-height: 1.5;
   }
 `;
 

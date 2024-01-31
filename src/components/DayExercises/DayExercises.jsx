@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import {
   ContainerEx,
   TitleMainEx,
@@ -51,7 +51,7 @@ export const DayExercises = () => {
         <SubTitleEx>Execrcises</SubTitleEx>
         <StyledLinkEx to="/exercises/body">
           <AddProductEx>Add exercise</AddProductEx>
-          <Icon width={16} height={16} className="orange" stroke='#E6533C'>
+          <Icon width={16} height={16} className="orange" stroke="#E6533C">
             <use href={`${sprite}#icon-arrow`}></use>
           </Icon>
         </StyledLinkEx>
@@ -63,8 +63,7 @@ export const DayExercises = () => {
 
 export const ExercisesTable = ({ exercises, date }) => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(diarySelectors.getIsLoading);
-  const isLoading = false;
+  const isLoading = useSelector(diarySelectors.getIsLoading);
 
   return (
     <>

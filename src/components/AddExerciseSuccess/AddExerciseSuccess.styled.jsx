@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-export const Backdrop  = styled.div`;
+export const Backdrop = styled.div`
   z-index: 1;
   position: fixed;
   top: 0;
@@ -21,21 +21,20 @@ export const ModalContainer = styled.div`
   text-align: center;
   border-radius: 12px;
   border: 1px;
-  background: linear-gradient(0deg, #10100F, #10100F),
-  linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
+  background: linear-gradient(0deg, #10100f, #10100f),
+    linear-gradient(0deg, rgba(239, 237, 232, 0.2), rgba(239, 237, 232, 0.2));
 
-    @media (min-width: 768px) {
-      width: 430px;
-    }
+  @media (min-width: 768px) {
+    width: 430px;
+  }
 `;
 export const Close = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
   cursor: pointer;
-  background: rgba(0,0,0,0);
-  type: button;
-`
+  background: rgba(0, 0, 0, 0);
+`;
 export const Div = styled.div`
   text-align: center;
   margin-bottom: 27px;
@@ -79,7 +78,7 @@ export const Button = styled.button`
   padding: 12px, 32px, 12px, 32px;
   border-radius: 12px;
   gap: 10px;
-  background: #E6533C;
+  background: #e6533c;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
@@ -88,14 +87,14 @@ export const Button = styled.button`
   text-align: center;
   color: var(--white);
 
-    &:hover {
-      background-color: #E6533C;
-    }
+  &:hover {
+    background-color: #e6533c;
+  }
 
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px #E6533C;
-    }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #e6533c;
+  }
 `;
 
 export const StyledLink = styled(Link)`
