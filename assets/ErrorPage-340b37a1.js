@@ -1,4 +1,4 @@
-import{n,O as o,a,r as d,S as t,j as i,T as p}from"./index-ada9df75.js";const r=n.div`
+import{n,N as o,a,r as d,R as t,j as i,S as p}from"./index-e1f33d15.js";const r=n.div`
   // position: relative;
   padding: 0;
 
@@ -112,34 +112,34 @@ padding-bottom: 250px;
 `,l=n.h1`
   font-size: 66px;
   font-weight: 500;
-  line-height: 100%;
+  line-height: 1;
   letter-spacing: 0.66px;
   margin-bottom: 14px;
 
    @media screen and (min-width: 768px) {
 font-size: 160px;
-line-height: 93.75%;
+line-height: 0.93;
 letter-spacing: 1.6px;
   margin-bottom: 28px;
 
    @media screen and (min-width: 768px) {
-line-height:  93.75%;
+line-height:  0.93;
    }
 `,h=n.p`
   font-size: 14px;
   font-weight: 400;
-  line-height: 128.571%;
+  line-height: 1.28;
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    line-height: 150%;
+    line-height: 1.5;
   }
 `,b=n(o)`
   color: var(--white, #efede8);
   font-size: 16px;
   font-weight: 500;
-  line-height: 112.5%;
+  line-height: 1.12;
   padding: 12px 40px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
@@ -152,6 +152,6 @@ line-height:  93.75%;
   @media screen and (min-width: 768px) {
     padding: 16px 60px;
     font-size: 20px;
-    line-height: 120%;
+    line-height: 1.2;
   }
 `,u="/project-daily-energy-dose/assets/people-training-gym-mob-09d55cdf.webp",w="/project-daily-energy-dose/assets/people-training-gym-mob-2x-dc1a54ad.webp",f="/project-daily-energy-dose/assets/people-training-gym-tab-953f4b24.webp",k="/project-daily-energy-dose/assets/people-training-gym-tab-2x-0729540b.webp",y="/project-daily-energy-dose/assets/people-training-gym-desk-865deed9.webp",v="/project-daily-energy-dose/assets/people-training-gym-desk-2x-81eedaf3.webp",_=()=>{const e=a();return d.useEffect(()=>(e(t(!0)),()=>{e(t(!1))}),[e]),i.jsx(i.Fragment,{children:i.jsx(r,{bgi:[u,w,f,k,y,v],className:"container section-wrapper",children:i.jsx(x,{children:i.jsxs(g,{className:"container",children:[i.jsx(c,{children:i.jsx(p,{colorWhite:"true"})}),i.jsx(s,{children:i.jsxs(m,{children:[i.jsx(l,{children:"404"}),i.jsx(h,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),i.jsx(b,{to:"/",children:"Go Home"})]})})]})})})})};export{_ as default};
