@@ -1,8 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { MdClose } from 'react-icons/md';
-import { IoMdArrowForward } from 'react-icons/io';
 import {
-  Backdrop,
   ModalContainer,
   Close,
   Image,
@@ -13,7 +11,7 @@ import {
   StyledLink,
   IconAdd,
   Accent,
-} from './AddExerciseSuccess.stiled';
+} from './AddExerciseSuccess.styled';
 import sprite from '../../assets/sprite.svg';
 import ThumbIcon from '../../assets/images/thumb_up.png';
 
@@ -51,7 +49,7 @@ const AddExerciseSuccess = ({ onClose, time, caloriesBurned }) => {
   return (
     <>
       <ModalContainer onClick={(event) => event.stopPropagation()}>
-        <Close onClick={onClose}>
+        <Close type="button" onClick={onClose}>
           <MdClose size="22px" fill="white" />
         </Close>
         <Div>
