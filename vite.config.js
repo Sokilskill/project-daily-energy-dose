@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import svgr from 'vite-plugin-svgr';
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
   plugins: [react(), svgr()],
@@ -14,5 +14,8 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/project-daily-energy-dose',
+  server: {
+    historyApiFallback: true,
+  },
+  base: '/project-daily-energy-dose/',
 });
