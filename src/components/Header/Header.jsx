@@ -18,8 +18,6 @@ import {
 import { MobileMenu } from '../../helperComponents/MobileMenu/MobileMenu';
 import { useState } from 'react';
 
-// коли еррор === еррор передаєзначення в стор і лого змінюється
-// якщо не авторизований прибрати нижній бордер
 const borderBottomStyle = '1px solid rgba(239, 237, 232, 0.2)';
 
 export const Header = () => {
@@ -50,13 +48,15 @@ export const Header = () => {
               <UserBar />
               <LogOutBtn className="desktop" />
               {isParamsDate && (
-                <BurgerButton toggleMenu={handlerBurgerButton} />
+                <>
+                  <BurgerButton toggleMenu={handlerBurgerButton} />
+                  <MobileMenu isOpenMenu={isOpenMenu} />
+                </>
               )}
             </UserBarWrapper>
           </UserMenuBox>
         )}
       </HeaderWrap>
-      <MobileMenu isOpenMenu={isOpenMenu} />
     </HeaderContainer>
   );
 };
