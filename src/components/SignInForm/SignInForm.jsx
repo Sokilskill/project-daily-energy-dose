@@ -1,8 +1,19 @@
-import css from './SignInForm.module.css';
 import sprite from '../../assets/sprite.svg';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import {
+  FormikForm,
+  InputsBox,
+  FormikInputField,
+  PassInputDiv,
+  IconEye,
+  ErrorRowDiv,
+  SuccessRowDiv,
+  IconError,
+  IconSuccess,
+  FormSubmitButton,
+} from './SignInForm.styled';
 
 const initialValues = {
   email: '',
@@ -21,6 +32,15 @@ const SignInSchema = Yup.object().shape({
 export const SignInForm = ({ onSubmit }) => {
   const [visible, setVisible] = useState(false);
 
+  function borderProp(lib, field) {
+    if (lib.errors[field] && lib.touched[field]) {
+      return { red: 'true' };
+    }
+    if (!lib.errors[field] && lib.values[field]) {
+      return { green: 'true' };
+    }
+  }
+
   return (
     <Formik
       initialValues={initialValues}
@@ -32,95 +52,79 @@ export const SignInForm = ({ onSubmit }) => {
     >
       {(formik) => {
         const { errors, touched, values } = formik;
+
         return (
           <>
-            <Form className={css.form}>
-              <div className={css.inputs}>
+            <FormikForm>
+              <InputsBox>
                 <div className="form-row">
                   <label htmlFor="email"></label>
-                  <Field
+                  <FormikInputField
+                    {...borderProp(formik, 'email')}
                     type="email"
                     name="email"
                     id="email"
                     autoComplete="off"
                     placeholder="Email"
-                    className={
-                      !errors.email
-                        ? !touched.email
-                          ? `${css.form_input}`
-                          : `${css.form_input} ${css.success_input}`
-                        : `${css.form_input} ${css.error_input}`
-                    }
                   />
                   {errors.email && touched.email ? (
-                    <div className={css.error_row}>
-                      <svg className={css.icon_checkbox_error}>
+                    <ErrorRowDiv>
+                      <IconError>
                         <use href={`${sprite}#checkbox-circle`} />
-                      </svg>
+                      </IconError>
                       <ErrorMessage name="email" />
-                    </div>
+                    </ErrorRowDiv>
                   ) : null}
                   {!errors.email && values.email ? (
-                    <div className={css.success_row}>
-                      <svg className={css.icon_checkbox_succsess}>
+                    <SuccessRowDiv>
+                      <IconSuccess>
                         <use href={`${sprite}#checkbox-circle`} />
-                      </svg>
+                      </IconSuccess>
                       <p>Success email</p>
-                    </div>
+                    </SuccessRowDiv>
                   ) : null}
                 </div>
 
                 <div className="form-row">
                   <label htmlFor="password"></label>
-                  <div className={css.input_pass_field}>
-                    <Field
+                  <PassInputDiv>
+                    <FormikInputField
+                      {...borderProp(formik, 'password')}
                       type={visible ? 'text' : 'password'}
                       name="password"
                       id="password"
                       autoComplete="off"
                       placeholder="Password"
-                      className={
-                        !errors.password
-                          ? !touched.password
-                            ? `${css.form_input}`
-                            : `${css.form_input} ${css.success_input}`
-                          : `${css.form_input} ${css.error_input}`
-                      }
                     />
-                    <svg
-                      className={css.icon_eye}
-                      onClick={() => setVisible(!visible)}
-                    >
+                    <IconEye onClick={() => setVisible(!visible)}>
                       {visible ? (
                         <use href={`${sprite}#eye`} />
                       ) : (
                         <use href={`${sprite}#eye-off`} />
                       )}
-                    </svg>
-                  </div>
+                    </IconEye>
+                  </PassInputDiv>
                   {errors.password && touched.password ? (
-                    <div className={css.error_row}>
-                      <svg className={css.icon_checkbox_error}>
+                    <ErrorRowDiv>
+                      <IconError>
                         <use href={`${sprite}#checkbox-circle`} />
-                      </svg>
+                      </IconError>
                       <ErrorMessage name="password" />
-                    </div>
+                    </ErrorRowDiv>
                   ) : null}
                   {!errors.password && values.password ? (
-                    <div className={css.success_row}>
-                      <svg className={css.icon_checkbox_succsess}>
+                    <SuccessRowDiv>
+                      <IconSuccess>
                         <use href={`${sprite}#checkbox-circle`} />
-                      </svg>
+                      </IconSuccess>
                       <p>Success password</p>
-                    </div>
+                    </SuccessRowDiv>
                   ) : null}
                 </div>
-              </div>
+              </InputsBox>
 
-              <button type="submit" className={css.form_btn}>
-                Sign In
-              </button>
-            </Form>
+              <FormSubmitButton type="submit">Sign In</FormSubmitButton>
+            </FormikForm>
           </>
         );
       }}

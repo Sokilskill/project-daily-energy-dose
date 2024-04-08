@@ -1,58 +1,42 @@
-@import '../../index.css';
+import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
-.signin_part {
+export const SignInPart = styled.div`
   padding-bottom: 74px;
   background: linear-gradient(
     330deg,
     rgba(4, 4, 4, 0) 8%,
     rgba(0, 0, 0, 0.8) 40%
   );
-}
-.text_box {
+`;
+
+export const TextBox = styled.div`
   max-width: 335px;
   margin-bottom: 28px;
-}
-.signin_title {
+`;
+
+export const Title = styled.h2`
   color: var(--white, #efede8);
   font-size: 24px;
   font-weight: 700;
   line-height: 1.17;
   margin-bottom: 14px;
-}
-.signin_text {
+`;
+
+export const SignInText = styled.p`
   color: var(--border, #efede84d);
   font-size: 14px;
   line-height: 1.28;
-}
-.signin_form {
-  display: flex;
-}
-.signup_option {
+`;
+
+export const OptionText = styled.p`
   margin-top: 12px;
   color: var(--secondary-text-color-1, #efede899);
   font-size: 12px;
   line-height: 1.5;
-}
-.signup_link {
+`;
+
+export const SignUpLink = styled(Link)`
   color: var(--white, #efede8);
   text-decoration-line: underline;
-}
-
-@media (min-width: 768px) {
-  .signin_part {
-    background: none;
-  }
-  .text_box {
-    min-width: 496px;
-    margin-bottom: 32px;
-  }
-  .signin_title {
-    font-size: 32px;
-    line-height: 1.37;
-    margin-bottom: 16px;
-  }
-  .signin_text {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-}
+`;

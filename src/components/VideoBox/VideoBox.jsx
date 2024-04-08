@@ -1,19 +1,25 @@
-import css from './VideoBox.module.css';
 import sprite from '../../assets/sprite.svg';
+import {
+  VideoBoxDiv,
+  Ellips,
+  IconPlay,
+  ViewsSum,
+  ViewsText,
+} from './VideoBox.styled';
 
 const VideoBox = ({ videoCount }) => {
   return (
-    <div className={css.video_box}>
-      <div className={css.ellips}>
-        <svg className={css.icon_play}>
+    <VideoBoxDiv>
+      <Ellips>
+        <IconPlay>
           <use href={`${sprite}#icon-polygon1`} />
-        </svg>
-      </div>
+        </IconPlay>
+      </Ellips>
       <div>
-        <p className={css.views}>{!videoCount ? `350 +` : videoCount}</p>
-        <p className={css.views_text}>Video tutorial</p>
+        <ViewsSum>{!videoCount ? `350 +` : videoCount}</ViewsSum>
+        <ViewsText>Video tutorial</ViewsText>
       </div>
-    </div>
+    </VideoBoxDiv>
   );
 };
 export default VideoBox;

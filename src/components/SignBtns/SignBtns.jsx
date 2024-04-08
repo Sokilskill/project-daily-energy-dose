@@ -1,25 +1,17 @@
-import css from './SignBtns.module.css';
 import { useNavigate } from 'react-router-dom';
+import { Buttons, SignButton } from './SignBtns.styled';
 
 export const SignBtns = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={css.btns}>
-      <button
-        type="button"
-        className={`${css.sing_btn} ${css.up} `}
-        onClick={() => navigate('signup')}
-      >
+    <Buttons>
+      <SignButton orange type="button" onClick={() => navigate('signup')}>
         Sign Up
-      </button>
-      <button
-        type="button"
-        className={`${css.sing_btn} ${css.in}`}
-        onClick={() => navigate('signin')}
-      >
+      </SignButton>
+      <SignButton type="button" onClick={() => navigate('signin')}>
         Sign In
-      </button>
-    </div>
+      </SignButton>
+    </Buttons>
   );
 };
