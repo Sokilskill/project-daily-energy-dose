@@ -1,4 +1,4 @@
-import{n,N as o,a,r as d,R as t,j as i,S as p}from"./index-fdf8df3c.js";const r=n.div`
+import{n,N as a,a as o,r as d,R as t,j as i,S as r}from"./index-6c3abf05.js";import{b as p,a as s,c as g,d as x,e as c,f as h}from"./people-training-gym-desk-2x-eb4104ef.js";const m=n.div`
   // position: relative;
   padding: 0;
 
@@ -52,7 +52,7 @@ import{n,N as o,a,r as d,R as t,j as i,S as p}from"./index-fdf8df3c.js";const r=
       background-position: right top;
     }
   }
-`,s=n.div`
+`,l=n.div`
 padding-top: 250px ;
 padding-bottom: 250px;
 
@@ -64,12 +64,12 @@ padding-bottom: 250px;
   @media screen and (min-width: 1440px) {
   padding-top: 221px;
   padding-bottom: 221px;
-`,g=n.header`
+`,b=n.header`
   position: relative;
-`,c=n.header`
+`,u=n.header`
   position: absolute;
   top: 0;
-`,x=n.div`
+`,w=n.div`
   // position: absolute;
   // top: -100px;
   // left: 0;
@@ -86,7 +86,7 @@ padding-bottom: 250px;
   @media screen and (min-width: 1440px) {
     width: 669px;
   }
-`,m=n.div`
+`,f=n.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,7 +109,7 @@ padding-bottom: 250px;
 
     width: 477px;
   }
-`,l=n.h1`
+`,k=n.h1`
   font-size: 66px;
   font-weight: 500;
   line-height: 1;
@@ -125,7 +125,7 @@ letter-spacing: 1.6px;
    @media screen and (min-width: 768px) {
 line-height:  0.93;
    }
-`,h=n.p`
+`,v=n.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28;
@@ -135,7 +135,7 @@ line-height:  0.93;
     font-size: 16px;
     line-height: 1.5;
   }
-`,b=n(o)`
+`,j=n(a)`
   color: var(--white, #efede8);
   font-size: 16px;
   font-weight: 500;
@@ -154,4 +154,4 @@ line-height:  0.93;
     font-size: 20px;
     line-height: 1.2;
   }
-`,u="/project-daily-energy-dose/assets/people-training-gym-mob-09d55cdf.webp",w="/project-daily-energy-dose/assets/people-training-gym-mob-2x-dc1a54ad.webp",f="/project-daily-energy-dose/assets/people-training-gym-tab-953f4b24.webp",k="/project-daily-energy-dose/assets/people-training-gym-tab-2x-0729540b.webp",y="/project-daily-energy-dose/assets/people-training-gym-desk-865deed9.webp",v="/project-daily-energy-dose/assets/people-training-gym-desk-2x-81eedaf3.webp",_=()=>{const e=a();return d.useEffect(()=>(e(t(!0)),()=>{e(t(!1))}),[e]),i.jsx(i.Fragment,{children:i.jsx(r,{bgi:[u,w,f,k,y,v],className:"container section-wrapper",children:i.jsx(x,{children:i.jsxs(g,{className:"container",children:[i.jsx(c,{children:i.jsx(p,{colorWhite:"true"})}),i.jsx(s,{children:i.jsxs(m,{children:[i.jsx(l,{children:"404"}),i.jsx(h,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),i.jsx(b,{to:"/",children:"Go Home"})]})})]})})})})};export{_ as default};
+`,y=()=>{const e=o();return d.useEffect(()=>(e(t(!0)),()=>{e(t(!1))}),[e]),i.jsx(i.Fragment,{children:i.jsx(m,{bgi:[p,s,g,x,c,h],className:"container section-wrapper",children:i.jsx(w,{children:i.jsxs(b,{className:"container",children:[i.jsx(u,{children:i.jsx(r,{colorWhite:"true"})}),i.jsx(l,{children:i.jsxs(f,{children:[i.jsx(k,{children:"404"}),i.jsx(v,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),i.jsx(j,{to:"/",children:"Go Home"})]})})]})})})})};export{y as default};
