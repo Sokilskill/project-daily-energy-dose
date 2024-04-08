@@ -1,18 +1,18 @@
-import css from './WelcomePart.module.css';
 import sprite from '../../assets/sprite.svg';
 import { SignBtns } from '../SignBtns/SignBtns';
+import { TextBox, Title, IconLine } from './WelcomePart.styled';
 
 export const WelcomePart = () => {
   return (
-    <div className={css.welcome_part}>
-      <div className={css.text_box}>
-        <h1 className={css.title}>
+    <div>
+      <TextBox>
+        <Title>
           Transforming your body shape with Power Pulse
-          <svg className={css.icon_line}>
+          <IconLine>
             <use href={`${sprite}#icon-Line`} />
-          </svg>
-        </h1>
-      </div>
+          </IconLine>
+        </Title>
+      </TextBox>
       <SignBtns />
     </div>
   );

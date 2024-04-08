@@ -1,9 +1,15 @@
 import WelcomeLayout from '../../components/WelcomeLayout/WelcomeLayout';
-import css from './SignUpPage.module.css';
 import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/auth-operations';
+import {
+  SignUpPart,
+  TextBox,
+  Title,
+  Text,
+  OptionText,
+  SignInLink,
+} from './SignUpPage.styled';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -13,25 +19,23 @@ const SignUpPage = () => {
 
   return (
     <WelcomeLayout>
-      <div className={css.signup_part}>
-        <div className={css.text_box}>
-          <h2 className={css.signup_title}>Sign Up</h2>
-          <p className={css.signup_text}>
+      <SignUpPart>
+        <TextBox>
+          <Title>Sign Up</Title>
+          <Text>
             Thank you for your interest in our platform. To complete the
             registration process, please provide us with the following
             information.
-          </p>
-        </div>
+          </Text>
+        </TextBox>
         <SignUpForm onSubmit={handleFormData} />
-        <p className={css.signin_option}>
+        <OptionText>
           Already have an account?
           <span>
-            <Link className={css.signin_link} to="/signin">
-              Sign In
-            </Link>
+            <SignInLink to="/signin">{`  Sign In`}</SignInLink>
           </span>
-        </p>
-      </div>
+        </OptionText>
+      </SignUpPart>
     </WelcomeLayout>
   );
 };
