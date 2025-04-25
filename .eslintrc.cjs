@@ -17,7 +17,14 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
-  settings: { react: { version: '18.2' } },
+  settings: {
+    react: { version: '18.2' },
+    'import/resolver': {
+      vite: {
+        viteConfig: './vite.config.js',
+      },
+    },
+  },
   plugins: ['react-refresh'],
   rules: {
     'no-console': 'error',
