@@ -102,17 +102,6 @@ export const UserForm = () => {
   const userCurrent = useSelector(selectUser);
   const currentName = userName || userCurrent.name;
 
-  function formatDateString(DateStr) {
-    const originalDate = new Date(DateStr);
-    return `${originalDate.getDate()}.${
-      originalDate.getMonth() + 1
-    }.${originalDate.getFullYear()}`;
-  }
-  const currentDay = new Date();
-  const formattedDateBirthday = formatDateString(
-    birthday ? birthday : currentDay
-  );
-
   const initialValues = {
     name: currentName || '',
     email: userCurrent.email,
@@ -127,7 +116,7 @@ export const UserForm = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const { email, birthday, ...profileData } = data;
+      const { birthday, ...profileData } = data;
       const formattedBirthday = format(new Date(birthday), 'yyyy-MM-dd');
       const updateProfileDataResult = await dispatch(
         addUserData({
@@ -457,10 +446,7 @@ export const UserForm = () => {
                             transform: 'translateY(-50%)',
                           }}
                         >
-
-                          <use
-                            href={sprite+'#icon-checkbox-circle'}
-                          />
+                          <use href={sprite + '#icon-checkbox-circle'} />
                         </svg>
                       )}
                       <ErrorMessage

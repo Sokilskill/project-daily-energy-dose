@@ -1,8 +1,6 @@
 import { useEffect, useCallback } from 'react';
-import { MdClose } from "react-icons/md";
-import { IoMdArrowForward } from "react-icons/io";
+import { MdClose } from 'react-icons/md';
 import {
-  Backdrop,
   ModalContainer,
   Close,
   Image,
@@ -13,7 +11,7 @@ import {
   IconAdd,
   Accent,
 } from './AddProductSuccess.styled';
-import foodIcon from "@/assets/images/3d-food-icon-by-OdafeUI.png";
+import foodIcon from '@/assets/images/3d-food-icon-by-OdafeUI.png';
 import sprite from '../../assets/sprite.svg';
 
 export const AddProductSuccess = ({ onClose, actualCalories }) => {
@@ -62,6 +60,3 @@ export const AddProductSuccess = ({ onClose, actualCalories }) => {
     </>
   );
 };
-  
-
-

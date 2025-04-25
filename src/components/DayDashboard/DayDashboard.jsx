@@ -1,7 +1,11 @@
-import React from 'react';
 import { Container } from './DayDashboard.styled';
 import { useSelector } from 'react-redux';
-import { selectTargetBmr, selectTargetTime, selectDiaryProduct, selectBurnedCalories } from '../../redux/auth/auth-selectors';
+import {
+  selectTargetBmr,
+  selectTargetTime,
+  selectDiaryProduct,
+  selectBurnedCalories,
+} from '../../redux/auth/auth-selectors';
 import { Card } from './CardDashboard/CardDashboard';
 
 const DayDashboard = () => {
@@ -10,10 +14,20 @@ const DayDashboard = () => {
   const calorieIntake = useSelector(selectDiaryProduct);
   const burnedCalories = useSelector(selectBurnedCalories);
 
-  const caloriesConsumed = Math.round(calorieIntake.reduce((accumulator, currentValue) => accumulator + currentValue.calories, 0));
+  const caloriesConsumed = Math.round(
+    calorieIntake.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.calories,
+      0
+    )
+  );
 
-  const caloriesBurned = Math.round(burnedCalories.reduce((accumulator, currentValue) => accumulator + currentValue.burnedCalories, 0));
-  
+  const caloriesBurned = Math.round(
+    burnedCalories.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.burnedCalories,
+      0
+    )
+  );
+
   const calculateRestOfCalories = () => {
     const caloriesIntake = targetBmr;
     const restOfCalories = caloriesIntake - caloriesConsumed;
@@ -22,12 +36,11 @@ const DayDashboard = () => {
 
   const calculateRestOfSports = () => {
     const minutesSpentOnSports = Math.floor(normOfSports);
-  
+
     const restOfSports = Math.floor(normOfSports - minutesSpentOnSports / 60);
-  
+
     return restOfSports;
   };
-  
 
   const restOfCalories = calculateRestOfCalories();
   const restOfSports = calculateRestOfSports();

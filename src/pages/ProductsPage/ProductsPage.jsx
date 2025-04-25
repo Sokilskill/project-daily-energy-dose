@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Container, TitlePage, Wrap } from './ProductsPage.styled';
 import { Filters } from '../../components/ProductsFilters/ProductsFilters';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { getProducts, getAllCategories } from '../../redux/auth/auth-operations';
+import {
+  getProducts,
+  getAllCategories,
+} from '../../redux/auth/auth-operations';
 import bg_min from '../../assets/productPage/side-view-people-training-gym.jpg';
 import bg_max from '../../assets/productPage/side-view-people-training-gym@max.jpg';
 
@@ -22,7 +24,7 @@ const initialRecommended = [
 ];
 
 export default function ProductPage() {
-  const token = useSelector(state => state.auth.token);
+  // const token = useSelector(state => state.auth.token);
   const [category, setCategory] = useState('');
   const [groupBloodNotAllowed, setGroupBloodNotAllowed] = useState('');
   const [search, setSearch] = useState('');
@@ -32,9 +34,6 @@ export default function ProductPage() {
   const [products, setProducts] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
 
-  
-
-  
   useEffect(() => {
     const list = document.querySelector('.custom-list');
     list.addEventListener('scroll', handlerScroll);
@@ -52,37 +51,38 @@ export default function ProductPage() {
       params: { page, category, groupBloodNotAllowed, search },
     };
 
-    getProducts(options)
-      .then(({ data }) => {
-        setProducts(data.data);
-        setCurrentTotal(data.total);
-        setPage(2);
-      })
+    getProducts(options).then(({ data }) => {
+      setProducts(data.data);
+      setCurrentTotal(data.total);
+      setPage(2);
+    });
   }, []);
-  
+
   useEffect(() => {
     const options = {
       params: { page, category, groupBloodNotAllowed, search },
     };
-    
-    if (fetching) {
-      getProducts(options).then(({ data }) => {
-        setProducts([...products, ...data.data]);
-        setCurrentTotal(data.total);
-        setPage((p) => p + 1);
-      }).finally(() => setFetching(false));
-    }
 
+    if (fetching) {
+      getProducts(options)
+        .then(({ data }) => {
+          setProducts([...products, ...data.data]);
+          setCurrentTotal(data.total);
+          setPage((p) => p + 1);
+        })
+        .finally(() => setFetching(false));
+    }
   }, [fetching]);
-  
-  
+
   const handlerScroll = (e) => {
-    if (e.target.scrollHeight - (e.target.scrollTop + window.innerHeight) < 600 && products.length < currentTotal) {
+    if (
+      e.target.scrollHeight - (e.target.scrollTop + window.innerHeight) < 600 &&
+      products.length < currentTotal
+    ) {
       setFetching(true);
     }
-  }
-  
-  
+  };
+
   const setParams = (params) => {
     setProducts([]);
     setCategory(params.category);
@@ -95,16 +95,16 @@ export default function ProductPage() {
 
   return (
     <Container bgi={[bg_min, bg_max]}>
-      <div className='container'>
+      <div className="container">
         <Wrap>
           <TitlePage>Products</TitlePage>
           <Filters
             setParams={setParams}
             initialCategory={allCategories}
             initialRecommended={initialRecommended}
-            />
+          />
         </Wrap>
-        
+
         <ProductsList products={products} isFetching={fetching} />
       </div>
     </Container>

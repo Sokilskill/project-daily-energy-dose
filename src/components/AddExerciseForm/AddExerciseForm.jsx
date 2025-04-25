@@ -95,10 +95,10 @@ const AddExerciseForm = ({
     };
 
     addEntry(body)
-      .then((r) => {
+      .then(() => {
         setOpenSuccess(true);
       })
-      .catch((e) => {
+      .catch(() => {
         notify();
       });
   };

@@ -11,7 +11,6 @@ import {
   Input,
   Inputs,
   InputWrapper,
-  InputContainer,
   Placeholder,
   Text,
   Button1,
@@ -39,7 +38,7 @@ function formatDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-const AddProductForm = ({ onClose, open, title, calories, id }) => {
+const AddProductForm = ({ onClose, title, calories, id }) => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [actualCalories, setactualCalories] = useState(0);
   const [gram, setGram] = useState('');
@@ -83,10 +82,10 @@ const AddProductForm = ({ onClose, open, title, calories, id }) => {
     };
 
     addEntry(body)
-      .then((r) => {
+      .then(() => {
         setOpenSuccess(true);
       })
-      .catch((e) => {
+      .catch(() => {
         notify();
       });
   };
