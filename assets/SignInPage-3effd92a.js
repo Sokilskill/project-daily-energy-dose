@@ -1,4 +1,4 @@
-import{n as r,r as j,j as e,s as n,L as w,a as v,l as b}from"./index-6c3abf05.js";import{W as S}from"./WelcomeLayout-f57501ca.js";import{F as y,a as I,c as k,b as p,d as F,E as x}from"./index.esm-59687299.js";import"./people-training-gym-desk-2x-eb4104ef.js";import"./hoist-non-react-statics.cjs-835f650e.js";const z=r(y)`
+import{n as r,r as j,j as e,s as n,L as w,a as v,l as b}from"./index-5f67e98f.js";import{W as S}from"./WelcomeLayout-ef879a48.js";import{F as y,a as I,c as k,b as p,d as F,E as x}from"./index.esm-86b622c5.js";import"./people-training-gym-desk-2x-eb4104ef.js";import"./hoist-non-react-statics.cjs-31cb9e56.js";const z=r(y)`
   width: 335px;
   height: fit-content;
 

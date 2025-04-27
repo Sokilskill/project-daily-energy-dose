@@ -1,4 +1,4 @@
-import{n as t,u as o,j as e,s as r}from"./index-6c3abf05.js";import{W as s}from"./WelcomeLayout-f57501ca.js";import"./people-training-gym-desk-2x-eb4104ef.js";const a=t.div`
+import{n as t,u as o,j as e,s as r}from"./index-5f67e98f.js";import{W as s}from"./WelcomeLayout-ef879a48.js";import"./people-training-gym-desk-2x-eb4104ef.js";const a=t.div`
   display: flex;
   gap: 14px;
 

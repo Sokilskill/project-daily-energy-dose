@@ -1,4 +1,4 @@
-import{n,N as a,a as o,r as d,R as t,j as i,S as r}from"./index-6c3abf05.js";import{b as p,a as s,c as g,d as x,e as c,f as h}from"./people-training-gym-desk-2x-eb4104ef.js";const m=n.div`
+import{n,N as a,a as o,r as d,R as t,j as i,S as r}from"./index-5f67e98f.js";import{b as p,a as s,c as g,d as x,e as c,f as h}from"./people-training-gym-desk-2x-eb4104ef.js";const m=n.div`
   // position: relative;
   padding: 0;
 
