@@ -1,6 +1,10 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true, node: true },
+  env: {
+    browser: true,
+    es2020: true,
+    node: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -11,17 +15,27 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.js'],
   parserOptions: {
-    ecmaVersion: '2022',
+    ecmaVersion: 2022,
     sourceType: 'module',
-    ecmaFeatures: { jsx: true },
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   settings: {
-    react: { version: '18.2' },
+    react: {
+      version: 'detect',
+    },
     'import/resolver': {
-      vite: {
-        viteConfig: './vite.config.js',
+      alias: {
+        map: [
+          ['@', './src'],
+          ['components', './src/components'],
+          ['pages', './src/pages'],
+          ['assets', './src/assets'],
+        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
